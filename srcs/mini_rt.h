@@ -6,7 +6,7 @@
 /*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/28 11:44:47 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2022/12/28 16:29:08 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # define IMAGE_WIDTH 400
 # define VIEPORT_HEIHT 2.0
 # define FOCAL_LENGTH 1.0
-
 
 typedef struct s_node	t_node;
 
