@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   math.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 11:42:23 by hyunkyu           #+#    #+#             */
-/*   Updated: 2022/12/28 17:19:54 by hyunkyle         ###   ########.fr       */
+/*   Created: 2022/12/28 16:46:18 by daegulee          #+#    #+#             */
+/*   Updated: 2022/12/28 16:53:03 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#ifndef MATH_H
+# define MATH_H
 
-# include "../vector/vector.h"
+# include <math.h>
+# define PI 3.1415926535897932385
 
-typedef t_vec	t_color;
-
-int		get_t(int trgb);
-int		get_r(int trgb);
-int		get_g(int trgb);
-int		get_b(int trgb);
-int		create_trgb(int t, int r, int g, int b);
+//math_util.c
+double	clamp(double x, double min, double max);
+double	degrees_to_radians(double degrees);
+//
 
 #endif

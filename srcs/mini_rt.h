@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_rt.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/28 16:29:08 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2022/12/28 16:45:34 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,12 @@
 
 # include "./vector/vector.h"
 # include <stdlib.h>
+# include <math.h>
+
+# define PI 3.1415926535897932385
 
 //image info
+
 # define ASPECT_RATIO_W 16.0
 # define ASPECT_RATIO_H 9.0
 # define IMAGE_WIDTH 400
