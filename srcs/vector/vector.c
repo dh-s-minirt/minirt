@@ -6,7 +6,7 @@
 /*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:30:00 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/28 10:54:26 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2022/12/28 17:36:15 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_vec	vec(double x, double y, double z)
 	return (out);
 }
 
-static double	length_squared(t_vec *vec)
+double	length_squared(t_vec *vec)
 {
 	return (vec->x * vec->x + vec->y * vec->y + vec->z * vec->z);
 }

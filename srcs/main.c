@@ -6,13 +6,14 @@
 /*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:16:45 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/28 11:49:16 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2022/12/28 17:49:27 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_rt.h"
 #include "./parsing/parsing.h"
 #include "./color/color.h"
+#include "./mlx_utils.h"
 #include <stdio.h>
 
 void	print_data(t_info_data *data)
@@ -59,6 +60,5 @@ int	main(int argc, char **argv)
 		return (0);
 	data.shape = NULL;
 	get_info_data(argv[1], &data);
-	print_data(&data);
 	return (0);
 }

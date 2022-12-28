@@ -6,7 +6,7 @@
 /*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:26:54 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/28 17:06:18 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2022/12/28 17:28:15 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,21 +72,6 @@ void	init_light(char **strs, t_info_data *data)
 	data->light = light;
 }
 
-void	calc_lower_left_corner(t_info_data *data)
-{
-	t_vec	hor_div2;
-	t_vec	ver_div2;
-	t_vec	tmp;
-	t_vec	tmp2;
-
-	hor_div2 = vec_div(&data->horizontal, 2.0);
-	ver_div2 = vec_div(&data->vertical, 2.0);
-	tmp = vec_sub(&data->origin, &hor_div2);
-	tmp = vec_sub(&tmp, &ver_div2);
-	tmp2 = vec(0, 0, FOCAL_LENGTH);
-	data->lower_left_corner = vec_sub(&tmp, &tmp2);
-}
-
 void	fill_camera_data(t_info_data *data)
 {
 	double	aspect_ratio;
@@ -99,5 +84,8 @@ void	fill_camera_data(t_info_data *data)
 	data->origin = vec(0, 0, 0);
 	data->horizontal = vec(viewport_width, 0, 0);
 	data->vertical = vec(0, VIEPORT_HEIHT, 0);
-	calc_lower_left_corner(data);
+	data->lower_left_corner = vec(data->origin.x + (-data->horizontal.x / 2) + \
+	(-data->vertical.x / 2) + (0), data->origin.y + (-data->horizontal.y / 2) + \
+	(-data->vertical.y / 2) + (0), data->origin.z + (-data->horizontal.z / 2) + \
+		(-data->vertical.z / 2) + (-FOCAL_LENGTH));
 }

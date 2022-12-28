@@ -6,7 +6,7 @@
 #    By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2022/12/28 10:44:11 by hyunkyle         ###   ########.fr        #
+#    Updated: 2022/12/28 20:35:07 by hyunkyle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS	=	main.c \
 			parsing/parsing_utils1.c \
 			color/color_utils.c \
 			color/color_utils1.c \
+			math/math_util.c \
 
 SRCS_DIR = srcs
 OBJS_DIR = objs
@@ -44,6 +45,7 @@ ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c
 	@mkdir -p ${OBJS_DIR}/vector
 	@mkdir -p ${OBJS_DIR}/parsing
 	@mkdir -p ${OBJS_DIR}/color
+	@mkdir -p $(OBJS_DIR)/math
 	@${CC} ${CFLAGS}  -c $< -o $@ -MD
 
 $(NAME): $(OBJS)
