@@ -6,7 +6,7 @@
 /*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:42:23 by hyunkyu           #+#    #+#             */
-/*   Updated: 2022/12/28 16:14:34 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2022/12/28 17:15:54 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define COLOR_H
 
 # include "../vector/vector.h"
+
+typedef t_vec	t_color;
 
 int		get_t(int trgb);
 int		get_r(int trgb);
