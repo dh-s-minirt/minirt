@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:42:23 by hyunkyu           #+#    #+#             */
-/*   Updated: 2022/12/28 16:51:20 by daegulee         ###   ########.fr       */
+/*   Updated: 2022/12/28 17:00:29 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../vector/vector.h"
 
-typedef t_color	t_vec;
+typedef t_vec	t_color;
 
 int		get_t(int trgb);
 int		get_r(int trgb);
