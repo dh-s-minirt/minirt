@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   clamp.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 11:42:23 by hyunkyu           #+#    #+#             */
-/*   Updated: 2022/12/28 16:51:20 by daegulee         ###   ########.fr       */
+/*   Created: 2022/12/28 16:47:22 by daegulee          #+#    #+#             */
+/*   Updated: 2022/12/28 16:49:48 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include "./math.h"
 
-# include "../vector/vector.h"
+double	clamp(double x, double min, double max)
+{
+	if (x < min)
+		return (min);
+	if (x > max)
+		return (max);
+	return (x);
+}
 
-typedef t_color	t_vec;
-
-int		get_t(int trgb);
-int		get_r(int trgb);
-int		get_g(int trgb);
-int		get_b(int trgb);
-int		create_trgb(int t, int r, int g, int b);
-
-#endif
+double	degrees_to_radians(double degrees)
+{
+	return (degrees * PI / 180.0);
+}

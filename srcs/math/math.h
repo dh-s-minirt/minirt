@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   math.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 11:42:23 by hyunkyu           #+#    #+#             */
-/*   Updated: 2022/12/28 16:51:20 by daegulee         ###   ########.fr       */
+/*   Created: 2022/12/28 16:46:18 by daegulee          #+#    #+#             */
+/*   Updated: 2022/12/28 16:47:08 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#ifndef MATH_H
+# define MATH_H
 
-# include "../vector/vector.h"
+# include <math.h>
+# define PI 3.1415926535897932385
 
-typedef t_color	t_vec;
-
-int		get_t(int trgb);
-int		get_r(int trgb);
-int		get_g(int trgb);
-int		get_b(int trgb);
-int		create_trgb(int t, int r, int g, int b);
+double	clamp(double x, double min, double max);
 
 #endif
