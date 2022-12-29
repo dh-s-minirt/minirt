@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:26:54 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/28 17:28:15 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2022/12/29 11:16:56 by hyunkyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,12 @@ void	init_light(char **strs, t_info_data *data)
 
 void	fill_camera_data(t_info_data *data)
 {
-	double	aspect_ratio;
-	int		image_height;
-	int		viewport_width;
-
-	aspect_ratio = ASPECT_RATIO_W / ASPECT_RATIO_H;
-	image_height = (int)(IMAGE_WIDTH / aspect_ratio);
-	viewport_width = aspect_ratio * VIEPORT_HEIHT;
-	data->origin = vec(0, 0, 0);
-	data->horizontal = vec(viewport_width, 0, 0);
-	data->vertical = vec(0, VIEPORT_HEIHT, 0);
-	data->lower_left_corner = vec(data->origin.x + (-data->horizontal.x / 2) + \
-	(-data->vertical.x / 2) + (0), data->origin.y + (-data->horizontal.y / 2) + \
-	(-data->vertical.y / 2) + (0), data->origin.z + (-data->horizontal.z / 2) + \
-		(-data->vertical.z / 2) + (-FOCAL_LENGTH));
+	data->camera.viewprot_height = VIEWPORT_HEIGHT;
+	data->camera.viewprot_width = VIEWPORT_HEIGHT * data->canvas.aspect_ratio;
+	data->camera.focal_length = FOCAL_LENGTH;
+	data->camera.horizontal = vec(data->camera.viewprot_width, 0, 0);
+	data->camera.vertical = vec(0, data->camera.viewprot_height, 0);
+	data->camera.lower_left_corner = vec_sub(vec_sub(vec_sub(data->camera.coordinates, \
+		vec_div(data->camera.horizontal , 2)), vec_div(data->camera.vertical, 2)), \
+		vec(0, 0, FOCAL_LENGTH));
 }

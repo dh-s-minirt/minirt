@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:16:45 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/28 17:49:27 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2022/12/29 11:20:55 by hyunkyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (0);
 	data.shape = NULL;
+	data.canvas = canvas_new(CANVAS_WIDTH, CANVAS_HEIGHT);
 	get_info_data(argv[1], &data);
 	return (0);
 }

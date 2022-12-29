@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:54:36 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/28 12:08:54 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2022/12/29 11:17:30 by hyunkyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,5 @@ void	get_info_data(char *filename, t_info_data *data)
 	close(fd);
 	if (cnt != 3)
 		ft_print_exit();
-	// fill_camera_data(data);
+	fill_camera_data(data);
 }
