@@ -6,7 +6,7 @@
 /*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:57:06 by hyunkyu           #+#    #+#             */
-/*   Updated: 2022/12/30 11:30:33 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2022/12/30 11:35:42 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	fill_sphere(t_sphere *sphere, char **strs)
 	sphere->center = vec(ft_atof(tmp[0]), ft_atof(tmp[1]), ft_atof(tmp[2]));
 	ft_release_strs(tmp);
 	sphere->diameter = ft_atof(strs[2]);
+	sphere->radius = sphere->diameter / 2.0;
 	tmp = ft_split(strs[3], ',');
 	sphere->color = create_trgb(0, ft_atoi(tmp[0]), \
 			ft_atoi(tmp[1]), ft_atoi(tmp[2]));

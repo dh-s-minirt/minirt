@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:28:47 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/28 18:08:15 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2022/12/29 11:33:49 by hyunkyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,8 @@ t_vec	vec_mul(t_vec v1, double t);
 t_vec	vec_div(t_vec v1, double t);
 double	vec_length(t_vec *vec);
 double	length_squared(t_vec *vec);
+t_vec	vec_unit(t_vec v);
+t_vec	vec_cross(t_vec v1, t_vec v2);
+double	vec_dot(t_vec v1, t_vec v2);
 
 #endif

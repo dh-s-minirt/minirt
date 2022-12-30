@@ -6,7 +6,7 @@
 /*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:54:36 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/30 11:30:38 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2022/12/30 11:36:27 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	fill_cylinder(t_cylinder *data, char **strs)
 	data->nor_vector = vec(ft_atof(tmp[0]), ft_atof(tmp[1]), ft_atof(tmp[2]));
 	ft_release_strs(tmp);
 	data->diameter = ft_atof(strs[3]);
+	data->radius = data->diameter / 2.0;
 	data->height = ft_atof(strs[4]);
 	tmp = ft_split(strs[5], ',');
 	if (!tmp || ft_strs_size(tmp) != 3)
@@ -110,5 +111,5 @@ void	get_info_data(char *filename, t_info_data *data)
 	close(fd);
 	if (cnt != 3)
 		ft_print_exit();
-	// fill_camera_data(data);
+	fill_camera_data(data);
 }

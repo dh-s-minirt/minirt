@@ -6,7 +6,7 @@
 /*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/30 11:30:13 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2022/12/30 11:36:39 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,12 @@
 # include <math.h>
 
 # define PI 3.1415926535897932385
+# define FOCAL_LENGTH 1.0
+# define VIEWPORT_HEIGHT 2.0
+# define CANVAS_WIDTH 500
+# define CANVAS_HEIGHT 500
 
 //image info
-
-# define ASPECT_RATIO_W 16.0
-# define ASPECT_RATIO_H 9.0
-# define IMAGE_WIDTH 400
-# define VIEPORT_HEIHT 2.0
-# define FOCAL_LENGTH 1.0
 
 typedef struct s_node	t_node;
 
@@ -47,6 +45,7 @@ typedef struct s_sphere
 {
 	t_vec	center;
 	double	diameter;
+	double	radius;
 	int		color;
 }	t_sphere;
 
@@ -62,13 +61,14 @@ typedef struct s_cylinder
 	t_vec	coordinates;
 	t_vec	nor_vector;
 	double	diameter;
+	double	radius;
 	double	height;
 	int		color;
 }	t_cylinder;
 
 typedef struct s_am_lightning
 {
-	double	ratio_in_range;
+	double	ratio;
 	int		color;
 }	t_am_lightning;
 
@@ -76,13 +76,26 @@ typedef struct s_camera
 {
 	t_vec	coordinates;
 	t_vec	nor_vector;
+	double	viewprot_width;
+	double	viewprot_height;
+	double	focal_length;
+	t_vec	horizontal;
+	t_vec	vertical;
+	t_vec	lower_left_corner;
 	int		fov;
 }	t_camera;
+
+typedef struct s_canvas
+{
+	int		width;
+	int		height;
+	double	aspect_ratio;
+}	t_canvas;
 
 typedef struct s_light
 {
 	t_vec	coordinates;
-	double	ratio_in_range;
+	double	ratio;
 	int		color;
 }	t_light;
 
@@ -92,13 +105,11 @@ typedef struct s_info_data
 	t_camera		camera;
 	t_light			light;
 	t_node			*shape;
-	t_vec			origin;
-	t_vec			horizontal;
-	t_vec			vertical;
-	t_vec			lower_left_corner;
+	t_canvas		canvas;
 }	t_info_data;
 
-void	node_add_back(t_node **lst, t_node *new);
-t_node	*node_new(void *data, t_data_type type);
+void		node_add_back(t_node **lst, t_node *new);
+t_node		*node_new(void *data, t_data_type type);
+t_canvas	canvas_new(int width, int height);
 
 #endif
