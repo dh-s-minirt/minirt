@@ -6,7 +6,7 @@
 /*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:26:54 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/28 17:28:15 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2022/12/30 11:30:21 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_am_light(char **strs, t_info_data *data)
 	color_data = ft_split(strs[2], ',');
 	if (ft_strs_size(color_data) != 3)
 		ft_print_exit();
-	am_light.color_range = create_trgb(0, ft_atoi(color_data[0]), \
+	am_light.color = create_trgb(0, ft_atoi(color_data[0]), \
 			ft_atoi(color_data[1]), ft_atoi(color_data[2]));
 	ft_release_strs(color_data);
 	data->am_light = am_light;
@@ -66,7 +66,7 @@ void	init_light(char **strs, t_info_data *data)
 	tmp = ft_split(strs[3], ',');
 	if (!tmp || ft_strs_size(tmp) != 3)
 		ft_print_exit();
-	light.color_range = create_trgb(0, ft_atoi(tmp[0]), ft_atoi(tmp[1]), \
+	light.color = create_trgb(0, ft_atoi(tmp[0]), ft_atoi(tmp[1]), \
 			ft_atoi(tmp[2]));
 	ft_release_strs(tmp);
 	data->light = light;

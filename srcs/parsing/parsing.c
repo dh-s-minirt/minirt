@@ -6,7 +6,7 @@
 /*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:54:36 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/28 12:08:54 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2022/12/30 11:30:38 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	fill_cylinder(t_cylinder *data, char **strs)
 	tmp = ft_split(strs[5], ',');
 	if (!tmp || ft_strs_size(tmp) != 3)
 		ft_print_exit();
-	data->color_range = create_trgb(0, ft_atoi(tmp[0]), ft_atoi(tmp[1]), \
+	data->color = create_trgb(0, ft_atoi(tmp[0]), ft_atoi(tmp[1]), \
 			ft_atoi(tmp[2]));
 	ft_release_strs(tmp);
 }
