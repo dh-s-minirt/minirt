@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:54:36 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/30 11:36:27 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2023/01/02 14:38:11 by hyunkyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	fill_cylinder(t_cylinder *data, char **strs)
 	tmp = ft_split(strs[5], ',');
 	if (!tmp || ft_strs_size(tmp) != 3)
 		ft_print_exit();
-	data->color = create_trgb(0, ft_atoi(tmp[0]), ft_atoi(tmp[1]), \
-			ft_atoi(tmp[2]));
+	data->color = vec(ft_atof(tmp[0]) / 255.999, ft_atof(tmp[1]) / 255.999, \
+		ft_atof(tmp[2]) / 255.999);
 	ft_release_strs(tmp);
 }
 

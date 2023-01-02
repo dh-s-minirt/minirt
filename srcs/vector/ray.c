@@ -6,7 +6,7 @@
 /*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:21:39 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/29 11:38:44 by hyunkyu          ###   ########.fr       */
+/*   Updated: 2023/01/02 10:46:53 by hyunkyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_ray	ray(t_vec orig, t_vec dir)
     return (ray);
 }
 
-t_ray       ray_primary(t_camera cam, double u, double v)
+t_ray ray_primary(t_camera cam, double u, double v)
 {
     t_ray   ray;
 

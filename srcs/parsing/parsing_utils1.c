@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:57:06 by hyunkyu           #+#    #+#             */
-/*   Updated: 2022/12/30 11:35:42 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2023/01/02 14:37:55 by hyunkyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	fill_sphere(t_sphere *sphere, char **strs)
 	sphere->diameter = ft_atof(strs[2]);
 	sphere->radius = sphere->diameter / 2.0;
 	tmp = ft_split(strs[3], ',');
-	sphere->color = create_trgb(0, ft_atoi(tmp[0]), \
-			ft_atoi(tmp[1]), ft_atoi(tmp[2]));
+	sphere->color = vec(ft_atof(tmp[0]) / 255.999, ft_atof(tmp[1]) / 255.999, \
+		ft_atof(tmp[2]) / 255.999);
 	ft_release_strs(tmp);
 }
 
@@ -59,8 +59,8 @@ void	fill_plane(t_plain *plain, char **strs)
 	plain->nor_vector = vec(ft_atof(tmp[0]), ft_atof(tmp[1]), ft_atof(tmp[2]));
 	ft_release_strs(tmp);
 	tmp = ft_split(strs[3], ',');
-	plain->color = create_trgb(0, ft_atoi(tmp[0]), \
-			ft_atoi(tmp[1]), ft_atoi(tmp[2]));
+	plain->color = vec(ft_atof(tmp[0]) / 255.999, ft_atof(tmp[1]) / 255.999, \
+		ft_atof(tmp[2]) / 255.999);
 	ft_release_strs(tmp);
 }
 

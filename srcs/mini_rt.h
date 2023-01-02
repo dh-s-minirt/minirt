@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_rt.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/30 11:36:39 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2023/01/02 14:36:39 by hyunkyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define MINI_RT_H
 
 # include "./vector/vector.h"
+# include "./vector/ray.h"
+# include "./color/color.h"
 # include <stdlib.h>
 # include <math.h>
 
@@ -46,14 +48,14 @@ typedef struct s_sphere
 	t_vec	center;
 	double	diameter;
 	double	radius;
-	int		color;
+	t_color	color;
 }	t_sphere;
 
 typedef struct s_plain
 {
 	t_vec	coordinates;
 	t_vec	nor_vector;
-	int		color;
+	t_color	color;
 }	t_plain;
 
 typedef struct s_cylinder
@@ -63,14 +65,8 @@ typedef struct s_cylinder
 	double	diameter;
 	double	radius;
 	double	height;
-	int		color;
+	t_color	color;
 }	t_cylinder;
-
-typedef struct s_am_lightning
-{
-	double	ratio;
-	int		color;
-}	t_am_lightning;
 
 typedef struct s_camera
 {
@@ -96,19 +92,20 @@ typedef struct s_light
 {
 	t_vec	coordinates;
 	double	ratio;
-	int		color;
+	t_color	color;
 }	t_light;
 
 typedef struct s_info_data
 {
-	t_am_lightning	am_light;
+	t_color			am_light;
 	t_camera		camera;
 	t_light			light;
 	t_node			*shape;
 	t_canvas		canvas;
+	t_ray			ray;
 }	t_info_data;
 
-void		node_add_back(t_node **lst, t_node *new);
+void		node_add_back(t_node **lst, t_node *new_node);
 t_node		*node_new(void *data, t_data_type type);
 t_canvas	canvas_new(int width, int height);
 

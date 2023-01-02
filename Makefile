@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+         #
+#    By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2022/12/28 20:35:07 by hyunkyle         ###   ########.fr        #
+#    Updated: 2023/01/02 14:47:44 by hyunkyu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS	=	main.c \
 			parsing/parsing_utils1.c \
 			color/color_utils.c \
 			color/color_utils1.c \
+			color/color_utils2.c \
 			math/math_util.c \
 
 SRCS_DIR = srcs

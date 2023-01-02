@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:26:54 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/30 11:36:48 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2023/01/02 14:40:01 by hyunkyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,17 @@
 void	init_am_light(char **strs, t_info_data *data)
 {
 	char			**color_data;
-	t_am_lightning	am_light;
+	double			ratio;
 
 	if (ft_strs_size(strs) != 3)
 		ft_print_exit();
-	am_light.ratio = ft_atof(strs[1]);
+	ratio = ft_atof(strs[1]);
 	color_data = ft_split(strs[2], ',');
 	if (ft_strs_size(color_data) != 3)
 		ft_print_exit();
-	am_light.color = create_trgb(0, ft_atoi(color_data[0]), \
-			ft_atoi(color_data[1]), ft_atoi(color_data[2]));
+	data->am_light = vec_mul(vec(ft_atof(color_data[0]) / 255.999, \
+	ft_atof(color_data[1]) / 255.999, ft_atof(color_data[2]) / 255.999), ratio);
 	ft_release_strs(color_data);
-	data->am_light = am_light;
 }
 
 void	init_camera(char **strs, t_info_data *data)
@@ -66,8 +65,7 @@ void	init_light(char **strs, t_info_data *data)
 	tmp = ft_split(strs[3], ',');
 	if (!tmp || ft_strs_size(tmp) != 3)
 		ft_print_exit();
-	light.color = create_trgb(0, ft_atoi(tmp[0]), ft_atoi(tmp[1]), \
-			ft_atoi(tmp[2]));
+	light.color = vec(ft_atoi(tmp[0]) / 255.0, ft_atoi(tmp[1]) / 255.0, ft_atoi(tmp[2]) / 255.0);
 	ft_release_strs(tmp);
 	data->light = light;
 }

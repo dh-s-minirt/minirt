@@ -6,7 +6,7 @@
 /*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:38:54 by hyunkyu           #+#    #+#             */
-/*   Updated: 2022/12/29 11:20:08 by hyunkyu          ###   ########.fr       */
+/*   Updated: 2023/01/02 10:33:08 by hyunkyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,21 @@ t_node	*node_new(void *data, t_data_type type)
 	return (new);
 }
 
-void	node_add_back(t_node **lst, t_node *new)
+void	node_add_back(t_node **lst, t_node *new_node)
 {
 	t_node	*tmp;
 
-	if (!lst || !new)
+	if (!lst || !new_node)
 		return ;
 	if (!*lst)
 	{
-		*lst = new;
+		*lst = new_node;
 		return ;
 	}
 	tmp = *lst;
 	while (tmp->next)
 		tmp = tmp->next;
-	tmp->next = new;
+	tmp->next = new_node;
 }
 
 t_canvas	canvas_new(int width, int height)

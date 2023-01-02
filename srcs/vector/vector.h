@@ -6,7 +6,7 @@
 /*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:28:47 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/29 11:33:49 by hyunkyu          ###   ########.fr       */
+/*   Updated: 2023/01/02 10:58:20 by hyunkyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ double	length_squared(t_vec *vec);
 t_vec	vec_unit(t_vec v);
 t_vec	vec_cross(t_vec v1, t_vec v2);
 double	vec_dot(t_vec v1, t_vec v2);
+t_vec	vec_less(t_vec vec1, t_vec vec2);
 
 #endif
