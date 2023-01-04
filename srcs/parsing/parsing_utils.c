@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:26:54 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/01/02 14:40:01 by hyunkyu          ###   ########.fr       */
+/*   Updated: 2023/01/03 14:26:03 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void	init_light(char **strs, t_info_data *data)
 	tmp = ft_split(strs[3], ',');
 	if (!tmp || ft_strs_size(tmp) != 3)
 		ft_print_exit();
-	light.color = vec(ft_atoi(tmp[0]) / 255.0, ft_atoi(tmp[1]) / 255.0, ft_atoi(tmp[2]) / 255.0);
+	light.color = vec(ft_atoi(tmp[0]) / 255.0, \
+		ft_atoi(tmp[1]) / 255.0, ft_atoi(tmp[2]) / 255.0);
 	ft_release_strs(tmp);
 	data->light = light;
 }
