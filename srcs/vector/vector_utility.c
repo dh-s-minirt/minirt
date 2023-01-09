@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_utility.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 12:48:46 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/01/03 14:28:50 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2023/01/09 16:19:46 by hyunkyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_vec	vec_unit(t_vec v)
 {
 	double	len;
 
-	len = vec_length(&v);
+	len = vec_length(v);
 	return (vec(v.x / len, v.y / len, v.z / len));
 }
 

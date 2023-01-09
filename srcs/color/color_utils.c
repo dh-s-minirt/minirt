@@ -6,7 +6,7 @@
 /*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:50:43 by hyunkyu           #+#    #+#             */
-/*   Updated: 2023/01/02 11:42:45 by hyunkyu          ###   ########.fr       */
+/*   Updated: 2023/01/09 16:02:54 by hyunkyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ double	fmax(double d1, double d2)
 	return (d2);
 }
 
-double	powf(double d, double n)
+double	ft_powf(double d, double n)
 {
 	double	result;
 

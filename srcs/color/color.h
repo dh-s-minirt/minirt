@@ -6,7 +6,7 @@
 /*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:42:23 by hyunkyu           #+#    #+#             */
-/*   Updated: 2023/01/02 11:45:25 by hyunkyu          ###   ########.fr       */
+/*   Updated: 2023/01/09 16:20:38 by hyunkyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define COLOR_H
 
 # include "../vector/vector.h"
-# include "../mini_rt.h"
 # define EPSILON 1e-6
 # define LUMEN 3
 
@@ -40,6 +39,6 @@ int		get_g(int trgb);
 int		get_b(int trgb);
 int		create_trgb(int t, int r, int g, int b);
 double	fmax(double d1, double d2);
-double	powf(double d, double n);
+double	ft_powf(double d, double n);
 
 #endif

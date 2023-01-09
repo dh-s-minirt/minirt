@@ -6,7 +6,7 @@
 /*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/01/02 14:36:39 by hyunkyu          ###   ########.fr       */
+/*   Updated: 2023/01/09 16:18:19 by hyunkyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ typedef enum t_data_type
 	CYLINDER,
 }	t_data_type;
 
+typedef enum t_light_type
+{
+	AM_LIGHT = 0,
+	LIGHT
+}	t_light_type;
+
 struct s_node
 {
 	t_data_type	type;
@@ -51,16 +57,16 @@ typedef struct s_sphere
 	t_color	color;
 }	t_sphere;
 
-typedef struct s_plain
+typedef struct s_plane
 {
-	t_vec	coordinates;
+	t_vec	center;
 	t_vec	nor_vector;
 	t_color	color;
-}	t_plain;
+}	t_plane;
 
 typedef struct s_cylinder
 {
-	t_vec	coordinates;
+	t_vec	center;
 	t_vec	nor_vector;
 	double	diameter;
 	double	radius;
@@ -70,7 +76,7 @@ typedef struct s_cylinder
 
 typedef struct s_camera
 {
-	t_vec	coordinates;
+	t_vec	center;
 	t_vec	nor_vector;
 	double	viewprot_width;
 	double	viewprot_height;
@@ -90,23 +96,41 @@ typedef struct s_canvas
 
 typedef struct s_light
 {
-	t_vec	coordinates;
+	t_vec	center;
 	double	ratio;
 	t_color	color;
 }	t_light;
 
+/**
+ * 	color -> ratio * color한 값
+**/
+typedef struct	s_am_light
+{
+	t_color	color;
+}	t_am_light;
+
+typedef struct s_light_node
+{
+	void				*data;
+	t_light_type		type;
+	struct s_light_node	*next;
+}	t_light_node;
+
+
 typedef struct s_info_data
 {
-	t_color			am_light;
 	t_camera		camera;
-	t_light			light;
 	t_node			*shape;
+	t_light_node	*light_node;
 	t_canvas		canvas;
 	t_ray			ray;
 }	t_info_data;
 
-void		node_add_back(t_node **lst, t_node *new_node);
-t_node		*node_new(void *data, t_data_type type);
-t_canvas	canvas_new(int width, int height);
+void			node_add_back(t_node **lst, t_node *new_node);
+t_node			*node_new(void *data, t_data_type type);
+t_canvas		canvas_new(int width, int height);
+t_light_node	*new_light_node(void *data, t_light_type type);
+void			light_node_add_back(t_light_node **head, t_light_node *new_node);
+t_ray			ray_primary(t_camera cam, double u, double v);
 
 #endif

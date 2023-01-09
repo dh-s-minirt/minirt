@@ -6,7 +6,7 @@
 /*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:54:36 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/01/02 14:38:11 by hyunkyu          ###   ########.fr       */
+/*   Updated: 2023/01/09 15:26:02 by hyunkyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	fill_cylinder(t_cylinder *data, char **strs)
 	tmp = ft_split(strs[1], ',');
 	if (!tmp || ft_strs_size(tmp) != 3)
 		ft_print_exit();
-	data->coordinates = vec(ft_atof(tmp[0]), ft_atof(tmp[1]), ft_atof(tmp[2]));
+	data->center = vec(ft_atof(tmp[0]), ft_atof(tmp[1]), ft_atof(tmp[2]));
 	ft_release_strs(tmp);
 	tmp = ft_split(strs[2], ',');
 	if (!tmp || ft_strs_size(tmp) != 3)
@@ -80,11 +80,11 @@ void	fill_data(char *line, t_info_data *data, int *cnt)
 			break ;
 		i++;
 	}
-	if (i == _DATA_LEN || (0 <= i && i <= 2 && check[i] == 1))
+	if (i == _DATA_LEN || (0 <= i && i <= 1 && check[i] == 1))
 		ft_print_exit();
 	if (0 <= i && i <= 2)
 	{
-		check[i] = 1;
+		check[i] += 1;
 		(*cnt) += 1;
 	}
 	g_functions[i](strs, data);
@@ -109,7 +109,7 @@ void	get_info_data(char *filename, t_info_data *data)
 		line = get_next_line(fd);
 	}
 	close(fd);
-	if (cnt != 3)
+	if (cnt < 3)
 		ft_print_exit();
 	fill_camera_data(data);
 }

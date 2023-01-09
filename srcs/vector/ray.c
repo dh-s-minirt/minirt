@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:21:39 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/01/03 14:26:58 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2023/01/09 16:19:29 by hyunkyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ray.h"
+#include "../mini_rt.h"
 
 /*
 원점 좌표에서  t크기만큼 dir 방향으로 뻗어나가는 ray 벡터의 계산
@@ -38,8 +39,8 @@ t_ray	ray_primary(t_camera cam, double u, double v)
 {
 	t_ray	ray;
 
-	ray.origin = cam.coordinates;
+	ray.origin = cam.center;
 	ray.dir = vec_unit(vec_sub(vec_add(vec_add(cam.lower_left_corner, \
-	vec_mul(cam.horizontal, u)), vec_mul(cam.vertical, v)), cam.coordinates));
+	vec_mul(cam.horizontal, u)), vec_mul(cam.vertical, v)), cam.center));
 	return (ray);
 }

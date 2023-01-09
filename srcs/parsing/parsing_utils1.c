@@ -6,7 +6,7 @@
 /*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:57:06 by hyunkyu           #+#    #+#             */
-/*   Updated: 2023/01/02 14:37:55 by hyunkyu          ###   ########.fr       */
+/*   Updated: 2023/01/09 15:23:03 by hyunkyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ void	init_sphere(char **strs, t_info_data *data)
 	node_add_back(&data->shape, node);
 }
 
-void	fill_plane(t_plain *plain, char **strs)
+void	fill_plane(t_plane *plain, char **strs)
 {
 	char	**tmp;
 
 	tmp = ft_split(strs[1], ',');
 	if (!tmp || ft_strs_size(tmp) != 3)
 		ft_print_exit();
-	plain->coordinates = vec(ft_atof(tmp[0]), ft_atof(tmp[1]), ft_atof(tmp[2]));
+	plain->center = vec(ft_atof(tmp[0]), ft_atof(tmp[1]), ft_atof(tmp[2]));
 	ft_release_strs(tmp);
 	tmp = ft_split(strs[2], ',');
 	if (!tmp || ft_strs_size(tmp) != 3)
@@ -66,15 +66,15 @@ void	fill_plane(t_plain *plain, char **strs)
 
 void	init_plane(char **strs, t_info_data *data)
 {
-	t_plain		*plain;
+	t_plane		*plane;
 	t_node		*node;
 
 	if (ft_strs_size(strs) != 4)
 		ft_print_exit();
-	plain = (t_plain *)malloc(sizeof(t_plain));
-	if (!plain)
+	plane = (t_plane *)malloc(sizeof(t_plane));
+	if (!plane)
 		exit(0);
-	fill_plane(plain, strs);
-	node = node_new((void *)plain, PLANE);
+	fill_plane(plane, strs);
+	node = node_new((void *)plane, PLANE);
 	node_add_back(&data->shape, node);
 }
