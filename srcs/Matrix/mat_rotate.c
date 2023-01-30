@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:54:56 by daegulee          #+#    #+#             */
-/*   Updated: 2023/01/30 17:52:20 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/01/30 20:22:10 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,18 @@ static t_mat4	_rotate_z_(const double theta)
 
 t_mat4	_rotate_mat_(const double theta, char mode)
 {
+	t_mat4	rotate;
+
 	if (mode == 'X' || mode == 'x')
-		_rotate_x_(theta);
+		rotate = _rotate_x_(theta);
 	if (mode == 'Y' || mode == 'y')
-		_rotate_y_(theta);
+		rotate = _rotate_y_(theta);
 	if (mode == 'Z' || mode == 'z')
-		_rotate_z_(theta);
+		rotate = _rotate_z_(theta);
 	else
 	{
 		printf("Please use correct rotate_mode.\n");
 		exit(EXIT_FAILURE);
 	}
+	return (rotate);
 }
