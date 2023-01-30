@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_rt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:38:54 by hyunkyu           #+#    #+#             */
-/*   Updated: 2023/01/09 15:43:54 by hyunkyu          ###   ########.fr       */
+/*   Updated: 2023/01/30 15:53:17 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_light_node	*new_light_node(void *data, t_light_type type)
 	node->data = data;
 	node->type = type;
 	node->next = NULL;
-	return node;
+	return (node);
 }
 
 t_canvas	canvas_new(int width, int height)
