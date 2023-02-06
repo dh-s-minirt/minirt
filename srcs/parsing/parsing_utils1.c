@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:57:06 by hyunkyu           #+#    #+#             */
-/*   Updated: 2023/01/09 15:23:03 by hyunkyu          ###   ########.fr       */
+/*   Updated: 2023/01/31 20:10:17 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	init_sphere(char **strs, t_info_data *data)
 		exit(0);
 	fill_sphere(sphere, strs);
 	node = node_new((void *)sphere, SPHERE);
-	node_add_back(&data->shape, node);
+	node_add_back(&data->objects, node);
 }
 
 void	fill_plane(t_plane *plain, char **strs)
@@ -76,5 +76,5 @@ void	init_plane(char **strs, t_info_data *data)
 		exit(0);
 	fill_plane(plane, strs);
 	node = node_new((void *)plane, PLANE);
-	node_add_back(&data->shape, node);
+	node_add_back(&data->objects, node);
 }

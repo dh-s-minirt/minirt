@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:16:45 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/01/09 16:01:51 by hyunkyu          ###   ########.fr       */
+/*   Updated: 2023/02/07 08:05:59 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "./color/color.h"
 #include "./mlx_utils.h"
 #include <stdio.h>
+#include "./settings/setting.h"
 
 void	print_data(t_info_data *data)
 {
@@ -43,13 +44,15 @@ void	print_data(t_info_data *data)
 int	main(int argc, char **argv)
 {
 	t_info_data	data;
+	t_settings	set;
 
 	if (argc != 2)
 		return (0);
-	data.shape = NULL;
+	data.objects = NULL;
 	data.light_node = NULL;
-	data.canvas = canvas_new(CANVAS_WIDTH, CANVAS_HEIGHT);
+	// data.canvas = canvas_new(CANVAS_WIDTH, CANVAS_HEIGHT);
 	get_info_data(argv[1], &data);
+	_init_setting_(data);
 	print_data(&data);
 	return (0);
 }

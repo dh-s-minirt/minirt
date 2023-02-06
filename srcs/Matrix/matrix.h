@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:11:15 by daegulee          #+#    #+#             */
-/*   Updated: 2023/01/30 20:38:54 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/07 07:46:36 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ t_mat4		_rotate_mat_(const double theta, char mode);
 t_vec		_mul_vec_mat(const t_mat4 a, t_arr_vec3	arr_vec);
 
 //arr_vec
-
+t_mat4		_make_mat_with_vec(const t_vec	forward_z, const t_vec	up_y, \
+const t_vec	right_x);
 t_arr_vec3	vec_2_arr_vec3(t_vec vec);
 t_vec		arr_vec3_2_vec(t_arr_vec3 vec3);
 

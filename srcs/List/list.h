@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector.c                                           :+:      :+:    :+:   */
+/*   List.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/26 11:30:00 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/07 07:51:26 by daegulee         ###   ########.fr       */
+/*   Created: 2023/02/01 16:48:59 by daegulee          #+#    #+#             */
+/*   Updated: 2023/02/01 16:54:04 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#ifndef LIST_H
+# define LIST_H
 
-t_vec	vec(double x, double y, double z)
-{
-	t_vec	out;
+# include <stdlib.h>
 
-	out.x = x;
-	out.y = y;
-	out.z = z;
-	return (out);
-}
+typedef struct s_light_list{
+	int			size;
+	const int	capacity = 100000;
+	size_t		_node_type_size;
+}	t_list;
 
-double	length_squared(t_vec vec)
-{
-	return (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
-}
-
-double	vec_length(t_vec vec)
-{
-	return (sqrt(length_squared(vec)));
-}
+#endif

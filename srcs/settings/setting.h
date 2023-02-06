@@ -1,0 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   setting.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/01 16:27:32 by daegulee          #+#    #+#             */
+/*   Updated: 2023/02/07 08:16:10 by daegulee         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef SETTING_H
+# define SETTING_H
+
+# include <math.h>
+# include "../vector/vector.h"
+# include "../matrix/matrix.h"
+# include "../math/math.h"
+
+# define SCREEN_WIDTH 1280
+# define SCREEN_HEIGHT 960
+
+typedef struct s_settings{
+	double	fov;
+	int		screen_width;
+	int		screen_height;
+	double	aspect_ratio;
+	t_mat4	camera_to_world;
+	double	bias;
+	double	scale;
+	int		max_depth;
+}	t_settings;
+
+t_settings	_init_setting_(t_info_data data);
+t_mat4		_camera_to_world_(t_camera	camera);
+
+#endif

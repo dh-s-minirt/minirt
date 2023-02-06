@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_rt.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/01/09 16:18:19 by hyunkyu          ###   ########.fr       */
+/*   Updated: 2023/02/07 07:30:10 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,14 @@ typedef struct s_camera
 {
 	t_vec	center;
 	t_vec	nor_vector;
-	double	viewprot_width;
-	double	viewprot_height;
-	double	focal_length;
-	t_vec	horizontal;
-	t_vec	vertical;
-	t_vec	lower_left_corner;
+	// double	viewprot_width;
+	// double	viewprot_height;
+	// double	focal_length;
+	// t_vec	horizontal;
+	// t_vec	vertical;
+	// t_vec	lower_left_corner;
 	int		fov;
+	// Horizontal field of view in degrees in range
 }	t_camera;
 
 typedef struct s_canvas
@@ -116,14 +117,13 @@ typedef struct s_light_node
 	struct s_light_node	*next;
 }	t_light_node;
 
-
 typedef struct s_info_data
 {
 	t_camera		camera;
-	t_node			*shape;
+	t_node			*objects;
 	t_light_node	*light_node;
-	t_canvas		canvas;
-	t_ray			ray;
+	// t_canvas		canvas;
+	// t_ray			ray;
 }	t_info_data;
 
 void			node_add_back(t_node **lst, t_node *new_node);

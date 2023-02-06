@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:54:36 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/01/09 15:26:02 by hyunkyu          ###   ########.fr       */
+/*   Updated: 2023/01/31 20:10:17 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	init_cylinder(char **strs, t_info_data *data)
 		exit(0);
 	fill_cylinder(cylinder, strs);
 	node = node_new((void *)cylinder, CYLINDER);
-	node_add_back(&data->shape, node);
+	node_add_back(&data->objects, node);
 }
 
 void	fill_data(char *line, t_info_data *data, int *cnt)
