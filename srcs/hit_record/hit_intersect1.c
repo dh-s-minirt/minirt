@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 09:42:31 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/07 14:36:50 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/07 15:50:05 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,20 +116,3 @@ const t_ray ray)
 	cur_h_rec->contact_point = vec_add(ray.origin, \
 	vec_mul(ray.dir, cur_h_rec->t_near));
 }
-
-void	_intersect_cone_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
-const t_ray ray);
-
-t_bool	query_hit(t_node *cur_obj, t_hit_rec *cur_h_rec, const t_ray ray)
-{
-	if (cur_obj->type == SPHERE)
-		_intersect_sphere_(cur_obj, cur_h_rec, ray);
-	else if (cur_obj->type == PLANE)
-		_intersect_plane_(cur_obj, cur_h_rec, ray);
-	else if (cur_obj->type == CYLINDER)
-		_intersect_cylinder_(cur_obj, cur_h_rec, ray);
-	else
-		_intersect_cone_(cur_obj, cur_h_rec, ray);
-	return (cur_h_rec->is_hit);
-}
-

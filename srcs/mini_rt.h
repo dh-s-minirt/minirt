@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/07 13:31:57 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/07 16:02:05 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,16 @@ typedef struct s_light
 	double	ratio;
 	t_color	color;
 }	t_light;
+
+typedef struct s_cone
+{
+	double	radius;
+	t_color	color;
+	double	height;
+	double	theta;
+	double	center;
+	double	nor_vector;
+}	t_cone;
 
 /**
  * 	color -> ratio * color한 값
