@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/07 09:12:08 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/07 09:47:25 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,13 @@ typedef int	t_bool;
 
 typedef struct s_node	t_node;
 
-typedef enum t_data_type
+typedef enum t_obj_type
 {
 	SPHERE = 0,
 	PLANE,
 	CYLINDER,
-}	t_data_type;
+	CONE
+}	t_obj_type;
 
 typedef enum t_light_type
 {
@@ -48,7 +49,7 @@ typedef enum t_light_type
 
 struct s_node
 {
-	t_data_type	type;
+	t_obj_type	type;
 	void		*data;
 	t_node		*next;
 };
@@ -131,7 +132,7 @@ typedef struct s_info_data
 }	t_info_data;
 
 void			node_add_back(t_node **lst, t_node *new_node);
-t_node			*node_new(void *data, t_data_type type);
+t_node			*node_new(void *data, t_obj_type type);
 t_canvas		canvas_new(int width, int height);
 t_light_node	*new_light_node(void *data, t_light_type type);
 void			light_node_add_back(t_light_node **head, t_light_node *new_node);

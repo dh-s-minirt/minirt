@@ -6,13 +6,13 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:38:54 by hyunkyu           #+#    #+#             */
-/*   Updated: 2023/01/30 15:53:17 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/07 09:45:10 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_rt.h"
 
-t_node	*node_new(void *data, t_data_type type)
+t_node	*node_new(void *data, t_obj_type type)
 {
 	t_node	*new;
 
