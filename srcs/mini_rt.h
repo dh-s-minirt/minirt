@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/07 16:14:33 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/07 16:15:02 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ typedef struct s_cone
 	double	height;
 	double	theta;
 	t_vec	center;
-	double	nor_vector;
+	t_vec	nor_vector;
 }	t_cone;
 
 /**
