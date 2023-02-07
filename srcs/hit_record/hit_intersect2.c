@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:46:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/07 15:59:47 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/07 16:13:57 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,13 @@
 void	_intersect_cone_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
 const t_ray ray)
 {
-	
+	const t_cone	*cone = (t_cone *)cur_obj->data;
+	const t_vec		co = vec_sub(ray.origin, cone->center);
+	double			root[2];
+
+//	x = o+td, c = v, theta;
+	solve_quadratic((pow(vec_dot(ray.dir, cone->nor_vector), 2)), \
+	2 * (vec_dot(ray.dir, cone->nor_vector) * )
 }
 
 t_bool	query_hit(t_node *cur_obj, t_hit_rec *cur_h_rec, const t_ray ray)
