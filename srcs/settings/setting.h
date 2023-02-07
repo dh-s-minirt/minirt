@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:27:32 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/07 08:16:10 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/07 19:43:18 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_settings{
 	double	bias;
 	double	scale;
 	int		max_depth;
+	t_color	dark;
 }	t_settings;
 
 t_settings	_init_setting_(t_info_data data);

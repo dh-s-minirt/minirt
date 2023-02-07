@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/07 16:17:58 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/07 19:48:53 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ typedef struct s_info_data
 {
 	t_camera		camera;
 	t_node			*objects;
-	t_light_node	*light_node;
+	t_light_node	*lights;
 	// t_canvas		canvas;
 	// t_ray			ray;
 }	t_info_data;
