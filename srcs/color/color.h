@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:42:23 by hyunkyu           #+#    #+#             */
-/*   Updated: 2023/01/09 16:20:38 by hyunkyu          ###   ########.fr       */
+/*   Updated: 2023/02/07 16:46:17 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define EPSILON 1e-6
 # define LUMEN 3
 
-typedef t_vec	t_color;
+typedef t_vec		t_color;
 
 struct s_dummy_color
 {
