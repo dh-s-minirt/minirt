@@ -100,13 +100,6 @@ typedef struct s_canvas
 	double	aspect_ratio;
 }	t_canvas;
 
-typedef struct s_light
-{
-	t_vec	center;
-	double	ratio;
-	t_color	color;
-}	t_light;
-
 typedef struct s_cone
 {
 	double	radius;
@@ -116,6 +109,13 @@ typedef struct s_cone
 	t_vec	center;
 	t_vec	nor_vector;
 }	t_cone;
+
+typedef struct s_light
+{
+	t_vec	center;
+	double	ratio;
+	t_color	color;
+}	t_light;
 
 /**
  * 	color -> ratio * color한 값

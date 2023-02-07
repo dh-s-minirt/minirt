@@ -5,6 +5,7 @@
 		"parsing.h": "c",
 		"matrix.h": "c",
 		"setting.h": "c",
-		"hit_record.h": "c"
+		"hit_record.h": "c",
+		"bitset": "c"
 	}
 }

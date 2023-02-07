@@ -28,5 +28,6 @@ void	init_sphere(char **strs, t_info_data *data);
 void	init_plane(char **strs, t_info_data *data);
 void	get_info_data(char *filename, t_info_data *data);
 void	fill_camera_data(t_info_data *data);
+void	init_cone(char **strs, t_info_data *data);
 
 #endif

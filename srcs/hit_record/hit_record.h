@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:49:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/07 15:51:29 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/07 21:05:50 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,21 @@
 # include "../Matrix/matrix.h"
 # include "../mini_rt.h"
 
+typedef enum t_material
+{
+	Kphong = 0,
+	Kfresnel,
+	Uv,
+	Kdiffuse
+}	t_material;
+
 typedef struct s_hit_rec
 {
-	double	t_near;
+	double		t_near;
 	// t_vec	hit_normal;
-	t_vec	contact_point;
-	t_bool	is_hit;
+	t_material	material;
+	t_vec		contact_point;
+	t_bool		is_hit;
 }	t_hit_rec;
 
 //1
@@ -38,6 +47,7 @@ void	_intersect_cylinder_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
 const t_ray ray);
 void	_intersect_plane_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
 const t_ray ray);
+t_bool	trace_hit(t_node	*objects, t_hit_rec	*hit_rec, t_ray ray);
 
 //2
 t_bool	query_hit(t_node *cur_obj, t_hit_rec *cur_h_rec, const t_ray ray);

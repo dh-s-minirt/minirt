@@ -15,13 +15,13 @@
 
 void	init_cylinder(char **strs, t_info_data *data);
 
-static const char	*g_data[6] = {
-	"A", "C", "L", "pl", "sp", "cy"
+static const char	*g_data[7] = {
+	"A", "C", "L", "pl", "sp", "cy", "cn"
 };
 
-static void (*const	g_functions[6])(char **, t_info_data *) = {
+static void (*const	g_functions[7])(char **, t_info_data *) = {
 	init_am_light, init_camera, init_light, \
-		init_plane, init_sphere, init_cylinder
+		init_plane, init_sphere, init_cylinder, init_cone
 };
 
 void	fill_cylinder(t_cylinder *data, char **strs)
@@ -68,7 +68,7 @@ void	fill_data(char *line, t_info_data *data, int *cnt)
 {
 	char				**strs;
 	int					i;
-	static int			check[6] = {0, 0, 0, 0, 0, 0};
+	static int			check[7] = {0, 0, 0, 0, 0, 0, 0};
 
 	strs = ft_split(line, ' ');
 	if (!strs || ft_strs_size(strs) == 0)
