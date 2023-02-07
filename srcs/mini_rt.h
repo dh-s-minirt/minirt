@@ -89,7 +89,7 @@ typedef struct s_camera
 	// t_vec	horizontal;
 	// t_vec	vertical;
 	// t_vec	lower_left_corner;
-	int		fov;
+	double		fov;
 	// Horizontal field of view in degrees in range
 }	t_camera;
 
