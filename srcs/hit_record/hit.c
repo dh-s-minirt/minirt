@@ -6,11 +6,37 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 09:42:31 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/07 10:10:28 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/07 10:27:25 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./hit_record.h"
+
+t_bool	solve_quadratic(const double a, const double half_b, const double c, \
+t_hit_rec *cur_h_rec)
+{
+	const double	discriminant = half_b * half_b - a * c;
+	double			root1;
+	double			root2;
+
+	if (discriminant < 0)
+		return (FALSE);
+	else if (discriminant == 0)
+		cur_h_rec->t_near = (-half_b) / a;
+	else
+	{
+		root1 = (-half_b - sqrt(discriminant)) / a;
+		root2 = (-half_b + sqrt(discriminant)) / a;
+		if (root1 < 0)
+		{
+			if (root2 < 0)
+				return (FALSE);
+			root1 = root2;
+		}
+		cur_h_rec->t_near = root1;
+	}
+	return (TRUE);
+}
 
 void	_intersect_sphere_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
 const t_ray ray)
@@ -21,7 +47,7 @@ const t_ray ray)
 	const double	half_b = vec_dot(ac, ray.dir);
 	const double	c = vec_dot(ac, ac) - (sphere->radius * sphere->radius);
 
-	if (solve_quadratic(a, half_b, c, cur_h_rec->t_near))
+	if (solve_quadratic(a, half_b, c, cur_h_rec))
 		cur_h_rec->is_hit = TRUE;
 }
 
