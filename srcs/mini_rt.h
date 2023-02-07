@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/07 07:30:10 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/07 09:12:08 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,14 @@
 # include <math.h>
 
 # define PI 3.1415926535897932385
-# define FOCAL_LENGTH 1.0
-# define VIEWPORT_HEIGHT 2.0
-# define CANVAS_WIDTH 500
-# define CANVAS_HEIGHT 500
+// # define FOCAL_LENGTH 1.0
+// # define VIEWPORT_HEIGHT 2.0
+// # define CANVAS_WIDTH 500
+// # define CANVAS_HEIGHT 500
+# define TRUE 1
+# define FALSE 0
+
+typedef int	t_bool;
 
 //image info
 
