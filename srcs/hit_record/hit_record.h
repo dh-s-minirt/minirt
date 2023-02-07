@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:49:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/07 09:11:24 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/07 15:51:29 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,25 @@
 typedef struct s_hit_rec
 {
 	double	t_near;
-	t_vec	hit_normal;
+	// t_vec	hit_normal;
 	t_vec	contact_point;
 	t_bool	is_hit;
 }	t_hit_rec;
 
+//1
+t_bool	solve_quadratic(const double a, const double half_b, const double c, \
+double root[2]);
+void	_intersect_sphere_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
+const t_ray ray);
+t_bool	_find_cy_root_(t_hit_rec *cur_h_rec, t_cylinder *cylinder, \
+double root[2], const t_ray ray);
+void	_intersect_cylinder_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
+const t_ray ray);
+void	_intersect_plane_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
+const t_ray ray);
+
+//2
+t_bool	query_hit(t_node *cur_obj, t_hit_rec *cur_h_rec, const t_ray ray);
+void	_intersect_cone_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
+const t_ray ray);
 #endif

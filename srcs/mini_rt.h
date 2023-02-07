@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/07 09:47:25 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/07 16:17:58 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ typedef struct s_camera
 	// t_vec	horizontal;
 	// t_vec	vertical;
 	// t_vec	lower_left_corner;
-	double		fov;
+	double	fov;
 	// Horizontal field of view in degrees in range
 }	t_camera;
 
@@ -99,6 +99,16 @@ typedef struct s_canvas
 	int		height;
 	double	aspect_ratio;
 }	t_canvas;
+
+typedef struct s_cone
+{
+	double	radius;
+	t_color	color;
+	double	height;
+	double	theta;
+	t_vec	center;
+	t_vec	nor_vector;
+}	t_cone;
 
 typedef struct s_light
 {

@@ -78,3 +78,27 @@ void	init_plane(char **strs, t_info_data *data)
 	node = node_new((void *)plane, PLANE);
 	node_add_back(&data->objects, node);
 }
+
+
+void	init_am_light(char **strs, t_info_data *data)
+{
+	char			**color_data;
+	double			ratio;
+	t_light_node	*node;
+	t_am_light		*am_light;
+
+	if (ft_strs_size(strs) != 3)
+		ft_print_exit();
+	ratio = ft_atof(strs[1]);
+	color_data = ft_split(strs[2], ',');
+	if (ft_strs_size(color_data) != 3)
+		ft_print_exit();
+	am_light = malloc(sizeof(t_am_light));
+	if (!am_light)
+		exit(EXIT_FAILURE);
+	am_light->color = vec_mul(vec(ft_atof(color_data[0]) / 255.999, \
+	ft_atof(color_data[1]) / 255.999, ft_atof(color_data[2]) / 255.999), ratio);
+	node = new_light_node((void *)am_light, AM_LIGHT);
+	light_node_add_back(&data->light_node, node);
+	ft_release_strs(color_data);
+}
