@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/07 09:47:25 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:31:57 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ typedef struct s_camera
 	// t_vec	horizontal;
 	// t_vec	vertical;
 	// t_vec	lower_left_corner;
-	int		fov;
+	double	fov;
 	// Horizontal field of view in degrees in range
 }	t_camera;
 
