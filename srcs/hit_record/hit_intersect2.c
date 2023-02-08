@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_intersect2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:46:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/07 16:36:45 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/08 14:26:21 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_abc
 t_abc	_make_abc_(t_cone *cone, t_vec co, const t_ray ray)
 {
 	t_abc			tmp;
-	const double	square_cos = pow(vec_dot(ray.dir, cone->nor_vector), 2);
+	const double	square_cos = pow(cos(degrees_to_radians(cone->theta)), 2);
 	const double	dot_d_v = vec_dot(ray.dir, cone->nor_vector);
 	const double	dot_co_v = vec_dot(co, cone->nor_vector);
 

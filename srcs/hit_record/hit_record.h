@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_record.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:49:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/07 21:05:50 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/08 13:49:19 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef enum t_material
 	Kphong = 0,
 	Kfresnel,
 	Uv,
+	Special,
 	Kdiffuse
 }	t_material;
 

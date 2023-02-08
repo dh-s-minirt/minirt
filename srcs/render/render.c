@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/07 21:08:26 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/08 13:50:54 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	render(t_settings set, t_info_data	*data)
 			r.origin = _mul_vec_mat(set.camera_to_world, \
 			vec_2_arr_vec3(vec(0, 0, 0)));
 			ray_casting(r, data, 0, set);
+//			write_color();
 		}
 	}
 }

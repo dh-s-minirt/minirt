@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_intersect1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 09:42:31 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/07 15:50:05 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/08 14:15:12 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ const t_ray ray)
 	double			root[2];
 
 	if (!solve_quadratic(vec_dot(ray.dir, ray.dir), vec_dot(ac, ray.dir), \
-	vec_dot(ac, ac) - (sphere->radius * sphere->radius), cur_h_rec))
+	vec_dot(ac, ac) - pow(sphere->radius, 2), root))
 		return ;
 	cur_h_rec->t_near = root[0];
 	cur_h_rec->is_hit = TRUE;
@@ -62,11 +62,11 @@ const t_ray ray)
 	const t_plane	*plane = (t_plane *)cur_obj->data;
 	const double	devider = vec_dot(ray.dir, plane->nor_vector);
 	double			root;
-	const t_vec		ac = vec_sub(plane->center, ray.origin);
+	const t_vec		ca = vec_sub(plane->center, ray.origin);
 
 	if (devider == 0)
 		return ;
-	root = vec_dot(ac, plane->nor_vector) / devider;
+	root = vec_dot(ca, plane->nor_vector) / devider;
 	if (root <= BIAS) // 음수 근 
 		return ;
 	cur_h_rec->is_hit = TRUE;
@@ -100,14 +100,14 @@ const t_ray ray)
 {
 	const t_cylinder	*cylinder = (t_cylinder *)cur_obj->data;
 	const t_vec			x = vec_sub(ray.dir, vec_mul(cylinder->nor_vector, \
-	vec_dot(ray.dir, cylinder->nor_vector)));
+	fabs(vec_dot(ray.dir, cylinder->nor_vector))));
 	const t_vec			ac = vec_sub(ray.origin, cylinder->center);
 	const t_vec			y = vec_sub(ac, vec_mul(cylinder->nor_vector, \
-	vec_dot(ac, cylinder->nor_vector)));
+	fabs(vec_dot(ac, cylinder->nor_vector))));
 	double				root[2];
 
 	if (!solve_quadratic(vec_dot(x, x), vec_dot(x, y), vec_dot(y, y) - \
-	(cylinder->radius * cylinder->radius), root))
+	pow(cylinder->radius, 2), root))
 		return ;
 	if (!_find_cy_root_(cur_h_rec, cylinder, root, ray))
 		return ;
