@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:49:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/08 20:23:15 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/08 20:53:31 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,6 @@ const t_ray ray);
 
 t_vec	_find_hit_normal_cy(const t_vec p, const t_vec center, \
 const t_vec normal);
+t_vec	_find_hit_normal_cn(const t_vec p, const t_vec center, \
+const t_vec normal, const double cosine);
 #endif
