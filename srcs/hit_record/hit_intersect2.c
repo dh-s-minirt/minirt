@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_intersect2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:46:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/08 14:26:21 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/02/08 19:15:24 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,15 @@ t_abc	_make_abc_(t_cone *cone, t_vec co, const t_ray ray)
 t_bool	_find_cone_root_(t_hit_rec *cur_h_rec, t_cone *cone, \
 double root[2], const t_ray ray)
 {	
-	t_vec	pa[2];
+	t_vec	cp[2];
 	double	ans[2];
 
-	pa[0] = vec_add(ray.origin, vec_mul(ray.dir, root[0]));
-	pa[1] = vec_add(ray.origin, vec_mul(ray.dir, root[1]));
-	ans[0] = abs(vec_dot(pa[0], cone->nor_vector));
-	ans[1] = abs(vec_dot(pa[1], cone->nor_vector));
+	cp[0] = vec_sub(vec_add(ray.origin, vec_mul(ray.dir, root[0])), \
+	cone->center);
+	cp[1] = vec_sub(vec_add(ray.origin, vec_mul(ray.dir, root[1])), \
+	cone->center);
+	ans[0] = vec_dot(cp[0], cone->nor_vector);
+	ans[1] = vec_dot(cp[1], cone->nor_vector);
 	if (ans[0] >= BIAS && ans[0] <= cone->height)
 		return (TRUE);
 	if (ans[1] >= BIAS && ans[1] <= cone->height)
