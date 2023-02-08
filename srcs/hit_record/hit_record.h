@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_record.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:49:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/08 13:49:19 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/02/08 20:23:15 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef enum t_material
 typedef struct s_hit_rec
 {
 	double		t_near;
-	// t_vec	hit_normal;
+	t_vec		hit_normal;
 	t_material	material;
 	t_vec		contact_point;
 	t_bool		is_hit;
@@ -54,4 +54,7 @@ t_bool	trace_hit(t_node	*objects, t_hit_rec	*hit_rec, t_ray ray);
 t_bool	query_hit(t_node *cur_obj, t_hit_rec *cur_h_rec, const t_ray ray);
 void	_intersect_cone_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
 const t_ray ray);
+
+t_vec	_find_hit_normal_cy(const t_vec p, const t_vec center, \
+const t_vec normal);
 #endif

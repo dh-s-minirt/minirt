@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_trace.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:56:30 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/08 13:54:31 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/02/08 19:20:29 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_hit_rec	_init_rec_(void)
 void	_update_rec_(t_hit_rec *origin, t_hit_rec source)
 {
 	origin->contact_point = source.contact_point;
-	// origin->hit_normal = source.contact_point;
+	origin->hit_normal = source.contact_point;
 	origin->is_hit = source.is_hit;
 	origin->t_near = source.t_near;
 }
