@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:56:30 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/08 19:20:29 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/09 23:12:09 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	_update_rec_(t_hit_rec *origin, t_hit_rec source)
 	origin->hit_normal = source.contact_point;
 	origin->is_hit = source.is_hit;
 	origin->t_near = source.t_near;
+	origin->albedo = source.albedo;
 }
 
 t_bool	trace_hit(t_node	*objects, t_hit_rec	*hit_rec, t_ray ray)

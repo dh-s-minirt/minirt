@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 16:46:18 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/07 13:49:39 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/09 23:25:41 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 //math_util.c
 double	clamp(double x, double min, double max);
 double	degrees_to_radians(double degrees);
+double	fmax_d(double x, double y);
 //
 
 #endif

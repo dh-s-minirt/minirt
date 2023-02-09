@@ -3,16 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/08 13:50:54 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/02/09 23:12:40 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../hit_record/hit_record.h"
 
-void	kphong_shading(void);
+void	init_property(t_hit_rec *hit_rec)
+{
+	t_phong_propety	*property;
+
+	property = ft_malloc(sizeof(t_phong_propety));
+	property->kd = 0.9;
+	property->ks = 0.1;
+	property->n = 50;
+	hit_rec->property = (void *)property;
+}
 
 t_color	ray_casting(t_ray r, t_info_data *data, int depth, t_settings set)
 {
@@ -24,12 +33,14 @@ t_color	ray_casting(t_ray r, t_info_data *data, int depth, t_settings set)
 	pixel_color = vec(0, 0, 0);
 	if (trace_hit(data->objects, &hit_rec, r))
 	{
-		if (hit_rec.material == Kdiffuse)
-			_shade_diffuse();
-		else if (hit_rec.material == Kphong)
-			_shade_kphong();
-		else
-			_shade_kfresnel();
+		init_property(&hit_rec);
+		// if (hit_rec.material == Kdiffuse)
+		// 	_shade_diffuse();
+		// else if (hit_rec.material == Kphong)
+			_shade_kphong(hit_rec, data, (t_phong_propety *)hit_rec.property);
+		// else
+		// 	_shade_kfresnel();
+		free(hit_rec.property);
 	}
 	return (pixel_color);
 }

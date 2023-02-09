@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 10:52:13 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/27 13:20:02 by hyunkyu          ###   ########.fr       */
+/*   Updated: 2023/02/09 19:05:19 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-void    ft_release_strs(char **strs);
+void	*ft_malloc(size_t size_of);
+void	ft_release_strs(char **strs);
 int		ft_strs_size(char **strs);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_isalpha(int c);

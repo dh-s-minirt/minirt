@@ -6,6 +6,8 @@
 		"matrix.h": "c",
 		"setting.h": "c",
 		"hit_record.h": "c",
-		"bitset": "c"
+		"bitset": "c",
+		"libft.h": "c",
+		"math.h": "c"
 	}
 }

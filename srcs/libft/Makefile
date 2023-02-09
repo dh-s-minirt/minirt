@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+         #
+#    By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 10:50:54 by hyunkyle          #+#    #+#              #
-#    Updated: 2022/12/28 10:15:11 by hyunkyle         ###   ########.fr        #
+#    Updated: 2023/02/09 19:05:05 by daegulee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS				= ft_atoi.c \
 					  ft_isdigit.c \
 					  ft_isprint.c \
 					  ft_itoa.c \
+					  ft_mallloc.c \
 					  ft_memchr.c \
 					  ft_memcmp.c \
 					  ft_memcpy.c \

@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math_util.c                                        :+:      :+:    :+:   */
+/*   ft_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 16:47:22 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/09 23:25:32 by daegulee         ###   ########.fr       */
+/*   Created: 2023/02/09 19:02:02 by daegulee          #+#    #+#             */
+/*   Updated: 2023/02/09 19:05:28 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./math.h"
+#include "libft.h"
 
-double	clamp(double x, double min, double max)
+void	*ft_malloc(size_t size_of)
 {
-	if (x < min)
-		return (min);
-	if (x > max)
-		return (max);
-	return (x);
-}
+	void	*p;
 
-double	degrees_to_radians(double degrees)
-{
-	return (degrees * PI / 180.0);
-}
-
-double	fmax_d(double x, double y)
-{
-	if (x > y)
-		return (x);
-	else
-		return (y);
+	p = malloc(size_of);
+	if (p == NULL)
+	{
+		perror("rt : ");
+		exit(EXIT_FAILURE);
+	}
+	ft_memset(p, 0, size_of);
+	return (p);
 }
