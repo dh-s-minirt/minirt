@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:49:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/09 23:40:52 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/10 18:27:02 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,8 @@ t_vec	_find_hit_normal_cn(const t_vec p, const t_vec center, \
 const t_vec normal, const double cosine);
 t_color	_shade_kphong(t_hit_rec hit_rec, t_info_data *data, \
 t_phong_propety *property);
+void		my_mlx_pixel_put(t_mlx_data *data, int x, int y, int color);
+t_my_mlx	init_mlx(void);
+void	render(t_settings set, t_info_data	*data, t_my_mlx *mlx);
 
 #endif

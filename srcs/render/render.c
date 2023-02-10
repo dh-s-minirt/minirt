@@ -6,11 +6,12 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/09 23:12:40 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/10 18:24:54 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../hit_record/hit_record.h"
+#include "../color/color.h"
 
 void	init_property(t_hit_rec *hit_rec)
 {
@@ -37,7 +38,7 @@ t_color	ray_casting(t_ray r, t_info_data *data, int depth, t_settings set)
 		// if (hit_rec.material == Kdiffuse)
 		// 	_shade_diffuse();
 		// else if (hit_rec.material == Kphong)
-			_shade_kphong(hit_rec, data, (t_phong_propety *)hit_rec.property);
+		pixel_color = _shade_kphong(hit_rec, data, (t_phong_propety *)hit_rec.property);
 		// else
 		// 	_shade_kfresnel();
 		free(hit_rec.property);
@@ -45,7 +46,15 @@ t_color	ray_casting(t_ray r, t_info_data *data, int depth, t_settings set)
 	return (pixel_color);
 }
 
-void	render(t_settings set, t_info_data	*data)
+void	put_color(t_color pixel_color, int row, int col, t_mlx_data *data)
+{
+	int	color;
+
+	color = write_color(&pixel_color);
+	my_mlx_pixel_put(data, col, row, color);
+}
+
+void	render(t_settings set, t_info_data	*data, t_my_mlx *mlx)
 {
 	int		i;
 	int		j;
@@ -66,8 +75,7 @@ void	render(t_settings set, t_info_data	*data)
 			vec_2_arr_vec3(vec(x, y, -1))));
 			r.origin = _mul_vec_mat(set.camera_to_world, \
 			vec_2_arr_vec3(vec(0, 0, 0)));
-			ray_casting(r, data, 0, set);
-//			write_color();
+			put_color(ray_casting(r, data, 0, set), j, i, &(mlx->img));
 		}
 	}
 }

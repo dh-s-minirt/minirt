@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/07 19:48:53 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/10 18:14:12 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,22 @@ typedef struct s_info_data
 	// t_canvas		canvas;
 	// t_ray			ray;
 }	t_info_data;
+
+typedef struct s_mlx_data
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_mlx_data;
+
+typedef struct s_my_mlx
+{
+	void		*mlx;
+	void		*mlx_win;
+	t_mlx_data	img;
+}	t_my_mlx;
 
 void			node_add_back(t_node **lst, t_node *new_node);
 t_node			*node_new(void *data, t_obj_type type);
