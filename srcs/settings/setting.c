@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 07:27:45 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/13 16:07:43 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/13 20:12:13 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ t_settings	_init_setting_(t_info_data data)
 	set.camera_to_world = _camera_to_world_(data.camera);
 	set.screen_height = SCREEN_HEIGHT;
 	set.screen_width = SCREEN_WIDTH;
-	set.aspect_ratio = set.screen_width / set.screen_height;
+	set.aspect_ratio = set.screen_height / set.screen_width;
 	set.fov = data.camera.fov;
 	set.dark = vec(0, 0, 0);
-	set.scale = tan(degrees_to_radians(set.fov * 0.5)); // znear(focal length = 1. 가정)
+	set.scale = tan(degrees_to_radians(set.fov * 0.5));
 	return (set);
 }

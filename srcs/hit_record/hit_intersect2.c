@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:46:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/09 23:10:36 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:56:33 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,9 @@
 
 //cone -> radius, rgb Color, height, theta(0 ~ 180), center, normal vector, 
 // identifier: Cn
-typedef struct s_abc
-{
-	double	a;
-	double	b;
-	double	c;
-}	t_abc;
-
 //p = o+td;
 // cone -> v,center,theta;
-t_abc	_make_abc_(t_cone *cone, t_vec co, const t_ray ray)
+t_abc	_make_abc_(const t_cone *cone, t_vec co, const t_ray ray)
 {
 	t_abc			tmp;
 	const double	square_cos = pow(cos(degrees_to_radians(cone->theta)), 2);
@@ -37,7 +30,7 @@ t_abc	_make_abc_(t_cone *cone, t_vec co, const t_ray ray)
 	return (tmp);
 }
 
-t_bool	_find_cone_root_(t_hit_rec *cur_h_rec, t_cone *cone, \
+t_bool	_find_cone_root_(t_cone *cone, \
 double root[2], const t_ray ray)
 {	
 	t_vec	cp[2];
@@ -65,11 +58,11 @@ const t_ray ray)
 	const t_cone	*cone = (t_cone *)cur_obj->data;
 	const t_vec		co = vec_sub(ray.origin, cone->center);
 	double			root[2];
-	const t_abc		abc = _make_abc_(cone, co, ray);
+	const t_abc		abc = _make_abc_((const t_cone *)cone, co, ray);
 
 	if (!solve_quadratic(abc.a, abc.b, abc.c, root))
 		return ;
-	if (!_find_cone_root_(cur_h_rec, cone, root, ray))
+	if (!_find_cone_root_((t_cone *)cone, root, ray))
 		return ;
 	cur_h_rec->t_near = root[0];
 	cur_h_rec->is_hit = TRUE;
@@ -98,7 +91,7 @@ const t_vec normal)
 {
 	t_vec		hit_normal;
 	const t_vec	cp = vec_sub(p, center);
-	const t_vec	cx = vec_mul(normal, abs(vec_dot(cp, normal)));
+	const t_vec	cx = vec_mul(normal, fabs(vec_dot(cp, normal)));
 
 	hit_normal = vec_unit(vec_sub(cp, cx));
 	return (hit_normal);

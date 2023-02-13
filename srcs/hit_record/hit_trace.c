@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:56:30 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/09 23:12:09 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/13 20:23:39 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_bool	trace_hit(t_node	*objects, t_hit_rec	*hit_rec, t_ray ray)
 		if (query_hit(cur_object, &cur_hit_rec, ray) && cur_hit_rec.t_near < \
 		hit_rec->t_near)
 			_update_rec_(hit_rec, cur_hit_rec);
+		cur_object = cur_object->next;
 	}
 	return (hit_rec->is_hit);
 }

@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:49:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/13 16:11:05 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:56:01 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,21 @@ typedef struct s_hit_rec
 	t_color		albedo;
 }	t_hit_rec;
 
+typedef struct s_abc
+{
+	double	a;
+	double	b;
+	double	c;
+}	t_abc;
+
 //1
 t_bool	solve_quadratic(const double a, const double half_b, const double c, \
 double root[2]);
 void	_intersect_sphere_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
 const t_ray ray);
 t_bool	_find_cy_root_(t_cylinder *cylinder, \
+double root[2], const t_ray ray);
+t_bool	_find_cone_root_(t_cone *cone, \
 double root[2], const t_ray ray);
 void	_intersect_cylinder_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
 const t_ray ray);
@@ -77,6 +86,7 @@ const t_ray ray);
 t_bool	trace_hit(t_node	*objects, t_hit_rec	*hit_rec, t_ray ray);
 
 //2
+t_abc	_make_abc_(const t_cone *cone, t_vec co, const t_ray ray);
 t_bool	query_hit(t_node *cur_obj, t_hit_rec *cur_h_rec, const t_ray ray);
 void	_intersect_cone_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
 const t_ray ray);

@@ -6,12 +6,11 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/13 15:41:53 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/13 23:32:22 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
-
 
 void	init_property(t_hit_rec *hit_rec)
 {
@@ -39,7 +38,7 @@ t_color	ray_casting(t_ray r, t_info_data *data, int depth, t_settings set)
 		// 	_shade_diffuse();
 		// else if (hit_rec.material == Kphong)
 		pixel_color = _shade_kphong(hit_rec, data, \
-		(t_phong_propety *)hit_rec.property);
+		(t_phong_propety *)hit_rec.property, r);
 		// else
 		// 	_shade_kfresnel();
 		free(hit_rec.property);
@@ -71,9 +70,8 @@ void	render(t_settings set, t_info_data	*data, t_my_mlx *mlx)
 		i = -1;
 		while (++i < set.screen_width)
 		{
-			x = (2 * (i + 0.5) / set.screen_width - 1) * set.aspect_ratio * \
-			set.scale;
-			y = (1 - 2 * (j + 0.5) / (set.screen_height)) \
+			x = (2 * (i + 0.5) / set.screen_width - 1) * set.scale;
+			y = (1 - 2 * (j + 0.5) / (set.screen_height)) * set.aspect_ratio \
 			* set.scale;
 			r.dir = vec_unit(_mul_vec_mat(set.camera_to_world, \
 			vec_2_arr_vec3(vec(x, y, -1))));
