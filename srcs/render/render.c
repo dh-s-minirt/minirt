@@ -6,12 +6,12 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/10 18:24:54 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:25:32 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hit_record/hit_record.h"
-#include "../color/color.h"
+#include "render.h"
+
 
 void	init_property(t_hit_rec *hit_rec)
 {
@@ -68,9 +68,10 @@ void	render(t_settings set, t_info_data	*data, t_my_mlx *mlx)
 		i = -1;
 		while (++i < set.screen_width)
 		{
-			x = (2 * (i + 0.5) / set.screen_width - 1) * set.scale;
+			x = (2 * (i + 0.5) / set.screen_width - 1) * set.aspect_ratio * \
+			set.scale;
 			y = (1 - 2 * (j + 0.5) / (set.screen_height)) \
-			* set.scale * set.aspect_ratio;
+			* set.scale;
 			r.dir = vec_unit(_mul_vec_mat(set.camera_to_world, \
 			vec_2_arr_vec3(vec(x, y, -1))));
 			r.origin = _mul_vec_mat(set.camera_to_world, \

@@ -6,21 +6,15 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:30:51 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/09 23:43:27 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:27:06 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../hit_record/hit_record.h"
+#include "render.h"
 
-typedef struct s_light_info
+t_lt_info	get_lt_info(t_light_node *light, t_hit_rec hit_rec)
 {
-	t_vec	dir;
-	t_vec	intensity;
-}	t_light_info;
-
-t_light_info	get_light_info(t_light_node *light, t_hit_rec hit_rec)
-{
-	t_light_info	cur_info;
+	t_lt_info	cur_info;
 	t_am_light		*dist_light;
 	t_light			*point_light;
 
@@ -58,7 +52,7 @@ t_phong_propety *property)
 	t_color			diffuse;
 	t_color			specular;
 	t_light_node	*cur_light;
-	t_light_info	cur_l_info;
+	t_lt_info	cur_l_info;
 	t_bool			is_shadow;
 
 	diffuse = vec(0, 0, 0);
@@ -66,7 +60,7 @@ t_phong_propety *property)
 	cur_light = data->lights;
 	while (cur_light)
 	{
-		cur_l_info = get_light_info(cur_light, hit_rec);
+		cur_l_info = get_lt_info(cur_light, hit_rec);
 		is_shadow = check_shadow(data->objects, &hit_rec, \
 		vec_mul((cur_l_info.dir), -1));
 		diffuse = vec_add(diffuse, \
