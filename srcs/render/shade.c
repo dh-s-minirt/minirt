@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:30:51 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/14 00:36:28 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/14 02:31:11 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ t_bool	check_shadow(t_node	*objects, t_hit_rec	*hit_rec, t_vec dir)
 	shadow_ray.origin = vec_add(hit_rec->contact_point, \
 	vec_mul(hit_rec->hit_normal, BIAS));
 	shadow_ray.dir = dir;
+	// printf("shadow dir  %lf: x %lf: y %lf: z\n", shadow_ray.dir.x, \
+	// shadow_ray.dir.y, shadow_ray.dir.z);
+	tmp = _init_rec_();
 	return (trace_hit(objects, &tmp, shadow_ray));
 }
 
@@ -92,6 +95,15 @@ t_phong_propety *property, t_ray ray)
 		diffuse = vec_add(diffuse, \
 		vec_mul(_get_diffuse_(cur_l_info, hit_rec), \
 		!is_shadow));
+		// printf("is_shadow %d\n", is_shadow);
+		// if (!is_shadow)
+		// 	printf("diffuse _mul %d %lf: g %lf: b %lf:\n", \
+		// is_shadow, \
+		// vec_mul(_get_diffuse_(cur_l_info, hit_rec), \
+		// !is_shadow).x, vec_mul(_get_diffuse_(cur_l_info, hit_rec), \
+		// !is_shadow).y,
+		// vec_mul(_get_diffuse_(cur_l_info, hit_rec), \
+		// !is_shadow).z);
 		specular = vec_add(specular, \
 		vec_mul(_get_specular_(cur_l_info, hit_rec, property, ray), \
 		!is_shadow));

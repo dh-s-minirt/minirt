@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/14 01:42:33 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/14 02:37:29 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,17 @@ t_color	ray_casting(t_ray r, t_info_data *data, int depth, t_settings set)
 	hit_rec = _init_rec_();
 	if (trace_hit(data->objects, &hit_rec, r))
 	{
-		// printf("albedo r %lf: g %lf: b %lf:\n", \
-		// hit_rec.albedo.x, hit_rec.albedo.y, hit_rec.albedo.z);
 		init_property(&hit_rec);
+		printf("albedo r %lf: g %lf: b %lf:\n", \
+		hit_rec.albedo.x, hit_rec.albedo.y, hit_rec.albedo.z);
 		// if (hit_rec.material == Kdiffuse)
 		// 	_shade_diffuse();
 		// else if (hit_rec.material == Kphong)
 		pixel_color = _shade_kphong(hit_rec, data, \
 		(t_phong_propety *)hit_rec.property, r);
-		// else
+		// printf("pixel r %lf: g %lf: b %lf:\n", \
+		// pixel_color.x, pixel_color.y, pixel_color.z);
+		// // // else
 		// 	_shade_kfresnel();
 		free(hit_rec.property);
 	}
