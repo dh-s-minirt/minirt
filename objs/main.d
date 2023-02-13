@@ -143,4 +143,4 @@ objs/main.o: \
   srcs/./render/../vector/vector.h srcs/./render/../settings/setting.h \
   srcs/./render/../Matrix/matrix.h srcs/./render/../mini_rt.h \
   srcs/./render/../libft/libft.h \
-  srcs/./render/../hit_record/hit_record.h
+  srcs/./render/../hit_record/hit_record.h srcs/./render/../mlx/mlx.h

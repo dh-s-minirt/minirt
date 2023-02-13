@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_operator.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 12:39:28 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/28 18:07:59 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2023/02/14 01:05:13 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,14 @@ t_vec	vec_div(t_vec v1, double t)
 	out.y = v1.y / t;
 	out.z = v1.z / t;
 	return (out);
+}
+
+t_vec	vec_copy(t_vec origin)
+{
+	t_vec	copy;
+
+	copy.x = origin.x;
+	copy.y = origin.y;
+	copy.z = origin.z;
+	return (copy);
 }

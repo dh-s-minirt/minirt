@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:27:32 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/13 16:08:05 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/14 01:14:20 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "../mini_rt.h"
 # include "../color/color.h"
 
-# define SCREEN_WIDTH 1280
-# define SCREEN_HEIGHT 960
+# define SCREEN_WIDTH 960
+# define SCREEN_HEIGHT 720
 
 typedef struct s_settings{
 	double	fov;

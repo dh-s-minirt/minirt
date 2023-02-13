@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:46:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/13 16:56:33 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/14 01:10:52 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,9 @@ const t_ray ray)
 	vec_mul(ray.dir, cur_h_rec->t_near));
 	cur_h_rec->hit_normal = _find_hit_normal_cn(cur_h_rec->contact_point, \
 	cone->center, cone->nor_vector, cos(degrees_to_radians(cone->theta)));
-	cur_h_rec->albedo = cone->color;
+	cur_h_rec->albedo = vec_copy(cone->color);
+	// printf("color r %lf: g %lf: b %lf:\n", \
+	// cone->color.x, cone->color.x,cone->color.x);
 }
 
 t_bool	query_hit(t_node *cur_obj, t_hit_rec *cur_h_rec, const t_ray ray)

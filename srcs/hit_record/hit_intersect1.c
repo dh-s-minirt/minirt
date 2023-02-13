@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 09:42:31 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/13 16:12:05 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/14 01:44:51 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ const t_ray ray)
 	vec_mul(ray.dir, cur_h_rec->t_near));
 	cur_h_rec->hit_normal = vec_unit(vec_sub(cur_h_rec->contact_point, \
 	sphere->center));
-	cur_h_rec->albedo = sphere->color;
+	cur_h_rec->albedo = vec_copy(sphere->color);
+	// printf("sphere color r %lf: g %lf: b %lf:\n", \
+	// sphere->color.x, sphere->color.y,sphere->color.z);
 }
 
 void	_intersect_plane_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
@@ -79,7 +81,9 @@ const t_ray ray)
 		cur_h_rec->hit_normal = vec_unit(plane->nor_vector);
 	else
 		cur_h_rec->hit_normal = vec_unit(vec_mul(plane->nor_vector, -1));
-	cur_h_rec->albedo = plane->color;
+	cur_h_rec->albedo = vec_copy(plane->color);
+	// printf("plane color r %lf: g %lf: b %lf:\n", \
+	// plane->color.x, plane->color.y,plane->color.z);
 }
 
 t_bool	_find_cy_root_(t_cylinder *cylinder, \
@@ -126,5 +130,7 @@ const t_ray ray)
 	vec_mul(ray.dir, cur_h_rec->t_near));
 	cur_h_rec->hit_normal = _find_hit_normal_cy(cur_h_rec->contact_point, \
 	cylinder->center, cylinder->nor_vector);
-	cur_h_rec->albedo = cylinder->color;
+	cur_h_rec->albedo = vec_copy(cylinder->color);
+	// printf("cy color r %lf: g %lf: b %lf:\n", \
+	// cur_h_rec->albedo.x, cur_h_rec->albedo.y,cur_h_rec->albedo.z);
 }

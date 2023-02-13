@@ -6,13 +6,14 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:20:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/13 23:32:04 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/14 00:22:22 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDER_H
 # define RENDER_H
 
+# include <stdio.h>
 # include <math.h>
 # include "../vector/vector.h"
 # include "../settings/setting.h"
@@ -21,7 +22,7 @@
 # include "../libft/libft.h"
 # include "../hit_record/hit_record.h"
 # include "../mini_rt.h"
-
+# include "../mlx/mlx.h"
 typedef struct s_lt_info
 {
 	t_vec	dir;

@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:54:36 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/01/31 20:10:17 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/14 01:25:43 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,5 @@ void	get_info_data(char *filename, t_info_data *data)
 	close(fd);
 	if (cnt < 3)
 		ft_print_exit();
-	fill_camera_data(data);
+	// fill_camera_data(data);
 }

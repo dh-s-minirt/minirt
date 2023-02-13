@@ -6,7 +6,7 @@
 #    By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2023/02/13 15:57:53 by daegulee         ###   ########.fr        #
+#    Updated: 2023/02/14 00:00:05 by daegulee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,10 +31,10 @@ SRCS	=	main.c \
 			parsing/parsing.c \
 			parsing/parsing_utils.c \
 			parsing/parsing_utils1.c \
-			render\put_img.c \
-			render\render.c \
-			render\shade.c \
-			settings\setting.c \
+			render/put_img.c \
+			render/render.c \
+			render/shade.c \
+			settings/setting.c \
 			vector/ray.c \
 			vector/vector_operator.c \
 			vector/vector_utility.c \

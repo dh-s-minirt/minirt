@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:16:45 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/13 15:54:53 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/14 00:11:33 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ int	main(int argc, char **argv)
 	render(set, &data, &my_mlx);
 	mlx_put_image_to_window(my_mlx.mlx, \
 	my_mlx.mlx_win, my_mlx.img.img, 0, 0);
+	mlx_loop(my_mlx.mlx);
 	return (0);
 }

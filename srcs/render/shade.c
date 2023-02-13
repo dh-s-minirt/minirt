@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:30:51 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/13 23:44:59 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/14 00:36:28 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ t_phong_propety *property, t_ray ray)
 		specular = vec_add(specular, \
 		vec_mul(_get_specular_(cur_l_info, hit_rec, property, ray), \
 		!is_shadow));
+		cur_light = cur_light->next;
 	}
 	return (vec_add(vec_mul(diffuse, property->kd), \
 vec_mul(specular, property->ks)));
