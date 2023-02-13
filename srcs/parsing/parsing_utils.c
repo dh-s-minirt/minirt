@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:26:54 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/07 19:50:41 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/13 23:56:45 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	fill_cone(char **strs, t_cone *cone)
 void	init_cone(char **strs, t_info_data *data)
 {
 	t_cone			*cone;
-	t_light_node	*node;
-	char			**tmp;
+	t_node			*node; //debug_daegulee
+	// char			**tmp; //debug_daegulee
 
 	if (ft_strs_size(strs) != 6)
 		ft_print_exit();
@@ -50,7 +50,9 @@ void	init_cone(char **strs, t_info_data *data)
 	if (!cone)
 		exit(EXIT_FAILURE);
 	fill_cone(strs, cone);
-	node = new_light_node((void *)cone, CONE);
+	//debug_daegulee
+	node = node_new((void *)cone, CONE);
+	//debug_daegulee
 	node_add_back(&data->objects, node);
 }
 
@@ -102,16 +104,16 @@ void	init_light(char **strs, t_info_data *data)
 	light_node_add_back(&data->lights, node);
 }
 
-void	fill_camera_data(t_info_data *data)
-{
-	// // data->camera.viewprot_height = VIEWPORT_HEIGHT;
-	// // data->camera.viewprot_width = VIEWPORT_HEIGHT * data->canvas.aspect_ratio;
-	// data->camera.focal_length = FOCAL_LENGTH;
-	// data->camera.horizontal = vec(data->camera.viewprot_width, 0, 0);
-	// data->camera.vertical = vec(0, data->camera.viewprot_height, 0);
-	// data->camera.lower_left_corner = vec_sub(vec_sub(vec_sub \
-	// 	(data->camera.center, \
-	// 	vec_div(data->camera.horizontal, 2)), \
-	// 	vec_div(data->camera.vertical, 2)), \
-	// 	vec(0, 0, FOCAL_LENGTH));
-}
+// void	fill_camera_data(t_info_data *data)
+// {
+// 	// // data->camera.viewprot_height = VIEWPORT_HEIGHT;
+// 	// // data->camera.viewprot_width = VIEWPORT_HEIGHT * data->canvas.aspect_ratio;
+// 	// data->camera.focal_length = FOCAL_LENGTH;
+// 	// data->camera.horizontal = vec(data->camera.viewprot_width, 0, 0);
+// 	// data->camera.vertical = vec(0, data->camera.viewprot_height, 0);
+// 	// data->camera.lower_left_corner = vec_sub(vec_sub(vec_sub \
+// 	// 	(data->camera.center, \
+// 	// 	vec_div(data->camera.horizontal, 2)), \
+// 	// 	vec_div(data->camera.vertical, 2)), \
+// 	// 	vec(0, 0, FOCAL_LENGTH));
+// }

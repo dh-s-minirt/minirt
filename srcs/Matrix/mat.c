@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:14:30 by daegulee          #+#    #+#             */
-/*   Updated: 2023/01/31 20:03:54 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/13 23:50:51 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_mat4	_mul_mat_(const t_mat4 a, const t_mat4 b)
 	int		j;
 	int		k;
 
-	i = -1;;
+	i = -1;
 	while (++i < 4)
 	{
 		j = -1;
@@ -102,10 +102,7 @@ t_mat4	_transpose_mat_(const t_mat4 a)
 
 t_mat4	_inverse_mat_(const t_mat4 a, int mode)
 {
-	t_mat4	inverse;
-
 	if (mode == ORTHO)
 		return (_transpose_mat_(a));
-	// 일반적인 케이스에 역행렬 필요하면 구현.
 	return (_init_mat_(DEFAULT));
 }
