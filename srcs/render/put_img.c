@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 17:23:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/13 15:25:39 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:41:20 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ t_my_mlx	init_mlx(void)
 	&(my_mlx.img.endian));
 }
 
-int	write_color(int t, t_vec *pixel_color)
+int	write_color(int t, t_vec pixel_color)
 {
-	return (t << 24 | (int)(255 * pixel_color->x) << 16 | \
-		(int)(255 * pixel_color->y) << 8 | (int)(255 * pixel_color->z));
+	return (t << 24 | (int)(255 * pixel_color.x) << 16 | \
+		(int)(255 * pixel_color.y) << 8 | (int)(255 * pixel_color.z));
 }

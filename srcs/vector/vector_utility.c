@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   vector_utility.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 12:48:46 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/01/09 16:19:46 by hyunkyu          ###   ########.fr       */
+/*   Updated: 2023/02/13 15:39:22 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
+#include "../math/math.h"
 
 double	vec_dot(t_vec v1, t_vec v2)
 {
@@ -44,4 +45,14 @@ t_vec	vec_less(t_vec vec1, t_vec vec2)
 	if (vec1.z > vec2.z)
 		vec1.z = vec2.z;
 	return (vec1);
+}
+
+t_vec	copy_clamp(t_vec origin, double lower_bound, double upper_bound)
+{
+	t_vec	tmp;
+
+	tmp.x = clamp(origin.x, lower_bound, upper_bound);
+	tmp.y = clamp(origin.y, lower_bound, upper_bound);
+	tmp.z = clamp(origin.z, lower_bound, upper_bound);
+	return (tmp);
 }

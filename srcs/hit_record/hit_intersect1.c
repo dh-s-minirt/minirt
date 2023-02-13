@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 09:42:31 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/09 23:11:48 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:12:05 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ t_bool	solve_quadratic(const double a, const double half_b, const double c, \
 double root[2])
 {
 	const double	discriminant = half_b * half_b - a * c;
-	double			root1;
-	double			root2;
 
 	if (discriminant < 0)
 		return (FALSE);
@@ -84,7 +82,7 @@ const t_ray ray)
 	cur_h_rec->albedo = plane->color;
 }
 
-t_bool	_find_cy_root_(t_hit_rec *cur_h_rec, t_cylinder *cylinder, \
+t_bool	_find_cy_root_(t_cylinder *cylinder, \
 double root[2], const t_ray ray)
 {	
 	t_vec	cp[2];
@@ -120,7 +118,7 @@ const t_ray ray)
 	if (!solve_quadratic(vec_dot(x, x), vec_dot(x, y), vec_dot(y, y) - \
 	pow(cylinder->radius, 2), root))
 		return ;
-	if (!_find_cy_root_(cur_h_rec, cylinder, root, ray))
+	if (!_find_cy_root_((t_cylinder *)cylinder, root, ray))
 		return ;
 	cur_h_rec->t_near = root[0];
 	cur_h_rec->is_hit = TRUE;

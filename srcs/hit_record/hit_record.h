@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:49:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/10 18:27:02 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:11:05 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_bool	solve_quadratic(const double a, const double half_b, const double c, \
 double root[2]);
 void	_intersect_sphere_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
 const t_ray ray);
-t_bool	_find_cy_root_(t_hit_rec *cur_h_rec, t_cylinder *cylinder, \
+t_bool	_find_cy_root_(t_cylinder *cylinder, \
 double root[2], const t_ray ray);
 void	_intersect_cylinder_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
 const t_ray ray);
@@ -85,10 +85,5 @@ t_vec	_find_hit_normal_cy(const t_vec p, const t_vec center, \
 const t_vec normal);
 t_vec	_find_hit_normal_cn(const t_vec p, const t_vec center, \
 const t_vec normal, const double cosine);
-t_color	_shade_kphong(t_hit_rec hit_rec, t_info_data *data, \
-t_phong_propety *property);
-void		my_mlx_pixel_put(t_mlx_data *data, int x, int y, int color);
-t_my_mlx	init_mlx(void);
-void	render(t_settings set, t_info_data	*data, t_my_mlx *mlx);
 
 #endif

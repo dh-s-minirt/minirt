@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:28:47 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/09 23:44:40 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:39:30 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ double	vec_dot(t_vec v1, t_vec v2);
 t_vec	vec_less(t_vec vec1, t_vec vec2);
 t_vec	vec_product(t_vec a, t_vec b);
 t_vec	v_reflect(t_vec i, t_vec n);
+t_vec	copy_clamp(t_vec origin, double lower_bound, double upper_bound);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:20:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/13 15:28:31 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:40:57 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_lt_info
 //put_img
 void		my_mlx_pixel_put(t_mlx_data *data, int x, int y, int color);
 t_my_mlx	init_mlx(void);
-int			write_color(int t, t_vec *pixel_color);
+int			write_color(int t, t_vec pixel_color);
 //render
 void		init_property(t_hit_rec *hit_rec);
 t_color		ray_casting(t_ray r, t_info_data *data, int depth, t_settings set);

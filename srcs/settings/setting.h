@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:27:32 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/07 19:43:18 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:08:05 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 
 # include <math.h>
 # include "../vector/vector.h"
-# include "../matrix/matrix.h"
+# include "../Matrix/matrix.h"
 # include "../math/math.h"
+# include "../mini_rt.h"
+# include "../color/color.h"
 
 # define SCREEN_WIDTH 1280
 # define SCREEN_HEIGHT 960

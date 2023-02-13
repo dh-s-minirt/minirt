@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/13 15:25:32 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:41:53 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ t_color	ray_casting(t_ray r, t_info_data *data, int depth, t_settings set)
 		// if (hit_rec.material == Kdiffuse)
 		// 	_shade_diffuse();
 		// else if (hit_rec.material == Kphong)
-		pixel_color = _shade_kphong(hit_rec, data, (t_phong_propety *)hit_rec.property);
+		pixel_color = _shade_kphong(hit_rec, data, \
+		(t_phong_propety *)hit_rec.property);
 		// else
 		// 	_shade_kfresnel();
 		free(hit_rec.property);
@@ -48,9 +49,11 @@ t_color	ray_casting(t_ray r, t_info_data *data, int depth, t_settings set)
 
 void	put_color(t_color pixel_color, int row, int col, t_mlx_data *data)
 {
-	int	color;
+	int		color;
+	t_color	clmaped_pixel;
 
-	color = write_color(&pixel_color);
+	clmaped_pixel = copy_clamp(pixel_color, 0, 1.0);
+	color = write_color(0, clmaped_pixel);
 	my_mlx_pixel_put(data, col, row, color);
 }
 

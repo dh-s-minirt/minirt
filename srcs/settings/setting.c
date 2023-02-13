@@ -6,12 +6,11 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 07:27:45 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/13 15:18:36 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:07:43 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./setting.h"
-#include "../mini_rt.h"
 
 t_mat4	_camera_to_world_(t_camera	camera)
 {

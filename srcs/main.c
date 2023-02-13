@@ -6,18 +6,19 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:16:45 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/10 18:28:42 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:54:53 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_rt.h"
 #include "./parsing/parsing.h"
 #include "./color/color.h"
-#include "./mlx_utils.h"
+# include"./mlx/mlx.h"
+// #include "./mlx_utils.h"
 #include <stdio.h>
 #include "./settings/setting.h"
-#include "../hit_record/hit_record.h"
-
+#include "./hit_record/hit_record.h"
+#include "./render/render.h"
 // void	print_data(t_info_data *data)
 // {
 // 	t_light_node *tmp;
@@ -54,7 +55,7 @@ int	main(int argc, char **argv)
 	data.lights = NULL;
 	// data.canvas = canvas_new(CANVAS_WIDTH, CANVAS_HEIGHT);
 	get_info_data(argv[1], &data);
-	_init_setting_(data);
+	set = _init_setting_(data);
 	my_mlx = init_mlx();
 	render(set, &data, &my_mlx);
 	mlx_put_image_to_window(my_mlx.mlx, \
