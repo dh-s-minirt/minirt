@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:57:06 by hyunkyu           #+#    #+#             */
-/*   Updated: 2023/02/14 01:25:04 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/14 21:34:35 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void	fill_plane(t_plane *plain, char **strs)
 	tmp = ft_split(strs[2], ',');
 	if (!tmp || ft_strs_size(tmp) != 3)
 		ft_print_exit();
-	plain->nor_vector = vec(ft_atof(tmp[0]), ft_atof(tmp[1]), ft_atof(tmp[2]));
+	plain->nor_vector = vec_unit(vec(ft_atof(tmp[0]), ft_atof(tmp[1]), \
+	ft_atof(tmp[2])));
 	ft_release_strs(tmp);
 	tmp = ft_split(strs[3], ',');
 	plain->color = vec(ft_atof(tmp[0]) / 255.999, ft_atof(tmp[1]) / 255.999, \

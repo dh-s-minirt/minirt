@@ -6,14 +6,14 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:16:45 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/14 00:11:33 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/14 20:55:07 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini_rt.h"
 #include "./parsing/parsing.h"
 #include "./color/color.h"
-# include"./mlx/mlx.h"
+#include "./mlx/mlx.h"
 // #include "./mlx_utils.h"
 #include <stdio.h>
 #include "./settings/setting.h"

@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:30:51 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/14 17:00:41 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/15 02:22:48 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_lt_info	get_lt_info(t_light_node *light, t_hit_rec hit_rec)
 	if (light->type == AM_LIGHT)
 	{
 		dist_light = (t_am_light *)light->data;
-		cur_info.dir = vec(0, -1, 0);
+		cur_info.dir = vec(0, -1, -1);
 		cur_info.intensity = dist_light->color;
 	}
 	else
@@ -31,7 +31,7 @@ t_lt_info	get_lt_info(t_light_node *light, t_hit_rec hit_rec)
 		// printf("contact x : %lf, y : %lf z : %lf\n",\
 		// hit_rec.contact_point.x, hit_rec.contact_point.y,hit_rec.contact_point.z);
 		cur_info.intensity = vec_div(point_light->color, \
-		(4 * PI * length_squared(cur_info.dir)));
+		(length_squared(cur_info.dir)));
 		// printf("divdie %lf \n", (4 * PI * length_squared(cur_info.dir)));
 		cur_info.dir = vec_unit(cur_info.dir);
 	}
@@ -45,6 +45,7 @@ t_bool	check_shadow(t_node	*objects, t_hit_rec	*hit_rec, t_vec dir)
 
 	shadow_ray.origin = vec_add(hit_rec->contact_point, \
 	vec_mul(hit_rec->hit_normal, BIAS));
+	// shadow_ray.origin = hit_rec->contact_point;
 	shadow_ray.dir = dir;
 	// printf("shadow dir  %lf: x %lf: y %lf: z\n", shadow_ray.dir.x, \
 	// shadow_ray.dir.y, shadow_ray.dir.z);
@@ -76,7 +77,8 @@ static t_color	_get_diffuse_(t_lt_info cur_l_info, t_hit_rec hit_rec)
 	coefficient = fmax_d(0, vec_dot(hit_rec.hit_normal, \
 	vec_mul(cur_l_info.dir, -1)));
 	// if (coefficient)
-	// 	printf("max_diffuse r :%lf g : %lf b : %lf coe :%lf\n", max_diffuse_color.x, \
+	// 	printf("hi?\n");
+		// printf("max_diffuse r :%lf g : %lf b : %lf coe :%lf\n", max_diffuse_color.x, \
 	// max_diffuse_color.y,max_diffuse_color.z, coefficient);
 	return (vec_mul(max_diffuse_color, coefficient));
 }
@@ -96,8 +98,8 @@ t_phong_propety *property, t_ray ray)
 	while (cur_light)
 	{
 		cur_l_info = get_lt_info(cur_light, hit_rec);
-		// is_shadow = check_shadow(data->objects, &hit_rec, \
-		// vec_mul((cur_l_info.dir), -1));
+		is_shadow = check_shadow(data->objects, &hit_rec, \
+		vec_mul((cur_l_info.dir), -1));
 		// printf("inten x : %lf y: %lf z : %lf %d \n", cur_l_info.intensity.x, \
 		// cur_l_info.intensity.y,cur_l_info.intensity.z, is_shadow);
 		diffuse = vec_add(diffuse, \

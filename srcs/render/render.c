@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/14 18:46:47 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/15 02:05:43 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	init_property(t_hit_rec *hit_rec)
 	t_phong_propety	*property;
 
 	property = ft_malloc(sizeof(t_phong_propety));
-	property->kd = 0.9;
-	property->ks = 0.1;
+	property->kd = 0.8;
+	property->ks = 0.2;
 	property->n = 50;
 	hit_rec->property = (void *)property;
 }
@@ -81,13 +81,12 @@ void	render(t_settings set, t_info_data	*data, t_my_mlx *mlx)
 		printf("\rScanlines remaining: %d \n", set.screen_height-j-1);
 		while (++i < set.screen_width)
 		{
-			x = (2 * (i + 0.5) / set.screen_width - 1) * set.scale;
-			y = (1 - 2 * (j + 0.5) / (set.screen_height)) * set.aspect_ratio \
+			x = (2 * (i + 0.5) / (double)(set.screen_width) - 1) * set.scale;
+			y = (1 - 2 * (j + 0.5) / (double)(set.screen_height)) * set.aspect_ratio \
 			* set.scale;
 			r.dir = vec_unit(_mul_vec_mat(set.camera_to_world, \
 			vec_2_arr_vec3(vec(x, y, -1))));
 			r.origin = vec_copy(data->camera.center);
-			// printf("x: %lf, y : %lf, j : %lf ratio : %lf\n", r.origin.x, r.origin.y, r.origin.z, set.aspect_ratio);
 			put_color(ray_casting(r, data, 0, set), j, i, &(mlx->img));
 		}
 	}

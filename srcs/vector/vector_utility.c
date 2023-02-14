@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 12:48:46 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/13 15:39:22 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/15 00:11:07 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ t_vec	vec_cross(t_vec v1, t_vec v2)
 {
 	t_vec	out;
 
-	out.x = v1.y * v2.z + v1.z * v2.y;
-	out.y = v1.z * v2.x + v1.x * v2.z;
-	out.z = v1.x * v2.y + v1.y * v2.x;
+	out.x = v1.y * v2.z - v1.z * v2.y;
+	out.y = v1.z * v2.x - v1.x * v2.z;
+	out.z = v1.x * v2.y - v1.y * v2.x;
 	return (out);
 }
 

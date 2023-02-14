@@ -131,8 +131,9 @@ objs/main.o: srcs/main.c srcs/mini_rt.h srcs/./vector/vector.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/sys/_types/_fsblkcnt_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/sys/_types/_fsfilcnt_t.h \
   srcs/./parsing/../libft/libft.h srcs/./parsing/../color/color.h \
-  srcs/./mlx/mlx.h srcs/./settings/setting.h \
-  srcs/./settings/../vector/vector.h srcs/./settings/../Matrix/matrix.h \
+  srcs/./parsing/../vector/vector.h srcs/./mlx/mlx.h \
+  srcs/./settings/setting.h srcs/./settings/../vector/vector.h \
+  srcs/./settings/../Matrix/matrix.h \
   srcs/./settings/../Matrix/../vector/vector.h \
   srcs/./settings/../math/math.h srcs/./settings/../mini_rt.h \
   srcs/./settings/../color/color.h srcs/./hit_record/hit_record.h \

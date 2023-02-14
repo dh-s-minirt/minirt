@@ -6,11 +6,13 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:54:36 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/14 15:33:58 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/14 21:07:46 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include "../vector/vector.h"
+
 #define _DATA_LEN 7
 
 void	init_cylinder(char **strs, t_info_data *data);
@@ -36,7 +38,8 @@ void	fill_cylinder(t_cylinder *data, char **strs)
 	tmp = ft_split(strs[2], ',');
 	if (!tmp || ft_strs_size(tmp) != 3)
 		ft_print_exit();
-	data->nor_vector = vec(ft_atof(tmp[0]), ft_atof(tmp[1]), ft_atof(tmp[2]));
+	data->nor_vector = vec_unit(vec(ft_atof(tmp[0]), ft_atof(tmp[1]), \
+	ft_atof(tmp[2])));
 	ft_release_strs(tmp);
 	data->diameter = ft_atof(strs[3]);
 	data->radius = data->diameter / 2.0;

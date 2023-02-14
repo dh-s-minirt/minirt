@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:54:44 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/28 11:28:46 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2023/02/14 23:13:37 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "../get_next_line/get_next_line_bonus.h"
 # include "../libft/libft.h"
 # include "../color/color.h"
+# include "../vector/vector.h"
 
 void	init_am_light(char **strs, t_info_data *data);
 void	init_camera(char **strs, t_info_data *data);

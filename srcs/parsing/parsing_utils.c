@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:26:54 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/14 19:01:12 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/14 23:13:28 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ void	init_camera(char **strs, t_info_data *data)
 	tmp = ft_split(strs[2], ',');
 	if (!tmp || ft_strs_size(tmp) != 3)
 		ft_print_exit();
-	camera.nor_vector = vec(ft_atof(tmp[0]), ft_atof(tmp[1]), ft_atof(tmp[2]));
+	camera.nor_vector = vec_unit(vec(ft_atof(tmp[0]), ft_atof(tmp[1]), \
+	ft_atof(tmp[2])));
 	ft_release_strs(tmp);
 	camera.fov = ft_atof(strs[3]);
 	data->camera = camera;
