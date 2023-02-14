@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:30:51 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/15 02:22:48 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/15 02:37:03 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_lt_info	get_lt_info(t_light_node *light, t_hit_rec hit_rec)
 	if (light->type == AM_LIGHT)
 	{
 		dist_light = (t_am_light *)light->data;
-		cur_info.dir = vec(0, -1, -1);
+		cur_info.dir = vec(0, -1, 0);
 		cur_info.intensity = dist_light->color;
 	}
 	else

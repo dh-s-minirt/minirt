@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 09:42:31 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/14 23:15:13 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/15 03:00:40 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ double root[2], const t_ray ray)
 	cylinder->center);
 	ans[0] = vec_dot(cp[0], cylinder->nor_vector);
 	ans[1] = vec_dot(cp[1], cylinder->nor_vector);
+	printf("x %lf , y %lf, z %lf\n", cp[0].x, cp[0].y,cp[0].z);
 	if (ans[0] >= BIAS && ans[0] <= cylinder->height)
 		return (TRUE);
 	if (ans[1] >= BIAS && ans[1] <= cylinder->height)
