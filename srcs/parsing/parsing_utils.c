@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:26:54 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/13 23:56:45 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/14 19:01:12 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,15 @@ void	fill_cone(char **strs, t_cone *cone)
 void	init_cone(char **strs, t_info_data *data)
 {
 	t_cone			*cone;
-	t_node			*node; //debug_daegulee
-	// char			**tmp; //debug_daegulee
+	t_node			*node;
 
-	if (ft_strs_size(strs) != 6)
+	if (ft_strs_size(strs) != 7)
 		ft_print_exit();
 	cone = malloc(sizeof(t_cone));
 	if (!cone)
 		exit(EXIT_FAILURE);
 	fill_cone(strs, cone);
-	//debug_daegulee
 	node = node_new((void *)cone, CONE);
-	//debug_daegulee
 	node_add_back(&data->objects, node);
 }
 

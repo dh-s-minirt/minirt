@@ -12,3 +12,5 @@ sp 0,0,20 20 255,0,0 0-> phong
 					4 s2
 					5 s3
 cy 50.0,0.0,20.6 0,0,1.0 14.2 21.42 10,0,255
+//cone -> radius, rgb Color, height, theta(0 ~ 180), center, normal vector,
+cone center, height, radius theta color

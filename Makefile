@@ -6,7 +6,7 @@
 #    By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2023/02/14 00:00:05 by daegulee         ###   ########.fr        #
+#    Updated: 2023/02/14 16:47:16 by daegulee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS	=	main.c \
 			Matrix/mat_rotate.c \
 			Matrix/mat_transform.c \
 			Matrix/mat.c \
+			Matrix/debug_mat.c \
 			parsing/parsing.c \
 			parsing/parsing_utils.c \
 			parsing/parsing_utils1.c \
@@ -50,8 +51,8 @@ SRCS := ${addprefix ${SRCS_DIR}/, ${SRCS}}
 OBJS := ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
 
 CC		=	cc 
-CFLAGS	=	-Wall -Werror -Wextra -fsanitize=address -g
-
+CFLAGS	=	-Wall -Werror -Wextra -O3
+Debug = -fsanitize=address -g
 all		: $(NAME)
 
 ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c

@@ -6,12 +6,12 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:54:36 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/14 01:25:43 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/14 15:33:58 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-#define _DATA_LEN 6
+#define _DATA_LEN 7
 
 void	init_cylinder(char **strs, t_info_data *data);
 
@@ -109,7 +109,7 @@ void	get_info_data(char *filename, t_info_data *data)
 		line = get_next_line(fd);
 	}
 	close(fd);
-	if (cnt < 3)
-		ft_print_exit();
+	// if (cnt < 3)
+	// 	ft_print_exit();
 	// fill_camera_data(data);
 }

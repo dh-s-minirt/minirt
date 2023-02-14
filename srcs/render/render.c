@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/14 02:37:29 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/14 18:46:47 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,15 @@ t_color	ray_casting(t_ray r, t_info_data *data, int depth, t_settings set)
 	if (trace_hit(data->objects, &hit_rec, r))
 	{
 		init_property(&hit_rec);
-		printf("albedo r %lf: g %lf: b %lf:\n", \
-		hit_rec.albedo.x, hit_rec.albedo.y, hit_rec.albedo.z);
+		// printf("albedo r %lf: g %lf: b %lf:\n", \
+		// hit_rec.albedo.x, hit_rec.albedo.y, hit_rec.albedo.z);
 		// if (hit_rec.material == Kdiffuse)
 		// 	_shade_diffuse();
 		// else if (hit_rec.material == Kphong)
 		pixel_color = _shade_kphong(hit_rec, data, \
 		(t_phong_propety *)hit_rec.property, r);
-		// printf("pixel r %lf: g %lf: b %lf:\n", \
+		// if (pixel_color.x || pixel_color.y || pixel_color.z)
+		// 	printf("pixel r %lf: g %lf: b %lf:\n", \
 		// pixel_color.x, pixel_color.y, pixel_color.z);
 		// // // else
 		// 	_shade_kfresnel();
@@ -77,7 +78,7 @@ void	render(t_settings set, t_info_data	*data, t_my_mlx *mlx)
 	while (++j < set.screen_height)
 	{
 		i = -1;
-		printf("\rScanlines remaining: %d \n", j);
+		printf("\rScanlines remaining: %d \n", set.screen_height-j-1);
 		while (++i < set.screen_width)
 		{
 			x = (2 * (i + 0.5) / set.screen_width - 1) * set.scale;
@@ -85,8 +86,8 @@ void	render(t_settings set, t_info_data	*data, t_my_mlx *mlx)
 			* set.scale;
 			r.dir = vec_unit(_mul_vec_mat(set.camera_to_world, \
 			vec_2_arr_vec3(vec(x, y, -1))));
-			r.origin = _mul_vec_mat(set.camera_to_world, \
-			vec_2_arr_vec3(vec(0, 0, 0)));
+			r.origin = vec_copy(data->camera.center);
+			// printf("x: %lf, y : %lf, j : %lf ratio : %lf\n", r.origin.x, r.origin.y, r.origin.z, set.aspect_ratio);
 			put_color(ray_casting(r, data, 0, set), j, i, &(mlx->img));
 		}
 	}

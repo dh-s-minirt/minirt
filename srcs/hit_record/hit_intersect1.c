@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 09:42:31 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/14 02:22:13 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/14 16:58:30 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,9 @@ const t_ray ray)
 		cur_h_rec->hit_normal = vec_unit(vec_mul(plane->nor_vector, -1));
 	cur_h_rec->albedo = vec_copy(plane->color);
 	// printf("plane color r %lf: g %lf: b %lf:\n", \
-	// plane->color.x, plane->color.y,plane->color.z);
+	// cur_h_rec->hit_normal.x, cur_h_rec->hit_normal.y,cur_h_rec->hit_normal.z);
+	// printf("albedo color r %lf: g %lf: b %lf:\n", \
+	// cur_h_rec->albedo.x, cur_h_rec->albedo.y,cur_h_rec->albedo.z);
 }
 
 t_bool	_find_cy_root_(t_cylinder *cylinder, \
@@ -131,6 +133,4 @@ const t_ray ray)
 	cur_h_rec->hit_normal = _find_hit_normal_cy(cur_h_rec->contact_point, \
 	cylinder->center, cylinder->nor_vector);
 	cur_h_rec->albedo = vec_copy(cylinder->color);
-	// printf("cy color r %lf: g %lf: b %lf:\n", \
-	// cur_h_rec->albedo.x, cur_h_rec->albedo.y,cur_h_rec->albedo.z);
 }
