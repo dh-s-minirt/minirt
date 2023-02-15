@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 09:42:31 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/15 03:05:05 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/15 14:52:39 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ const t_ray ray)
 	cur_h_rec->hit_normal = vec_unit(vec_sub(cur_h_rec->contact_point, \
 	sphere->center));
 	cur_h_rec->albedo = vec_copy(sphere->color);
+	cur_h_rec->obj_type = SPHERE;
 	// printf("sphere color r %lf: g %lf: b %lf:\n", \
 	// sphere->color.x, sphere->color.y,sphere->color.z);
 }
@@ -82,6 +83,7 @@ const t_ray ray)
 	else
 		cur_h_rec->hit_normal = vec_unit(vec_mul(plane->nor_vector, -1));
 	cur_h_rec->albedo = vec_copy(plane->color);
+	cur_h_rec->obj_type = PLANE;
 	// printf("plane color r %lf: g %lf: b %lf:\n", \
 	// cur_h_rec->hit_normal.x, cur_h_rec->hit_normal.y,cur_h_rec->hit_normal.z);
 	// printf("albedo color r %lf: g %lf: b %lf:\n", \
@@ -134,4 +136,5 @@ const t_ray ray)
 	cur_h_rec->hit_normal = _find_hit_normal_cy(cur_h_rec->contact_point, \
 	cylinder->center, cylinder->nor_vector);
 	cur_h_rec->albedo = vec_copy(cylinder->color);
+	cur_h_rec->obj_type = CYLINDER;
 }

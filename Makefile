@@ -6,7 +6,7 @@
 #    By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2023/02/14 16:47:16 by daegulee         ###   ########.fr        #
+#    Updated: 2023/02/15 11:55:33 by daegulee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS	=	main.c \
 			vector/vector_operator.c \
 			vector/vector_utility.c \
 			vector/vector.c \
+			vector/clamp.c \
 
 
 SRCS_DIR = srcs

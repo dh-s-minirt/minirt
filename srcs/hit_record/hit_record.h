@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:49:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/14 01:37:18 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/15 14:50:28 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_hit_rec
 	t_vec		contact_point;
 	t_bool		is_hit;
 	t_color		albedo;
+	t_obj_type	obj_type;
 }	t_hit_rec;
 
 typedef struct s_abc

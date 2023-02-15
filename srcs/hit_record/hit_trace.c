@@ -6,17 +6,18 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:56:30 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/15 02:05:14 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/16 04:01:20 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./hit_record.h"
+#include "string.h"
 
 t_hit_rec	_init_rec_(void)
 {
 	t_hit_rec	tmp;
 
-	ft_memset(&tmp, 0, sizeof(t_hit_rec));
+	memset(&tmp, 0, sizeof(t_hit_rec));
 	tmp.t_near = INFINITY;
 	tmp.is_hit = FALSE;
 	return (tmp);
@@ -29,6 +30,7 @@ void	_update_rec_(t_hit_rec *origin, t_hit_rec source)
 	origin->is_hit = source.is_hit;
 	origin->t_near = source.t_near;
 	origin->albedo = vec_copy(source.albedo);
+	origin->obj_type = source.obj_type;
 }
 
 t_bool	trace_hit(t_node	*objects, t_hit_rec	*hit_rec, t_ray ray)

@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/15 02:05:43 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/15 19:15:12 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,14 @@ void	init_property(t_hit_rec *hit_rec)
 	t_phong_propety	*property;
 
 	property = ft_malloc(sizeof(t_phong_propety));
-	property->kd = 0.8;
-	property->ks = 0.2;
-	property->n = 50;
+	if (hit_rec->obj_type == SPHERE)
+	{
+		property->kd = 0.8;
+		property->ks = 0.2;
+		property->n = 20;
+	}
+	else
+		property->kd = 1;
 	hit_rec->property = (void *)property;
 }
 
