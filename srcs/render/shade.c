@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:30:51 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/15 19:20:41 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/17 14:15:16 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,17 @@ t_lt_info	get_lt_info(t_light_node *light, t_hit_rec hit_rec)
 		dist_light = (t_am_light *)light->data;
 		cur_info.dir = vec(0, -1, 0);
 		cur_info.intensity = dist_light->color;
+		cur_info.dist = INFINITY;
 	}
 	else
 	{
 		point_light = (t_light *)light->data;
 		cur_info.dir = vec_sub(hit_rec.contact_point, point_light->center);
+		cur_info.dist = vec_length(cur_info.dir);
 		// printf("contact x : %lf, y : %lf z : %lf\n",\
 		// hit_rec.contact_point.x, hit_rec.contact_point.y,hit_rec.contact_point.z);
 		cur_info.intensity = copy_vec_clamp(vec_mul(point_light->color, \
-		(pow((double)DEFAULT_R, 2) / length_squared(cur_info.dir))) , vec(0, 0, 0), \
+		pow(((double)DEFAULT_R / cur_info.dist), 2)) , vec(0, 0, 0), \
 		point_light->color);
 		// printf("divdie %lf \n", (4 * PI * length_squared(cur_info.dir)));
 		cur_info.dir = vec_unit(cur_info.dir);
@@ -39,10 +41,11 @@ t_lt_info	get_lt_info(t_light_node *light, t_hit_rec hit_rec)
 	return (cur_info);
 }
 
-t_bool	check_shadow(t_node	*objects, t_hit_rec	*hit_rec, t_vec dir)
+t_bool	check_shadow(t_node	*objects, t_hit_rec	*hit_rec, t_vec dir, t_lt_info cur_l_info)
 {
 	t_ray			shadow_ray;
 	t_hit_rec		tmp;
+	t_bool			shadow;
 
 	shadow_ray.origin = vec_add(hit_rec->contact_point, \
 	vec_mul(hit_rec->hit_normal, BIAS));
@@ -51,7 +54,10 @@ t_bool	check_shadow(t_node	*objects, t_hit_rec	*hit_rec, t_vec dir)
 	// printf("shadow dir  %lf: x %lf: y %lf: z\n", shadow_ray.dir.x, \
 	// shadow_ray.dir.y, shadow_ray.dir.z);
 	tmp = _init_rec_();
-	return (trace_hit(objects, &tmp, shadow_ray));
+	shadow = trace_hit(objects, &tmp, shadow_ray);
+	if (shadow && tmp.t_near < cur_l_info.dist)
+		return (TRUE);
+	return (FALSE);
 }
 
 static t_color	_get_specular_(t_lt_info cur_l_info, \
@@ -100,7 +106,8 @@ t_phong_propety *property, t_ray ray)
 	{
 		cur_l_info = get_lt_info(cur_light, hit_rec);
 		is_shadow = check_shadow(data->objects, &hit_rec, \
-		vec_mul((cur_l_info.dir), -1));
+		vec_mul((cur_l_info.dir), -1), cur_l_info);
+		// is_shadow = 0;
 		// printf("inten x : %lf y: %lf z : %lf %d \n", cur_l_info.intensity.x, \
 		// cur_l_info.intensity.y,cur_l_info.intensity.z, is_shadow);
 		diffuse = vec_add(diffuse, \

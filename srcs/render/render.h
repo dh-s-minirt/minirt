@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:20:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/15 15:49:07 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/17 14:15:51 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_lt_info
 {
 	t_vec	dir;
 	t_vec	intensity;
+	double	dist;
 }	t_lt_info;
 
 //put_img
@@ -45,7 +46,8 @@ void		put_color(t_color pixel_color, int row, int col, t_mlx_data *data);
 //shade
 t_color		_shade_kphong(t_hit_rec hit_rec, t_info_data *data, \
 t_phong_propety *property, t_ray ray);
-t_bool		check_shadow(t_node	*objects, t_hit_rec	*hit_rec, t_vec dir);
+t_bool		check_shadow(t_node	*objects, t_hit_rec	*hit_rec, t_vec dir, \
+t_lt_info cur_l_info);
 t_lt_info	get_lt_info(t_light_node *light, t_hit_rec hit_rec);
 
 #endif
