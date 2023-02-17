@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:46:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/15 14:51:44 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/17 17:58:29 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ double root[2], const t_ray ray)
 	}
 	return (FALSE);
 }
+
 
 void	_intersect_cone_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
 const t_ray ray)

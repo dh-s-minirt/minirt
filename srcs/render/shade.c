@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:30:51 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/17 14:15:16 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/18 01:08:51 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_lt_info	get_lt_info(t_light_node *light, t_hit_rec hit_rec)
 	}
 	return (cur_info);
 }
+// cy 0,20,-10 0,0,1 10, 10 128,128,0
 
 t_bool	check_shadow(t_node	*objects, t_hit_rec	*hit_rec, t_vec dir, t_lt_info cur_l_info)
 {
@@ -107,7 +108,6 @@ t_phong_propety *property, t_ray ray)
 		cur_l_info = get_lt_info(cur_light, hit_rec);
 		is_shadow = check_shadow(data->objects, &hit_rec, \
 		vec_mul((cur_l_info.dir), -1), cur_l_info);
-		// is_shadow = 0;
 		// printf("inten x : %lf y: %lf z : %lf %d \n", cur_l_info.intensity.x, \
 		// cur_l_info.intensity.y,cur_l_info.intensity.z, is_shadow);
 		diffuse = vec_add(diffuse, \
