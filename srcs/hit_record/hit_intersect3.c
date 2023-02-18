@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 20:52:50 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/18 23:57:30 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/19 00:11:01 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ const t_ray ray)
 	double			root;
 	const t_vec		ca = vec_sub(disk->center, ray.origin);
 
-	if (devider == 0)
+	if (devider <= 0)
 		return ;
 	root = vec_dot(ca, disk->nor_v) / devider;
 	if (root <= BIAS || \
