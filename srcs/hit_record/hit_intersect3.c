@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 20:52:50 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/17 23:42:01 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/18 15:38:53 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,37 @@ const t_vec normal, const double cosine)
 	return (vec_unit(vec_sub(cp_prime, normal)));
 }
 
+void	_intersect_disk_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
+const t_ray ray)
+{
+	const t_disk	*disk = (t_disk *)cur_obj->data;
+	const double	devider = vec_dot(ray.dir, disk->nor_v);
+	double			root;
+	const t_vec		ca = vec_sub(disk->center, ray.origin);
+
+	if (devider == 0)
+		return ;
+	root = vec_dot(ca, disk->nor_v) / devider;
+	if (root <= BIAS || \
+	vec_length(vec_sub(disk->center, \
+	vec_add(ray.origin, \
+	vec_mul(ray.dir, root)))) > disk->r)
+		return ;
+	// printf("disk->r : %lf x: %lf y: %lf z : %lf\n", disk->r, disk->center.x, disk->center.y, disk->center.z);
+	// printf("x: %lf y: %lf z : %lf\n", disk->nor_v.x, disk->nor_v.y, disk->nor_v.z);
+	// printf("x: %lf y: %lf z : %lf\n", disk->color.x, disk->color.y, disk->color.z);
+	cur_h_rec->t_near = root;
+	cur_h_rec->is_hit = TRUE;
+	cur_h_rec->contact_point = vec_add(ray.origin, \
+	vec_mul(ray.dir, cur_h_rec->t_near));
+	if (vec_dot(disk->nor_v, vec_sub(cur_h_rec->\
+	contact_point, ray.origin)) < 0)
+		cur_h_rec->hit_normal = vec_unit(disk->nor_v);
+	else
+		cur_h_rec->hit_normal = vec_unit(vec_mul(disk->nor_v, -1));
+	cur_h_rec->albedo = vec_copy(disk->color);
+	cur_h_rec->obj_type = DISK;
+}
 // void	_intersect_cylinder_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
 // const t_ray ray)
 // {

@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/10 18:14:12 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/18 15:41:58 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ typedef enum t_obj_type
 	SPHERE = 0,
 	PLANE,
 	CYLINDER,
-	CONE
+	CONE,
+	DISK
 }	t_obj_type;
 
 typedef enum t_light_type
@@ -53,6 +54,14 @@ struct s_node
 	void		*data;
 	t_node		*next;
 };
+
+typedef struct s_disk
+{
+	t_vec	center;
+	double	r;
+	t_color	color;
+	t_vec	nor_v;
+}	t_disk;
 
 typedef struct s_sphere
 {

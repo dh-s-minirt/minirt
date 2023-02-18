@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/17 20:11:56 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/18 15:29:57 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	init_property(t_hit_rec *hit_rec)
 	t_phong_propety	*property;
 
 	property = ft_malloc(sizeof(t_phong_propety));
-	if (hit_rec->obj_type == SPHERE)
+	if (hit_rec->obj_type != PLANE)
 	{
 		property->kd = 0.8;
 		property->ks = 0.2;

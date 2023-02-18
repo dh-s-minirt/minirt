@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:49:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/17 17:11:34 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/18 15:04:30 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ t_abc		_make_abc_(const t_cone *cone, t_vec co, const t_ray ray);
 t_bool		query_hit(t_node *cur_obj, t_hit_rec *cur_h_rec, const t_ray ray);
 void		_intersect_cone_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
 const t_ray ray);
-
+void		_intersect_disk_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
+const t_ray ray);
 t_vec		_find_hit_normal_cy(const t_vec p, const t_vec center, \
 const t_vec normal);
 t_vec		_find_hit_normal_cn(const t_vec p, const t_vec center, \

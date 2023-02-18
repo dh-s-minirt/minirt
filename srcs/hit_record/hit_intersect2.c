@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:46:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/17 17:58:29 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/18 15:28:27 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,13 @@ void	_intersect_cone_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
 const t_ray ray)
 {
 	const t_cone	*cone = (t_cone *)cur_obj->data;
-	const t_vec		co = vec_sub(ray.origin, cone->center);
+    const double cos2 = cos(cone->theta) * cos(cone->theta);
+    const t_vec v = vec_sub(ray.origin, cone->center);
+    const double a = vec_dot(ray.dir, ray.dir) - (1 + cos2) * pow(vec_dot(ray.dir, cone->nor_vector), 2);
+   	const  double b = 2 * (vec_dot(ray.dir, v) - (1 + cos2) * vec_dot(ray.dir, cone->nor_vector) * vec_dot(v, cone->nor_vector));
+    const double c = vec_dot(v, v) - (1 + cos2) * pow(vec_dot(v, cone->nor_vector), 2);
 	double			root[2];
-	const t_abc		abc = _make_abc_((const t_cone *)cone, co, ray);
-
-	if (!solve_quadratic(abc.a, abc.b, abc.c, root))
+	if (!solve_quadratic(a, b, c, root))
 		return ;
 	if (!_find_cone_root_((t_cone *)cone, root, ray))
 		return ;
@@ -77,6 +79,7 @@ const t_ray ray)
 	// cone->color.x, cone->color.x,cone->color.x);
 }
 
+
 t_bool	query_hit(t_node *cur_obj, t_hit_rec *cur_h_rec, const t_ray ray)
 {
 	if (cur_obj->type == SPHERE)
@@ -85,8 +88,10 @@ t_bool	query_hit(t_node *cur_obj, t_hit_rec *cur_h_rec, const t_ray ray)
 		_intersect_plane_(cur_obj, cur_h_rec, ray);
 	else if (cur_obj->type == CYLINDER)
 		_intersect_cylinder_(cur_obj, cur_h_rec, ray);
-	else
+	else if (cur_obj->type == CONE)
 		_intersect_cone_(cur_obj, cur_h_rec, ray);
+	else
+		_intersect_disk_(cur_obj, cur_h_rec, ray);
 	return (cur_h_rec->is_hit);
 }
 
