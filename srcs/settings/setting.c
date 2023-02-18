@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 07:27:45 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/15 01:08:33 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/18 18:42:50 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 t_mat4	_camera_to_world_(t_camera	camera)
 {
-	const t_vec	forward = vec_unit(vec_mul(camera.nor_vector, -1));
+	const t_vec	forward = vec_unit(vec_product(camera.nor_vector, \
+	vec(1, 1, -1)));
 	t_vec		up;
 	t_vec		right;
 	t_mat4		camera_to_world;

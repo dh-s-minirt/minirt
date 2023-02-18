@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 09:42:31 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/18 01:23:47 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/18 23:53:01 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ double root[2])
 {
 	const double	discriminant = half_b * half_b - a * c;
 
-	if (discriminant < 0)
+	if (discriminant < 0 || (a <= BIAS && half_b <= BIAS))
 		return (FALSE);
 	else if (discriminant == 0)
 	{
@@ -162,14 +162,15 @@ const t_ray ray)
 		return ;
 	// printf("%lf <-r \n", cy->radius);
 	// printf("%lf %lf %lf\n", a,half_b,c);
+	// printf("a %lf b %lf c  %lf root : %lf %lf\n", a,half_b,c,root[0], root[1]);
 	t_vec	p[2];
 	p[0] = vec_add(ray.origin, vec_mul(ray.dir, root[0]));
 	p[1] = vec_add(ray.origin, vec_mul(ray.dir, root[1]));
 	double	dist[2];
 	dist[0] = vec_dot(vec_sub(p[0], cy->center), cy->nor_vector);
 	dist[1] = vec_dot(vec_sub(p[1], cy->center), cy->nor_vector);
-	if (dist[0] <= BIAS || dist[0] > cy->height){
-		if (dist[1] <= BIAS || dist[1] > cy->height)
+	if (dist[0] <= BIAS || dist[0] > cy->height + BIAS){
+		if (dist[1] <= BIAS || dist[1] > cy->height + BIAS)
 			return ;
 		root[0] = root[1];
 		dist[0] = dist[1];

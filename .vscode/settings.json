@@ -15,6 +15,11 @@
 		"string_view": "c",
 		"vector": "c",
 		"ios": "c",
-		"algorithm": "c"
+		"algorithm": "c",
+		"string.h": "c",
+		"__bit_reference": "c",
+		"__string": "c",
+		"cstring": "c",
+		"strings.h": "c"
 	}
 }

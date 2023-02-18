@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 20:52:50 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/18 15:38:53 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/18 23:57:30 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ const t_ray ray)
 	if (root <= BIAS || \
 	vec_length(vec_sub(disk->center, \
 	vec_add(ray.origin, \
-	vec_mul(ray.dir, root)))) > disk->r)
+	vec_mul(ray.dir, root)))) > disk->r - BIAS)
 		return ;
 	// printf("disk->r : %lf x: %lf y: %lf z : %lf\n", disk->r, disk->center.x, disk->center.y, disk->center.z);
 	// printf("x: %lf y: %lf z : %lf\n", disk->nor_v.x, disk->nor_v.y, disk->nor_v.z);

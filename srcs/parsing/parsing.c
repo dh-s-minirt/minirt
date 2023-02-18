@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:54:36 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/18 15:48:33 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/18 23:55:43 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	_make_up_bot_disk(t_cylinder *cy, t_info_data *data)
 	up->center = vec_add(cy->center, vec_mul(cy->nor_vector, cy->height));
 	down->center = vec_copy(cy->center);
 	up->nor_v = vec_copy(cy->nor_vector);
-	down->nor_v = vec_copy(cy->nor_vector);
+	down->nor_v = vec_copy(vec_mul(cy->nor_vector, -1));
 	up->color = vec_copy(cy->color);
 	down->color = vec_copy(cy->color);
 	up->r = cy->radius;

@@ -6,18 +6,17 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:56:30 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/16 04:01:20 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:44:49 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./hit_record.h"
-#include "string.h"
 
 t_hit_rec	_init_rec_(void)
 {
 	t_hit_rec	tmp;
 
-	memset(&tmp, 0, sizeof(t_hit_rec));
+	ft_memset(&tmp, 0, sizeof(t_hit_rec));
 	tmp.t_near = INFINITY;
 	tmp.is_hit = FALSE;
 	return (tmp);
