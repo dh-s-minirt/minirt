@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 09:42:31 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/20 05:32:46 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/20 16:32:05 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,10 +193,11 @@ const t_ray ray)
     const double cos2 = cos(cone->theta) * cos(cone->theta);
     const t_vec v = vec_sub(ray.origin, cone->center);
     const double a = vec_dot(ray.dir, ray.dir) - (1 + cos2) * pow(vec_dot(ray.dir, cone->nor_vector), 2);
-   	const  double b = 2 * (vec_dot(ray.dir, v) - (1 + cos2) * vec_dot(ray.dir, cone->nor_vector) * vec_dot(v, cone->nor_vector));
+   	const  double half_b = (vec_dot(ray.dir, v) - (1 + cos2) * vec_dot(ray.dir, cone->nor_vector) * vec_dot(v, cone->nor_vector));
     const double c = vec_dot(v, v) - (1 + cos2) * pow(vec_dot(v, cone->nor_vector), 2);
 	double			root[2];
-	if (!solve_quadratic(a, b, c, root))
+
+	if (!solve_quadratic(a, half_b, c, root))
 		return ;
 	if (!_find_cone_root_((t_cone *)cone, root, ray))
 		return ;
@@ -205,7 +206,8 @@ const t_ray ray)
 	cur_h_rec->contact_point = vec_add(ray.origin, \
 	vec_mul(ray.dir, cur_h_rec->t_near));
 	cur_h_rec->hit_normal = _find_hit_normal_cn(cur_h_rec->contact_point, \
-	cone->center, cone->nor_vector, cos(degrees_to_radians(cone->theta)));
+	cone->center, cone->nor_vector, cos(cone->theta));
+		// cur_h_rec->hit_normal = vec(0,0,0);
 	cur_h_rec->albedo = vec_copy(cone->color);
 	cur_h_rec->obj_type = CONE;
 	// printf("color r %lf: g %lf: b %lf:\n", \

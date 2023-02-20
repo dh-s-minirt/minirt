@@ -6,11 +6,12 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:26:54 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/14 23:13:28 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:16:17 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include "../math/math.h"
 
 void	fill_cone(char **strs, t_cone *cone)
 {
@@ -25,7 +26,7 @@ void	fill_cone(char **strs, t_cone *cone)
 	ft_atof(color_data[1]) / 255.999, ft_atof(color_data[2]) / 255.999);
 	ft_release_strs(color_data);
 	cone->height = ft_atof(strs[3]);
-	cone->theta = ft_atof(strs[4]);
+	cone->theta = degrees_to_radians(ft_atof(strs[4]));
 	tmp = ft_split(strs[5], ',');
 	if (ft_strs_size(tmp) != 3)
 		ft_print_exit();

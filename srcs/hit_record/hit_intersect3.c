@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 20:52:50 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/18 23:57:30 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/20 15:09:23 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@ const t_vec normal, const double cosine)
 
 	return (vec_unit(vec_sub(cp_prime, normal)));
 }
+
+// t_vec _find_hit_normal_cn(const t_vec p, const t_vec center, const t_vec normal, const double cosine)
+// {
+//     t_vec cp = vec_sub(p, center);
+//     t_vec projection = vec_mul(normal, vec_dot(cp, normal));
+//     t_vec tangent = vec_sub(cp, projection);
+//     t_vec n = vec_unit(vec_add(vec_mul(tangent, cosine), vec_mul(projection, -sin(cosine))));
+//     return n;
+// }
 
 void	_intersect_disk_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
 const t_ray ray)
