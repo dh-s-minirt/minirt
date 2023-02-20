@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   hit_trace.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:56:30 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/20 05:58:07 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/20 17:07:58 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./hit_record.h"
+#include <string.h>
 
 t_hit_rec	_init_rec_(void)
 {
 	t_hit_rec	tmp;
 
-	ft_memset(&tmp, 0, sizeof(t_hit_rec));
+	memset(&tmp, 0, sizeof(t_hit_rec));
 	tmp.t_near = INFINITY;
 	tmp.is_hit = FALSE;
 	return (tmp);

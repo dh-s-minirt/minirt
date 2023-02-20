@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 19:02:02 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/20 05:59:07 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/20 17:06:53 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ void	*ft_malloc(size_t size_of)
 		perror("rt : ");
 		exit(EXIT_FAILURE);
 	}
-	ft_memset(p, 0, size_of);
+	memset(p, 0, size_of);
 	return (p);
 }
