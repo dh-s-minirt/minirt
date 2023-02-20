@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 09:42:31 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/18 23:53:01 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/20 05:32:46 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,4 +184,30 @@ const t_ray ray)
 	cy->center, cy->nor_vector);
 	cur_h_rec->albedo = vec_copy(cy->color);
 	cur_h_rec->obj_type = CYLINDER;
+}
+
+void	_intersect_cone_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
+const t_ray ray)
+{
+	const t_cone	*cone = (t_cone *)cur_obj->data;
+    const double cos2 = cos(cone->theta) * cos(cone->theta);
+    const t_vec v = vec_sub(ray.origin, cone->center);
+    const double a = vec_dot(ray.dir, ray.dir) - (1 + cos2) * pow(vec_dot(ray.dir, cone->nor_vector), 2);
+   	const  double b = 2 * (vec_dot(ray.dir, v) - (1 + cos2) * vec_dot(ray.dir, cone->nor_vector) * vec_dot(v, cone->nor_vector));
+    const double c = vec_dot(v, v) - (1 + cos2) * pow(vec_dot(v, cone->nor_vector), 2);
+	double			root[2];
+	if (!solve_quadratic(a, b, c, root))
+		return ;
+	if (!_find_cone_root_((t_cone *)cone, root, ray))
+		return ;
+	cur_h_rec->t_near = root[0];
+	cur_h_rec->is_hit = TRUE;
+	cur_h_rec->contact_point = vec_add(ray.origin, \
+	vec_mul(ray.dir, cur_h_rec->t_near));
+	cur_h_rec->hit_normal = _find_hit_normal_cn(cur_h_rec->contact_point, \
+	cone->center, cone->nor_vector, cos(degrees_to_radians(cone->theta)));
+	cur_h_rec->albedo = vec_copy(cone->color);
+	cur_h_rec->obj_type = CONE;
+	// printf("color r %lf: g %lf: b %lf:\n", \
+	// cone->color.x, cone->color.x,cone->color.x);
 }

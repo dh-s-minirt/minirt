@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:46:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/18 15:28:27 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/20 05:48:36 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,18 @@
 // identifier: Cn
 //p = o+td;
 // cone -> v,center,theta;
+//function pointer void (*typedef name)
+//typedef return_type      (*(notice <-function pointer) identifier)\
+// (argument_type1...)         void (*)(t_node*,t_hit_rec*,t_ray)의 typedef가 t_~
+typedef void				(*t_inersect_)(t_node *, t_hit_rec *, const t_ray);
+//c언어 파싱 -> 일단 반환형 집어서 void -> identifier 괄호 있으니까 오른쪽 보고 다시 중간에 식별자
+// *보고 포인터의 식별자인걸 알고 오른쪽으로가서 왼쪽 괄호보고 이게 함수의 식별자인걸 암  
+//static const (function_pointer type)
+static const t_inersect_	g_intersect[5] = {
+	_intersect_sphere_, _intersect_plane_, _intersect_cylinder_, \
+	_intersect_cone_, _intersect_disk_
+};
+
 t_abc	_make_abc_(const t_cone *cone, t_vec co, const t_ray ray)
 {
 	t_abc			tmp;
@@ -52,46 +64,9 @@ double root[2], const t_ray ray)
 	return (FALSE);
 }
 
-
-void	_intersect_cone_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
-const t_ray ray)
-{
-	const t_cone	*cone = (t_cone *)cur_obj->data;
-    const double cos2 = cos(cone->theta) * cos(cone->theta);
-    const t_vec v = vec_sub(ray.origin, cone->center);
-    const double a = vec_dot(ray.dir, ray.dir) - (1 + cos2) * pow(vec_dot(ray.dir, cone->nor_vector), 2);
-   	const  double b = 2 * (vec_dot(ray.dir, v) - (1 + cos2) * vec_dot(ray.dir, cone->nor_vector) * vec_dot(v, cone->nor_vector));
-    const double c = vec_dot(v, v) - (1 + cos2) * pow(vec_dot(v, cone->nor_vector), 2);
-	double			root[2];
-	if (!solve_quadratic(a, b, c, root))
-		return ;
-	if (!_find_cone_root_((t_cone *)cone, root, ray))
-		return ;
-	cur_h_rec->t_near = root[0];
-	cur_h_rec->is_hit = TRUE;
-	cur_h_rec->contact_point = vec_add(ray.origin, \
-	vec_mul(ray.dir, cur_h_rec->t_near));
-	cur_h_rec->hit_normal = _find_hit_normal_cn(cur_h_rec->contact_point, \
-	cone->center, cone->nor_vector, cos(degrees_to_radians(cone->theta)));
-	cur_h_rec->albedo = vec_copy(cone->color);
-	cur_h_rec->obj_type = CONE;
-	// printf("color r %lf: g %lf: b %lf:\n", \
-	// cone->color.x, cone->color.x,cone->color.x);
-}
-
-
 t_bool	query_hit(t_node *cur_obj, t_hit_rec *cur_h_rec, const t_ray ray)
 {
-	if (cur_obj->type == SPHERE)
-		_intersect_sphere_(cur_obj, cur_h_rec, ray);
-	else if (cur_obj->type == PLANE)
-		_intersect_plane_(cur_obj, cur_h_rec, ray);
-	else if (cur_obj->type == CYLINDER)
-		_intersect_cylinder_(cur_obj, cur_h_rec, ray);
-	else if (cur_obj->type == CONE)
-		_intersect_cone_(cur_obj, cur_h_rec, ray);
-	else
-		_intersect_disk_(cur_obj, cur_h_rec, ray);
+	g_intersect[cur_obj->type](cur_obj, cur_h_rec, ray);
 	return (cur_h_rec->is_hit);
 }
 

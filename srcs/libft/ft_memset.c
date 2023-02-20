@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 13:33:32 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/18 21:08:17 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/20 06:14:01 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 #define CHUNK 2
 
-static void	_sub_(void *b, long long unit_a, size_t loop_dist)
+static void	_sub_(long long *b, long long unit_a, size_t loop_dist)
 {
 	while (loop_dist)
 	{
-		((long long *) b)[0] = unit_a;
-		((long long *) b)[1] = unit_a;
-		b += CHUNK * 8;
+		b[0] = unit_a;
+		b += CHUNK;
 		loop_dist -= 1;
 	}
 }
