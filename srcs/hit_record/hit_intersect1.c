@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 09:42:31 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/21 15:01:32 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/21 15:08:29 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,8 +196,8 @@ const t_ray ray)
 	const t_vec		co = vec_sub(ray.origin, cn->center);
 	const double	half_b = vec_dot(ray.dir, cn->nor_vector) * \
 	vec_dot(co, cn->nor_vector) - vec_dot(ray.dir, co) * cos2;
-	const double	c = pow(vec_dot(co, ray.dir), 2) - vec_dot(co, co) * \
-	cos2;
+	const double	c = pow(vec_dot(co, cn->nor_vector), 2) - \
+	vec_dot(co, co) * cos2;
 	double			root[2];
 
 	if (!solve_quadratic(a, half_b, c, root))
