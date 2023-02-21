@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:26:54 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/20 17:03:29 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2023/02/21 15:03:52 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,21 @@ void	fill_cone(char **strs, t_cone *cone)
 	cone->theta = atan(cone->height / cone->radius);
 }
 
+// static void	_make_bot_disk(t_cone *cn, t_info_data *data)
+// {
+// 	t_disk	*down;
+// 	t_node	*bot;
+
+// 	down = ft_malloc(sizeof(t_disk));
+// 	down->center = vec_copy((vec_add(cn->center, vec_mul(\
+// 	cn->nor_vector, cn->height))));
+// 	down->nor_v = vec_copy(vec_mul(cn->nor_vector, -1));
+// 	down->color = vec_copy(cn->color);
+// 	down->r = cn->radius;
+// 	bot = node_new((void *)down, DISK);
+// 	node_add_back(&data->objects, bot);
+// }
+
 void	init_cone(char **strs, t_info_data *data)
 {
 	t_cone			*cone;
@@ -53,6 +68,7 @@ void	init_cone(char **strs, t_info_data *data)
 	fill_cone(strs, cone);
 	node = node_new((void *)cone, CONE);
 	node_add_back(&data->objects, node);
+	// _make_bot_disk(cone, data);
 }
 
 void	init_camera(char **strs, t_info_data *data)

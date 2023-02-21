@@ -131,4 +131,4 @@ objs/parsing/parsing_utils.o: srcs/parsing/parsing_utils.c \
   /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/sys/_types/_fsblkcnt_t.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/sys/_types/_fsfilcnt_t.h \
   srcs/parsing/../libft/libft.h srcs/parsing/../color/color.h \
-  srcs/parsing/../vector/vector.h
+  srcs/parsing/../vector/vector.h srcs/parsing/../math/math.h
