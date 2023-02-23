@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:54:36 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/23 16:47:59 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2023/02/24 00:36:26 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	fill_cylinder(t_cylinder *data, char **strs)
 	ft_release_strs(tmp);
 }
 
-static void	_make_up_bot_disk(t_cylinder *cy, t_info_data *data)
+static void	_make_up_bot_disk(t_cylinder *cy, t_info_data *data, t_bool	is_water)
 {
 	t_disk	*up;
 	t_disk	*down;
@@ -61,29 +61,29 @@ static void	_make_up_bot_disk(t_cylinder *cy, t_info_data *data)
 	t_node	*upper;
 
 	up = ft_malloc(sizeof(t_disk));
-	down = ft_malloc(sizeof(t_disk));
 	up->center = vec_add(cy->center, vec_mul(cy->nor_vector, cy->height));
-	down->center = vec_copy(cy->center);
 	up->nor_v = vec_copy(cy->nor_vector);
-	down->nor_v = vec_copy(vec_mul(cy->nor_vector, -1));
 	up->color = vec_copy(cy->color);
-	down->color = vec_copy(cy->color);
 	up->r = cy->radius;
-	down->r = cy->radius;
-	
-	// upper =0;
-	// bot =0;
-	// (void)data;
+	if (is_water == TRUE)
+	{
+		down = ft_malloc(sizeof(t_disk));
+		down->center = vec_copy(cy->center);
+		down->nor_v = vec_copy(vec_mul(cy->nor_vector, -1));
+		down->color = vec_copy(cy->color);
+		down->r = cy->radius;
+		bot = node_new((void *)down, DISK);
+		node_add_back(&data->objects, bot);
+	}
 	upper = node_new((void *)up, DISK);
 	node_add_back(&data->objects, upper);
-	bot = node_new((void *)down, DISK);
-	node_add_back(&data->objects, bot);
 }
 
 void	init_cylinder(char **strs, t_info_data *data)
 {
 	t_cylinder	*cylinder;
 	t_node		*node;
+	t_bool		is_water;
 
 	if (ft_strs_size(strs) < CYLINDER_SIZE)
 		ft_print_exit();
@@ -94,7 +94,11 @@ void	init_cylinder(char **strs, t_info_data *data)
 	node = node_new((void *)cylinder, CYLINDER);
 	add_material_data(node, strs);
 	node_add_back(&data->objects, node);
-	_make_up_bot_disk(cylinder, data);
+	if (node->material.m_type == FRESNEL)
+		is_water = TRUE;
+	else
+		is_water = FALSE;
+	_make_up_bot_disk(cylinder, data, is_water);
 }
 
 void	fill_data(char *line, t_info_data *data, int *cnt)
