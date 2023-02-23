@@ -1,0 +1,7 @@
+reflect -> void *propery == NULL
+phong -> kd,n argument-> kd, ks = (1-kd), n
+fresnel -> ior
+uv -> NULL 
+special -> special_type
+
+ms 0~3
