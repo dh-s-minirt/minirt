@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 16:47:22 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/09 23:25:32 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/23 23:11:26 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,4 @@ double	fmax_d(double x, double y)
 	else
 		return (y);
 }
+

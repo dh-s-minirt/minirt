@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/23 22:35:26 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/24 00:05:24 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,11 @@
 #include <stdio.h>
 #include "../color/color.h"
 
-// typedef t_color		(*t_shade_)(t_hit_rec, t_info_data *data, \
-// t_material material, t_ray ray);
-
-// 	// _shade_reflect, _shade_kphong, _shade_fresnel, _shade_uv_, \
-// 	// _shade_bmp
-// static const t_shade_	g_shade[5] = {
-// 	NULL, _shade_kphong, NULL, NULL, \
-// 	NULL
-// };
-
 t_color	ray_casting(t_ray r, t_info_data *data, int depth)
 {
 	t_color		pixel_color;
 	t_hit_rec	hit_rec;
+	t_fres_data	fres_dat;
 
 	if (depth > MAX_DEPTH)
 		return (vec(0, 0, 0));
@@ -40,6 +31,13 @@ t_color	ray_casting(t_ray r, t_info_data *data, int depth)
 		(t_phong_propety *)(hit_rec.material.property), r);
 		else if (hit_rec.material.m_type == REFLECT)
 			pixel_color = _shade_reflect(hit_rec, data, depth, r);
+		else if (hit_rec.material.m_type == FRESNEL)
+		{
+			fres_dat.depth = depth;
+			fres_dat.ior = ((t_fres_property *)hit_rec.material.property)\
+			->ior;
+			pixel_color = _shade_refract(hit_rec, data, r, fres_dat);
+		}
 		else
 			pixel_color = vec(0, 0, 0);
 	}

@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:20:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/23 22:35:02 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/24 00:05:16 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@
 # include "../mlx/mlx.h"
 
 # define DEFAULT_R 30
+
+typedef struct s_fres_data
+{
+	double	ior;
+	int		depth;
+}	t_fres_data;
 
 typedef struct s_lt_info
 {
@@ -48,6 +54,8 @@ t_color		_shade_kphong(t_hit_rec hit_rec, t_info_data *data, \
 t_phong_propety *property, t_ray ray);
 t_color		_shade_reflect(t_hit_rec hit_rec, t_info_data *data, int depth, \
 t_ray ray);
+t_color	_shade_refract(t_hit_rec hit_rec, t_info_data *data, \
+t_ray ray, t_fres_data fres_dat);
 t_bool		check_shadow(t_node	*objects, t_hit_rec	*hit_rec, t_vec dir, \
 t_lt_info cur_l_info);
 t_lt_info	get_lt_info(t_light_node *light, t_hit_rec hit_rec);
