@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_record.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:49:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/20 14:52:53 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:28:56 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,28 +20,6 @@
 # include "../mini_rt.h"
 # include "../libft/libft.h"
 # include <stdio.h>
-
-typedef enum t_material
-{
-	Kphong = 0,
-	Kfresnel,
-	Uv,
-	Special,
-	Kdiffuse
-}	t_material;
-
-typedef struct s_phong_propety
-{
-	double	kd;
-	double	ks;
-	double	n;
-}	t_phong_propety;
-
-typedef struct s_fresenel_property
-{
-	double	ior;
-	double	kr;
-}	t_fres_property;
 
 // typedef struct s_check_property
 // {

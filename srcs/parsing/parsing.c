@@ -3,27 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:54:36 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/18 23:55:43 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:47:59 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 #include "../vector/vector.h"
 
-#define _DATA_LEN 7
+#define _DATA_LEN 8
 
 void	init_cylinder(char **strs, t_info_data *data);
 
-static const char	*g_data[7] = {
-	"A", "C", "L", "pl", "sp", "cy", "cn"
+static const char	*g_data[8] = {
+	"A", "C", "L", "pl", "sp", "cy", "cn", "ms"
 };
 
-static void (*const	g_functions[7])(char **, t_info_data *) = {
+static void (*const	g_functions[8])(char **, t_info_data *) = {
 	init_am_light, init_camera, init_light, \
-		init_plane, init_sphere, init_cylinder, init_cone
+		init_plane, init_sphere, init_cylinder, init_cone,
+	init_ms
 };
 
 void	fill_cylinder(t_cylinder *data, char **strs)
@@ -84,13 +85,14 @@ void	init_cylinder(char **strs, t_info_data *data)
 	t_cylinder	*cylinder;
 	t_node		*node;
 
-	if (ft_strs_size(strs) != 6)
+	if (ft_strs_size(strs) < CYLINDER_SIZE)
 		ft_print_exit();
 	cylinder = (t_cylinder *)malloc(sizeof(t_cylinder));
 	if (!cylinder)
 		exit(0);
 	fill_cylinder(cylinder, strs);
 	node = node_new((void *)cylinder, CYLINDER);
+	add_material_data(node, strs);
 	node_add_back(&data->objects, node);
 	_make_up_bot_disk(cylinder, data);
 }
@@ -99,7 +101,7 @@ void	fill_data(char *line, t_info_data *data, int *cnt)
 {
 	char				**strs;
 	int					i;
-	static int			check[7] = {0, 0, 0, 0, 0, 0, 0};
+	static int			check[8] = {0, 0, 0, 0, 0, 0, 0, 0};
 
 	strs = ft_split(line, ' ');
 	if (!strs || ft_strs_size(strs) == 0)
@@ -119,6 +121,8 @@ void	fill_data(char *line, t_info_data *data, int *cnt)
 		(*cnt) += 1;
 	}
 	g_functions[i](strs, data);
+	ft_release_strs(strs);
+	free(line);
 }
 
 void	get_info_data(char *filename, t_info_data *data)
@@ -135,7 +139,7 @@ void	get_info_data(char *filename, t_info_data *data)
 	while (line)
 	{
 		if (*line != '\n')
-			fill_data(line, data, &cnt);
+			fill_data(delete_last_newline(line), data, &cnt);
 		free(line);
 		line = get_next_line(fd);
 	}

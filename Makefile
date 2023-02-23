@@ -6,7 +6,7 @@
 #    By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2023/02/20 17:06:03 by hyunkyle         ###   ########.fr        #
+#    Updated: 2023/02/23 16:32:10 by hyunkyle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,9 @@ SRCS	=	main.c \
 			parsing/parsing.c \
 			parsing/parsing_utils.c \
 			parsing/parsing_utils1.c \
+			parsing/parsing_bonus.c \
+			parsing/parsing_bonus1.c \
+			parsing/parsing_bonus_utils.c \
 			render/put_img.c \
 			render/render.c \
 			render/shade.c \
@@ -53,7 +56,7 @@ OBJS := ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
 
 CC		=	cc 
 Debug = -fsanitize=address -g
-CFLAGS	=	-Wall -Werror -Wextra -O3
+CFLAGS	=	-Wall -Werror -Wextra -O3 ${Debug}
 
 all		: $(NAME)
 

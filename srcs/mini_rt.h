@@ -6,7 +6,7 @@
 /*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/23 15:12:32 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:11:18 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,26 @@ typedef enum t_light_type
 
 typedef enum t_m_type
 {
-	Reflect = 0,
-	Phong,
-	Fresnel,
-	Uv,
-	Special
+	REFLECT = 0,
+	PHONG,
+	FRESNEL,
+	UV,
+	SPECIAL
 }	t_m_type;
 
 typedef enum t_special_type
 {
-	s1,
-	s2,
-	s3
+	S1,
+	S2,
+	S3
 }	t_special_type;
+
+typedef enum t_mash_type
+{
+	M1,
+	M2,
+	M3
+}	t_mash_type;
 
 typedef struct s_phong_propety
 {
@@ -111,6 +118,12 @@ typedef struct s_sphere
 	double	radius;
 	t_color	color;
 }	t_sphere;
+
+typedef struct s_ms
+{
+	t_vec		center;
+	t_mash_type	ms_type;
+}	t_ms;
 
 typedef struct s_plane
 {
