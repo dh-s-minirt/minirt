@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:30:51 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/23 22:32:25 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/24 04:11:49 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_bool	check_shadow(t_node	*objects, t_hit_rec	*hit_rec, t_vec dir, t_lt_info cu
 	shadow_ray.dir = dir;
 	tmp = _init_rec_();
 	shadow = trace_hit(objects, &tmp, shadow_ray);
-	if (shadow && tmp.t_near + BIAS < cur_l_info.dist)
+	if (shadow && tmp.t_near + BIAS < cur_l_info.dist && tmp.material.m_type != FRESNEL)
 		return (TRUE);
 	return (FALSE);
 }
