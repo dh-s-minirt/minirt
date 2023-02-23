@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:49:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/20 14:52:53 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:20:31 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,19 @@
 # include "../libft/libft.h"
 # include <stdio.h>
 
-typedef enum t_material
+typedef enum t_m_type
 {
-	Kphong = 0,
-	Kfresnel,
+	Reflect = 0,
+	Phong,
+	Fresnel,
 	Uv,
-	Special,
-	Kdiffuse
+	Bmp	
+}	t_m_type;
+
+typedef struct t_material
+{
+	t_m_type	m_type;
+	void		*property;	
 }	t_material;
 
 typedef struct s_phong_propety

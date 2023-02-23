@@ -6,13 +6,26 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/18 19:23:46 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/23 15:18:00 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 #include <stdio.h>
 #include "../color/color.h"
+
+typedef t_color		(*t_shade_)(t_hit_rec, t_info_data *data, \
+t_phong_propety *property, t_ray ray);
+
+// typedef t_color		(*t_shade_)(t_hit_rec, t_info_data *data, \
+// t_material *material, t_ray ray);
+
+// static const t_shade_	g_shade[5] = {
+// 	// _shade_reflect, _shade_kphong, _shade_fresnel, _shade_uv_, \
+// 	// _shade_bmp
+// 	NULL, _shade_kphong, NULL, NULL, \
+// 	NULL
+// };
 
 void	init_property(t_hit_rec *hit_rec)
 {
@@ -30,13 +43,13 @@ void	init_property(t_hit_rec *hit_rec)
 	hit_rec->property = (void *)property;
 }
 
-t_color	ray_casting(t_ray r, t_info_data *data, int depth, t_settings set)
+t_color	ray_casting(t_ray r, t_info_data *data, int depth)
 {
 	t_color		pixel_color;
 	t_hit_rec	hit_rec;
 
-	if (depth > set.max_depth)
-		return (set.dark);
+	if (depth > MAX_DEPTH)
+		return (vec(0, 0, 0));
 	pixel_color = vec(0, 0, 0);
 	hit_rec = _init_rec_();
 	if (trace_hit(data->objects, &hit_rec, r))
@@ -92,7 +105,7 @@ void	render(t_settings set, t_info_data	*data, t_my_mlx *mlx)
 			r.dir = vec_unit(_mul_vec_mat(set.camera_to_world, \
 			vec_2_arr_vec3(vec(x, y, -1))));
 			r.origin = vec_copy(data->camera.center);
-			put_color(ray_casting(r, data, 0, set), j, i, &(mlx->img));
+			put_color(ray_casting(r, data, 0), j, i, &(mlx->img));
 		}
 	}
 }

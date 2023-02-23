@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   math.h                                             :+:      :+:    :+:   */
+/*   shade2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 16:46:18 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/23 14:48:18 by daegulee         ###   ########.fr       */
+/*   Created: 2023/02/23 14:34:01 by daegulee          #+#    #+#             */
+/*   Updated: 2023/02/23 14:51:38 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATH_H
-# define MATH_H
+#include "render.h"
 
-# include <math.h>
-# define PI 3.1415926535897932385
-# define BIAS 0.001
-# define MAX_DEPTH 5
-//math_util.c
-double	clamp(double x, double min, double max);
-double	degrees_to_radians(double degrees);
-double	fmax_d(double x, double y);
-//
+t_color	_shade_reflect(t_hit_rec hit_rec, t_info_data *data, t_material *mat, \
+t_ray ray)
+{
+	const t_vec	reflect = vec_unit(v_reflect(ray.dir, hit_rec.hit_normal));
+	t_ray		reflect_ray;
 
-#endif
+	reflect_ray.dir = vec_copy(reflect);
+	reflect_ray.origin = vec_add(hit_rec.contact_point, \
+	vec_mul(hit_rec.hit_normal, BIAS));
+	return (vec_mul(ray_casting(reflect_ray, data, ) 0.8))
+}
