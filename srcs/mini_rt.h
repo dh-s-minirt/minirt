@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_rt.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/18 15:41:58 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:11:18 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ typedef enum t_obj_type
 	PLANE,
 	CYLINDER,
 	CONE,
-	DISK
+	DISK,
+	MS
 }	t_obj_type;
 
 typedef enum t_light_type
@@ -48,9 +49,56 @@ typedef enum t_light_type
 	LIGHT
 }	t_light_type;
 
+typedef enum t_m_type
+{
+	REFLECT = 0,
+	PHONG,
+	FRESNEL,
+	UV,
+	SPECIAL
+}	t_m_type;
+
+typedef enum t_special_type
+{
+	S1,
+	S2,
+	S3
+}	t_special_type;
+
+typedef enum t_mash_type
+{
+	M1,
+	M2,
+	M3
+}	t_mash_type;
+
+typedef struct s_phong_propety
+{
+	double	kd;
+	double	ks;
+	double	n;
+}	t_phong_propety;
+
+typedef struct s_fresenel_property
+{
+	double	ior;
+}	t_fres_property;
+
+typedef struct s_special_property
+{
+	t_special_type	special_type;
+}	t_special_property;
+
+typedef struct t_material
+{
+	void		*property;
+	t_m_type	m_type;
+}	t_material;
+
 struct s_node
 {
 	t_obj_type	type;
+	t_material	material;
 	void		*data;
 	t_node		*next;
 };
@@ -70,6 +118,12 @@ typedef struct s_sphere
 	double	radius;
 	t_color	color;
 }	t_sphere;
+
+typedef struct s_ms
+{
+	t_vec		center;
+	t_mash_type	ms_type;
+}	t_ms;
 
 typedef struct s_plane
 {

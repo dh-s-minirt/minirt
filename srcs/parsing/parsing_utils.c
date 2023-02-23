@@ -13,6 +13,19 @@
 #include "parsing.h"
 #include "../math/math.h"
 
+char	*delete_last_newline(char *line)
+{
+	int		size;
+	char	*new_line;
+
+	size = ft_strlen(line);
+	new_line = malloc(sizeof(char) * size);
+	if (!new_line)
+		ft_print_exit();
+	ft_strlcpy(new_line, line, size);
+	return (new_line);
+}
+
 void	fill_cone(char **strs, t_cone *cone)
 {
 	char	**color_data;
@@ -60,13 +73,14 @@ void	init_cone(char **strs, t_info_data *data)
 	t_cone			*cone;
 	t_node			*node;
 
-	if (ft_strs_size(strs) != 6)
+	if (ft_strs_size(strs) < CONE_SIZE)
 		ft_print_exit();
 	cone = malloc(sizeof(t_cone));
 	if (!cone)
 		exit(EXIT_FAILURE);
 	fill_cone(strs, cone);
 	node = node_new((void *)cone, CONE);
+	add_material_data(node, strs);
 	node_add_back(&data->objects, node);
 	_make_bot_disk(cone, data);
 }

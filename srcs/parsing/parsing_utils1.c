@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:57:06 by hyunkyu           #+#    #+#             */
-/*   Updated: 2023/02/14 21:34:35 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:41:56 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,14 @@ void	init_sphere(char **strs, t_info_data *data)
 	t_sphere	*sphere;
 	t_node		*node;
 
-	if (ft_strs_size(strs) != 4)
+	if (ft_strs_size(strs) < SPHERE_SIZE)
 		ft_print_exit();
 	sphere = (t_sphere *)malloc(sizeof(t_sphere));
 	if (!sphere)
 		exit(0);
 	fill_sphere(sphere, strs);
 	node = node_new((void *)sphere, SPHERE);
+	add_material_data(node, strs);
 	node_add_back(&data->objects, node);
 }
 
@@ -70,16 +71,16 @@ void	init_plane(char **strs, t_info_data *data)
 	t_plane		*plane;
 	t_node		*node;
 
-	if (ft_strs_size(strs) != 4)
+	if (ft_strs_size(strs) < PLAIN_SIZE)
 		ft_print_exit();
 	plane = (t_plane *)malloc(sizeof(t_plane));
 	if (!plane)
 		exit(0);
 	fill_plane(plane, strs);
 	node = node_new((void *)plane, PLANE);
+	add_material_data(node, strs);
 	node_add_back(&data->objects, node);
 }
-
 
 void	init_am_light(char **strs, t_info_data *data)
 {

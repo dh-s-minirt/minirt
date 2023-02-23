@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   hit_record.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:49:23 by daegulee          #+#    #+#             */
 /*   Updated: 2023/02/23 14:20:31 by daegulee         ###   ########.fr       */
