@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_record.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:49:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/23 14:20:31 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/23 19:09:56 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,34 +20,6 @@
 # include "../mini_rt.h"
 # include "../libft/libft.h"
 # include <stdio.h>
-
-typedef enum t_m_type
-{
-	Reflect = 0,
-	Phong,
-	Fresnel,
-	Uv,
-	Bmp	
-}	t_m_type;
-
-typedef struct t_material
-{
-	t_m_type	m_type;
-	void		*property;	
-}	t_material;
-
-typedef struct s_phong_propety
-{
-	double	kd;
-	double	ks;
-	double	n;
-}	t_phong_propety;
-
-typedef struct s_fresenel_property
-{
-	double	ior;
-	double	kr;
-}	t_fres_property;
 
 // typedef struct s_check_property
 // {

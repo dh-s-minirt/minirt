@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+         #
+#    By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2023/02/23 16:32:10 by hyunkyle         ###   ########.fr        #
+#    Updated: 2023/02/23 19:32:11 by daegulee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ OBJS := ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
 
 CC		=	cc 
 Debug = -fsanitize=address -g
-CFLAGS	=	-Wall -Werror -Wextra -O3 ${Debug}
+CFLAGS	=	-Wall -Werror -Wextra -O3
 
 all		: $(NAME)
 
