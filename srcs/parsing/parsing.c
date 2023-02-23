@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:54:36 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/24 00:36:26 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/24 03:17:23 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,21 +60,20 @@ static void	_make_up_bot_disk(t_cylinder *cy, t_info_data *data, t_bool	is_water
 	t_node	*bot;
 	t_node	*upper;
 
+	if (is_water)
+		return ;
 	up = ft_malloc(sizeof(t_disk));
 	up->center = vec_add(cy->center, vec_mul(cy->nor_vector, cy->height));
 	up->nor_v = vec_copy(cy->nor_vector);
 	up->color = vec_copy(cy->color);
 	up->r = cy->radius;
-	if (is_water == TRUE)
-	{
-		down = ft_malloc(sizeof(t_disk));
-		down->center = vec_copy(cy->center);
-		down->nor_v = vec_copy(vec_mul(cy->nor_vector, -1));
-		down->color = vec_copy(cy->color);
-		down->r = cy->radius;
-		bot = node_new((void *)down, DISK);
-		node_add_back(&data->objects, bot);
-	}
+	down = ft_malloc(sizeof(t_disk));
+	down->center = vec_copy(cy->center);
+	down->nor_v = vec_copy(vec_mul(cy->nor_vector, -1));
+	down->color = vec_copy(cy->color);
+	down->r = cy->radius;
+	bot = node_new((void *)down, DISK);
+	node_add_back(&data->objects, bot);
 	upper = node_new((void *)up, DISK);
 	node_add_back(&data->objects, upper);
 }

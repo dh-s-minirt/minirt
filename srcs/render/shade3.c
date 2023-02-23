@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 23:47:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/24 01:25:09 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/24 03:16:24 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ double	fresnel(const t_vec i, const t_vec n, const double ior)
 	return ((pow(((etat * cosi) - (etai * cost)) / ((etat * cosi) + \
 	(etai * cost)), 2) \
 	+ \
-	pow(((etai * cosi) - (etat * cost)) / ((etai * cosi) + \
-	(etat * cost)), 2)) \
+	pow(((etai * cost) - (etat * cosi)) / ((etai * cost) + \
+	(etat * cosi)), 2)) \
 	/ 2);
 }
 
@@ -89,7 +89,8 @@ t_ray ray, t_fres_data fres_dat)
 	t_color			refr_color;
 	t_ray			refr_ray;
 	t_ray			refl_ray;
-	const double	krefl = fresnel(ray.dir, hit_rec.hit_normal, fres_dat.ior);
+	const double	krefl = clamp(fresnel(ray.dir, hit_rec.hit_normal,\
+	fres_dat.ior), 0, 1);
 
 	if (krefl < 1.0)
 	{
@@ -101,7 +102,6 @@ t_ray ray, t_fres_data fres_dat)
 	}
 	else
 		refr_color = vec(0, 0, 0);
-	printf("krefl : %lf\n", krefl);
 	refl_ray.dir = vec_unit(v_reflect(ray.dir, hit_rec.hit_normal));
 	refl_ray.origin = vec_add(hit_rec.contact_point, vec_mul(hit_rec.\
 	hit_normal, BIAS * _outside_(vec_dot(hit_rec.hit_normal, ray.dir))));
