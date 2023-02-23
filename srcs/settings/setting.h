@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:27:32 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/14 15:20:30 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:50:48 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ typedef struct s_settings{
 	t_mat4	camera_to_world;
 	double	bias;
 	double	scale;
-	int		max_depth;
-	t_color	dark;
 }	t_settings;
 
 t_settings	_init_setting_(t_info_data data);

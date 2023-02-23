@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 07:27:45 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/18 18:42:50 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/23 14:50:40 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,12 @@ t_settings	_init_setting_(t_info_data data)
 	t_settings			set;
 
 	set.bias = 0.001;
-	set.max_depth = 5;
 	set.camera_to_world = _camera_to_world_(data.camera);
 	print_mat(set.camera_to_world);
 	set.screen_height = SCREEN_HEIGHT;
 	set.screen_width = SCREEN_WIDTH;
 	set.aspect_ratio = (double)set.screen_height / (double)set.screen_width;
 	set.fov = data.camera.fov;
-	set.dark = vec(0, 0, 0);
 	set.scale = tan(degrees_to_radians(set.fov * 0.5));
 	return (set);
 }
