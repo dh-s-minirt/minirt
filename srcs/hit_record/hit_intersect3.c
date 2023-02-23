@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 20:52:50 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/20 15:09:23 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/23 22:00:43 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ const t_ray ray)
 		cur_h_rec->hit_normal = vec_unit(vec_mul(disk->nor_v, -1));
 	cur_h_rec->albedo = vec_copy(disk->color);
 	cur_h_rec->obj_type = DISK;
+	cur_h_rec->material = cur_obj->material;
 }
 // void	_intersect_cylinder_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
 // const t_ray ray)

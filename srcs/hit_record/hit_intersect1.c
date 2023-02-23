@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 09:42:31 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/21 21:14:30 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/23 22:00:07 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ const t_ray ray)
 	sphere->center));
 	cur_h_rec->albedo = vec_copy(sphere->color);
 	cur_h_rec->obj_type = SPHERE;
+	cur_h_rec->material = cur_obj->material;
 	// printf("sphere color r %lf: g %lf: b %lf:\n", \
 	// sphere->color.x, sphere->color.y,sphere->color.z);
 }
@@ -84,6 +85,7 @@ const t_ray ray)
 		cur_h_rec->hit_normal = vec_unit(vec_mul(plane->nor_vector, -1));
 	cur_h_rec->albedo = vec_copy(plane->color);
 	cur_h_rec->obj_type = PLANE;
+	cur_h_rec->material = cur_obj->material;
 	// printf("plane color r %lf: g %lf: b %lf:\n", \
 	// cur_h_rec->hit_normal.x, cur_h_rec->hit_normal.y,cur_h_rec->hit_normal.z);
 	// printf("albedo color r %lf: g %lf: b %lf:\n", \
@@ -184,6 +186,7 @@ const t_ray ray)
 	cy->center, cy->nor_vector);
 	cur_h_rec->albedo = vec_copy(cy->color);
 	cur_h_rec->obj_type = CYLINDER;
+	cur_h_rec->material = cur_obj->material;
 }
 
 void	_intersect_cone_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
@@ -213,6 +216,7 @@ const t_ray ray)
 		// cur_h_rec->hit_normal = vec(0,0,0);
 	cur_h_rec->albedo = vec_copy(cn->color);
 	cur_h_rec->obj_type = CONE;
+	cur_h_rec->material = cur_obj->material;
 	// printf("color r %lf: g %lf: b %lf:\n", \
 	// cone->color.x, cone->color.x,cone->color.x);
 }

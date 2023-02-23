@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:49:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/23 19:09:56 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/23 21:59:15 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ typedef struct s_hit_rec
 {
 	double		t_near;
 	t_vec		hit_normal;
-	void		*property;
 	t_material	material;
 	t_vec		contact_point;
 	t_bool		is_hit;

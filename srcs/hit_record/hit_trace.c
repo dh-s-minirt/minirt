@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_trace.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:56:30 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/20 17:07:58 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2023/02/23 22:21:42 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	_update_rec_(t_hit_rec *origin, t_hit_rec source)
 	origin->t_near = source.t_near;
 	origin->albedo = vec_copy(source.albedo);
 	origin->obj_type = source.obj_type;
+	origin->material = source.material;
 }
 
 t_bool	trace_hit(t_node	*objects, t_hit_rec	*hit_rec, t_ray ray)

@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/23 19:32:55 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/23 22:35:26 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,15 @@
 #include <stdio.h>
 #include "../color/color.h"
 
-typedef t_color		(*t_shade_)(t_hit_rec, t_info_data *data, \
-t_phong_propety *property, t_ray ray);
-
 // typedef t_color		(*t_shade_)(t_hit_rec, t_info_data *data, \
-// t_material *material, t_ray ray);
+// t_material material, t_ray ray);
 
-// static const t_shade_	g_shade[5] = {
 // 	// _shade_reflect, _shade_kphong, _shade_fresnel, _shade_uv_, \
 // 	// _shade_bmp
+// static const t_shade_	g_shade[5] = {
 // 	NULL, _shade_kphong, NULL, NULL, \
 // 	NULL
 // };
-
-void	init_property(t_hit_rec *hit_rec)
-{
-	t_phong_propety	*property;
-
-	property = ft_malloc(sizeof(t_phong_propety));
-	if (hit_rec->obj_type != PLANE)
-	{
-		property->kd = 0.8;
-		property->ks = 0.2;
-		property->n = 20;
-	}
-	else
-		property->kd = 1;
-	hit_rec->property = (void *)property;
-}
 
 t_color	ray_casting(t_ray r, t_info_data *data, int depth)
 {
@@ -54,20 +35,13 @@ t_color	ray_casting(t_ray r, t_info_data *data, int depth)
 	hit_rec = _init_rec_();
 	if (trace_hit(data->objects, &hit_rec, r))
 	{
-		init_property(&hit_rec);
-		// printf("albedo r %lf: g %lf: b %lf:\n", \
-		// hit_rec.albedo.x, hit_rec.albedo.y, hit_rec.albedo.z);
-		// if (hit_rec.material == Kdiffuse)
-		// 	_shade_diffuse();
-		// else if (hit_rec.material == Kphong)
-		pixel_color = _shade_kphong(hit_rec, data, \
-		(t_phong_propety *)hit_rec.property, r);
-		// if (pixel_color.x || pixel_color.y || pixel_color.z)
-		// 	printf("pixel r %lf: g %lf: b %lf:\n", \
-		// pixel_color.x, pixel_color.y, pixel_color.z);
-		// // // else
-		// 	_shade_kfresnel();
-		free(hit_rec.property);
+		if (hit_rec.material.m_type == PHONG)
+			pixel_color = _shade_kphong(hit_rec, data, \
+		(t_phong_propety *)(hit_rec.material.property), r);
+		else if (hit_rec.material.m_type == REFLECT)
+			pixel_color = _shade_reflect(hit_rec, data, depth, r);
+		else
+			pixel_color = vec(0, 0, 0);
 	}
 	return (pixel_color);
 }
