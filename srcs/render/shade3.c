@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 23:47:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/24 03:16:24 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/24 14:23:24 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ t_ray ray, t_fres_data fres_dat)
 	t_color			refr_color;
 	t_ray			refr_ray;
 	t_ray			refl_ray;
-	const double	krefl = clamp(fresnel(ray.dir, hit_rec.hit_normal,\
+	const double	krefl = clamp(fresnel(ray.dir, hit_rec.hit_normal, \
 	fres_dat.ior), 0, 1);
 
 	if (krefl < 1.0)

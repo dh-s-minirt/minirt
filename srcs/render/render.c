@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/24 00:05:24 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/24 14:24:14 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,12 @@ t_color	ray_casting(t_ray r, t_info_data *data, int depth)
 		else if (hit_rec.material.m_type == FRESNEL)
 		{
 			fres_dat.depth = depth;
-			fres_dat.ior = ((t_fres_property *)hit_rec.material.property)\
+			fres_dat.ior = ((t_fres_property *)hit_rec.material.property) \
 			->ior;
 			pixel_color = _shade_refract(hit_rec, data, r, fres_dat);
 		}
+		else if (hit_rec.material.m_type == UV)
+			pixel_color = _shade_uv(hit_rec, uv, data, r);
 		else
 			pixel_color = vec(0, 0, 0);
 	}
@@ -68,12 +70,12 @@ void	render(t_settings set, t_info_data	*data, t_my_mlx *mlx)
 	while (++j < set.screen_height)
 	{
 		i = -1;
-		printf("\rScanlines remaining: %d \n", set.screen_height-j-1);
+		printf("\rScanlines remaining: %d \n", set.screen_height - j - 1);
 		while (++i < set.screen_width)
 		{
 			x = (2 * (i + 0.5) / (double)(set.screen_width) - 1) * set.scale;
-			y = (1 - 2 * (j + 0.5) / (double)(set.screen_height)) * set.aspect_ratio \
-			* set.scale;
+			y = (1 - 2 * (j + 0.5) / (double)(set.screen_height)) \
+			* set.aspect_ratio * set.scale;
 			r.dir = vec_unit(_mul_vec_mat(set.camera_to_world, \
 			vec_2_arr_vec3(vec(x, y, -1))));
 			r.origin = vec_copy(data->camera.center);
