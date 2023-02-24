@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 21:11:22 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/24 22:27:36 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/25 00:37:04 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,13 @@ void	_uv_pattern_(t_hit_rec *cur_h_rec)
 	const double	on_v = modulo(cur_h_rec->v * checker_height);
 
 	if (((on_u < 0.5) + (on_v < 0.5)) % 2 == 0)
+	{
 		cur_h_rec->albedo = vec(1, 1, 1);
+	}
 	else
+	{
 		cur_h_rec->albedo = copy_clamp(vec_mul(cur_h_rec->albedo, 255), 0, 1);
+	}
 }
 
 void	spherical_mapping(t_hit_rec *cur_h_rec)
@@ -43,7 +47,7 @@ void	spherical_mapping(t_hit_rec *cur_h_rec)
 
 void	planar_mapping(t_hit_rec *cur_h_rec)
 {
-	const t_mat4	local_cord = _camera_to_world_(cur_h_rec->hit_normal);
+	const t_mat4	local_cord = _normal_cord_(cur_h_rec->hit_normal);
 	double			local_x;
 	double			local_y;
 
@@ -53,8 +57,8 @@ void	planar_mapping(t_hit_rec *cur_h_rec)
 	local_y = local_cord.m[1][0] * cur_h_rec->contact_point.x + \
 	local_cord.m[1][1] * cur_h_rec->contact_point.y + local_cord.m[1][2] * \
 	cur_h_rec->contact_point.z;
-	cur_h_rec->u = modulo(fabs(local_x / 30));
-	cur_h_rec->v = modulo(fabs(local_y / 30));
+	cur_h_rec->u = fabs(fmod(local_x, 100)) / 100;
+	cur_h_rec->v = fabs(fmod(local_y, 100)) / 100;
 }
 
 void	get_uv(t_hit_rec *cur_h_rec)

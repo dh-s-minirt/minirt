@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:27:32 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/24 22:01:03 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/25 00:32:43 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ typedef struct s_settings{
 
 t_settings	_init_setting_(t_info_data data);
 t_mat4		_camera_to_world_(t_vec normal);
+t_mat4		_normal_cord_(t_vec	normal);
 
 #endif
