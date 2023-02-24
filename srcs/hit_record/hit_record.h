@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:49:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/23 21:59:15 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:24:10 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ typedef struct s_hit_rec
 	t_bool		is_hit;
 	t_color		albedo;
 	t_obj_type	obj_type;
+	double		u;
+	double		v;
 }	t_hit_rec;
 
 typedef struct s_abc
