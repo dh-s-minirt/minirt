@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:20:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/24 18:55:05 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/24 21:16:47 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,7 @@ t_bool		check_shadow(t_node	*objects, t_hit_rec	*hit_rec, t_vec dir, \
 t_lt_info cur_l_info);
 t_lt_info	get_lt_info(t_light_node *light, t_hit_rec hit_rec);
 t_color		_shade_uv(t_hit_rec hit_rec, t_info_data *data, t_ray r);
+void		get_uv(t_hit_rec *cur_h_rec);
+double		modulo(double x);
 
 #endif

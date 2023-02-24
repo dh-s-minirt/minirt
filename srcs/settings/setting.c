@@ -6,16 +6,16 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 07:27:45 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/23 14:50:40 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/24 22:01:13 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./setting.h"
 #include <stdio.h>
 
-t_mat4	_camera_to_world_(t_camera	camera)
+t_mat4	_camera_to_world_(t_vec	normal)
 {
-	const t_vec	forward = vec_unit(vec_product(camera.nor_vector, \
+	const t_vec	forward = vec_unit(vec_product(normal, \
 	vec(1, 1, -1)));
 	t_vec		up;
 	t_vec		right;
@@ -35,7 +35,7 @@ t_settings	_init_setting_(t_info_data data)
 	t_settings			set;
 
 	set.bias = 0.001;
-	set.camera_to_world = _camera_to_world_(data.camera);
+	set.camera_to_world = _camera_to_world_(data.camera.nor_vector);
 	print_mat(set.camera_to_world);
 	set.screen_height = SCREEN_HEIGHT;
 	set.screen_width = SCREEN_WIDTH;
