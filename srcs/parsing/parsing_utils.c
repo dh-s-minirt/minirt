@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:26:54 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/21 15:11:53 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/25 02:48:31 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	fill_cone(char **strs, t_cone *cone)
 	cone->theta = atan(cone->height / cone->radius);
 }
 
-static void	_make_bot_disk(t_cone *cn, t_info_data *data)
+static void	_make_bot_disk(t_cone *cn, t_info_data *data, t_material mat)
 {
 	t_disk	*down;
 	t_node	*bot;
@@ -66,6 +66,8 @@ static void	_make_bot_disk(t_cone *cn, t_info_data *data)
 	down->r = cn->radius;
 	bot = node_new((void *)down, DISK);
 	node_add_back(&data->objects, bot);
+	bot->material.property = mat.property;
+	bot->material.m_type = mat.m_type;
 }
 
 void	init_cone(char **strs, t_info_data *data)
@@ -82,7 +84,7 @@ void	init_cone(char **strs, t_info_data *data)
 	node = node_new((void *)cone, CONE);
 	add_material_data(node, strs);
 	node_add_back(&data->objects, node);
-	_make_bot_disk(cone, data);
+	_make_bot_disk(cone, data, node->material);
 }
 
 void	init_camera(char **strs, t_info_data *data)

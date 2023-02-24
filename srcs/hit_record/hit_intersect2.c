@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:46:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/20 13:51:01 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/25 02:35:34 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ typedef void				(*t_inersect_)(t_node *, t_hit_rec *, const t_ray);
 //c언어 파싱 -> 일단 반환형 집어서 void -> identifier 괄호 있으니까 오른쪽 보고 다시 중간에 식별자
 // *보고 포인터의 식별자인걸 알고 오른쪽으로가서 왼쪽 괄호보고 이게 함수의 식별자인걸 암  
 //static const (function_pointer type)
-static const t_inersect_	g_intersect[5] = {
+static const t_inersect_	g_intersect[6] = {
 	_intersect_sphere_, _intersect_plane_, _intersect_cylinder_, \
-	_intersect_cone_, _intersect_disk_
+	_intersect_cone_, _intersect_disk_, NULL
 };
 
 t_abc	_make_abc_(const t_cone *cone, t_vec co, const t_ray ray)

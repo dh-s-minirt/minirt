@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:54:36 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/24 03:17:23 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/25 02:45:56 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ void	fill_cylinder(t_cylinder *data, char **strs)
 	ft_release_strs(tmp);
 }
 
-static void	_make_up_bot_disk(t_cylinder *cy, t_info_data *data, t_bool	is_water)
+static void	_make_up_bot_disk(t_cylinder *cy, t_info_data *data, \
+t_bool	is_water, t_material mat)
 {
 	t_disk	*up;
 	t_disk	*down;
@@ -76,6 +77,10 @@ static void	_make_up_bot_disk(t_cylinder *cy, t_info_data *data, t_bool	is_water
 	node_add_back(&data->objects, bot);
 	upper = node_new((void *)up, DISK);
 	node_add_back(&data->objects, upper);
+	bot->material.property = mat.property;
+	bot->material.m_type = mat.m_type;
+	upper->material.property = mat.property;
+	upper->material.m_type = mat.m_type;
 }
 
 void	init_cylinder(char **strs, t_info_data *data)
@@ -97,7 +102,7 @@ void	init_cylinder(char **strs, t_info_data *data)
 		is_water = TRUE;
 	else
 		is_water = FALSE;
-	_make_up_bot_disk(cylinder, data, is_water);
+	_make_up_bot_disk(cylinder, data, is_water, node->material);
 }
 
 void	fill_data(char *line, t_info_data *data, int *cnt)
