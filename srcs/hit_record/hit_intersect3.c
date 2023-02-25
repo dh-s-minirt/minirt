@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 20:52:50 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/25 23:17:34 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/26 00:33:14 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,4 @@ const t_ray ray)
 	cur_h_rec->albedo = vec_copy(disk->color);
 	cur_h_rec->obj_type = DISK;
 	cur_h_rec->material = cur_obj->material;
-	cur_h_rec->hit_center = vec_copy(disk->center);
 }

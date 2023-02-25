@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:49:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/25 23:09:49 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/26 00:26:20 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,7 @@ typedef struct s_hit_rec
 	t_obj_type	obj_type;
 	double		u;
 	double		v;
-	t_vec		hit_center;
-	t_vec		hit_height;
+	void		*object;
 }	t_hit_rec;
 
 typedef struct s_abc

@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 21:11:22 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/25 23:18:57 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/26 02:22:53 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,80 +42,64 @@ void	spherical_mapping(t_hit_rec *cur_h_rec)
 
 void	planar_mapping(t_hit_rec *cur_h_rec)
 {
-	const t_mat4	local_cord = _normal_cord_(cur_h_rec->hit_normal);
-	double			local_x;
-	double			local_y;
+	const t_plane	*plane = (t_plane *)cur_h_rec->object;
+	const t_mat4	local_cord = _normal_cord_(plane->nor_vector);
+	const t_vec		local_x = get_x_cord(local_cord);
+	const t_vec		local_y = get_y_cord(local_cord);
 
-	local_x = local_cord.m[0][0] * cur_h_rec->contact_point.x + \
-	local_cord.m[0][1] * cur_h_rec->contact_point.y + local_cord.m[0][2] * \
-	cur_h_rec->contact_point.z;
-	local_y = local_cord.m[1][0] * cur_h_rec->contact_point.x + \
-	local_cord.m[1][1] * cur_h_rec->contact_point.y + local_cord.m[1][2] * \
-	cur_h_rec->contact_point.z;
-	cur_h_rec->u = fabs(fmod(local_x, 100)) / 100;
-	cur_h_rec->v = fabs(fmod(local_y, 100)) / 100;
+	cur_h_rec->u = fmod(fabs(vec_dot(cur_h_rec->contact_point, local_x)), \
+	100) / 100;
+	cur_h_rec->v = fmod(fabs(vec_dot(cur_h_rec->contact_point, local_y)), \
+	100) / 100;
 	_uv_pattern_(cur_h_rec, 5.0);
 }
 
 void	disk_mapping(t_hit_rec *cur_h_rec)
 {
-	const t_mat4	local_cord = _normal_cord_(cur_h_rec->hit_normal);
-	double			local_x;
-	double			local_y;
-	double			local_z;
+	const t_disk	*disk = (t_disk *)cur_h_rec->object;
+	const t_mat4	local_cord = _normal_cord_(disk->nor_v);
+	const t_vec		local_y = get_y_cord(local_cord);
 	const t_vec		pc = vec_sub(cur_h_rec->contact_point, \
-	cur_h_rec->hit_center);
+	disk->center);
 
-	local_x = local_cord.m[0][0] * pc.x + \
-	local_cord.m[0][1] * pc.y + local_cord.m[0][2] * \
-	pc.z;
-	local_y = local_cord.m[1][0] * pc.x + \
-	local_cord.m[1][1] * pc.y + local_cord.m[1][2] * \
-	pc.z;
-	local_z = local_cord.m[2][0] * pc.x + \
-	local_cord.m[2][1] * pc.y + local_cord.m[2][2] * \
-	pc.z;
-	cur_h_rec->v = 1 - asin(local_y / vec_length(pc)) / PI;
-	_uv_pattern_(cur_h_rec, 5.2);
+	cur_h_rec->u = 1 - asin(vec_dot(local_y, pc) \
+	/ vec_length(pc)) / PI;
+	_uv_pattern_(cur_h_rec, 5);
 }
 
 void	cy_mapping(t_hit_rec *cur_h_rec)
 {
-	const t_mat4	local_cord = _normal_cord_(cur_h_rec->hit_normal);
-	double			local_x;
-	double			local_y;
-	double			local_z;
-	double			theta;
+	const t_cylinder	*cy = (t_cylinder *)cur_h_rec->object;
+	const t_mat4		local_cord = _normal_cord_(cy->nor_vector);
+	const t_vec			pc = vec_sub(cur_h_rec->contact_point, \
+	cy->center);
+	const t_vec 		pc_prime = vec_sub(cur_h_rec->contact_point, \
+	vec_add(cy->center, vec_mul(cy->nor_vector, fabs(vec_dot(pc, \
+	cy->nor_vector)))));
 
-	local_x = local_cord.m[0][0] * cur_h_rec->contact_point.x + \
-	local_cord.m[0][1] * cur_h_rec->contact_point.y + local_cord.m[0][2] * \
-	cur_h_rec->contact_point.z;
-	local_y = local_cord.m[1][0] * cur_h_rec->contact_point.x + \
-	local_cord.m[1][1] * cur_h_rec->contact_point.y + local_cord.m[1][2] * \
-	cur_h_rec->contact_point.z;
-	local_z = local_cord.m[2][0] * cur_h_rec->contact_point.x + \
-	local_cord.m[2][1] * cur_h_rec->contact_point.y + local_cord.m[2][2] * \
-	cur_h_rec->contact_point.z;
-	theta = atan2(local_x, local_z);
-	cur_h_rec->u = 0.5 + theta / (2 * PI);
-	cur_h_rec->v = fabs(fmod(local_y, 50)) / 50;
-	_uv_pattern_(cur_h_rec, 10);
+	cur_h_rec->u = 1 - asin(fabs(vec_dot(get_y_cord(local_cord), pc_prime)) \
+	/ vec_length(pc_prime)) / PI;
+	cur_h_rec->v = fabs(vec_dot(pc, cy->nor_vector)) / cy->height;
+	_uv_pattern_(cur_h_rec, 5);
 }
 
-	// const double	theta = atan2(cur_h_rec->hit_normal.z, \
-	// cur_h_rec->hit_normal.x);
+// 	// const double	theta = atan2(cur_h_rec->hit_normal.z, \
+// 	// cur_h_rec->hit_normal.x);
 
-	// cur_h_rec->u = 0.5 + theta / (2 * PI);
+// 	// cur_h_rec->u = 0.5 + theta / (2 * PI);
 void	cone_mapping(t_hit_rec *cur_h_rec)
 {
-	const t_mat4	local_cord = _normal_cord_(cur_h_rec->hit_normal);
-	const t_vec		local_x = get_x_cord(local_cord);
-	const t_vec		local_z = get_z_cord(local_cord);
-	const t_vec		pc = vec_sub(cur_h_rec->contact_point, \
-	cur_h_rec->hit_center);
+	const t_cone		*cn = (t_cone *)cur_h_rec->object;
+	const t_mat4		local_cord = _normal_cord_(cn->nor_vector);
+	const t_vec			pc = vec_sub(cur_h_rec->contact_point, \
+	cn->center);
+	const t_vec 		pc_prime = vec_sub(cur_h_rec->contact_point, \
+	vec_add(cn->center, vec_mul(cn->nor_vector, fabs(vec_dot(pc, \
+	cn->nor_vector)))));
 
-	cur_h_rec->u = 0.5 + atan2(vec_dot(local_z, pc), vec_dot(local_x, pc));
-	cur_h_rec->v = fmod(fabs(vec_dot(pc, cur_h_rec->hit_normal)), 10) / 10;  
+	cur_h_rec->u = 1 - asin(fabs(vec_dot(get_y_cord(local_cord), pc_prime)) \
+	/ vec_length(pc_prime)) / PI;
+	cur_h_rec->v = fabs(vec_dot(pc, cn->nor_vector)) / cn->height;
 	_uv_pattern_(cur_h_rec, 5);
 }
 
