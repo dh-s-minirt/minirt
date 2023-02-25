@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:26:54 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/25 02:48:31 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/25 22:22:12 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	fill_cone(char **strs, t_cone *cone)
 	cone->color = vec(ft_atof(color_data[0]) / 255.999, \
 		ft_atof(color_data[1]) / 255.999, ft_atof(color_data[2]) / 255.999);
 	ft_release_strs(color_data);
-	cone->theta = atan(cone->height / cone->radius);
+	cone->theta = atan(cone->radius / cone->height);
 }
 
 static void	_make_bot_disk(t_cone *cn, t_info_data *data, t_material mat)

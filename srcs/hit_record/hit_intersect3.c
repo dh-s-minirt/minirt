@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 20:52:50 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/25 02:36:25 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:17:34 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ const t_ray ray)
 	cur_h_rec->is_hit = TRUE;
 	cur_h_rec->contact_point = vec_add(ray.origin, \
 	vec_mul(ray.dir, cur_h_rec->t_near));
-	if (vec_dot(disk->nor_v, vec_sub(cur_h_rec->\
-	contact_point, ray.origin)) < 0)
+	if (vec_dot(disk->nor_v, vec_sub(cur_h_rec->contact_point, ray.origin)) < 0)
 		cur_h_rec->hit_normal = vec_unit(disk->nor_v);
 	else
 		cur_h_rec->hit_normal = vec_unit(vec_mul(disk->nor_v, -1));
 	cur_h_rec->albedo = vec_copy(disk->color);
 	cur_h_rec->obj_type = DISK;
 	cur_h_rec->material = cur_obj->material;
+	cur_h_rec->hit_center = vec_copy(disk->center);
 }

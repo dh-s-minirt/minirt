@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:56:30 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/24 15:25:10 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:17:46 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	_update_rec_(t_hit_rec *origin, t_hit_rec source)
 	{
 		origin->u = source.u;
 		origin->v = source.v;
+		origin->hit_center = source.hit_center;
 	}
 }
 

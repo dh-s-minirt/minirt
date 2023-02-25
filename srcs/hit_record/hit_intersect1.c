@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 09:42:31 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/24 18:55:43 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:14:43 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,6 @@ const t_ray ray)
 
 	if (!solve_quadratic(a, half_b, c, root))
 		return ;
-	// printf("%lf <-r \n", cy->radius);
-	// printf("%lf %lf %lf\n", a,half_b,c);
-	// printf("a %lf b %lf c  %lf root : %lf %lf\n", a,half_b,c,root[0], root[1]);
 	t_vec	p[2];
 	p[0] = vec_add(ray.origin, vec_mul(ray.dir, root[0]));
 	p[1] = vec_add(ray.origin, vec_mul(ray.dir, root[1]));

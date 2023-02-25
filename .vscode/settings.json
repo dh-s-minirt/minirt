@@ -1,0 +1,6 @@
+{
+	"files.associations": {
+		"setting.h": "c",
+		"matrix.h": "c"
+	}
+}

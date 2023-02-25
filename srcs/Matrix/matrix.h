@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:11:15 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/14 15:03:08 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/25 22:52:25 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,9 @@ t_vec		arr_vec3_2_vec(t_arr_vec3 vec3);
 void	print_mat(const t_mat4 a);
 t_mat4	_make_cord_(double xyz[3][3]);
 void	print_mat(const t_mat4 a);
+t_mat4	_normal_cord_(t_vec	normal);
+t_vec	get_x_cord(t_mat4 cord);
+t_vec	get_y_cord(t_mat4 cord);
+t_vec	get_z_cord(t_mat4 cord);
 
 #endif
