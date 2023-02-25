@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 21:11:22 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/25 02:26:54 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/25 20:27:26 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,13 @@
 
 void	_uv_pattern_(t_hit_rec *cur_h_rec)
 {
-	const double	checker_width = 20.0;
-	const double	checker_height = 20.0;
+	const double	checker_width = 5.0;
+	const double	checker_height = 5.0;
 	const double	on_u = modulo(cur_h_rec->u * checker_width);
 	const double	on_v = modulo(cur_h_rec->v * checker_height);
 
 	if (((on_u < 0.5) + (on_v < 0.5)) % 2 == 0)
-	{
 		cur_h_rec->albedo = vec(1, 1, 1);
-		cur_h_rec->albedo = copy_clamp(vec_mul(cur_h_rec->albedo, 255), 0, 1);
-	}
-	else
-	{
-		cur_h_rec->albedo = vec(1, 1, 1);
-	}
 }
 
 void	spherical_mapping(t_hit_rec *cur_h_rec)
