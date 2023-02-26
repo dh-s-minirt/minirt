@@ -6,14 +6,14 @@
 #    By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2023/02/24 21:16:16 by daegulee         ###   ########.fr        #
+#    Updated: 2023/02/26 16:43:36 by daegulee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME	=	minirt
 
-SRCS	=	main.c \
+SRCS	=	main2.c \
 			mlx_utils.c \
 			mini_rt.c	\
 			color/color_utils.c \
@@ -47,7 +47,11 @@ SRCS	=	main.c \
 			vector/vector_utility.c \
 			vector/vector.c \
 			vector/clamp.c \
-
+			parsing_ppm/argv.c \
+			parsing_ppm/debug_parse_ppm.c \
+			parsing_ppm/parsing_ppm.c \
+			parsing_ppm/parsing_ppm2.c \
+			parsing_ppm/parsing_ppm3.c \
 
 SRCS_DIR = srcs
 OBJS_DIR = objs
@@ -73,6 +77,7 @@ ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c
 	@mkdir -p ${OBJS_DIR}/Matrix
 	@mkdir -p ${OBJS_DIR}/render
 	@mkdir -p ${OBJS_DIR}/settings
+	@mkdir -p ${OBJS_DIR}/parsing_ppm
 	@${CC} ${CFLAGS}  -c $< -o $@ -MD
 
 $(NAME): $(OBJS)

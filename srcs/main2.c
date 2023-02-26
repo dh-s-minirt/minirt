@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit.c                                          :+:      :+:    :+:   */
+/*   main2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/26 14:35:51 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/26 16:17:20 by daegulee         ###   ########.fr       */
+/*   Created: 2023/02/26 16:33:59 by daegulee          #+#    #+#             */
+/*   Updated: 2023/02/26 16:38:00 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "mini_rt.h"
+#include "./parsing/parsing.h"
+#include "./color/color.h"
+#include "./mlx/mlx.h"
+// #include "./mlx_utils.h"
 #include <stdio.h>
-#include <stdlib.h>
+#include "./settings/setting.h"
+#include "./hit_record/hit_record.h"
+#include "./render/render.h"
+#include "./parsing_ppm/parsing_ppm.h"
 
-void	ft_exit(char *str)
+int main(int argc, char **argv)
 {
-	if (str == NULL)
-	{
-		printf("Error\n");
-		perror("rt :");
-	}
-	else
-		printf("Error\nrt: %s\n", str);
-	exit(EXIT_FAILURE);
+	argc =0;
+	char *str = argv[1];
+	t_ppm *ppm = parse_ppm(str);
+	
+	print_ppm(ppm);
 }
