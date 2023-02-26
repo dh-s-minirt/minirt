@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 10:52:13 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/09 19:05:19 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:36:42 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+void	ft_exit(char *str);
 void	*ft_malloc(size_t size_of);
 void	ft_release_strs(char **strs);
 int		ft_strs_size(char **strs);

@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_exit.c                                    :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/26 19:43:09 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/26 14:35:58 by daegulee         ###   ########.fr       */
+/*   Created: 2023/02/26 14:35:51 by daegulee          #+#    #+#             */
+/*   Updated: 2023/02/26 14:36:54 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-void	ft_print_exit(void)
+void	ft_exit(char *str)
 {
-	printf("Error\n");
+	if (str == NULL)
+	{
+		printf("Error\n");
+		perror("rt :");
+	}
+	else
+		printf("Error\n rt: %s\n", str);
 	exit(EXIT_FAILURE);
 }

@@ -1,6 +1,8 @@
 {
 	"files.associations": {
 		"setting.h": "c",
-		"matrix.h": "c"
+		"matrix.h": "c",
+		"mlx.h": "c",
+		"parsing_ppm.h": "c"
 	}
 }

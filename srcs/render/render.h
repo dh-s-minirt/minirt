@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:20:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/24 21:16:47 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/26 14:14:38 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_color		_shade_kphong(t_hit_rec hit_rec, t_info_data *data, \
 t_phong_propety *property, t_ray ray);
 t_color		_shade_reflect(t_hit_rec hit_rec, t_info_data *data, int depth, \
 t_ray ray);
-t_color	_shade_refract(t_hit_rec hit_rec, t_info_data *data, \
+t_color		_shade_refract(t_hit_rec hit_rec, t_info_data *data, \
 t_ray ray, t_fres_data fres_dat);
 t_bool		check_shadow(t_node	*objects, t_hit_rec	*hit_rec, t_vec dir, \
 t_lt_info cur_l_info);

@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_exit.c                                    :+:      :+:    :+:   */
+/*   argv.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/26 19:43:09 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/26 14:35:58 by daegulee         ###   ########.fr       */
+/*   Created: 2023/02/26 14:44:29 by daegulee          #+#    #+#             */
+/*   Updated: 2023/02/26 14:52:05 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "parsing_ppm.h"
 
-void	ft_print_exit(void)
+int	argv_len(char **argv)
 {
-	printf("Error\n");
-	exit(EXIT_FAILURE);
+	int	i;
+
+	i = 0;
+	while (argv[i])
+		i++;
+	return (i);
+}
+
+void	argv_free(char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[i])
+		free(argv[i++]);
+	free(argv);
 }

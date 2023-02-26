@@ -6,7 +6,7 @@
 #    By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/06 10:50:54 by hyunkyle          #+#    #+#              #
-#    Updated: 2023/02/14 00:02:06 by daegulee         ###   ########.fr        #
+#    Updated: 2023/02/26 14:36:19 by daegulee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRCS				= ft_atoi.c \
 					  ft_strs_size.c \
 					  ft_print_exit.c \
 					  ft_release_strs.c \
+					  ft_exit.c \
 
 BNS_SRCS				= ft_lstsize.c \
 					  ft_lstadd_back.c \
