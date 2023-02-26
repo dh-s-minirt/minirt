@@ -3,6 +3,7 @@
 		"setting.h": "c",
 		"matrix.h": "c",
 		"mlx.h": "c",
-		"parsing_ppm.h": "c"
+		"parsing_ppm.h": "c",
+		"get_next_line_bonus.h": "c"
 	}
 }

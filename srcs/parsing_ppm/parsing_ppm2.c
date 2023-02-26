@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 15:14:45 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/26 16:48:37 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/27 00:04:18 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,27 +34,4 @@ void	_get_ppm_max_color(char *str, t_ppm *ppm)
 	if (val < 0 || val > 255)
 		ft_exit("ppm : info_line error.");
 	ppm->max = val;
-}
-
-void	_get_ppm_info(int fd, t_ppm *ppm)
-{
-	char	*str;
-	int		info_cnt;
-
-	info_cnt = 2;
-	while (info_cnt)
-	{
-		str = get_next_line(fd);
-		if (str == NULL)
-			ft_exit("ppm : info_line error.");
-		if (str[0] != '#')
-		{
-			if (info_cnt == 2)
-				_get_ppm_h_w(str, ppm);
-			else
-				_get_ppm_max_color(str, ppm);
-			info_cnt--;
-		}
-		free(str);
-	}
 }

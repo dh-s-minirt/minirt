@@ -6,7 +6,7 @@
 #    By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2023/02/26 16:43:36 by daegulee         ###   ########.fr        #
+#    Updated: 2023/02/27 00:44:57 by daegulee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,8 +51,8 @@ SRCS	=	main2.c \
 			parsing_ppm/debug_parse_ppm.c \
 			parsing_ppm/parsing_ppm.c \
 			parsing_ppm/parsing_ppm2.c \
-			parsing_ppm/parsing_ppm3.c \
-
+			parsing_ppm/parse_ppm.c \
+			
 SRCS_DIR = srcs
 OBJS_DIR = objs
 
