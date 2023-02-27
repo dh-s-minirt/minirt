@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/28 00:36:31 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/28 00:46:12 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define PI 3.1415926535897932385
 # define TRUE 1
 # define FALSE 0
-# define THREAD_N 8
+# define THREAD_N 24
 
 typedef int	t_bool;
 
