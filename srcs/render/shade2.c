@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:34:01 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/27 21:48:12 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/27 22:58:51 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_color	_shade_uv(t_hit_rec hit_rec, t_info_data *data, t_ray r)
 	property.kd = 0.8;
 	property.ks = 0.2;
 	property.n = 20;
-	get_uv(&hit_rec, 100);
+	get_uv(&hit_rec, 100, 1);
 	_check_pattern_(&hit_rec, 5.0);
 	phong = _shade_kphong(hit_rec, data, &property, r);
 	return (phong);
@@ -67,9 +67,7 @@ t_color	_shade_special(t_hit_rec hit_rec, t_info_data *data, t_ray r)
 	property.n = 20;
 	if (ppm == NULL)
 		ppm = parse_ppm(special->ppm_name);
-	get_uv(&hit_rec, 10);
+	get_uv(&hit_rec, 10, 0);
 	_get_special(&hit_rec, ppm);
-	if (property.ks == 0.2)
-		return (hit_rec.albedo);
 	return (_shade_kphong(hit_rec, data, &property, r));
 }

@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 21:11:22 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/27 21:55:14 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/27 23:02:58 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,25 @@ void	planar_mapping(t_hit_rec *cur_h_rec, double scale)
 	scale) / scale;
 }
 
-void	disk_mapping(t_hit_rec *cur_h_rec)
+void	disk_mapping(t_hit_rec *cur_h_rec, int is_check)
 {
 	const t_disk	*disk = (t_disk *)cur_h_rec->object;
 	const t_mat4	local_cord = _normal_cord_(disk->nor_v);
 	const t_vec		local_y = get_y_cord(local_cord);
+	const t_vec		local_x = get_x_cord(local_cord);
 	const t_vec		pc = vec_sub(cur_h_rec->contact_point, \
 	disk->center);
 
-	cur_h_rec->u = 1 - asin(vec_dot(local_y, pc) \
+	if (is_check)
+	{
+		cur_h_rec->u = 1 - asin(vec_dot(local_y, pc) \
 	/ vec_length(pc)) / PI;
+		return ;
+	}
+	cur_h_rec->u = fmod(fabs(vec_dot(cur_h_rec->contact_point, local_x)), \
+	10) / 10;
+	cur_h_rec->v = fmod(fabs(vec_dot(cur_h_rec->contact_point, local_y)), \
+	10) / 10;
 }
 
 void	cy_mapping(t_hit_rec *cur_h_rec)
@@ -105,14 +114,14 @@ void	cone_mapping(t_hit_rec *cur_h_rec)
 	cur_h_rec->v = fabs(vec_dot(pc, cn->nor_vector)) / cn->height;
 }
 
-void	get_uv(t_hit_rec *cur_h_rec, double	plane_scale)
+void	get_uv(t_hit_rec *cur_h_rec, double	plane_scale, int is_check)
 {
 	if (cur_h_rec->obj_type == SPHERE)
 		spherical_mapping(cur_h_rec);
 	else if (cur_h_rec->obj_type == PLANE)
 		planar_mapping(cur_h_rec, plane_scale);
 	else if (cur_h_rec->obj_type == DISK)
-		disk_mapping(cur_h_rec);
+		disk_mapping(cur_h_rec, is_check);
 	else if (cur_h_rec->obj_type == CYLINDER)
 		cy_mapping(cur_h_rec);
 	else if (cur_h_rec->obj_type == CONE)
