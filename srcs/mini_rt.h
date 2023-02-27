@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/27 23:06:59 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/28 00:36:31 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,12 @@
 # include "./color/color.h"
 # include <stdlib.h>
 # include <math.h>
+# include <pthread.h>
+
 # define PI 3.1415926535897932385
-// # define FOCAL_LENGTH 1.0
-// # define VIEWPORT_HEIGHT 2.0
-// # define CANVAS_WIDTH 500
-// # define CANVAS_HEIGHT 500
 # define TRUE 1
 # define FALSE 0
+# define THREAD_N 8
 
 typedef int	t_bool;
 
@@ -38,7 +37,7 @@ typedef struct s_ppm
 	int		max;
 }	t_ppm;
 
-typedef struct s_node	t_node;
+typedef struct s_node t_node;
 
 typedef enum t_obj_type
 {

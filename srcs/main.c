@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:16:45 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/27 23:26:53 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/28 00:39:45 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,50 +14,54 @@
 #include "./parsing/parsing.h"
 #include "./color/color.h"
 #include "./mlx/mlx.h"
-// #include "./mlx_utils.h"
 #include <stdio.h>
 #include "./settings/setting.h"
 #include "./hit_record/hit_record.h"
 #include "./render/render.h"
-// void	print_data(t_info_data *data)
-// {
-// 	t_light_node *tmp;
 
-// 	printf("camera : center = %lf %lf %lf, nor_vec = %lf %lf %lf, fov %d\n", data->camera.center.x, data->camera.center.y, data->camera.center.z,\
-// 		data->camera.nor_vector.x, data->camera.nor_vector.y, data->camera.nor_vector.z, data->camera.fov);
-// 	tmp = data->lights;
-// 	while (tmp)
-// 	{
-// 		if(tmp->type == AM_LIGHT)
-// 		{
-// 			t_am_light *light = tmp->data;
-// 			printf("am_light : %lf %lf %lf\n", light->color.x, light->color.y, light->color.z);
-// 		}
-// 		else if (tmp->type == LIGHT)
-// 		{
-// 			t_light *light = tmp->data;
-// 			printf("light : center = %lf %lf %lf ratio = %lf color = %lf %lf %lf\n", light->center.x, light->center.y, light->center.z,\
-// 				light->ratio, light->color.x, light->color.y, light->color.z);
-// 		}
-// 		tmp = tmp->next;
-// 	}
-// }
+typedef struct s_zip
+{
+	t_settings	set;
+	t_info_data	*data;
+	t_my_mlx	*mlx;
+	int			start_row;
+}	t_zip;
+
+t_zip	*_make_zip(t_settings set, \
+t_info_data *data, \
+t_my_mlx	*mlx, \
+int row)
+{
+	t_zip	*zip;
+
+	zip = ft_malloc(sizeof(t_zip));
+	zip->set = set;
+	zip->data = data;
+	zip->mlx = mlx;
+	zip->start_row = row;
+	return (zip);
+}
 
 int	main(int argc, char **argv)
 {
 	t_info_data	data;
 	t_settings	set;
 	t_my_mlx	my_mlx;
+	pthread_t	tid[THREAD_N];
+	int			i;
 
-	if (argc != 2)
-		return (0);
-	data.objects = NULL;
-	data.lights = NULL;
-	// data.canvas = canvas_new(CANVAS_WIDTH, CANVAS_HEIGHT);
-	get_info_data(argv[1], &data);
+	i = -1;
+	get_info_data(argv[1], &data, argc);
 	set = _init_setting_(data);
 	my_mlx = init_mlx();
-	render(set, &data, &my_mlx);
+	while (++i < 8)
+		pthread_create(&tid[i], NULL, \
+		render, \
+		(void *)_make_zip(set, &data, &my_mlx, \
+		i * set.screen_height / THREAD_N));
+	i = -1;
+	while (++i < 8)
+		pthread_join(tid[i], NULL);
 	mlx_put_image_to_window(my_mlx.mlx, \
 	my_mlx.mlx_win, my_mlx.img.img, 0, 0);
 	mlx_loop(my_mlx.mlx);

@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:54:36 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/25 02:45:56 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/28 00:17:54 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,12 +133,16 @@ void	fill_data(char *line, t_info_data *data, int *cnt)
 	free(line);
 }
 
-void	get_info_data(char *filename, t_info_data *data)
+void	get_info_data(char *filename, t_info_data *data, int argc)
 {
 	int			fd;
 	char		*line;
 	int			cnt;
 
+	if (argc != 2)
+		ft_exit("argc error.");
+	data->objects = NULL;
+	data->lights = NULL;
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		ft_print_exit();

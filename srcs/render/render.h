@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:20:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/27 22:54:17 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/28 00:41:03 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include "../mini_rt.h"
 # include "../mlx/mlx.h"
 
+# define X 0
+# define Y 1
 # define DEFAULT_R 30
 
 typedef struct s_fres_data
@@ -46,7 +48,7 @@ int			write_color(int t, t_vec pixel_color);
 //render
 void		init_property(t_hit_rec *hit_rec);
 t_color		ray_casting(t_ray r, t_info_data *data, int depth);
-void		render(t_settings set, t_info_data	*data, t_my_mlx *mlx);
+void		*render(void *source_zip);
 void		put_color(t_color pixel_color, int row, int col, t_mlx_data *data);
 
 //shade
