@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:16:45 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/28 00:45:23 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/28 01:11:28 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,24 @@ int	main(int argc, char **argv)
 	t_my_mlx	my_mlx;
 	pthread_t	tid[THREAD_N];
 	int			i;
+	t_zip		*zip[THREAD_N];
 
 	i = -1;
 	get_info_data(argv[1], &data, argc);
 	set = _init_setting_(data);
 	my_mlx = init_mlx();
 	while (++i < THREAD_N)
-		pthread_create(&tid[i], NULL, \
-		render, \
-		(void *)_make_zip(set, &data, &my_mlx, \
-		i * set.screen_height / THREAD_N));
+	{
+		zip[i] = _make_zip(set, &data, &my_mlx, \
+		i * set.screen_height / THREAD_N);
+		pthread_create(&tid[i], NULL, render, (void *)zip[i]);
+	}
 	i = -1;
 	while (++i < THREAD_N)
 		pthread_join(tid[i], NULL);
+	i = -1;
+	while (++i < THREAD_N)
+		free(zip[i]);
 	mlx_put_image_to_window(my_mlx.mlx, \
 	my_mlx.mlx_win, my_mlx.img.img, 0, 0);
 	mlx_loop(my_mlx.mlx);
