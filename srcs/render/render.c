@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/24 18:54:43 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:27:23 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ t_color	ray_casting(t_ray r, t_info_data *data, int depth)
 		}
 		else if (hit_rec.material.m_type == UV)
 			pixel_color = _shade_uv(hit_rec, data, r);
+		else if (hit_rec.material.m_type == SPECIAL)
+			pixel_color = _shade_special(hit_rec, data, r);
 		else
 			pixel_color = vec(0, 0, 0);
 	}

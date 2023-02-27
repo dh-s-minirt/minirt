@@ -6,14 +6,14 @@
 #    By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2023/02/27 00:44:57 by daegulee         ###   ########.fr        #
+#    Updated: 2023/02/27 15:03:08 by daegulee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME	=	minirt
 
-SRCS	=	main2.c \
+SRCS	=	main.c \
 			mlx_utils.c \
 			mini_rt.c	\
 			color/color_utils.c \

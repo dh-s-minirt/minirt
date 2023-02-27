@@ -6,13 +6,13 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 21:11:22 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/26 02:22:53 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:02:50 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 
-void	_uv_pattern_(t_hit_rec *cur_h_rec, double check_n)
+void	_check_pattern_(t_hit_rec *cur_h_rec, double check_n)
 {
 	const double	checker_width = check_n;
 	const double	checker_height = check_n;
@@ -31,7 +31,6 @@ void	spherical_mapping(t_hit_rec *cur_h_rec)
 
 	cur_h_rec->u = 0.5 + theta / (2 * PI);
 	cur_h_rec->v = 1 - phi / PI;
-	_uv_pattern_(cur_h_rec, 5.0);
 }
 
 // void	planar_mapping(t_hit_rec *cur_h_rec)
@@ -51,7 +50,6 @@ void	planar_mapping(t_hit_rec *cur_h_rec)
 	100) / 100;
 	cur_h_rec->v = fmod(fabs(vec_dot(cur_h_rec->contact_point, local_y)), \
 	100) / 100;
-	_uv_pattern_(cur_h_rec, 5.0);
 }
 
 void	disk_mapping(t_hit_rec *cur_h_rec)
@@ -64,7 +62,6 @@ void	disk_mapping(t_hit_rec *cur_h_rec)
 
 	cur_h_rec->u = 1 - asin(vec_dot(local_y, pc) \
 	/ vec_length(pc)) / PI;
-	_uv_pattern_(cur_h_rec, 5);
 }
 
 void	cy_mapping(t_hit_rec *cur_h_rec)
@@ -80,7 +77,6 @@ void	cy_mapping(t_hit_rec *cur_h_rec)
 	cur_h_rec->u = 1 - asin(fabs(vec_dot(get_y_cord(local_cord), pc_prime)) \
 	/ vec_length(pc_prime)) / PI;
 	cur_h_rec->v = fabs(vec_dot(pc, cy->nor_vector)) / cy->height;
-	_uv_pattern_(cur_h_rec, 5);
 }
 
 // 	// const double	theta = atan2(cur_h_rec->hit_normal.z, \
@@ -100,7 +96,6 @@ void	cone_mapping(t_hit_rec *cur_h_rec)
 	cur_h_rec->u = 1 - asin(fabs(vec_dot(get_y_cord(local_cord), pc_prime)) \
 	/ vec_length(pc_prime)) / PI;
 	cur_h_rec->v = fabs(vec_dot(pc, cn->nor_vector)) / cn->height;
-	_uv_pattern_(cur_h_rec, 5);
 }
 
 void	get_uv(t_hit_rec *cur_h_rec)
