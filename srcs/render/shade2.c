@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:34:01 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/27 22:58:51 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/27 23:10:16 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,13 @@ t_color	_shade_special(t_hit_rec hit_rec, t_info_data *data, t_ray r)
 {
 	const t_special_property	*special = \
 	(t_special_property *)hit_rec.material.property;
-	static t_ppm				*ppm;
+	t_ppm						*ppm;
 	t_phong_propety				property;
 
+	ppm = special->ppm;
 	property.kd = 1.0;
 	property.ks = 0.2;
 	property.n = 20;
-	if (ppm == NULL)
-		ppm = parse_ppm(special->ppm_name);
 	get_uv(&hit_rec, 10, 0);
 	_get_special(&hit_rec, ppm);
 	return (_shade_kphong(hit_rec, data, &property, r));

@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/27 16:07:29 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/27 23:06:59 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include "./color/color.h"
 # include <stdlib.h>
 # include <math.h>
-
 # define PI 3.1415926535897932385
 // # define FOCAL_LENGTH 1.0
 // # define VIEWPORT_HEIGHT 2.0
@@ -30,6 +29,14 @@
 typedef int	t_bool;
 
 //image info
+
+typedef struct s_ppm
+{
+	t_color	*map;
+	int		width;
+	int		height;
+	int		max;
+}	t_ppm;
 
 typedef struct s_node	t_node;
 
@@ -87,6 +94,7 @@ typedef struct s_fresenel_property
 typedef struct s_special_property
 {
 	char	*ppm_name;
+	t_ppm	*ppm;
 }	t_special_property;
 
 typedef struct t_material

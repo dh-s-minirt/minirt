@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 14:20:28 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/27 00:36:41 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/27 23:06:49 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,6 @@
 # define R 0
 # define G 1
 # define B 2
-
-typedef struct s_ppm
-{
-	t_color	*map;
-	int		width;
-	int		height;
-	int		max;
-}	t_ppm;
 
 int		argv_len(char **argv);
 void	argv_free(char **argv);

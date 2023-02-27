@@ -6,12 +6,13 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 16:07:41 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/27 16:14:20 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/27 23:09:05 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 #include "../vector/vector.h"
+#include "../parsing_ppm/parsing_ppm.h"
 
 void	add_reflect(t_node *node)
 {
@@ -76,6 +77,7 @@ void	add_special(t_node *node, char **strs)
 	if (!special)
 		ft_print_exit();
 	special->ppm_name = ft_strdup(strs[end_idx]);
+	special->ppm = parse_ppm(special->ppm_name);
 	material.m_type = SPECIAL;
 	material.property = (void *) special;
 	node->material = material;
