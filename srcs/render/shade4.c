@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 21:11:22 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/27 15:02:50 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/27 21:55:14 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,30 @@ void	_check_pattern_(t_hit_rec *cur_h_rec, double check_n)
 		cur_h_rec->albedo = vec(1, 1, 1);
 }
 
-void	spherical_mapping(t_hit_rec *cur_h_rec)
-{
-	const double	theta = atan2(cur_h_rec->hit_normal.z, \
-	cur_h_rec->hit_normal.x);
-	const double	phi = asin(cur_h_rec->hit_normal.y);
-
-	cur_h_rec->u = 0.5 + theta / (2 * PI);
-	cur_h_rec->v = 1 - phi / PI;
-}
-
-// void	planar_mapping(t_hit_rec *cur_h_rec)
+// void	spherical_mapping(t_hit_rec *cur_h_rec)
 // {
-// 	cur_h_rec->u = fmod(cur_h_rec->contact_point.x, 1);
-// 	cur_h_rec->v = fmod(cur_h_rec->contact_point.z, 1);
+// 	const double	theta = atan2(cur_h_rec->hit_normal.z, \
+// 	cur_h_rec->hit_normal.x);
+// 	const double	phi = asin(cur_h_rec->hit_normal.y);
+
+// 	cur_h_rec->u = 0.5 + theta / (2 * PI);
+// 	cur_h_rec->v = 1 - phi / PI;
 // }
 
-void	planar_mapping(t_hit_rec *cur_h_rec)
+void	spherical_mapping(t_hit_rec *cur_h_rec)
+{
+	const t_sphere	*sp = (t_sphere *)cur_h_rec->object;
+	const t_vec		pc = vec_sub(cur_h_rec->contact_point, \
+	sp->center);
+	const double	theta = atan2(pc.z, \
+	pc.x);
+	const double	phi = asin(pc.y / vec_length(pc));
+
+	cur_h_rec->u = theta / (PI * 2) + 0.5;
+	cur_h_rec->v = phi / PI + 0.5;
+}
+
+void	planar_mapping(t_hit_rec *cur_h_rec, double scale)
 {
 	const t_plane	*plane = (t_plane *)cur_h_rec->object;
 	const t_mat4	local_cord = _normal_cord_(plane->nor_vector);
@@ -47,9 +54,9 @@ void	planar_mapping(t_hit_rec *cur_h_rec)
 	const t_vec		local_y = get_y_cord(local_cord);
 
 	cur_h_rec->u = fmod(fabs(vec_dot(cur_h_rec->contact_point, local_x)), \
-	100) / 100;
+	scale) / scale;
 	cur_h_rec->v = fmod(fabs(vec_dot(cur_h_rec->contact_point, local_y)), \
-	100) / 100;
+	scale) / scale;
 }
 
 void	disk_mapping(t_hit_rec *cur_h_rec)
@@ -98,12 +105,12 @@ void	cone_mapping(t_hit_rec *cur_h_rec)
 	cur_h_rec->v = fabs(vec_dot(pc, cn->nor_vector)) / cn->height;
 }
 
-void	get_uv(t_hit_rec *cur_h_rec)
+void	get_uv(t_hit_rec *cur_h_rec, double	plane_scale)
 {
 	if (cur_h_rec->obj_type == SPHERE)
 		spherical_mapping(cur_h_rec);
 	else if (cur_h_rec->obj_type == PLANE)
-		planar_mapping(cur_h_rec);
+		planar_mapping(cur_h_rec, plane_scale);
 	else if (cur_h_rec->obj_type == DISK)
 		disk_mapping(cur_h_rec);
 	else if (cur_h_rec->obj_type == CYLINDER)

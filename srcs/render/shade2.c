@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:34:01 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/27 16:14:56 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/27 21:48:12 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_color	_shade_uv(t_hit_rec hit_rec, t_info_data *data, t_ray r)
 	property.kd = 0.8;
 	property.ks = 0.2;
 	property.n = 20;
-	get_uv(&hit_rec);
+	get_uv(&hit_rec, 100);
 	_check_pattern_(&hit_rec, 5.0);
 	phong = _shade_kphong(hit_rec, data, &property, r);
 	return (phong);
@@ -49,9 +49,10 @@ void	_get_special(t_hit_rec *hit_rec, t_ppm *ppm)
 	double	x;
 	double	y;
 
-	x = hit_rec->u * (ppm->width - 1);
-	y = hit_rec->v * (ppm->height - 1);
-	hit_rec->albedo = (ppm->map)[(int)round(y) * ppm->height + (int)round(x)];
+	x = clamp(hit_rec->u * (ppm->width - 1), 0, ppm->width - 1);
+	y = clamp(hit_rec->v * (ppm->height - 1), 0, ppm->height - 1);
+	hit_rec->albedo = (ppm->map)[(int)round(y) * ppm->width + \
+	(int)round(x) - 1];
 }
 
 t_color	_shade_special(t_hit_rec hit_rec, t_info_data *data, t_ray r)
@@ -66,7 +67,9 @@ t_color	_shade_special(t_hit_rec hit_rec, t_info_data *data, t_ray r)
 	property.n = 20;
 	if (ppm == NULL)
 		ppm = parse_ppm(special->ppm_name);
-	get_uv(&hit_rec);
+	get_uv(&hit_rec, 10);
 	_get_special(&hit_rec, ppm);
+	if (property.ks == 0.2)
+		return (hit_rec.albedo);
 	return (_shade_kphong(hit_rec, data, &property, r));
 }

@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:56:30 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/26 00:26:47 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:33:42 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	_update_rec_(t_hit_rec *origin, t_hit_rec source)
 	origin->albedo = vec_copy(source.albedo);
 	origin->obj_type = source.obj_type;
 	origin->material = source.material;
-	if (source.material.m_type == UV)
+	if (source.material.m_type == UV || \
+	source.material.m_type == SPECIAL)
 	{
 		origin->u = source.u;
 		origin->v = source.v;

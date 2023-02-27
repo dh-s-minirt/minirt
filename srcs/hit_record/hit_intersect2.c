@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:46:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/26 00:27:27 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:33:59 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ double root[2], const t_ray ray)
 t_bool	query_hit(t_node *cur_obj, t_hit_rec *cur_h_rec, const t_ray ray)
 {
 	g_intersect[cur_obj->type](cur_obj, cur_h_rec, ray);
-	if (cur_obj->material.m_type == UV)
+	if (cur_obj->material.m_type == UV ||
+	cur_obj->material.m_type == SPECIAL)
 		cur_h_rec->object = cur_obj->data;
 	return (cur_h_rec->is_hit);
 }
