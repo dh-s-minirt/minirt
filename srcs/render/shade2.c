@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:34:01 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/27 15:33:39 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/27 16:14:56 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,21 +59,13 @@ t_color	_shade_special(t_hit_rec hit_rec, t_info_data *data, t_ray r)
 	const t_special_property	*special = \
 	(t_special_property *)hit_rec.material.property;
 	static t_ppm				*ppm;
-	char						*str;
 	t_phong_propety				property;
 
-	if (special->special_type == S1)
-		str = "./ppm/earth.ppm";
-	else if (special->special_type == S2)
-		str = "./ppm/moon.ppm";
-	else
-		str = "./ppm/s1.ppm";
 	property.kd = 1.0;
 	property.ks = 0.2;
 	property.n = 20;
-	printf("%s\n", str);
 	if (ppm == NULL)
-		ppm = parse_ppm(str);
+		ppm = parse_ppm(special->ppm_name);
 	get_uv(&hit_rec);
 	_get_special(&hit_rec, ppm);
 	return (_shade_kphong(hit_rec, data, &property, r));

@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:47:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/27 00:43:56 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/27 16:25:09 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ t_ppm	*parse_ppm(char *file)
 	_get_ppm_info(fd, ppm, fp);
 	_init_ppm_map(ppm);
 	get_ppm_data(fp, ppm);
+	print_ppm(ppm);
 	return (ppm);
 }

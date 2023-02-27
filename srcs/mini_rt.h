@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/27 14:58:48 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/27 16:07:29 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ typedef struct s_fresenel_property
 
 typedef struct s_special_property
 {
-	t_special_type	special_type;
+	char	*ppm_name;
 }	t_special_property;
 
 typedef struct t_material
