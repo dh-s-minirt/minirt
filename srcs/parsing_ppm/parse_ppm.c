@@ -6,52 +6,30 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:47:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/27 23:25:57 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/28 01:00:17 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing_ppm.h"
 
-static void	_check_p3(int fd)
+static void	_check_p3(FILE *fp)
 {
-	char	*str;
+	char	str[3];
 
-	str = get_next_line(fd);
-	if (str == NULL || ft_strcmp("P3\n", str) != 0)
-	{
-		free(str);
+	if (fscanf(fp, "%s", str) < 1)
 		ft_exit("ppm : first_line should be P3");
-	}
-	else
-		free(str);
+	if (ft_strcmp("P3", str) != 0)
+		ft_exit("ppm : first_line should be P3");
 }
 
-void	_get_ppm_info(int fd, t_ppm *ppm, FILE *fp)
+void	_get_ppm_info(t_ppm *ppm, FILE *fp)
 {
-	char	*str;
-	int		info_cnt;
-	char	buffer[50];
-	int		i;
-
-	i = -1;
-	info_cnt = 2;
-	while (info_cnt)
-	{
-		str = get_next_line(fd);
-		if (str == NULL)
-			ft_exit("ppm : info_line error.");
-		if (str[0] != '#')
-		{
-			if (info_cnt == 2)
-				_get_ppm_h_w(str, ppm);
-			else
-				_get_ppm_max_color(str, ppm);
-			info_cnt--;
-		}
-		free(str);
-	}
-	while (++i < 4)
-		fscanf(fp, "%s", buffer);
+	if (fscanf(fp, "%d %d %d", &ppm->width, &ppm->height, &ppm->max) < 2)
+		ft_exit("ppm : info_line error.");
+	if (ppm->width < 0 || ppm->width > MAX_PPM_SIZE || \
+	ppm->height < 0 || ppm->width > MAX_PPM_SIZE || \
+	ppm->max < 0 || ppm->max > 255)
+		ft_exit("ppm : info_line error.");
 }
 
 void	get_ppm_data(FILE *fp, t_ppm *ppm)
@@ -69,34 +47,17 @@ void	get_ppm_data(FILE *fp, t_ppm *ppm)
 	}
 }
 
-static void	_clear_gnl(int fd)
-{
-	char	*str;
-
-	while (1)
-	{
-		str = get_next_line(fd);
-		if (str == NULL)
-			break ;
-		free(str);
-	}
-	close(fd);
-}
-
 t_ppm	*parse_ppm(char *file)
 {
 	FILE		*fp;
-	int			fd;
 	t_ppm		*ppm;
 
-    fp = fopen(file, "r+");
-	fd = open(file, O_RDONLY);
-	if (fp == NULL && fd < 0)
+	fp = fopen(file, "r+");
+	if (fp == NULL)
 		ft_exit("ppm_parse error.");
-	_check_p3(fd);
+	_check_p3(fp);
 	ppm = ft_malloc(sizeof(t_ppm));
-	_get_ppm_info(fd, ppm, fp);
-	_clear_gnl(fd);
+	_get_ppm_info(ppm, fp);
 	_init_ppm_map(ppm);
 	get_ppm_data(fp, ppm);
 	fclose(fp);
