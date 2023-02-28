@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setting.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 16:27:32 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/25 22:49:29 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/28 20:14:24 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "../mini_rt.h"
 # include "../color/color.h"
 
-# define SCREEN_WIDTH 1920
-# define SCREEN_HEIGHT 1080
+# define SCREEN_WIDTH 1080
+# define SCREEN_HEIGHT 720
 
 typedef struct s_settings{
 	double	fov;
