@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shade.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:30:51 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/28 16:41:18 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/28 21:05:19 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,17 @@ t_phong_propety *property, t_ray ray)
 		cur_l_info = get_lt_info(cur_light, hit_rec);
 		is_shadow = check_shadow(data->objects, &hit_rec, \
 		vec_mul((cur_l_info.dir), -1), cur_l_info);
+		if (is_shadow == TRUE)
+		{
+			cur_light = cur_light->next;
+			continue ;
+		}
 		diffuse = vec_add(diffuse, \
-		vec_mul(_get_diffuse_(cur_l_info, hit_rec), !is_shadow));
+		_get_diffuse_(cur_l_info, hit_rec));
 		if (property->kd != 1.0)
 			specular = vec_add(specular, \
-		vec_mul(_get_specular_(cur_l_info, hit_rec, \
-		property, ray), !is_shadow));
+		_get_specular_(cur_l_info, hit_rec, \
+		property, ray));
 		cur_light = cur_light->next;
 	}
 	return (vec_add(vec_mul(diffuse, \
