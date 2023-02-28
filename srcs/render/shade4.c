@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 21:11:22 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/28 17:12:45 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:28:34 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	disk_mapping(t_hit_rec *cur_h_rec, int is_check)
 
 	if (is_check)
 	{
-		cur_h_rec->u = 1 - asin(vec_dot(local_y, pc) \
+		cur_h_rec->u = 0.5 + asin(vec_dot(local_y, pc) \
 	/ vec_length(pc)) / PI;
 		return ;
 	}

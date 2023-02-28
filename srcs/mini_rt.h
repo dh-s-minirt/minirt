@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/28 00:46:12 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:16:31 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 # define FALSE 0
 # define THREAD_N 24
 
-typedef int	t_bool;
+typedef int				t_bool;
+typedef struct s_node	t_node;
 
 //image info
 
@@ -36,8 +37,6 @@ typedef struct s_ppm
 	int		height;
 	int		max;
 }	t_ppm;
-
-typedef struct s_node t_node;
 
 typedef enum t_obj_type
 {
