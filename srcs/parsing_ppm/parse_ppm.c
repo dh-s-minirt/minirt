@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 23:47:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/28 19:48:16 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/02/28 22:15:31 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ void	get_ppm_data(FILE *fp, t_ppm *ppm)
 	{
 		if (fscanf(fp, "%lf %lf %lf", \
 		&((ppm->map[i]).x), &((ppm->map[i]).y), &((ppm->map[i]).z)) < 3)
+			ft_exit("ppm_parse error.");
+		if (ppm->map[i].x > ppm->max || ppm->map[i].x < 0 \
+		|| ppm->map[i].y > ppm->max || ppm->map[i].y < 0 \
+		|| ppm->map[i].z > ppm->max || ppm->map[i].z < 0)
 			ft_exit("ppm_parse error.");
 		ppm->map[i] = vec_div(ppm->map[i], 255.999);
 		i++;
