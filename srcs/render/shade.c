@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:30:51 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/24 04:11:49 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:41:18 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,16 @@ t_lt_info	get_lt_info(t_light_node *light, t_hit_rec hit_rec)
 		point_light = (t_light *)light->data;
 		cur_info.dir = vec_sub(hit_rec.contact_point, point_light->center);
 		cur_info.dist = vec_length(cur_info.dir);
-		// printf("contact x : %lf, y : %lf z : %lf\n",\
-		// hit_rec.contact_point.x, hit_rec.contact_point.y,hit_rec.contact_point.z);
 		cur_info.intensity = copy_vec_clamp(vec_mul(point_light->color, \
-		pow(((double)DEFAULT_R / cur_info.dist), 2)) , vec(0, 0, 0), \
+		pow(((double)DEFAULT_R / cur_info.dist), 2)), vec(0, 0, 0), \
 		point_light->color);
-		// printf("divdie %lf \n", (4 * PI * length_squared(cur_info.dir)));
 		cur_info.dir = vec_unit(cur_info.dir);
 	}
 	return (cur_info);
 }
-// cy 0,20,-10 0,0,1 10, 10 128,128,0
-t_bool	check_shadow(t_node	*objects, t_hit_rec	*hit_rec, t_vec dir, t_lt_info cur_l_info)
+
+t_bool	check_shadow(t_node	*objects, t_hit_rec	*hit_rec, t_vec dir, \
+t_lt_info cur_l_info)
 {
 	t_ray			shadow_ray;
 	t_hit_rec		tmp;
@@ -52,7 +50,8 @@ t_bool	check_shadow(t_node	*objects, t_hit_rec	*hit_rec, t_vec dir, t_lt_info cu
 	shadow_ray.dir = dir;
 	tmp = _init_rec_();
 	shadow = trace_hit(objects, &tmp, shadow_ray);
-	if (shadow && tmp.t_near + BIAS < cur_l_info.dist && tmp.material.m_type != FRESNEL)
+	if (shadow && tmp.t_near + BIAS < cur_l_info.dist && \
+	tmp.material.m_type != FRESNEL)
 		return (TRUE);
 	return (FALSE);
 }

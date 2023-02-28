@@ -6,7 +6,7 @@
 #    By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2023/02/27 15:03:08 by daegulee         ###   ########.fr        #
+#    Updated: 2023/02/28 17:15:10 by daegulee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRCS	=	main.c \
 			render/shade2.c \
 			render/shade3.c \
 			render/shade4.c \
+			render/shade5.c \
 			settings/setting.c \
 			vector/ray.c \
 			vector/vector_operator.c \
@@ -48,9 +49,7 @@ SRCS	=	main.c \
 			vector/vector.c \
 			vector/clamp.c \
 			parsing_ppm/argv.c \
-			parsing_ppm/debug_parse_ppm.c \
 			parsing_ppm/parsing_ppm.c \
-			parsing_ppm/parsing_ppm2.c \
 			parsing_ppm/parse_ppm.c \
 			
 SRCS_DIR = srcs

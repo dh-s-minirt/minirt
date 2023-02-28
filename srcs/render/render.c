@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/28 00:46:59 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:45:27 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ typedef struct s_zip
 	int			start_row;
 }	t_zip;
 
+static void	color_hitrec_init(t_color *pixel_color, t_hit_rec *hit_rec)
+{
+	*pixel_color = vec(0, 0, 0);
+	*hit_rec = _init_rec_();
+}
+
 t_color	ray_casting(t_ray r, t_info_data *data, int depth)
 {
 	t_color		pixel_color;
@@ -30,8 +36,7 @@ t_color	ray_casting(t_ray r, t_info_data *data, int depth)
 
 	if (depth > MAX_DEPTH)
 		return (vec(0, 0, 0));
-	pixel_color = vec(0, 0, 0);
-	hit_rec = _init_rec_();
+	color_hitrec_init(&pixel_color, &hit_rec);
 	if (trace_hit(data->objects, &hit_rec, r))
 	{
 		if (hit_rec.material.m_type == PHONG)
@@ -42,8 +47,7 @@ t_color	ray_casting(t_ray r, t_info_data *data, int depth)
 		else if (hit_rec.material.m_type == FRESNEL)
 		{
 			fres_dat.depth = depth;
-			fres_dat.ior = ((t_fres_property *)hit_rec.material.property) \
-			->ior;
+			fres_dat.ior = ((t_fres_property *)hit_rec.material.property)->ior;
 			pixel_color = _shade_refract(hit_rec, data, r, fres_dat);
 		}
 		else if (hit_rec.material.m_type == UV)
@@ -66,32 +70,6 @@ void	put_color(t_color pixel_color, int row, int col, t_mlx_data *data)
 	my_mlx_pixel_put(data, col, row, color);
 }
 
-// void	render(t_settings set, t_info_data	*data, t_my_mlx *mlx)
-// {
-// 	int		i;
-// 	int		j;
-// 	double	x;
-// 	double	y;
-// 	t_ray	r;
-
-// 	j = -1;
-// 	while (++j < set.screen_height)
-// 	{
-// 		i = -1;
-// 		printf("\rScanlines remaining: %d \n", set.screen_height - j - 1);
-// 		while (++i < set.screen_width)
-// 		{
-// 			x = (2 * (i + 0.5) / (double)(set.screen_width) - 1) * set.scale;
-// 			y = (1 - 2 * (j + 0.5) / (double)(set.screen_height)) \
-// 			* set.aspect_ratio * set.scale;
-// 			r.dir = vec_unit(_mul_vec_mat(set.camera_to_world, \
-// 			vec_2_arr_vec3(vec(x, y, -1))));
-// 			r.origin = vec_copy(data->camera.center);
-// 			put_color(ray_casting(r, data, 0), j, i, &(mlx->img));
-// 		}
-// 	}
-// }
-
 void	*render(void *source_zip)
 {
 	const t_zip	*zip = (t_zip *)source_zip;
@@ -104,7 +82,6 @@ void	*render(void *source_zip)
 	while (++j < zip->start_row + zip->set.screen_height / THREAD_N)
 	{
 		i = -1;
-		printf("\rScanlines remaining: %d \n", zip->set.screen_height - j - 1);
 		while (++i < zip->set.screen_width)
 		{
 			xy[X] = (2 * (i + 0.5) / (double)(zip->set.screen_width) - 1) * \
@@ -117,5 +94,7 @@ void	*render(void *source_zip)
 			put_color(ray_casting(r, zip->data, 0), j, i, &(zip->mlx->img));
 		}
 	}
+	printf("%d thread_finish :\n", zip->start_row * THREAD_N / \
+	zip->set.screen_height);
 	return (NULL);
 }

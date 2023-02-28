@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 21:11:22 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/27 23:02:58 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/28 17:12:45 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,6 @@ void	_check_pattern_(t_hit_rec *cur_h_rec, double check_n)
 	if (((on_u < 0.5) + (on_v < 0.5)) % 2 == 0)
 		cur_h_rec->albedo = vec(1, 1, 1);
 }
-
-// void	spherical_mapping(t_hit_rec *cur_h_rec)
-// {
-// 	const double	theta = atan2(cur_h_rec->hit_normal.z, \
-// 	cur_h_rec->hit_normal.x);
-// 	const double	phi = asin(cur_h_rec->hit_normal.y);
-
-// 	cur_h_rec->u = 0.5 + theta / (2 * PI);
-// 	cur_h_rec->v = 1 - phi / PI;
-// }
 
 void	spherical_mapping(t_hit_rec *cur_h_rec)
 {
@@ -86,46 +76,11 @@ void	cy_mapping(t_hit_rec *cur_h_rec)
 	const t_mat4		local_cord = _normal_cord_(cy->nor_vector);
 	const t_vec			pc = vec_sub(cur_h_rec->contact_point, \
 	cy->center);
-	const t_vec 		pc_prime = vec_sub(cur_h_rec->contact_point, \
+	const t_vec			pc_prime = vec_sub(cur_h_rec->contact_point, \
 	vec_add(cy->center, vec_mul(cy->nor_vector, fabs(vec_dot(pc, \
 	cy->nor_vector)))));
 
 	cur_h_rec->u = 1 - asin(fabs(vec_dot(get_y_cord(local_cord), pc_prime)) \
 	/ vec_length(pc_prime)) / PI;
 	cur_h_rec->v = fabs(vec_dot(pc, cy->nor_vector)) / cy->height;
-}
-
-// 	// const double	theta = atan2(cur_h_rec->hit_normal.z, \
-// 	// cur_h_rec->hit_normal.x);
-
-// 	// cur_h_rec->u = 0.5 + theta / (2 * PI);
-void	cone_mapping(t_hit_rec *cur_h_rec)
-{
-	const t_cone		*cn = (t_cone *)cur_h_rec->object;
-	const t_mat4		local_cord = _normal_cord_(cn->nor_vector);
-	const t_vec			pc = vec_sub(cur_h_rec->contact_point, \
-	cn->center);
-	const t_vec 		pc_prime = vec_sub(cur_h_rec->contact_point, \
-	vec_add(cn->center, vec_mul(cn->nor_vector, fabs(vec_dot(pc, \
-	cn->nor_vector)))));
-
-	cur_h_rec->u = 1 - asin(fabs(vec_dot(get_y_cord(local_cord), pc_prime)) \
-	/ vec_length(pc_prime)) / PI;
-	cur_h_rec->v = fabs(vec_dot(pc, cn->nor_vector)) / cn->height;
-}
-
-void	get_uv(t_hit_rec *cur_h_rec, double	plane_scale, int is_check)
-{
-	if (cur_h_rec->obj_type == SPHERE)
-		spherical_mapping(cur_h_rec);
-	else if (cur_h_rec->obj_type == PLANE)
-		planar_mapping(cur_h_rec, plane_scale);
-	else if (cur_h_rec->obj_type == DISK)
-		disk_mapping(cur_h_rec, is_check);
-	else if (cur_h_rec->obj_type == CYLINDER)
-		cy_mapping(cur_h_rec);
-	else if (cur_h_rec->obj_type == CONE)
-		cone_mapping(cur_h_rec);
-	else
-		return ;
 }

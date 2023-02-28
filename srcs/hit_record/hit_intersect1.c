@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 09:42:31 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/25 23:14:43 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:41:39 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ const t_ray ray)
 	cur_h_rec->albedo = vec_copy(sphere->color);
 	cur_h_rec->obj_type = SPHERE;
 	cur_h_rec->material = cur_obj->material;
-	// printf("sphere color r %lf: g %lf: b %lf:\n", \
-	// sphere->color.x, sphere->color.y,sphere->color.z);
 }
 
 void	_intersect_plane_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
