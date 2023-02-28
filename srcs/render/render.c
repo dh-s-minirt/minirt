@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/28 16:45:27 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/28 22:43:46 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ t_color	ray_casting(t_ray r, t_info_data *data, int depth)
 {
 	t_color		pixel_color;
 	t_hit_rec	hit_rec;
-	t_fres_data	fres_dat;
 
 	if (depth > MAX_DEPTH)
 		return (vec(0, 0, 0));
@@ -45,11 +44,8 @@ t_color	ray_casting(t_ray r, t_info_data *data, int depth)
 		else if (hit_rec.material.m_type == REFLECT)
 			pixel_color = _shade_reflect(hit_rec, data, depth, r);
 		else if (hit_rec.material.m_type == FRESNEL)
-		{
-			fres_dat.depth = depth;
-			fres_dat.ior = ((t_fres_property *)hit_rec.material.property)->ior;
-			pixel_color = _shade_refract(hit_rec, data, r, fres_dat);
-		}
+			pixel_color = _shade_refract(hit_rec, data, r, (t_fres_data)\
+			{depth, ((t_fres_property *)hit_rec.material.property)->ior });
 		else if (hit_rec.material.m_type == UV)
 			pixel_color = _shade_uv(hit_rec, data, r);
 		else if (hit_rec.material.m_type == SPECIAL)
