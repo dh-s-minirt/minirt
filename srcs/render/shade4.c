@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shade4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 21:11:22 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/28 17:28:34 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/02/28 20:26:04 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	cy_mapping(t_hit_rec *cur_h_rec)
 	vec_add(cy->center, vec_mul(cy->nor_vector, fabs(vec_dot(pc, \
 	cy->nor_vector)))));
 
-	cur_h_rec->u = 1 - asin(fabs(vec_dot(get_y_cord(local_cord), pc_prime)) \
+	cur_h_rec->u = 0.5 + asin(fabs(vec_dot(get_y_cord(local_cord), pc_prime)) \
 	/ vec_length(pc_prime)) / PI;
 	cur_h_rec->v = fabs(vec_dot(pc, cy->nor_vector)) / cy->height;
 }
