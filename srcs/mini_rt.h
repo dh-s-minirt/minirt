@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/03 03:34:50 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/03 03:38:29 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,10 +117,12 @@ struct s_node
 
 typedef struct s_disk
 {
-	t_vec	center;
-	double	r;
-	t_color	color;
-	t_vec	nor_v;
+	t_vec		center;
+	double		r;
+	t_color		color;
+	t_vec		nor_v;
+	t_obj_type	parent_type;
+	void		*parent;
 }	t_disk;
 
 typedef struct s_sphere
@@ -152,6 +154,8 @@ typedef struct s_cylinder
 	double	radius;
 	double	height;
 	t_color	color;
+	t_disk	*bot;
+	t_disk	*top;
 }	t_cylinder;
 
 typedef struct s_camera
@@ -176,6 +180,7 @@ typedef struct s_cone
 	double	theta;
 	t_vec	center;
 	t_vec	nor_vector;
+	t_disk	*bot;
 }	t_cone;
 
 typedef struct s_light

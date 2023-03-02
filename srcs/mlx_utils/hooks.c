@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:57:43 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/03 03:35:59 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/03 05:05:25 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 #include "../render/render.h"
 #include "../Matrix/matrix.h"
 
-typedef struct s_mode
+typedef struct s_m_dat
 {
 	t_bool		mode;
 	t_bool		choice_obj;
 	void		*object;
 	t_obj_type	obj_type;
-}	t_mode;
+}	t_m_dat;
 
 typedef struct s_zip
 {
@@ -29,7 +29,7 @@ typedef struct s_zip
 	t_info_data	*data;
 	t_my_mlx	*mlx;
 	int			start_row;
-	t_mode		*mode;
+	t_m_dat		*mdat;
 }	t_zip;
 
 static t_zip	*_make_zip(t_settings set, \
@@ -77,46 +77,131 @@ void	start_draw(t_zip *zip)
 	zip->mlx->mlx_win, zip->mlx->img.img, 100, 100);
 }
 
-// void	update_center_x(t_zip *zip, long double e)
-// {
-// 	if (zip->mode->obj_type == PLANE)
-// 		((t_plane *)(zip->mode->object))->center.x += e;
-// 	else if (zip->mode->obj_type == SPHERE)
-// 		((t_plane *)(zip->mode->object))->center.x += e;
-// 	else if (zip->mode->obj_type == CONE)
-// 		((t_plane *)(zip->mode->object))->center.x += e;
-// 	else if (zip->mode->obj_type == DISK)
-// 		((t_plane *)(zip->mode->object))->center.x += e;
-// 	else if (zip->)
-// }
+void	update_center_x(t_zip *zip, long double e)
+{
+	if (zip->mdat->obj_type == PLANE)
+		((t_plane *)(zip->mdat->object))->center.x += e;
+	else if (zip->mdat->obj_type == SPHERE)
+		((t_sphere *)(zip->mdat->object))->center.x += e;
+	else if (zip->mdat->obj_type == CONE)
+	{
+		((t_cone *)(zip->mdat->object))->center.x += e;
+		((t_cone *)(zip->mdat->object))->bot->center.x += e;
+	}
+	else if (zip->mdat->obj_type == DISK)
+	{
+		((t_disk *)(zip->mdat->object))->center.x += e;
+		if (((t_disk *)(zip->mdat->object))->parent_type == CONE)
+			((t_cone *)(((t_disk *)(zip->mdat->object))->parent))->\
+			center.x += e;
+		else
+			((t_cylinder *)(((t_disk *)(zip->mdat->object))->parent))->\
+			center.x += e;
+	}
+	else if (zip->mdat->obj_type == CYLINDER)
+	{
+		((t_cylinder *)(zip->mdat->object))->center.x += e;
+		((t_cylinder *)(zip->mdat->object))->bot->center.x += e;
+		((t_cylinder *)(zip->mdat->object))->top->center.x += e;
+	}
+	else
+		return ;
+}
 
-// void	update_center(t_zip *zip, char mode, long double e)
-// {
-// 	if (mode == 'x')
-// 		update_center_x(zip, e);
-// 	if (mode == 'y')
-// 		update_center_y(zip, e);
-// 	if (mode == 'z')
-// 		update_center_z(zip, e);
-// }
+void	update_center_y(t_zip *zip, long double e)
+{
+	if (zip->mdat->obj_type == PLANE)
+		((t_plane *)(zip->mdat->object))->center.y += e;
+	else if (zip->mdat->obj_type == SPHERE)
+		((t_sphere *)(zip->mdat->object))->center.y += e;
+	else if (zip->mdat->obj_type == CONE)
+	{
+		((t_cone *)(zip->mdat->object))->center.y += e;
+		((t_cone *)(zip->mdat->object))->bot->center.y += e;
+	}
+	else if (zip->mdat->obj_type == DISK)
+	{
+		((t_disk *)(zip->mdat->object))->center.y += e;
+		if (((t_disk *)(zip->mdat->object))->parent_type == CONE)
+			((t_cone *)(((t_disk *)(zip->mdat->object))->parent))->\
+			center.y += e;
+		else
+			((t_cylinder *)(((t_disk *)(zip->mdat->object))->parent))->\
+			center.y += e;
+	}
+	else if (zip->mdat->obj_type == CYLINDER)
+	{
+		((t_cylinder *)(zip->mdat->object))->center.y += e;
+		((t_cylinder *)(zip->mdat->object))->bot->center.y += e;
+		((t_cylinder *)(zip->mdat->object))->top->center.y += e;
+	}
+	else
+		return ;
+}
 
-void	camera_move(t_zip *zip, int keycode)
+void	update_center_z(t_zip *zip, long double e)
+{
+	if (zip->mdat->obj_type == PLANE)
+		((t_plane *)(zip->mdat->object))->center.z += e;
+	else if (zip->mdat->obj_type == SPHERE)
+		((t_sphere *)(zip->mdat->object))->center.z += e;
+	else if (zip->mdat->obj_type == CONE)
+	{
+		((t_cone *)(zip->mdat->object))->center.z += e;
+		((t_cone *)(zip->mdat->object))->bot->center.z += e;
+	}
+	else if (zip->mdat->obj_type == DISK)
+	{
+		((t_disk *)(zip->mdat->object))->center.z += e;
+		if (((t_disk *)(zip->mdat->object))->parent_type == CONE)
+			((t_cone *)(((t_disk *)(zip->mdat->object))->parent))->\
+			center.z += e;
+		else
+			((t_cylinder *)(((t_disk *)(zip->mdat->object))->parent))->\
+			center.z += e;
+	}
+	else if (zip->mdat->obj_type == CYLINDER)
+	{
+		((t_cylinder *)(zip->mdat->object))->center.z += e;
+		((t_cylinder *)(zip->mdat->object))->bot->center.z += e;
+		((t_cylinder *)(zip->mdat->object))->top->center.z += e;
+	}
+	else
+		return ;
+}
+
+void	update_center(t_zip *zip, char mode, long double e)
+{
+	if (mode == 'x')
+		update_center_x(zip, e);
+	if (mode == 'y')
+		update_center_y(zip, e);
+	if (mode == 'z')
+		update_center_z(zip, e);
+}
+
+void	object_move(t_zip *zip, int keycode)
 {
 	long double	e;
 
 	e = zip->set.scale / SCREEN_HEIGHT * 1000;
+	if (zip->mdat->choice_obj == FALSE)
+	{
+		printf("choose obj\n");
+		return ;
+	}
 	if (keycode == KEY_A)
-		zip->set.camera.center.x += e;
+		update_center(zip, 'x', e);
 	else if (keycode == KEY_Q)
-		zip->set.camera.center.x -= e;
+		update_center(zip, 'x', -e);
 	else if (keycode == KEY_W)
-		zip->set.camera.center.y += e;
+		update_center(zip, 'y', e);
 	else if (keycode == KEY_S)
-		zip->set.camera.center.y -= e;
+		update_center(zip, 'y', -e);
 	else if (keycode == KEY_E)
-		zip->set.camera.center.z += e;
+		update_center(zip, 'z', e);
 	else if (keycode == KEY_D)
-		zip->set.camera.center.z -= e;
+		update_center(zip, 'z', -e);
 	// else if (keycode == KEY_ROT_XM)
 	// 	zip->set.camera_to_world = _mul_mat_(zip->set.camera_to_world, \
 	// 	_rotate_mat_(-20, 'x'));
@@ -146,16 +231,11 @@ void	camera_move(t_zip *zip, int keycode)
 	mlx_string_put(zip->mlx->mlx, (zip->mlx->mlx_win), 10, 50, 0xffffff, "if you want to change, key press 'c'.\n\n");	
 }
 
-void	object_move(t_zip *zip, int keycode)
+void	camera_move(t_zip *zip, int keycode)
 {
 	long double	e;
 
 	e = zip->set.scale / SCREEN_HEIGHT * 1000;
-	if (zip->mode->choice_obj == FALSE)
-	{
-		printf("choose obj\n");
-		return ;
-	}
 	if (keycode == KEY_A)
 		zip->set.camera.center.x += e;
 	else if (keycode == KEY_Q)
@@ -198,16 +278,22 @@ void	object_move(t_zip *zip, int keycode)
 
 void	move(t_zip *zip, int keycode)
 {
-	if (zip->mode->mode == CMODE)
+	if (zip->mdat->mode == CMODE)
 		camera_move(zip, keycode);
 	else
 		object_move(zip, keycode);
+
 }
 
 int	key_hook(int keycode, t_zip *zip)
 {
 	if (keycode == KEY_C)
-		zip->mode->mode = (zip->mode->mode == CMODE);
+	{
+		if (zip->mdat->mode == CMODE)
+			zip->mdat->mode = OMODE;
+		else
+			zip->mdat->mode = CMODE;
+	}
 	if (keycode == ESC)
 	{
 		mlx_destroy_window(zip->mlx, zip->mlx->mlx_win);
@@ -225,23 +311,43 @@ int	key_hook(int keycode, t_zip *zip)
 	return (0);
 }
 
-// int	mouse_hook(int button, int x, int y, t_zip *zip)
-// {
-// 	if (button == 1)
-// 		change_color();
-// 	return (0);
-// }
+int	mouse_hook(int button, int x, int y, t_zip *zip)
+{
+	t_ray		obj_ray;
+	double		world_x;
+	double		world_y;
+	t_hit_rec	hit_rec;
+
+	if (button == 1 && zip->mdat->mode == OMODE && \
+	zip->mdat->choice_obj == FALSE)
+	{
+		world_x = (2 * (x + 0.5) / (double)(zip->set.screen_width) - 1) * \
+		zip->set.scale;
+		world_y = (1 - 2 * (y + 0.5) / (double)(zip->set.screen_height)) \
+		* zip->set.aspect_ratio * zip->set.scale;
+		obj_ray.dir = vec_unit(_mul_vec_mat(zip->set.camera_to_world, \
+			vec_2_arr_vec3(vec(world_x, world_y, -1))));
+		obj_ray.origin = vec_copy(zip->set.camera.center);
+		if (trace_hit(zip->data->objects, &hit_rec, obj_ray))
+		{
+			zip->mdat->object = hit_rec.object;
+			zip->mdat->choice_obj = TRUE;
+			zip->mdat->obj_type = hit_rec.obj_type;
+			printf("You choice one obj\n");
+		}
+	}	
+	return (0);
+}
 
 void	my_hook(t_zip *zip)
 {
-	t_mode	mode;
+	t_m_dat	*dat;
 
-	mode.choice_obj = FALSE;
-	mode.mode = CMODE;
-	mode.object = NULL;
-	zip->mode = &mode;
-	mlx_key_hook(zip->mlx->mlx_win, key_hook, &zip);
-	// mlx_mouse_hook(zip->mlx->mlx_win, mouse_hook, &zip);	
+	dat = ft_malloc(sizeof(t_m_dat));
+	dat->mode = CMODE;
+	zip->mdat = dat;
+	mlx_key_hook(zip->mlx->mlx_win, key_hook, zip);
+	mlx_mouse_hook(zip->mlx->mlx_win, mouse_hook, zip);	
 }
 
 // img ㅅㅐ로 만만들들어어야됨

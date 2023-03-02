@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:21:14 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/02 14:41:05 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2023/03/03 04:01:32 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,24 @@ void	init_light(char **strs, t_info_data *data)
 	ft_release_strs(tmp);
 	node = new_light_node((void *)light, LIGHT);
 	light_node_add_back(&data->lights, node);
+}
+
+t_disk	*_make_disk_cy(t_cylinder *cy, t_material mat, t_vec center, \
+t_info_data *data)
+{
+	t_disk		*x;
+	t_node		*node;
+
+	x = ft_malloc(sizeof(t_disk));
+	x->center = vec_copy(center);
+	x->nor_v = vec_copy(cy->nor_vector);
+	x->color = vec_copy(cy->color);
+	x->r = cy->radius;
+	node = node_new((void *)x, DISK);
+	node_add_back(&data->objects, node);
+	node->material.property = mat.property;
+	node->material.m_type = mat.m_type;
+	x->parent = cy;
+	x->parent_type = CYLINDER;
+	return (x);
 }
