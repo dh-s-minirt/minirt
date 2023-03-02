@@ -7,6 +7,7 @@
 		"get_next_line_bonus.h": "c",
 		"render.h": "c",
 		"mini_rt.h": "c",
-		"parsing.h": "c"
+		"parsing.h": "c",
+		"mlx_util.h": "c"
 	}
 }

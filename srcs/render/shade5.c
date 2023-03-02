@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shade5.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 17:12:30 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/28 20:30:08 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/02 14:11:23 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	cone_mapping(t_hit_rec *cur_h_rec)
 	const t_vec			pc = vec_sub(cur_h_rec->contact_point, \
 	cn->center);
 	const t_vec			pc_prime = vec_sub(cur_h_rec->contact_point, \
-	vec_add(cn->center, vec_mul(cn->nor_vector, (vec_dot(pc, \
+	vec_add(cn->center, vec_mul(cn->nor_vector, fabs(vec_dot(pc, \
 	cn->nor_vector)))));
 
 	cur_h_rec->u = 0.5 + asin(fabs(vec_dot(get_y_cord(local_cord), pc_prime)) \

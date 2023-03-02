@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 07:27:45 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/28 23:34:22 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/02 21:00:18 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,17 @@ t_mat4	_camera_to_world_(t_vec	normal)
 	return (camera_to_world);
 }
 
-t_settings	_init_setting_(t_info_data data)
+t_settings	_init_setting_(t_camera camera)
 {
 	t_settings			set;
 
+	set.camera = camera;
 	set.bias = 0.001;
-	set.camera_to_world = _camera_to_world_(data.camera.nor_vector);
+	set.camera_to_world = _camera_to_world_(camera.nor_vector);
 	set.screen_height = SCREEN_HEIGHT;
 	set.screen_width = SCREEN_WIDTH;
 	set.aspect_ratio = (double)set.screen_height / (double)set.screen_width;
-	set.fov = data.camera.fov;
+	set.fov = clamp(camera.fov, 1, 179);
 	set.scale = tan(degrees_to_radians(set.fov * 0.5));
 	return (set);
 }

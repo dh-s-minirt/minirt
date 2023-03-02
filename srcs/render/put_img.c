@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 17:23:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/14 00:15:07 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:21:58 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ t_my_mlx	init_mlx(void)
 	t_my_mlx	my_mlx;
 
 	my_mlx.mlx = mlx_init();
-	my_mlx.mlx_win = mlx_new_window(my_mlx.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, \
-	"rt : ");
+	my_mlx.mlx_win = mlx_new_window(my_mlx.mlx, SCREEN_WIDTH + 200, \
+	SCREEN_HEIGHT + 200, "rt : ");
 	my_mlx.img.img = mlx_new_image(my_mlx.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	my_mlx.img.addr = mlx_get_data_addr(my_mlx.img.img, \
 	&(my_mlx.img.bits_per_pixel), &(my_mlx.img.line_length), \

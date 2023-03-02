@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:11:15 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/02 13:04:38 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/02 21:28:40 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ t_mat4		_normal_cord_(t_vec	normal);
 t_vec		get_x_cord(t_mat4 cord);
 t_vec		get_y_cord(t_mat4 cord);
 t_vec		get_z_cord(t_mat4 cord);
-
+t_vec		_rotate_vec_(const double theta, char mode, const t_vec source);
 #endif

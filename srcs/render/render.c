@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/02 13:52:48 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/02 19:23:05 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	*render(void *source_zip)
 			* zip->set.aspect_ratio * zip->set.scale;
 			r.dir = vec_unit(_mul_vec_mat(zip->set.camera_to_world, \
 			vec_2_arr_vec3(vec(xy[X], xy[Y], -1))));
-			r.origin = vec_copy(zip->data->camera.center);
+			r.origin = vec_copy(zip->set.camera.center);
 			put_color(ray_casting(r, zip->data, 0), j, i, &(zip->mlx->img));
 		}
 	}

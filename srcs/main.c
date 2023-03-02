@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:16:45 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/02 15:02:19 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2023/03/02 20:53:19 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,11 @@ int	main(int argc, char **argv)
 	t_zip		zip;
 
 	get_info_data(argv[1], &data, argc);
-	set = _init_setting_(data);
+	set = _init_setting_(data.camera);
 	my_mlx = init_mlx();
 	multi_thread(set, &data, &my_mlx);
 	mlx_put_image_to_window(my_mlx.mlx, \
-	my_mlx.mlx_win, my_mlx.img.img, 0, 0);
+	my_mlx.mlx_win, my_mlx.img.img, 100, 100);
 	zip.data = &data;
 	zip.mlx = &my_mlx;
 	zip.set = set;
