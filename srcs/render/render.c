@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/01 00:09:57 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:34:41 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ t_color	ray_casting(t_ray r, t_info_data *data, int depth)
 		else if (hit_rec.material.m_type == REFLECT)
 			pixel_color = _shade_reflect(hit_rec, data, depth, r);
 		else if (hit_rec.material.m_type == FRESNEL)
-			pixel_color = _shade_refract(hit_rec, data, r, (t_fres_data)\
-			{depth, ((t_fres_property *)hit_rec.material.property)->ior });
+			pixel_color = _shade_refract(hit_rec, data, r, (t_fres_data) \
+			{((t_fres_property *)hit_rec.material.property)->ior, depth});
 		else if (hit_rec.material.m_type == UV)
 			pixel_color = _shade_uv(hit_rec, data, r);
 		else if (hit_rec.material.m_type == SPECIAL)
