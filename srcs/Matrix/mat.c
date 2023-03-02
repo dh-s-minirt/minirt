@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:14:30 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/13 23:50:51 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:04:26 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ t_mat4	_mul_mat_(const t_mat4 a, const t_mat4 b)
 	}
 	return (mul);
 }
-//전치행렬 구하기
 
 t_mat4	_transpose_mat_(const t_mat4 a)
 {

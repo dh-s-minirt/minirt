@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shade.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:30:51 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/28 21:08:50 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/02 13:10:21 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ t_hit_rec	hit_rec, t_phong_propety *property, t_ray ray)
 	t_vec	v;
 	double	mul;
 
+	if (property->kd == 1.0)
+		return (vec(0, 0, 0));
 	reflect = v_reflect(cur_l_info.dir, hit_rec.hit_normal);
 	v = vec_mul(ray.dir, -1);
 	mul = pow(fmax_d(BIAS, vec_dot(reflect, v)), property->n);
@@ -106,13 +108,10 @@ t_phong_propety *property, t_ray ray)
 		}
 		diffuse = vec_add(diffuse, \
 		_get_diffuse_(cur_l_info, hit_rec));
-		if (property->kd != 1.0)
-			specular = vec_add(specular, \
-		_get_specular_(cur_l_info, hit_rec, \
-		property, ray));
+		specular = vec_add(specular, _get_specular_\
+			(cur_l_info, hit_rec, property, ray));
 		cur_light = cur_light->next;
 	}
-	return (vec_add(vec_mul(diffuse, \
-	property->kd), \
+	return (vec_add(vec_mul(diffuse, property->kd), \
 	vec_mul(specular, property->ks)));
 }

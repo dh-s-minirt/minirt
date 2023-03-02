@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:49:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/26 00:26:20 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:00:11 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,6 @@
 # include "../mini_rt.h"
 # include "../libft/libft.h"
 # include <stdio.h>
-
-// typedef struct s_check_property
-// {
-
-// }	t_check_property;
-
-// typedef struct s_special_property
-// {
-
-// }	t_special_property;
 
 typedef struct s_hit_rec
 {
@@ -53,12 +43,10 @@ typedef struct s_abc
 }	t_abc;
 
 //1
-t_bool		solve_quadratic(const double a, const double half_b, const double c, \
-double root[2]);
+t_bool		solve_quadratic(const double a, const double half_b, \
+const double c, double root[2]);
 void		_intersect_sphere_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
 const t_ray ray);
-t_bool		_find_cy_root_(t_cylinder *cylinder, \
-double root[2], const t_ray ray);
 t_bool		_find_cone_root_(t_cone *cone, \
 double root[2], const t_ray ray);
 void		_intersect_cylinder_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
@@ -77,6 +65,6 @@ void		_intersect_disk_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
 const t_ray ray);
 t_vec		_find_hit_normal_cy(const t_vec p, const t_vec center, \
 const t_vec normal);
-t_vec	_find_hit_normal_cn(const t_vec p, const t_vec center, \
+t_vec		_find_hit_normal_cn(const t_vec p, const t_vec center, \
 const t_vec normal, const double cosine);
 #endif
