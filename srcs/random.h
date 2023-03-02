@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   random.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 15:50:12 by hyunkyu           #+#    #+#             */
-/*   Updated: 2023/01/04 15:54:58 by hyunkyu          ###   ########.fr       */
+/*   Updated: 2023/03/02 13:47:05 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "./vector/vector.h"
-# include <stdio.h>
-t_vec   random_vec(void);
-double  randv(void);
+// # include "./vector/vector.h"
+// # include <stdio.h>
+// t_vec   random_vec(void);
+// double  randv(void);

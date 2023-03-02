@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:30:51 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/02 13:10:21 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:42:14 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ t_hit_rec	hit_rec, t_phong_propety *property, t_ray ray)
 	t_vec	v;
 	double	mul;
 
-	if (property->kd == 1.0)
-		return (vec(0, 0, 0));
 	reflect = v_reflect(cur_l_info.dir, hit_rec.hit_normal);
 	v = vec_mul(ray.dir, -1);
 	mul = pow(fmax_d(BIAS, vec_dot(reflect, v)), property->n);
@@ -91,7 +89,6 @@ t_phong_propety *property, t_ray ray)
 	t_color			specular;
 	t_light_node	*cur_light;
 	t_lt_info		cur_l_info;
-	t_bool			is_shadow;
 
 	diffuse = vec(0, 0, 0);
 	specular = vec(0, 0, 0);
@@ -99,17 +96,16 @@ t_phong_propety *property, t_ray ray)
 	while (cur_light)
 	{
 		cur_l_info = get_lt_info(cur_light, hit_rec);
-		is_shadow = check_shadow(data->objects, &hit_rec, \
-		vec_mul((cur_l_info.dir), -1), cur_l_info);
-		if (is_shadow == TRUE)
+		if (check_shadow(data->objects, &hit_rec, \
+		vec_mul((cur_l_info.dir), -1), cur_l_info))
 		{
 			cur_light = cur_light->next;
 			continue ;
 		}
 		diffuse = vec_add(diffuse, \
 		_get_diffuse_(cur_l_info, hit_rec));
-		specular = vec_add(specular, _get_specular_\
-			(cur_l_info, hit_rec, property, ray));
+		specular = vec_add(specular, _get_specular_(cur_l_info, \
+		hit_rec, property, ray));
 		cur_light = cur_light->next;
 	}
 	return (vec_add(vec_mul(diffuse, property->kd), \
