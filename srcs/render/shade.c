@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:30:51 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/02 13:37:30 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:52:26 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ t_phong_propety *property, t_ray ray)
 			continue ;
 		}
 		diffuse = vec_add(diffuse, \
-	_get_diffuse_(cur_l_info, hit_rec));
-			specular = vec_add(specular, \
-		_get_specular_(cur_l_info, hit_rec, property, ray));
+		_get_diffuse_(cur_l_info, hit_rec));
+		specular = vec_add(specular, _get_specular_(cur_l_info, \
+		hit_rec, property, ray));
 		cur_light = cur_light->next;
 	}
 	return (vec_add(vec_mul(diffuse, property->kd), \
