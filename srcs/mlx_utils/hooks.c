@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:57:43 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/02 22:23:11 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/03 03:35:59 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,21 @@
 #include "../render/render.h"
 #include "../Matrix/matrix.h"
 
+typedef struct s_mode
+{
+	t_bool		mode;
+	t_bool		choice_obj;
+	void		*object;
+	t_obj_type	obj_type;
+}	t_mode;
+
 typedef struct s_zip
 {
 	t_settings	set;
 	t_info_data	*data;
 	t_my_mlx	*mlx;
 	int			start_row;
+	t_mode		*mode;
 }	t_zip;
 
 static t_zip	*_make_zip(t_settings set, \
@@ -68,11 +77,33 @@ void	start_draw(t_zip *zip)
 	zip->mlx->mlx_win, zip->mlx->img.img, 100, 100);
 }
 
+// void	update_center_x(t_zip *zip, long double e)
+// {
+// 	if (zip->mode->obj_type == PLANE)
+// 		((t_plane *)(zip->mode->object))->center.x += e;
+// 	else if (zip->mode->obj_type == SPHERE)
+// 		((t_plane *)(zip->mode->object))->center.x += e;
+// 	else if (zip->mode->obj_type == CONE)
+// 		((t_plane *)(zip->mode->object))->center.x += e;
+// 	else if (zip->mode->obj_type == DISK)
+// 		((t_plane *)(zip->mode->object))->center.x += e;
+// 	else if (zip->)
+// }
+
+// void	update_center(t_zip *zip, char mode, long double e)
+// {
+// 	if (mode == 'x')
+// 		update_center_x(zip, e);
+// 	if (mode == 'y')
+// 		update_center_y(zip, e);
+// 	if (mode == 'z')
+// 		update_center_z(zip, e);
+// }
+
 void	camera_move(t_zip *zip, int keycode)
 {
 	long double	e;
 
-	printf("%d\n", keycode);
 	e = zip->set.scale / SCREEN_HEIGHT * 1000;
 	if (keycode == KEY_A)
 		zip->set.camera.center.x += e;
@@ -86,10 +117,57 @@ void	camera_move(t_zip *zip, int keycode)
 		zip->set.camera.center.z += e;
 	else if (keycode == KEY_D)
 		zip->set.camera.center.z -= e;
-	else if (keycode == KEY_MINUS)
-		zip->set.camera.fov += 5;
-	else if (keycode == KEY_PLUS)
-		zip->set.camera.fov -= 5;
+	// else if (keycode == KEY_ROT_XM)
+	// 	zip->set.camera_to_world = _mul_mat_(zip->set.camera_to_world, \
+	// 	_rotate_mat_(-20, 'x'));
+	// else if (keycode == KEY_ROT_XP)
+	// 	zip->set.camera_to_world = _mul_mat_(zip->set.camera_to_world, \
+	// 	_rotate_mat_(20, 'x'));
+	// else if (keycode == KEY_ROT_YM)
+	// 	zip->set.camera_to_world = _mul_mat_(zip->set.camera_to_world, \
+	// 	_rotate_mat_(-20, 'y'));
+	// else if (keycode == KEY_ROT_YP)
+	// 	zip->set.camera_to_world = _mul_mat_(zip->set.camera_to_world, \
+	// 	_rotate_mat_(20, 'y'));
+	// else if (keycode == KEY_ROT_ZM)
+	// 	zip->set.camera_to_world = _mul_mat_(zip->set.camera_to_world, \
+	// 	_rotate_mat_(-20, 'z'));
+	// else if (keycode == KEY_ROT_ZP){
+	// 	zip->set.camera_to_world = _mul_mat_(zip->set.camera_to_world, \
+	// 	_rotate_mat_(20, 'z'));
+	// }
+	else 
+		return ;
+	start_draw(zip);
+	mlx_string_put(zip->mlx->mlx, (zip->mlx->mlx_win), 10, 10, 0xffffff, "This is Camera Mode.\n");
+	mlx_string_put(zip->mlx->mlx, (zip->mlx->mlx_win), 10, 20, 0xffffff, "InterFace : \n.\n");
+	mlx_string_put(zip->mlx->mlx, (zip->mlx->mlx_win), 10, 30, 0xffffff, "q(x_up),a(x_down)\n");
+	mlx_string_put(zip->mlx->mlx, (zip->mlx->mlx_win), 10, 40, 0xffffff, "e(z_up),d(z_down)\n)\n");
+	mlx_string_put(zip->mlx->mlx, (zip->mlx->mlx_win), 10, 50, 0xffffff, "if you want to change, key press 'c'.\n\n");	
+}
+
+void	object_move(t_zip *zip, int keycode)
+{
+	long double	e;
+
+	e = zip->set.scale / SCREEN_HEIGHT * 1000;
+	if (zip->mode->choice_obj == FALSE)
+	{
+		printf("choose obj\n");
+		return ;
+	}
+	if (keycode == KEY_A)
+		zip->set.camera.center.x += e;
+	else if (keycode == KEY_Q)
+		zip->set.camera.center.x -= e;
+	else if (keycode == KEY_W)
+		zip->set.camera.center.y += e;
+	else if (keycode == KEY_S)
+		zip->set.camera.center.y -= e;
+	else if (keycode == KEY_E)
+		zip->set.camera.center.z += e;
+	else if (keycode == KEY_D)
+		zip->set.camera.center.z -= e;
 	else if (keycode == KEY_ROT_XM)
 		zip->set.camera_to_world = _mul_mat_(zip->set.camera_to_world, \
 		_rotate_mat_(-20, 'x'));
@@ -105,19 +183,31 @@ void	camera_move(t_zip *zip, int keycode)
 	else if (keycode == KEY_ROT_ZM)
 		zip->set.camera_to_world = _mul_mat_(zip->set.camera_to_world, \
 		_rotate_mat_(-20, 'z'));
-	else if (keycode == KEY_ROT_ZP)
+	else if (keycode == KEY_ROT_ZP){
 		zip->set.camera_to_world = _mul_mat_(zip->set.camera_to_world, \
 		_rotate_mat_(20, 'z'));
+	}
+	else 
+		return ;
 	start_draw(zip);
-	mlx_string_put(zip->mlx->mlx, (zip->mlx->mlx_win), 10, 10, 0xffffff, "This is Camera Mode.\n");
 	mlx_string_put(zip->mlx->mlx, (zip->mlx->mlx_win), 10, 20, 0xffffff, "InterFace : \n.\n");
 	mlx_string_put(zip->mlx->mlx, (zip->mlx->mlx_win), 10, 30, 0xffffff, "q(x_up),a(x_down)\n");
 	mlx_string_put(zip->mlx->mlx, (zip->mlx->mlx_win), 10, 40, 0xffffff, "e(z_up),d(z_down)\n)\n");
 	mlx_string_put(zip->mlx->mlx, (zip->mlx->mlx_win), 10, 50, 0xffffff, "if you want to change, key press 'c'.\n\n");	
 }
 
+void	move(t_zip *zip, int keycode)
+{
+	if (zip->mode->mode == CMODE)
+		camera_move(zip, keycode);
+	else
+		object_move(zip, keycode);
+}
+
 int	key_hook(int keycode, t_zip *zip)
 {
+	if (keycode == KEY_C)
+		zip->mode->mode = (zip->mode->mode == CMODE);
 	if (keycode == ESC)
 	{
 		mlx_destroy_window(zip->mlx, zip->mlx->mlx_win);
@@ -127,30 +217,32 @@ int	key_hook(int keycode, t_zip *zip)
 		|| keycode == KEY_D || keycode == KEY_Q || \
 		keycode == KEY_W || keycode == KEY_E || \
 		keycode == KEY_PLUS || keycode == KEY_MINUS)
-		camera_move(zip, keycode);
+		move(zip, keycode);
 	else if (keycode == KEY_ROT_XM || keycode == KEY_ROT_XP || \
 		keycode == KEY_ROT_YM || keycode == KEY_ROT_YP || \
 		keycode == KEY_ROT_ZM || keycode == KEY_ROT_ZP)
-		camera_move(zip, keycode);
+		move(zip, keycode);
 	return (0);
 }
 
-// void	move(t_vars *vars, int keycode)
+// int	mouse_hook(int button, int x, int y, t_zip *zip)
 // {
-// 	long double	e;
-
-// 	e = vars->size / WIN_HEIGHT;
-// 	if (keycode == LEFT)
-// 		vars->point_x -= vars->size * 0.1;
-// 	else if (keycode == RIGHT)
-// 		vars->point_x += vars->size * 0.1;
-// 	else if (keycode == UP)
-// 		vars->point_y += vars->size * 0.1;
-// 	else
-// 		vars->point_y -= vars->size * 0.1;
-// 	start_draw(vars);
+// 	if (button == 1)
+// 		change_color();
+// 	return (0);
 // }
 
+void	my_hook(t_zip *zip)
+{
+	t_mode	mode;
+
+	mode.choice_obj = FALSE;
+	mode.mode = CMODE;
+	mode.object = NULL;
+	zip->mode = &mode;
+	mlx_key_hook(zip->mlx->mlx_win, key_hook, &zip);
+	// mlx_mouse_hook(zip->mlx->mlx_win, mouse_hook, &zip);	
+}
 
 // img ㅅㅐ로 만만들들어어야됨
 // void	start_draw(t_vars *vars)

@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 17:12:30 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/02 14:11:23 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/03 03:03:30 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	cone_mapping(t_hit_rec *cur_h_rec)
 	const t_mat4		local_cord = _normal_cord_(cn->nor_vector);
 	const t_vec			pc = vec_sub(cur_h_rec->contact_point, \
 	cn->center);
-	const t_vec			pc_prime = vec_sub(cur_h_rec->contact_point, \
-	vec_add(cn->center, vec_mul(cn->nor_vector, fabs(vec_dot(pc, \
+	const t_vec			pc_prime = vec_unit(vec_sub(pc, \
+	vec_mul(cn->nor_vector, fabs(vec_dot(pc, \
 	cn->nor_vector)))));
 
-	cur_h_rec->u = 0.5 + asin(fabs(vec_dot(get_y_cord(local_cord), pc_prime)) \
-	/ vec_length(pc_prime)) / PI;
+	cur_h_rec->u = 0.50 + asin(vec_dot(get_y_cord(local_cord), pc_prime)) \
+	/ (2 * PI);
 	cur_h_rec->v = fabs(vec_dot(pc, cn->nor_vector)) / cn->height;
 }
 

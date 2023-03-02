@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:43:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/02 21:12:01 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/02 22:29:18 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../mlx/mlx.h"
 # include "../settings/setting.h"
 
+# define KEY_C 8
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
@@ -31,5 +32,6 @@
 # define KEY_ROT_YM 37
 # define KEY_ROT_ZP 34
 # define KEY_ROT_ZM 31
-
+# define CMODE 0
+# define OMODE 1
 #endif
