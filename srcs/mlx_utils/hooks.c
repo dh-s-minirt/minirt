@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:57:43 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/02 21:49:49 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/02 22:23:11 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,14 @@ t_my_mlx *my_mlx)
 }
 
 // img ㅅㅐ로 만만들들어어야됨
-void	start_draw(t_zip *zip, int rotate)
+void	start_draw(t_zip *zip)
 {
-	if (!rotate)
-		zip->set = _init_setting_(zip->set.camera);
 	multi_thread(zip->set, (zip->data), zip->mlx);
 	mlx_put_image_to_window(zip->mlx->mlx, \
 	zip->mlx->mlx_win, zip->mlx->img.img, 100, 100);
 }
 
-void	camera_move(t_zip *zip, int keycode, int rotate)
+void	camera_move(t_zip *zip, int keycode)
 {
 	long double	e;
 
@@ -110,7 +108,7 @@ void	camera_move(t_zip *zip, int keycode, int rotate)
 	else if (keycode == KEY_ROT_ZP)
 		zip->set.camera_to_world = _mul_mat_(zip->set.camera_to_world, \
 		_rotate_mat_(20, 'z'));
-	start_draw(zip, rotate);
+	start_draw(zip);
 	mlx_string_put(zip->mlx->mlx, (zip->mlx->mlx_win), 10, 10, 0xffffff, "This is Camera Mode.\n");
 	mlx_string_put(zip->mlx->mlx, (zip->mlx->mlx_win), 10, 20, 0xffffff, "InterFace : \n.\n");
 	mlx_string_put(zip->mlx->mlx, (zip->mlx->mlx_win), 10, 30, 0xffffff, "q(x_up),a(x_down)\n");
@@ -129,11 +127,11 @@ int	key_hook(int keycode, t_zip *zip)
 		|| keycode == KEY_D || keycode == KEY_Q || \
 		keycode == KEY_W || keycode == KEY_E || \
 		keycode == KEY_PLUS || keycode == KEY_MINUS)
-		camera_move(zip, keycode, FALSE);
+		camera_move(zip, keycode);
 	else if (keycode == KEY_ROT_XM || keycode == KEY_ROT_XP || \
 		keycode == KEY_ROT_YM || keycode == KEY_ROT_YP || \
 		keycode == KEY_ROT_ZM || keycode == KEY_ROT_ZP)
-		camera_move(zip, keycode, TRUE);
+		camera_move(zip, keycode);
 	return (0);
 }
 
