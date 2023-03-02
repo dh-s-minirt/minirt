@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:21:44 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/28 10:52:28 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2023/01/09 16:18:22 by hyunkyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ typedef struct s_ray
 }	t_ray;
 
 t_vec	ray_at(t_ray *ray, double t);
+t_ray	ray(t_vec orig, t_vec dir);
 
 #endif
