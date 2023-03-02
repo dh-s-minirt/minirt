@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:54:44 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/28 00:18:10 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:26:17 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ void	add_fresnel(t_node *node, char **strs);
 void	add_uv(t_node *node);
 void	add_special(t_node *node, char **strs);
 char	*delete_last_newline(char *line);
+t_bool	validation_color(t_color data);
 
 #endif

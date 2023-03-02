@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:54:36 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/28 00:17:54 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:40:25 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	fill_cylinder(t_cylinder *data, char **strs)
 		ft_print_exit();
 	data->color = vec(ft_atof(tmp[0]) / 255.999, ft_atof(tmp[1]) / 255.999, \
 		ft_atof(tmp[2]) / 255.999);
+	if (!validation_color(data->color))
+		ft_print_exit();
 	ft_release_strs(tmp);
 }
 
@@ -123,7 +125,7 @@ void	fill_data(char *line, t_info_data *data, int *cnt)
 	}
 	if (i == _DATA_LEN || (0 <= i && i <= 1 && check[i] == 1))
 		ft_print_exit();
-	if (0 <= i && i <= 2)
+	if (0 <= i && i <= 1)
 	{
 		check[i] += 1;
 		(*cnt) += 1;
@@ -143,7 +145,7 @@ void	get_info_data(char *filename, t_info_data *data, int argc)
 		ft_exit("argc error.");
 	data->objects = NULL;
 	data->lights = NULL;
-	fd = open(filename, O_RDONLY);
+	fd = open (filename, O_RDONLY);
 	if (fd < 0)
 		ft_print_exit();
 	line = get_next_line(fd);
@@ -156,7 +158,6 @@ void	get_info_data(char *filename, t_info_data *data, int argc)
 		line = get_next_line(fd);
 	}
 	close(fd);
-	// if (cnt < 3)
-	// 	ft_print_exit();
-	// fill_camera_data(data);
+	if (cnt < 2)
+		ft_print_exit();
 }

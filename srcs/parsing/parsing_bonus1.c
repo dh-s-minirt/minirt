@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_bonus1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 16:07:41 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/27 23:09:05 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:42:34 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	add_phong(t_node *node, char **strs)
 	if (!phong)
 		ft_print_exit();
 	phong->kd = ft_atof(strs[end_idx]);
+	if (phong->kd < 0 || phong->kd > 1)
+		ft_print_exit();
 	phong->n = ft_atof(strs[end_idx] + 1);
 	phong->ks = 1 - phong->kd;
 	material.m_type = PHONG;
@@ -52,6 +54,8 @@ void	add_fresnel(t_node *node, char **strs)
 	if (!fresnel)
 		ft_print_exit();
 	fresnel->ior = ft_atof(strs[end_idx]);
+	if (fresnel->ior < 1)
+		ft_print_exit();
 	material.m_type = FRESNEL;
 	material.property = (void *) fresnel;
 	node->material = material;

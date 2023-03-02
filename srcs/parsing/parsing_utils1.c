@@ -6,7 +6,7 @@
 /*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:57:06 by hyunkyu           #+#    #+#             */
-/*   Updated: 2023/02/23 16:41:56 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:40:05 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	fill_sphere(t_sphere *sphere, char **strs)
 	tmp = ft_split(strs[3], ',');
 	sphere->color = vec(ft_atof(tmp[0]) / 255.999, ft_atof(tmp[1]) / 255.999, \
 		ft_atof(tmp[2]) / 255.999);
+	if (!validation_color(sphere->color))
+		ft_print_exit();
 	ft_release_strs(tmp);
 }
 
@@ -63,6 +65,8 @@ void	fill_plane(t_plane *plain, char **strs)
 	tmp = ft_split(strs[3], ',');
 	plain->color = vec(ft_atof(tmp[0]) / 255.999, ft_atof(tmp[1]) / 255.999, \
 		ft_atof(tmp[2]) / 255.999);
+	if (!validation_color(plain->color))
+		ft_print_exit();
 	ft_release_strs(tmp);
 }
 
@@ -100,6 +104,8 @@ void	init_am_light(char **strs, t_info_data *data)
 		exit(EXIT_FAILURE);
 	am_light->color = vec_mul(vec(ft_atof(color_data[0]) / 255.999, \
 	ft_atof(color_data[1]) / 255.999, ft_atof(color_data[2]) / 255.999), ratio);
+	if (!validation_color(am_light->color))
+		ft_print_exit();
 	node = new_light_node((void *)am_light, AM_LIGHT);
 	light_node_add_back(&data->lights, node);
 	ft_release_strs(color_data);

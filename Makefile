@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+         #
+#    By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2023/02/28 20:11:43 by idaegyu          ###   ########.fr        #
+#    Updated: 2023/03/02 14:21:52 by hyunkyle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS	=	main.c \
 			parsing/parsing.c \
 			parsing/parsing_utils.c \
 			parsing/parsing_utils1.c \
+			parsing/parsing_utils2.c \
 			parsing/parsing_bonus.c \
 			parsing/parsing_bonus1.c \
 			parsing/parsing_bonus_utils.c \

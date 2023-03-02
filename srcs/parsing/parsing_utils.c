@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:26:54 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/02 13:05:06 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:34:37 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	fill_cone(char **strs, t_cone *cone)
 		ft_print_exit();
 	cone->color = vec(ft_atof(color_data[0]) / 255.999, \
 		ft_atof(color_data[1]) / 255.999, ft_atof(color_data[2]) / 255.999);
+	if (!validation_color(cone->color))
+		ft_print_exit();
 	ft_release_strs(color_data);
 	cone->theta = atan(cone->radius / cone->height);
 }
@@ -106,32 +108,7 @@ void	init_camera(char **strs, t_info_data *data)
 	ft_atof(tmp[2])));
 	ft_release_strs(tmp);
 	camera.fov = ft_atof(strs[3]);
+	if (camera.fov <= 0 || camera.fov >= 180)
+		ft_print_exit();
 	data->camera = camera;
-}
-
-void	init_light(char **strs, t_info_data *data)
-{
-	char			**tmp;
-	t_light			*light;
-	t_light_node	*node;
-
-	if (ft_strs_size(strs) != 4)
-		ft_print_exit();
-	tmp = ft_split(strs[1], ',');
-	if (!tmp || ft_strs_size(tmp) != 3)
-		ft_print_exit();
-	light = malloc(sizeof(t_light));
-	if (!light)
-		exit(EXIT_FAILURE);
-	light->center = vec(ft_atof(tmp[0]), ft_atof(tmp[1]), ft_atof(tmp[2]));
-	ft_release_strs(tmp);
-	light->ratio = ft_atof(strs[2]);
-	tmp = ft_split(strs[3], ',');
-	if (!tmp || ft_strs_size(tmp) != 3)
-		ft_print_exit();
-	light->color = vec(ft_atoi(tmp[0]) / 255.0, \
-		ft_atoi(tmp[1]) / 255.0, ft_atoi(tmp[2]) / 255.0);
-	ft_release_strs(tmp);
-	node = new_light_node((void *)light, LIGHT);
-	light_node_add_back(&data->lights, node);
 }
