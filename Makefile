@@ -6,7 +6,7 @@
 #    By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2023/03/02 14:21:52 by hyunkyle         ###   ########.fr        #
+#    Updated: 2023/03/02 15:03:20 by hyunkyle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ SRCS	=	main.c \
 			parsing_ppm/argv.c \
 			parsing_ppm/parsing_ppm.c \
 			parsing_ppm/parse_ppm.c \
+			mlx_utils/hooks.c \
 			
 SRCS_DIR = srcs
 OBJS_DIR = objs
@@ -78,6 +79,7 @@ ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c
 	@mkdir -p ${OBJS_DIR}/render
 	@mkdir -p ${OBJS_DIR}/settings
 	@mkdir -p ${OBJS_DIR}/parsing_ppm
+	@mkdir -p ${OBJS_DIR}/mlx_utils	
 	@${CC} ${CFLAGS} -c $< -o $@ -MD
 
 $(NAME): $(OBJS)

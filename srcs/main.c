@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:16:45 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/28 16:12:45 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:02:19 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_zip
 	t_my_mlx	*mlx;
 	int			start_row;
 }	t_zip;
+
+int		key_hook(int keycode, t_zip *vars);
 
 t_zip	*_make_zip(t_settings set, \
 t_info_data *data, \
@@ -69,6 +71,7 @@ int	main(int argc, char **argv)
 	t_info_data	data;
 	t_settings	set;
 	t_my_mlx	my_mlx;
+	t_zip		zip;
 
 	get_info_data(argv[1], &data, argc);
 	set = _init_setting_(data);
@@ -76,6 +79,10 @@ int	main(int argc, char **argv)
 	multi_thread(set, &data, &my_mlx);
 	mlx_put_image_to_window(my_mlx.mlx, \
 	my_mlx.mlx_win, my_mlx.img.img, 0, 0);
+	zip.data = &data;
+	zip.mlx = &my_mlx;
+	zip.set = set;
+	mlx_key_hook(my_mlx.mlx_win, key_hook, &zip);
 	mlx_loop(my_mlx.mlx);
 	return (0);
 }

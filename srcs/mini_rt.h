@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_rt.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:07:57 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/02 13:47:43 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:02:02 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@
 # define TRUE 1
 # define FALSE 0
 # define THREAD_N 24
+
+# define ESC 53
+# define LEFT 123
+# define RIGHT 124
+# define UP 126
+# define DOWN 125
 
 typedef int				t_bool;
 typedef struct s_node	t_node;
@@ -224,5 +230,4 @@ t_light_node	*new_light_node(void *data, t_light_type type);
 void			light_node_add_back(t_light_node **head, \
 t_light_node *new_node);
 t_ray			ray_primary(t_camera cam, double u, double v);
-
 #endif
