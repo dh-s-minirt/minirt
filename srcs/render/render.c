@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/03 22:05:54 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/03 23:37:21 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	put_color(t_color pixel_color, int row, int col, t_mlx_data *data)
 
 	clmaped_pixel = copy_clamp(pixel_color, 0, 1.0);
 	color = write_color(0, clmaped_pixel);
-	my_mlx_pixel_put(data, col, row, color);
+	my_mlx_pixel_put(data, col + 400, row + 200, color);
 }
 
 void	*render(void *source_zip)

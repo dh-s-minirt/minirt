@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_util.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:43:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/03 21:52:16 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/03 23:44:22 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@
 # define X_KEY_EXIT 17
 # define CMODE 0
 # define OMODE 1
+
 void	draw_frame(t_mlx_data *data);
 void	draw_title(t_my_mlx *my_mlx);
+void	draw_xpm(t_my_mlx *my_mlx, char *file);
+
 #endif

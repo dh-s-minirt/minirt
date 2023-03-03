@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:57:43 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/03 21:39:31 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/03 23:56:46 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ t_my_mlx *my_mlx)
 void	start_draw(t_zip *zip)
 {
 	multi_thread(zip->set, (zip->data), zip->mlx);
+	draw_title(zip->mlx);
 	draw_frame(&zip->mlx->img);
 	mlx_put_image_to_window(zip->mlx->mlx, \
 	zip->mlx->mlx_win, zip->mlx->img.img, 0, 0);
@@ -259,10 +260,6 @@ void	camera_move(t_zip *zip, int keycode)
 	else 
 		return ;
 	start_draw(zip);
-	mlx_string_put(zip->mlx->mlx, (zip->mlx->mlx_win), 10, 20, 0xffffff, "InterFace : \n.\n");
-	mlx_string_put(zip->mlx->mlx, (zip->mlx->mlx_win), 10, 30, 0xffffff, "q(x_up),a(x_down)\n");
-	mlx_string_put(zip->mlx->mlx, (zip->mlx->mlx_win), 10, 40, 0xffffff, "e(z_up),d(z_down)\n)\n");
-	mlx_string_put(zip->mlx->mlx, (zip->mlx->mlx_win), 10, 50, 0xffffff, "if you want to change, key press 'c'.\n\n");	
 }
 
 void	move(t_zip *zip, int keycode)
@@ -326,9 +323,9 @@ int	mouse_hook(int button, int x, int y, t_zip *zip)
 	zip->mdat->choice_obj == FALSE)
 	{
 		hit_rec = _init_rec_();
-		world_x = (2 * (x - 100+ 0.5) / (double)(zip->set.screen_width) - 1) * \
+		world_x = (2 * (x - 400+ 0.5) / (double)(zip->set.screen_width) - 1) * \
 		zip->set.scale;
-		world_y = (1 - 2 * (y - 100+ 0.5) / (double)(zip->set.screen_height)) \
+		world_y = (1 - 2 * (y - 200 + 0.5) / (double)(zip->set.screen_height)) \
 		* zip->set.aspect_ratio * zip->set.scale;
 		obj_ray.dir = vec_unit(_mul_vec_mat(zip->set.camera_to_world, \
 			vec_2_arr_vec3(vec(world_x, world_y, -1))));

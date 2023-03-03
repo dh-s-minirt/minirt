@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 20:12:15 by idaegyu           #+#    #+#             */
-/*   Updated: 2023/03/03 23:33:59 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/03 23:57:55 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,11 @@ void	draw_frame(t_mlx_data *data)
 
 void	draw_title(t_my_mlx *my_mlx)
 {
+	draw_xpm(my_mlx, "./ppm/Title.xpm");
+}
+
+void	draw_xpm(t_my_mlx *my_mlx, char *xpm)
+{
 	t_mlx_data		img;
 	int				w_h[2];
 	int				i;
@@ -77,7 +82,7 @@ void	draw_title(t_my_mlx *my_mlx)
 	unsigned int	*p;
 
 	i = -1;
-	img.img = mlx_xpm_file_to_image(my_mlx->mlx, "./ppm/Title.xpm", &w_h[0], &w_h[1]);
+	img.img = mlx_xpm_file_to_image(my_mlx->mlx, xpm, &w_h[0], &w_h[1]);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	while (++i < w_h[1])
 	{
