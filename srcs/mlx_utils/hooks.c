@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:57:43 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/04 01:33:59 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/04 02:11:54 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,6 +272,7 @@ void	move(t_zip *zip, int keycode)
 
 int	key_hook(int keycode, t_zip *zip)
 {
+	printf("%d\n", keycode);
 	if (keycode == KEY_C)
 	{
 		if (zip->mdat->mode == CMODE)
