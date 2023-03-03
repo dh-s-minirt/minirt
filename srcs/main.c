@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: leehyunkyu <leehyunkyu@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:16:45 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/14 20:55:07 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/03 19:50:29 by leehyunkyu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 #include "./settings/setting.h"
 #include "./hit_record/hit_record.h"
 #include "./render/render.h"
+
+int key_hook(int keycode);
+int mouse_hook(int button, int x, int y);
 
 int	main(int argc, char **argv)
 {
@@ -35,6 +38,8 @@ int	main(int argc, char **argv)
 	render(set, &data, &my_mlx);
 	mlx_put_image_to_window(my_mlx.mlx, \
 	my_mlx.mlx_win, my_mlx.img.img, 0, 0);
+	mlx_key_hook(my_mlx.mlx_win, key_hook, NULL);
+	mlx_hook(my_mlx.mlx_win, 17, 0, mouse_hook, NULL);
 	mlx_loop(my_mlx.mlx);
 	return (0);
 }

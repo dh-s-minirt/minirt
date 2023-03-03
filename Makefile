@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+         #
+#    By: leehyunkyu <leehyunkyu@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2023/03/03 14:22:25 by idaegyu          ###   ########.fr        #
+#    Updated: 2023/03/03 19:40:40 by leehyunkyu       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME	=	minirt
 
 SRCS	=	main.c \
 			mini_rt.c	\
+			hooks.c \
 			color/color_utils.c \
 			color/color_utils1.c \
 			color/color_utils2.c \

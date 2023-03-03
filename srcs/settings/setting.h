@@ -20,8 +20,8 @@
 # include "../mini_rt.h"
 # include "../color/color.h"
 
-# define SCREEN_WIDTH 1920
-# define SCREEN_HEIGHT 1080
+# define SCREEN_WIDTH 960
+# define SCREEN_HEIGHT 720
 
 typedef struct s_settings{
 	double	fov;

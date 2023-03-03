@@ -24,7 +24,7 @@
 # include "../mini_rt.h"
 # include "../mlx/mlx.h"
 
-# define DEFAULT_R 30
+# define DEFAULT_R 60
 
 typedef struct s_lt_info
 {
