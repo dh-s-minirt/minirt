@@ -44,8 +44,6 @@ t_bool	trace_hit(t_node	*objects, t_hit_rec	*hit_rec, t_ray ray)
 		cur_hit_rec = _init_rec_();
 		if (query_hit(cur_object, &cur_hit_rec, ray))
 		{
-			// printf("cur : %lf prev : %lf \n", cur_hit_rec.t_near, \
-			// hit_rec->t_near);
 			if (hit_rec->t_near == INFINITY || \
 			cur_hit_rec.t_near < hit_rec->t_near)
 				_update_rec_(hit_rec, cur_hit_rec);

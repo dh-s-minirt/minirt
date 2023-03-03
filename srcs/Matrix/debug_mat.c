@@ -13,10 +13,10 @@
 #include "./matrix.h"
 #include "../libft/libft.h"
 #include <stdio.h>
-void	print_mat(const t_mat4 a){
-	for (int i = 0; i < 4; i++){
-		for (int j = 0; j < 4; j++)
-			printf("%lf ", a.m[i][j]);
-		printf("\n");
-	}
-}
+// void	print_mat(const t_mat4 a){
+// 	for (int i = 0; i < 4; i++){
+// 		for (int j = 0; j < 4; j++)
+// 			printf("%lf ", a.m[i][j]);
+// 		printf("\n");
+// 	}
+// }

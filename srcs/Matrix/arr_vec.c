@@ -50,3 +50,4 @@ const t_vec	z_cord)
 	tmp.m[2][2] = z_cord.z;
 	return (tmp);
 }
+

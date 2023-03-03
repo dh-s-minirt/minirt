@@ -80,7 +80,6 @@ t_mat4	_mul_mat_(const t_mat4 a, const t_mat4 b)
 	}
 	return (mul);
 }
-//전치행렬 구하기
 
 t_mat4	_transpose_mat_(const t_mat4 a)
 {

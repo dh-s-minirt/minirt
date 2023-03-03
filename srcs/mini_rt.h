@@ -20,17 +20,10 @@
 # include <math.h>
 
 # define PI 3.1415926535897932385
-// # define FOCAL_LENGTH 1.0
-// # define VIEWPORT_HEIGHT 2.0
-// # define CANVAS_WIDTH 500
-// # define CANVAS_HEIGHT 500
 # define TRUE 1
 # define FALSE 0
 
-typedef int	t_bool;
-
-//image info
-
+typedef int				t_bool;
 typedef struct s_node	t_node;
 
 typedef enum t_obj_type
@@ -92,14 +85,7 @@ typedef struct s_camera
 {
 	t_vec	center;
 	t_vec	nor_vector;
-	// double	viewprot_width;
-	// double	viewprot_height;
-	// double	focal_length;
-	// t_vec	horizontal;
-	// t_vec	vertical;
-	// t_vec	lower_left_corner;
 	double	fov;
-	// Horizontal field of view in degrees in range
 }	t_camera;
 
 typedef struct s_canvas
@@ -126,10 +112,7 @@ typedef struct s_light
 	t_color	color;
 }	t_light;
 
-/**
- * 	color -> ratio * color한 값
-**/
-typedef struct	s_am_light
+typedef struct s_am_light
 {
 	t_color	color;
 }	t_am_light;
@@ -146,8 +129,6 @@ typedef struct s_info_data
 	t_camera		camera;
 	t_node			*objects;
 	t_light_node	*lights;
-	// t_canvas		canvas;
-	// t_ray			ray;
 }	t_info_data;
 
 typedef struct s_mlx_data
@@ -170,7 +151,8 @@ void			node_add_back(t_node **lst, t_node *new_node);
 t_node			*node_new(void *data, t_obj_type type);
 t_canvas		canvas_new(int width, int height);
 t_light_node	*new_light_node(void *data, t_light_type type);
-void			light_node_add_back(t_light_node **head, t_light_node *new_node);
+void			light_node_add_back(t_light_node **head, \
+					t_light_node *new_node);
 t_ray			ray_primary(t_camera cam, double u, double v);
 
 #endif

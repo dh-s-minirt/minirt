@@ -14,7 +14,6 @@
 NAME	=	minirt
 
 SRCS	=	main.c \
-			mlx_utils.c \
 			mini_rt.c	\
 			color/color_utils.c \
 			color/color_utils1.c \

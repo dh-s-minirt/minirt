@@ -62,3 +62,4 @@ t_vec	vec_copy(t_vec origin)
 	copy.z = origin.z;
 	return (copy);
 }
+

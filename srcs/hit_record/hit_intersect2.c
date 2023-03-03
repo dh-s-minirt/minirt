@@ -12,17 +12,7 @@
 
 #include "./hit_record.h"
 
-//cone -> radius, rgb Color, height, theta(0 ~ 180), center, normal vector, 
-// identifier: Cn
-//p = o+td;
-// cone -> v,center,theta;
-//function pointer void (*typedef name)
-//typedef return_type      (*(notice <-function pointer) identifier)\
-// (argument_type1...)         void (*)(t_node*,t_hit_rec*,t_ray)의 typedef가 t_~
 typedef void				(*t_inersect_)(t_node *, t_hit_rec *, const t_ray);
-//c언어 파싱 -> 일단 반환형 집어서 void -> identifier 괄호 있으니까 오른쪽 보고 다시 중간에 식별자
-// *보고 포인터의 식별자인걸 알고 오른쪽으로가서 왼쪽 괄호보고 이게 함수의 식별자인걸 암  
-//static const (function_pointer type)
 static const t_inersect_	g_intersect[5] = {
 	_intersect_sphere_, _intersect_plane_, _intersect_cylinder_, \
 	_intersect_cone_, _intersect_disk_

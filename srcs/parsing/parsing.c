@@ -69,10 +69,6 @@ static void	_make_up_bot_disk(t_cylinder *cy, t_info_data *data)
 	down->color = vec_copy(cy->color);
 	up->r = cy->radius;
 	down->r = cy->radius;
-	
-	// upper =0;
-	// bot =0;
-	// (void)data;
 	upper = node_new((void *)up, DISK);
 	node_add_back(&data->objects, upper);
 	bot = node_new((void *)down, DISK);
@@ -111,7 +107,7 @@ void	fill_data(char *line, t_info_data *data, int *cnt)
 			break ;
 		i++;
 	}
-	if (i == _DATA_LEN || (0 <= i && i <= 1 && check[i] == 1))
+	if (i == _DATA_LEN || (0 <= i && i <= 2 && check[i] == 1))
 		ft_print_exit();
 	if (0 <= i && i <= 2)
 	{
@@ -140,7 +136,6 @@ void	get_info_data(char *filename, t_info_data *data)
 		line = get_next_line(fd);
 	}
 	close(fd);
-	// if (cnt < 3)
-	// 	ft_print_exit();
-	// fill_camera_data(data);
+	if (cnt < 3)
+		ft_print_exit();
 }

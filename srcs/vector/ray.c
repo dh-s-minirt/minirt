@@ -35,12 +35,3 @@ t_ray	ray(t_vec orig, t_vec dir)
 	return (ray);
 }
 
-// t_ray	ray_primary(t_camera cam, double u, double v)
-// {
-// 	t_ray	ray;
-
-// 	ray.origin = cam.center;
-// 	ray.dir = vec_unit(vec_sub(vec_add(vec_add(cam.lower_left_corner, \
-// 	vec_mul(cam.horizontal, u)), vec_mul(cam.vertical, v)), cam.center));
-// 	return (ray);
-// }

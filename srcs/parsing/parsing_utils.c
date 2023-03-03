@@ -104,16 +104,3 @@ void	init_light(char **strs, t_info_data *data)
 	light_node_add_back(&data->lights, node);
 }
 
-// void	fill_camera_data(t_info_data *data)
-// {
-// 	// // data->camera.viewprot_height = VIEWPORT_HEIGHT;
-// 	// // data->camera.viewprot_width = VIEWPORT_HEIGHT * data->canvas.aspect_ratio;
-// 	// data->camera.focal_length = FOCAL_LENGTH;
-// 	// data->camera.horizontal = vec(data->camera.viewprot_width, 0, 0);
-// 	// data->camera.vertical = vec(0, data->camera.viewprot_height, 0);
-// 	// data->camera.lower_left_corner = vec_sub(vec_sub(vec_sub \
-// 	// 	(data->camera.center, \
-// 	// 	vec_div(data->camera.horizontal, 2)), \
-// 	// 	vec_div(data->camera.vertical, 2)), \
-// 	// 	vec(0, 0, FOCAL_LENGTH));
-// }

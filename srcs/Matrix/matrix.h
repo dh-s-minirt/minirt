@@ -39,13 +39,13 @@ t_mat4		_rotate_mat_(const double theta, char mode);
 t_vec		_mul_vec_mat(const t_mat4 a, t_arr_vec3	arr_vec);
 
 //arr_vec
-t_mat4	_make_mat_with_vec(const t_vec	x_cord, const t_vec	y_cord, \
-const t_vec	z_cord);
+t_mat4		_make_mat_with_vec(const t_vec	x_cord, \
+const t_vec	y_cord, const t_vec	z_cord);
 t_arr_vec3	vec_2_arr_vec3(t_vec vec);
 t_vec		arr_vec3_2_vec(t_arr_vec3 vec3);
 
-void	print_mat(const t_mat4 a);
-t_mat4	_make_cord_(double xyz[3][3]);
-void	print_mat(const t_mat4 a);
+void		print_mat(const t_mat4 a);
+t_mat4		_make_cord_(double xyz[3][3]);
+void		print_mat(const t_mat4 a);
 
 #endif

@@ -80,7 +80,6 @@ void	init_plane(char **strs, t_info_data *data)
 	node_add_back(&data->objects, node);
 }
 
-
 void	init_am_light(char **strs, t_info_data *data)
 {
 	char			**color_data;
