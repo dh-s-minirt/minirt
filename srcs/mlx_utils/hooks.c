@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:57:43 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/03 17:49:11 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/03 19:55:57 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -288,7 +288,17 @@ int	key_hook(int keycode, t_zip *zip)
 			zip->mdat->mode = CMODE;
 		}
 	}
-	if (keycode == ESC)
+	else if (keycode == KEY_F)
+	{
+		if (zip->mdat->choice_obj == TRUE && \
+		zip->mdat->mode == OMODE)
+		{
+			printf("Object picking is free\n");
+			zip->mdat->choice_obj = FALSE;
+			zip->mdat->object = NULL;
+		}
+	}
+	else if (keycode == ESC)
 	{
 		mlx_destroy_window(zip->mlx, zip->mlx->mlx_win);
 		exit(EXIT_SUCCESS);
@@ -335,6 +345,13 @@ int	mouse_hook(int button, int x, int y, t_zip *zip)
 	return (0);
 }
 
+int	my_exit(void *data)
+{
+	(void)data;
+	exit(EXIT_SUCCESS);
+	return (0);
+}
+
 void	my_hook(t_zip *zip)
 {
 	t_m_dat	*dat;
@@ -342,6 +359,7 @@ void	my_hook(t_zip *zip)
 	dat = ft_malloc(sizeof(t_m_dat));
 	dat->mode = CMODE;
 	zip->mdat = dat;
+	mlx_hook(zip->mlx->mlx_win, X_KEY_EXIT, 0, my_exit, NULL);
 	mlx_key_hook(zip->mlx->mlx_win, key_hook, zip);
 	mlx_mouse_hook(zip->mlx->mlx_win, mouse_hook, zip);	
 }

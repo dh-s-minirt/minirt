@@ -9,6 +9,7 @@
 		"mini_rt.h": "c",
 		"parsing.h": "c",
 		"mlx_util.h": "c",
-		"struct.h": "c"
+		"struct.h": "c",
+		"color.h": "c"
 	}
 }

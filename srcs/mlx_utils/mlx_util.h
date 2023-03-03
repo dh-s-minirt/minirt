@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_util.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:43:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/02 22:29:18 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/03 19:51:34 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define KEY_W 13
 # define KEY_E 14
 # define KEY_C 8
+# define KEY_F 3
 # define KEY_PLUS 24
 # define KEY_MINUS 27
 # define KEY_ROT_XP 43
@@ -32,6 +33,7 @@
 # define KEY_ROT_YM 37
 # define KEY_ROT_ZP 34
 # define KEY_ROT_ZM 31
+# define X_KEY_EXIT 17
 # define CMODE 0
 # define OMODE 1
 #endif
