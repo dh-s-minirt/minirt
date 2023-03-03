@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 20:12:15 by idaegyu           #+#    #+#             */
-/*   Updated: 2023/03/03 22:53:42 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/03 23:33:59 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,25 +69,25 @@ void	draw_frame(t_mlx_data *data)
 
 void	draw_title(t_my_mlx *my_mlx)
 {
-	t_mlx_data	img;
-	int				width;
-	int				height;
+	t_mlx_data		img;
+	int				w_h[2];
 	int				i;
 	int				j;
 	int				color;
 	unsigned int	*p;
 
 	i = -1;
-	img.img = mlx_xpm_file_to_image(my_mlx->mlx, "./ppm/Title.xpm", &width, &height);
+	img.img = mlx_xpm_file_to_image(my_mlx->mlx, "./ppm/Title.xpm", &w_h[0], &w_h[1]);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	while (++i < height)
+	while (++i < w_h[1])
 	{
 		j = -1;
-		while (++j < width)
+		while (++j < w_h[0])
 		{
 			p = (unsigned int *)&my_mlx->img.addr\
 			[i * my_mlx->img.line_length + j * (my_mlx->img.bits_per_pixel / 8)];
-			color = *(unsigned int*)&img.addr[i * img.line_length + j * (img.bits_per_pixel / 8)];
+			color = *(unsigned int*)&img.addr[i * img.line_length + j * \
+			(img.bits_per_pixel / 8)];
 			*p = color;
 		}
 	}
