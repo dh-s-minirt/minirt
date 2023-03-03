@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 14:41:50 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/03 15:03:36 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/03 20:11:36 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -284,4 +284,23 @@ typedef struct s_my_mlx
 	void		*mlx_win;
 	t_mlx_data	img;
 }	t_my_mlx;
+
+typedef struct s_point
+{
+	int	color;
+	int	x;
+	int	y;
+	int	z;
+}	t_point;
+
+typedef struct s_delta
+{
+	int	dx;
+	int	step_x;
+	int	dy;
+	int	step_y;
+	int	error;
+	int	e2;
+}	t_delta;
+
 #endif

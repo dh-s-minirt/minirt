@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:57:43 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/03 19:55:57 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/03 21:39:31 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,9 @@ t_my_mlx *my_mlx)
 void	start_draw(t_zip *zip)
 {
 	multi_thread(zip->set, (zip->data), zip->mlx);
+	draw_frame(&zip->mlx->img);
 	mlx_put_image_to_window(zip->mlx->mlx, \
-	zip->mlx->mlx_win, zip->mlx->img.img, 100, 100);
+	zip->mlx->mlx_win, zip->mlx->img.img, 0, 0);
 }
 
 void	update_center_x(t_zip *zip, long double e)
@@ -270,7 +271,6 @@ void	move(t_zip *zip, int keycode)
 		camera_move(zip, keycode);
 	else
 		object_move(zip, keycode);
-
 }
 
 int	key_hook(int keycode, t_zip *zip)
@@ -362,6 +362,7 @@ void	my_hook(t_zip *zip)
 	mlx_hook(zip->mlx->mlx_win, X_KEY_EXIT, 0, my_exit, NULL);
 	mlx_key_hook(zip->mlx->mlx_win, key_hook, zip);
 	mlx_mouse_hook(zip->mlx->mlx_win, mouse_hook, zip);	
+	
 }
 
 // img ㅅㅐ로 만만들들어어야됨

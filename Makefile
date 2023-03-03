@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+         #
+#    By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2023/03/02 15:03:20 by hyunkyle         ###   ########.fr        #
+#    Updated: 2023/03/03 20:30:59 by idaegyu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ SRCS	=	main.c \
 			parsing_ppm/parsing_ppm.c \
 			parsing_ppm/parse_ppm.c \
 			mlx_utils/hooks.c \
+			mlx_utils/draw_line.c \
 			
 SRCS_DIR = srcs
 OBJS_DIR = objs
