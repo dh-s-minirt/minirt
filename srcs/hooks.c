@@ -6,7 +6,7 @@
 /*   By: leehyunkyu <leehyunkyu@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 19:36:32 by leehyunkyu        #+#    #+#             */
-/*   Updated: 2023/03/03 19:52:56 by leehyunkyu       ###   ########.fr       */
+/*   Updated: 2023/03/03 19:55:23 by leehyunkyu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,9 @@ int key_hook(int keycode, void *param)
     return (0);
 }
 
-int mouse_hook(int button, int x, int y, void *param)
+int mouse_hook(void *param)
 {
     (void)param;
-    (void)button;
-    (void)x;
-    (void)y;
     exit(0);
     return (0);
 }
