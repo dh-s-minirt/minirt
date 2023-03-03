@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:57:43 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/03 15:04:40 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/03 17:49:11 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ void	update_center_x(t_zip *zip, long double e)
 	else if (zip->mdat->obj_type == CYLINDER)
 	{
 		((t_cylinder *)(zip->mdat->object))->center.x += e;
+		if (((t_cylinder *)(zip->mdat->object))->bot == NULL)
+			return ;
 		((t_cylinder *)(zip->mdat->object))->bot->center.x += e;
 		((t_cylinder *)(zip->mdat->object))->top->center.x += e;
 	}
@@ -115,6 +117,8 @@ void	update_center_y(t_zip *zip, long double e)
 	else if (zip->mdat->obj_type == CYLINDER)
 	{
 		((t_cylinder *)(zip->mdat->object))->center.y += e;
+		if (((t_cylinder *)(zip->mdat->object))->bot == NULL)
+			return ;
 		((t_cylinder *)(zip->mdat->object))->bot->center.y += e;
 		((t_cylinder *)(zip->mdat->object))->top->center.y += e;
 	}
@@ -146,6 +150,8 @@ void	update_center_z(t_zip *zip, long double e)
 	else if (zip->mdat->obj_type == CYLINDER)
 	{
 		((t_cylinder *)(zip->mdat->object))->center.z += e;
+		if (((t_cylinder *)(zip->mdat->object))->bot == NULL)
+			return ;
 		((t_cylinder *)(zip->mdat->object))->bot->center.z += e;
 		((t_cylinder *)(zip->mdat->object))->top->center.z += e;
 	}
@@ -314,7 +320,6 @@ int	mouse_hook(int button, int x, int y, t_zip *zip)
 		zip->set.scale;
 		world_y = (1 - 2 * (y - 100+ 0.5) / (double)(zip->set.screen_height)) \
 		* zip->set.aspect_ratio * zip->set.scale;
-		printf("%d %d %lf %lf\n", x, y, world_x, world_y);
 		obj_ray.dir = vec_unit(_mul_vec_mat(zip->set.camera_to_world, \
 			vec_2_arr_vec3(vec(world_x, world_y, -1))));
 		obj_ray.origin = vec_copy(zip->set.camera.center);

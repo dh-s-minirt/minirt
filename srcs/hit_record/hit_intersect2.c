@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_intersect2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:46:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/28 16:42:09 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/03 16:55:30 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,7 @@ double root[2], const t_ray ray)
 t_bool	query_hit(t_node *cur_obj, t_hit_rec *cur_h_rec, const t_ray ray)
 {
 	g_intersect[cur_obj->type](cur_obj, cur_h_rec, ray);
-	if (cur_obj->material.m_type == UV || \
-	cur_obj->material.m_type == SPECIAL)
-		cur_h_rec->object = cur_obj->data;
+	cur_h_rec->object = cur_obj->data;
 	return (cur_h_rec->is_hit);
 }
 
