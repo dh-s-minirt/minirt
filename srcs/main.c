@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:16:45 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/03 22:00:27 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/03 22:37:59 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ int	main(int argc, char **argv)
 	get_info_data(argv[1], &data, argc);
 	set = _init_setting_(data.camera);
 	my_mlx = init_mlx();
-	// draw_title(&my_mlx);
-	multi_thread(set, &data, &my_mlx);
+	draw_title(&my_mlx);
+	// multi_thread(set, &data, &my_mlx);
 	draw_frame(&my_mlx.img);
 	mlx_put_image_to_window(my_mlx.mlx, my_mlx.mlx_win, my_mlx.img.img, 0, 0);
 	zip.data = &data;
@@ -78,4 +78,5 @@ int	main(int argc, char **argv)
 	my_hook(&zip);
 	mlx_loop(my_mlx.mlx);
 	return (0);
+	multi_thread(set, &data, &my_mlx);
 }

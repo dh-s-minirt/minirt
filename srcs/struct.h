@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 14:41:50 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/03 20:11:36 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/03 22:43:16 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -273,6 +273,7 @@ typedef struct s_mlx_data
 {
 	void	*img;
 	char	*addr;
+	// unsigned int	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
