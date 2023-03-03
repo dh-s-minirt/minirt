@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:16:45 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/03 23:36:29 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/04 01:21:24 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int	main(int argc, char **argv)
 	set = _init_setting_(data.camera);
 	my_mlx = init_mlx();
 	draw_title(&my_mlx);
+	draw_sidebar(&my_mlx);
+	draw_topbar(&my_mlx, (t_m_dat){CMODE, FALSE, NULL, 0});
 	multi_thread(set, &data, &my_mlx);
 	draw_frame(&my_mlx.img);
 	mlx_put_image_to_window(my_mlx.mlx, my_mlx.mlx_win, my_mlx.img.img, 0, 0);

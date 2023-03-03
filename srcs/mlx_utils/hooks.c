@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:57:43 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/03 23:56:46 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/04 01:33:59 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ t_my_mlx *my_mlx)
 void	start_draw(t_zip *zip)
 {
 	multi_thread(zip->set, (zip->data), zip->mlx);
-	draw_title(zip->mlx);
 	draw_frame(&zip->mlx->img);
+	draw_topbar(zip->mlx, *zip->mdat);
 	mlx_put_image_to_window(zip->mlx->mlx, \
 	zip->mlx->mlx_win, zip->mlx->img.img, 0, 0);
 }
@@ -278,11 +278,13 @@ int	key_hook(int keycode, t_zip *zip)
 		{
 			printf("OMODE\n");
 			zip->mdat->mode = OMODE;
+			start_draw(zip);
 		}
 		else 
 		{
 			printf("CMODE\n");
 			zip->mdat->mode = CMODE;
+			start_draw(zip);
 		}
 	}
 	else if (keycode == KEY_F)
@@ -293,6 +295,7 @@ int	key_hook(int keycode, t_zip *zip)
 			printf("Object picking is free\n");
 			zip->mdat->choice_obj = FALSE;
 			zip->mdat->object = NULL;
+			start_draw(zip);
 		}
 	}
 	else if (keycode == ESC)
@@ -336,6 +339,7 @@ int	mouse_hook(int button, int x, int y, t_zip *zip)
 			zip->mdat->object = hit_rec.object;
 			zip->mdat->choice_obj = TRUE;
 			zip->mdat->obj_type = hit_rec.obj_type;
+			start_draw(zip);
 			printf("You choice one obj: type : %d\n", zip->mdat->obj_type);
 		}
 	}	

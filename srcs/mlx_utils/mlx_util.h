@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:43:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/03 23:44:22 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/04 01:14:44 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 
 void	draw_frame(t_mlx_data *data);
 void	draw_title(t_my_mlx *my_mlx);
-void	draw_xpm(t_my_mlx *my_mlx, char *file);
+void	draw_xpm(t_my_mlx *my_mlx, char *xpm, int x, int y);
+void	draw_sidebar(t_my_mlx *my_mlx);
+void	draw_topbar(t_my_mlx *my_mlx, t_m_dat mdat);
 
 #endif
