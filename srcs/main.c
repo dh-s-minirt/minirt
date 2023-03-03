@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:16:45 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/03 04:36:43 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/03 14:46:46 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,6 @@
 #include "./settings/setting.h"
 #include "./hit_record/hit_record.h"
 #include "./render/render.h"
-
-typedef struct s_m_dat
-{
-	t_bool		mode;
-	t_bool		choice_obj;
-	void		*object;
-	t_obj_type	obj_type;
-}	t_m_dat;
-
-typedef struct s_zip
-{
-	t_settings	set;
-	t_info_data	*data;
-	t_my_mlx	*mlx;
-	int			start_row;
-	t_m_dat		*mdat;
-}	t_zip;
 
 void	my_hook(t_zip *zip);
 int		key_hook(int keycode, t_zip *vars);

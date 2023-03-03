@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:49:23 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/02 13:00:11 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/03 14:46:41 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,6 @@
 # include "../mini_rt.h"
 # include "../libft/libft.h"
 # include <stdio.h>
-
-typedef struct s_hit_rec
-{
-	double		t_near;
-	t_vec		hit_normal;
-	t_material	material;
-	t_vec		contact_point;
-	t_bool		is_hit;
-	t_color		albedo;
-	t_obj_type	obj_type;
-	double		u;
-	double		v;
-	void		*object;
-}	t_hit_rec;
-
-typedef struct s_abc
-{
-	double	a;
-	double	b;
-	double	c;
-}	t_abc;
 
 //1
 t_bool		solve_quadratic(const double a, const double half_b, \

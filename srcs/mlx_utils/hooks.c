@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:57:43 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/03 05:35:42 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:04:40 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,6 @@
 #include "./mlx_util.h"
 #include "../render/render.h"
 #include "../Matrix/matrix.h"
-
-typedef struct s_m_dat
-{
-	t_bool		mode;
-	t_bool		choice_obj;
-	void		*object;
-	t_obj_type	obj_type;
-}	t_m_dat;
-
-typedef struct s_zip
-{
-	t_settings	set;
-	t_info_data	*data;
-	t_my_mlx	*mlx;
-	int			start_row;
-	t_m_dat		*mdat;
-}	t_zip;
 
 static t_zip	*_make_zip(t_settings set, \
 t_info_data *data, \

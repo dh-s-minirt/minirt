@@ -6,21 +6,13 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/03 02:15:40 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/03 15:04:03 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 #include <stdio.h>
 #include "../color/color.h"
-
-typedef struct s_zip
-{
-	t_settings	set;
-	t_info_data	*data;
-	t_my_mlx	*mlx;
-	int			start_row;
-}	t_zip;
 
 static void	color_hitrec_init(t_color *pixel_color, t_hit_rec *hit_rec)
 {

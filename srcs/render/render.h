@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:20:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/28 17:14:48 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/03 14:48:33 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,6 @@
 # define X 0
 # define Y 1
 # define DEFAULT_R 30
-
-typedef struct s_fres_data
-{
-	double	ior;
-	int		depth;
-}	t_fres_data;
-
-typedef struct s_lt_info
-{
-	t_vec	dir;
-	t_vec	intensity;
-	double	dist;
-}	t_lt_info;
 
 //put_img
 void		my_mlx_pixel_put(t_mlx_data *data, int x, int y, int color);
