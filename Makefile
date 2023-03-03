@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+         #
+#    By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2023/02/20 17:06:03 by hyunkyle         ###   ########.fr        #
+#    Updated: 2023/03/03 14:22:25 by idaegyu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,8 +53,8 @@ OBJS := ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
 
 CC		=	cc 
 Debug = -fsanitize=address -g
-CFLAGS	=	-Wall -Werror -Wextra -O3
-
+CFLAGS	=	-Wall -Werror -Wextra -Imlx -O3
+LFAGS = -framework OpenGL -framework AppKit
 all		: $(NAME)
 
 ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c
@@ -74,7 +74,7 @@ $(NAME): $(OBJS)
 	@make -C ./srcs/get_next_line
 	@make -C ./srcs/libft
 	@make -C ./srcs/mlx
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) ./srcs/get_next_line/libgnl.a ./srcs/libft/libft.a libmlx.dylib
+	@$(CC) $(LFAGS) $(OBJS) -o $(NAME) ./srcs/get_next_line/libgnl.a ./srcs/libft/libft.a libmlx.dylib
 	@echo "Build ${NAME}: done"
 
 clean	:
