@@ -8,6 +8,7 @@
 		"render.h": "c",
 		"mini_rt.h": "c",
 		"parsing.h": "c",
-		"mlx_util.h": "c"
+		"mlx_util.h": "c",
+		"struct.h": "c"
 	}
 }
