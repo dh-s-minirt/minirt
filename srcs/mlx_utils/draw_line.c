@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 20:12:15 by idaegyu           #+#    #+#             */
-/*   Updated: 2023/03/04 01:29:19 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/04 11:26:54 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,16 +82,16 @@ void	draw_topbar(t_my_mlx *my_mlx, t_m_dat mdat)
 	if (mdat.mode == CMODE)
 	{
 		if (mdat.choice_obj == TRUE)
-			draw_xpm(my_mlx, "./ppm/camera_select.xpm", 399, 0);
+			draw_xpm(my_mlx, "./ppm/camera_select.xpm", 401, 0);
 		else
-			draw_xpm(my_mlx, "./ppm/camera_no.xpm", 399, 0);
+			draw_xpm(my_mlx, "./ppm/camera_no.xpm", 401, 0);
 	}
 	else 
 	{
 		if (mdat.choice_obj == TRUE)
-			draw_xpm(my_mlx, "./ppm/obj_select.xpm", 399, 0);
+			draw_xpm(my_mlx, "./ppm/obj_select.xpm", 401, 0);
 		else
-			draw_xpm(my_mlx, "./ppm/obj_no.xpm", 399, 0);
+			draw_xpm(my_mlx, "./ppm/obj_no.xpm", 401, 0);
 	}
 }
 
