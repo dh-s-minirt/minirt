@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_util.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:43:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/04 02:12:35 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/04 17:08:52 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,15 @@ void	draw_title(t_my_mlx *my_mlx);
 void	draw_xpm(t_my_mlx *my_mlx, char *xpm, int x, int y);
 void	draw_sidebar(t_my_mlx *my_mlx);
 void	draw_topbar(t_my_mlx *my_mlx, t_m_dat mdat);
+void	obj_update_r_center(t_zip *zip, char mode, double theta);
+void	rotate_up_c_x(t_zip *zip, double theta);
+void	rotate_up_nor_x(t_zip *zip, double theta);
+void	rotate_up_c_y(t_zip *zip, double theta);
+void	rotate_up_nor_y(t_zip *zip, double theta);
+void	rotate_up_c_z(t_zip *zip, double theta);
+void	rotate_up_nor_z(t_zip *zip, double theta);
+void	rotate_up_x(t_zip *zip, double theta);
+void	rotate_up_y(t_zip *zip, double theta);
+void	rotate_up_z(t_zip *zip, double theta);
 
 #endif

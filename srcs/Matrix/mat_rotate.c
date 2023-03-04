@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 15:54:56 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/02 21:56:17 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/04 14:53:32 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,8 @@ t_mat4	_rotate_mat_(const double theta, char mode)
 	return (rotate);
 }
 
-t_vec	_rotate_vec_(const double theta, char mode, const t_vec source)
+t_vec	_rotate_vec_(const double theta, char mode, t_vec source)
 {
-	const t_mat4	origin = _camera_to_world_(source);
 	t_mat4			rotate;
 	t_vec			local_v;
 
@@ -94,7 +93,7 @@ t_vec	_rotate_vec_(const double theta, char mode, const t_vec source)
 		printf("Please use correct rotate_mode.\n");
 		exit(EXIT_FAILURE);
 	}
-	local_v = _mul_vec_mat(\
-	_mul_mat_(origin, rotate), vec_2_arr_vec3(vec(0, 0, 1)));
+	local_v = _mul_vec_mat(rotate, \
+	vec_2_arr_vec3(source));
 	return (local_v);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:57:43 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/04 02:13:21 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/04 17:08:19 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,25 +193,19 @@ void	object_move(t_zip *zip, int keycode)
 		update_center(zip, 'z', e);
 	else if (keycode == KEY_D)
 		update_center(zip, 'z', -e);
-	// else if (keycode == KEY_ROT_XM)
-	// 	zip->set.camera_to_world = _mul_mat_(zip->set.camera_to_world, \
-	// 	_rotate_mat_(-20, 'x'));
-	// else if (keycode == KEY_ROT_XP)
-	// 	zip->set.camera_to_world = _mul_mat_(zip->set.camera_to_world, \
-	// 	_rotate_mat_(20, 'x'));
-	// else if (keycode == KEY_ROT_YM)
-	// 	zip->set.camera_to_world = _mul_mat_(zip->set.camera_to_world, \
-	// 	_rotate_mat_(-20, 'y'));
-	// else if (keycode == KEY_ROT_YP)
-	// 	zip->set.camera_to_world = _mul_mat_(zip->set.camera_to_world, \
-	// 	_rotate_mat_(20, 'y'));
-	// else if (keycode == KEY_ROT_ZM)
-	// 	zip->set.camera_to_world = _mul_mat_(zip->set.camera_to_world, \
-	// 	_rotate_mat_(-20, 'z'));
-	// else if (keycode == KEY_ROT_ZP){
-	// 	zip->set.camera_to_world = _mul_mat_(zip->set.camera_to_world, \
-	// 	_rotate_mat_(20, 'z'));
-	// }
+	else if (keycode == KEY_ROT_XM)
+		obj_update_r_center(zip, 'x', -15);
+	else if (keycode == KEY_ROT_XP)
+		obj_update_r_center(zip, 'x', 15);
+	else if (keycode == KEY_ROT_YM)
+		obj_update_r_center(zip, 'y', -15);
+	else if (keycode == KEY_ROT_YP)
+		obj_update_r_center(zip, 'y', 15);
+	else if (keycode == KEY_ROT_ZM)
+		obj_update_r_center(zip, 'z', -15);
+	else if (keycode == KEY_ROT_ZP){
+		obj_update_r_center(zip, 'z', 15);
+	}
 	start_draw(zip);	
 }
 
