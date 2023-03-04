@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:26:54 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/03 04:18:18 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/04 17:35:55 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_info_data *data, t_material mat)
 	down = ft_malloc(sizeof(t_disk));
 	down->center = vec_copy((vec_add(cn->center, vec_mul(\
 	cn->nor_vector, cn->height))));
-	down->nor_v = vec_copy(vec_mul(cn->nor_vector, -1));
+	down->nor_v = cn->nor_vector;
 	down->color = vec_copy(cn->color);
 	down->r = cn->radius;
 	bot = node_new((void *)down, DISK);
@@ -72,6 +72,7 @@ t_info_data *data, t_material mat)
 	bot->material.property = mat.property;
 	bot->material.m_type = mat.m_type;
 	down->parent_type = CONE;
+	down->parent = cn;
 	return (down);
 }
 

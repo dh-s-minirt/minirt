@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 14:44:11 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/04 17:07:12 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/04 18:21:06 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,7 @@ void	rotate_up_x(t_zip *zip, double theta)
 
 void	rotate_up_c_x(t_zip *zip, double theta)
 {
-	if (zip->mdat->obj_type == PLANE)
-		((t_plane *)(zip->mdat->object))->nor_vector = _rotate_vec_(theta, 'x', \
-		((t_plane *)(zip->mdat->object))->nor_vector);
-	else if (zip->mdat->obj_type == SPHERE)
-		return ;
-	else if (zip->mdat->obj_type == CONE)
+	if (zip->mdat->obj_type == CONE)
 	{
 		((t_cone *)(zip->mdat->object))->nor_vector = _rotate_vec_(theta, 'x', \
 		((t_cone *)(zip->mdat->object))->nor_vector);
