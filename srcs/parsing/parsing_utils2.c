@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:21:14 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/06 00:37:33 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 04:09:58 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_info_data *data)
 
 	x = ft_malloc(sizeof(t_disk));
 	x->center = vec_copy(center);
-	x->nor_v = vec_copy(cy->nor_vector);
+	x->nor_v = vec_mul(cy->nor_vector, -1);
 	x->color = vec_copy(cy->color);
 	x->r = cy->radius;
 	node = node_new((void *)x, DISK);

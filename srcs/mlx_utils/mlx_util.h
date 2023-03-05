@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_util.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:43:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 04:04:59 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 04:36:05 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void		rotate_up_y(t_zip *zip, double theta);
 void		rotate_up_z(t_zip *zip, double theta);
 t_vec		*get_center(void *obj, t_obj_type type);
 t_vec		*get_normal(void *obj, t_obj_type type);
+double		*get_height(void *obj, t_obj_type type);
 t_key_type	get_key(int keycode);
 void		update_center(t_zip *zip, char mode, long double e);
 void		update_center_z(t_zip *zip, long double e);
@@ -75,5 +76,6 @@ void		zoom(t_zip *zip, int keycode);
 void		move(t_zip *zip, int keycode);
 void		rot_update_normal(t_zip *zip, char mode, double theta);
 void		rotate(t_zip *zip, int keycode);
+void		rot_upd_child_center(t_zip *zip);
 
 #endif

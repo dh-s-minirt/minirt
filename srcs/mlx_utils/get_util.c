@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_util.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:50:07 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 02:33:09 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 04:35:58 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,16 @@ t_vec	*get_normal(void *obj, t_obj_type type)
 		return (&((t_disk *)obj)->nor_v);
 	else
 		return (&((t_cylinder *)obj)->nor_vector);
+}
+
+double	*get_height(void *obj, t_obj_type type)
+{
+	if (type == CONE)
+		return (&((t_cone *)obj)->height);
+	else if (type == CYLINDER)	
+		return (&((t_cylinder *)obj)->height);
+	else
+		return (NULL);
 }
 
 t_key_type	get_key(int keycode)
