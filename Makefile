@@ -6,7 +6,7 @@
 #    By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2023/03/04 17:05:57 by daegulee         ###   ########.fr        #
+#    Updated: 2023/03/06 00:14:07 by daegulee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,9 @@ SRCS	=	main.c \
 			mlx_utils/rotate_obj.c \
 			mlx_utils/rotate_obj2.c \
 			mlx_utils/rotate_obj3.c \
+			mlx_utils/draw_util.c \
+			mlx_utils/update_center.c \
+			mlx_utils/get_center.c \
 			
 SRCS_DIR = srcs
 OBJS_DIR = objs

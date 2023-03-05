@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:43:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/04 17:08:52 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 00:13:32 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define CMODE 0
 # define OMODE 1
 
+void	draw_line(t_point p1, t_point p2, t_mlx_data *data);
 void	draw_frame(t_mlx_data *data);
 void	draw_title(t_my_mlx *my_mlx);
 void	draw_xpm(t_my_mlx *my_mlx, char *xpm, int x, int y);
@@ -52,5 +53,10 @@ void	rotate_up_nor_z(t_zip *zip, double theta);
 void	rotate_up_x(t_zip *zip, double theta);
 void	rotate_up_y(t_zip *zip, double theta);
 void	rotate_up_z(t_zip *zip, double theta);
+t_vec	*get_center(void *obj, t_obj_type type);
+t_vec	*get_normal(void *obj, t_obj_type type);
+void	update_center_z(t_zip *zip, long double e);
+void	update_center_y(t_zip *zip, long double e);
+void	update_center_x(t_zip *zip, long double e);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 20:12:15 by idaegyu           #+#    #+#             */
-/*   Updated: 2023/03/04 11:26:54 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/05 23:48:45 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,68 +56,5 @@ void	draw_line(t_point p1, t_point p2, t_mlx_data *data)
 			delta.error += delta.dx;
 			p1.y += delta.step_y;
 		}	
-	}
-}
-
-void	draw_frame(t_mlx_data *data)
-{
-	draw_line((t_point){0xffffff, 400, 1, 0}, \
-	(t_point){0xffffff, 400, SCREEN_HEIGHT + 200, 0}, data);
-	draw_line((t_point){0xffffff, 1, 200, 0}, \
-	(t_point){0xffffff, SCREEN_WIDTH + 600, 200, 0}, data);
-}
-
-void	draw_title(t_my_mlx *my_mlx)
-{
-	draw_xpm(my_mlx, "./ppm/Title.xpm", 0, 0);
-}
-
-void	draw_sidebar(t_my_mlx *my_mlx)
-{
-	draw_xpm(my_mlx, "./ppm/sidebar.xpm", 0, 200);
-}
-
-void	draw_topbar(t_my_mlx *my_mlx, t_m_dat mdat)
-{
-	if (mdat.mode == CMODE)
-	{
-		if (mdat.choice_obj == TRUE)
-			draw_xpm(my_mlx, "./ppm/camera_select.xpm", 401, 0);
-		else
-			draw_xpm(my_mlx, "./ppm/camera_no.xpm", 401, 0);
-	}
-	else 
-	{
-		if (mdat.choice_obj == TRUE)
-			draw_xpm(my_mlx, "./ppm/obj_select.xpm", 401, 0);
-		else
-			draw_xpm(my_mlx, "./ppm/obj_no.xpm", 401, 0);
-	}
-}
-
-void	draw_xpm(t_my_mlx *my_mlx, char *xpm, int x, int y)
-{
-	t_mlx_data		img;
-	int				w_h[2];
-	int				i;
-	int				j;
-	int				color;
-	unsigned int	*p;
-
-	i = -1;
-	img.img = mlx_xpm_file_to_image(my_mlx->mlx, xpm, &w_h[0], &w_h[1]);
-	img.addr = mlx_get_data_addr(img.img, \
-	&img.bits_per_pixel, &img.line_length, &img.endian);
-	while (++i < w_h[1])
-	{
-		j = -1;
-		while (++j < w_h[0])
-		{
-			p = (unsigned int *)&my_mlx->img.addr\
-			[(i + y)* my_mlx->img.line_length + (j + x) * (my_mlx->img.bits_per_pixel / 8)];
-			color = *(unsigned int*)&img.addr[i * img.line_length + j * \
-			(img.bits_per_pixel / 8)];
-			*p = color;
-		}
 	}
 }

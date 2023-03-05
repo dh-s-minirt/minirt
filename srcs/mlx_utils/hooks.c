@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:57:43 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/04 17:08:19 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 01:29:26 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,114 +52,113 @@ t_my_mlx *my_mlx)
 		free(zip[i]);
 }
 
-// img ㅅㅐ로 만만들들어어야됨
 void	start_draw(t_zip *zip)
 {
 	multi_thread(zip->set, (zip->data), zip->mlx);
 	draw_frame(&zip->mlx->img);
-	draw_topbar(zip->mlx, *zip->mdat);
+	draw_topbar(zip->mlx, *(zip->mdat));
 	mlx_put_image_to_window(zip->mlx->mlx, \
 	zip->mlx->mlx_win, zip->mlx->img.img, 0, 0);
 }
 
-void	update_center_x(t_zip *zip, long double e)
-{
-	if (zip->mdat->obj_type == PLANE)
-		((t_plane *)(zip->mdat->object))->center.x += e;
-	else if (zip->mdat->obj_type == SPHERE)
-		((t_sphere *)(zip->mdat->object))->center.x += e;
-	else if (zip->mdat->obj_type == CONE)
-	{
-		((t_cone *)(zip->mdat->object))->center.x += e;
-		((t_cone *)(zip->mdat->object))->bot->center.x += e;
-	}
-	else if (zip->mdat->obj_type == DISK)
-	{
-		((t_disk *)(zip->mdat->object))->center.x += e;
-		if (((t_disk *)(zip->mdat->object))->parent_type == CONE)
-			((t_cone *)(((t_disk *)(zip->mdat->object))->parent))->\
-			center.x += e;
-		else
-			((t_cylinder *)(((t_disk *)(zip->mdat->object))->parent))->\
-			center.x += e;
-	}
-	else if (zip->mdat->obj_type == CYLINDER)
-	{
-		((t_cylinder *)(zip->mdat->object))->center.x += e;
-		if (((t_cylinder *)(zip->mdat->object))->bot == NULL)
-			return ;
-		((t_cylinder *)(zip->mdat->object))->bot->center.x += e;
-		((t_cylinder *)(zip->mdat->object))->top->center.x += e;
-	}
-	else
-		return ;
-}
+// void	update_center_x(t_zip *zip, long double e)
+// {
+// 	if (zip->mdat->obj_type == PLANE)
+// 		((t_plane *)(zip->mdat->object))->center.x += e;
+// 	else if (zip->mdat->obj_type == SPHERE)
+// 		((t_sphere *)(zip->mdat->object))->center.x += e;
+// 	else if (zip->mdat->obj_type == CONE)
+// 	{
+// 		((t_cone *)(zip->mdat->object))->center.x += e;
+// 		((t_cone *)(zip->mdat->object))->bot->center.x += e;
+// 	}
+// 	else if (zip->mdat->obj_type == DISK)
+// 	{
+// 		((t_disk *)(zip->mdat->object))->center.x += e;
+// 		if (((t_disk *)(zip->mdat->object))->parent_type == CONE)
+// 			((t_cone *)(((t_disk *)(zip->mdat->object))->parent))->\
+// 			center.x += e;
+// 		else
+// 			((t_cylinder *)(((t_disk *)(zip->mdat->object))->parent))->\
+// 			center.x += e;
+// 	}
+// 	else if (zip->mdat->obj_type == CYLINDER)
+// 	{
+// 		((t_cylinder *)(zip->mdat->object))->center.x += e;
+// 		if (((t_cylinder *)(zip->mdat->object))->bot == NULL)
+// 			return ;
+// 		((t_cylinder *)(zip->mdat->object))->bot->center.x += e;
+// 		((t_cylinder *)(zip->mdat->object))->top->center.x += e;
+// 	}
+// 	else
+// 		return ;
+// }
 
-void	update_center_y(t_zip *zip, long double e)
-{
-	if (zip->mdat->obj_type == PLANE)
-		((t_plane *)(zip->mdat->object))->center.y += e;
-	else if (zip->mdat->obj_type == SPHERE)
-		((t_sphere *)(zip->mdat->object))->center.y += e;
-	else if (zip->mdat->obj_type == CONE)
-	{
-		((t_cone *)(zip->mdat->object))->center.y += e;
-		((t_cone *)(zip->mdat->object))->bot->center.y += e;
-	}
-	else if (zip->mdat->obj_type == DISK)
-	{
-		((t_disk *)(zip->mdat->object))->center.y += e;
-		if (((t_disk *)(zip->mdat->object))->parent_type == CONE)
-			((t_cone *)(((t_disk *)(zip->mdat->object))->parent))->\
-			center.y += e;
-		else
-			((t_cylinder *)(((t_disk *)(zip->mdat->object))->parent))->\
-			center.y += e;
-	}
-	else if (zip->mdat->obj_type == CYLINDER)
-	{
-		((t_cylinder *)(zip->mdat->object))->center.y += e;
-		if (((t_cylinder *)(zip->mdat->object))->bot == NULL)
-			return ;
-		((t_cylinder *)(zip->mdat->object))->bot->center.y += e;
-		((t_cylinder *)(zip->mdat->object))->top->center.y += e;
-	}
-	else
-		return ;
-}
+// void	update_center_y(t_zip *zip, long double e)
+// {
+// 	if (zip->mdat->obj_type == PLANE)
+// 		((t_plane *)(zip->mdat->object))->center.y += e;
+// 	else if (zip->mdat->obj_type == SPHERE)
+// 		((t_sphere *)(zip->mdat->object))->center.y += e;
+// 	else if (zip->mdat->obj_type == CONE)
+// 	{
+// 		((t_cone *)(zip->mdat->object))->center.y += e;
+// 		((t_cone *)(zip->mdat->object))->bot->center.y += e;
+// 	}
+// 	else if (zip->mdat->obj_type == DISK)
+// 	{
+// 		((t_disk *)(zip->mdat->object))->center.y += e;
+// 		if (((t_disk *)(zip->mdat->object))->parent_type == CONE)
+// 			((t_cone *)(((t_disk *)(zip->mdat->object))->parent))->\
+// 			center.y += e;
+// 		else
+// 			((t_cylinder *)(((t_disk *)(zip->mdat->object))->parent))->\
+// 			center.y += e;
+// 	}
+// 	else if (zip->mdat->obj_type == CYLINDER)
+// 	{
+// 		((t_cylinder *)(zip->mdat->object))->center.y += e;
+// 		if (((t_cylinder *)(zip->mdat->object))->bot == NULL)
+// 			return ;
+// 		((t_cylinder *)(zip->mdat->object))->bot->center.y += e;
+// 		((t_cylinder *)(zip->mdat->object))->top->center.y += e;
+// 	}
+// 	else
+// 		return ;
+// }
 
-void	update_center_z(t_zip *zip, long double e)
-{
-	if (zip->mdat->obj_type == PLANE)
-		((t_plane *)(zip->mdat->object))->center.z += e;
-	else if (zip->mdat->obj_type == SPHERE)
-		((t_sphere *)(zip->mdat->object))->center.z += e;
-	else if (zip->mdat->obj_type == CONE)
-	{
-		((t_cone *)(zip->mdat->object))->center.z += e;
-		((t_cone *)(zip->mdat->object))->bot->center.z += e;
-	}
-	else if (zip->mdat->obj_type == DISK)
-	{
-		((t_disk *)(zip->mdat->object))->center.z += e;
-		if (((t_disk *)(zip->mdat->object))->parent_type == CONE)
-			((t_cone *)(((t_disk *)(zip->mdat->object))->parent))->\
-			center.z += e;
-		else
-			((t_cylinder *)(((t_disk *)(zip->mdat->object))->parent))->\
-			center.z += e;
-	}
-	else if (zip->mdat->obj_type == CYLINDER)
-	{
-		((t_cylinder *)(zip->mdat->object))->center.z += e;
-		if (((t_cylinder *)(zip->mdat->object))->bot == NULL)
-			return ;
-		((t_cylinder *)(zip->mdat->object))->bot->center.z += e;
-		((t_cylinder *)(zip->mdat->object))->top->center.z += e;
-	}
-	else
-		return ;
-}
+// void	update_center_z(t_zip *zip, long double e)
+// {
+// 	if (zip->mdat->obj_type == PLANE)
+// 		((t_plane *)(zip->mdat->object))->center.z += e;
+// 	else if (zip->mdat->obj_type == SPHERE)
+// 		((t_sphere *)(zip->mdat->object))->center.z += e;
+// 	else if (zip->mdat->obj_type == CONE)
+// 	{
+// 		((t_cone *)(zip->mdat->object))->center.z += e;
+// 		((t_cone *)(zip->mdat->object))->bot->center.z += e;
+// 	}
+// 	else if (zip->mdat->obj_type == DISK)
+// 	{
+// 		((t_disk *)(zip->mdat->object))->center.z += e;
+// 		if (((t_disk *)(zip->mdat->object))->parent_type == CONE)
+// 			((t_cone *)(((t_disk *)(zip->mdat->object))->parent))->\
+// 			center.z += e;
+// 		else
+// 			((t_cylinder *)(((t_disk *)(zip->mdat->object))->parent))->\
+// 			center.z += e;
+// 	}
+// 	else if (zip->mdat->obj_type == CYLINDER)
+// 	{
+// 		((t_cylinder *)(zip->mdat->object))->center.z += e;
+// 		if (((t_cylinder *)(zip->mdat->object))->bot == NULL)
+// 			return ;
+// 		((t_cylinder *)(zip->mdat->object))->bot->center.z += e;
+// 		((t_cylinder *)(zip->mdat->object))->top->center.z += e;
+// 	}
+// 	else
+// 		return ;
+// }
 
 void	update_center(t_zip *zip, char mode, long double e)
 {
@@ -177,16 +176,16 @@ void	object_move(t_zip *zip, int keycode)
 
 	e = zip->set.scale / SCREEN_HEIGHT * 1000;
 	if (zip->mdat->choice_obj == FALSE)
-	{
-		printf("choose obj\n");
 		return ;
-	}
 	if (keycode == KEY_A)
 		update_center(zip, 'x', e);
 	else if (keycode == KEY_Q)
 		update_center(zip, 'x', -e);
 	else if (keycode == KEY_W)
+	{
+		printf("w\n");
 		update_center(zip, 'y', e);
+	}
 	else if (keycode == KEY_S)
 		update_center(zip, 'y', -e);
 	else if (keycode == KEY_E)
@@ -206,7 +205,7 @@ void	object_move(t_zip *zip, int keycode)
 	else if (keycode == KEY_ROT_ZP){
 		obj_update_r_center(zip, 'z', 15);
 	}
-	start_draw(zip);	
+	start_draw(zip);
 }
 
 void	camera_move(t_zip *zip, int keycode)
@@ -270,13 +269,11 @@ int	key_hook(int keycode, t_zip *zip)
 	{
 		if (zip->mdat->mode == CMODE)
 		{
-			printf("OMODE\n");
 			zip->mdat->mode = OMODE;
 			start_draw(zip);
 		}
 		else 
 		{
-			printf("CMODE\n");
 			zip->mdat->mode = CMODE;
 			start_draw(zip);
 		}
@@ -286,7 +283,6 @@ int	key_hook(int keycode, t_zip *zip)
 		if (zip->mdat->choice_obj == TRUE && \
 		zip->mdat->mode == OMODE)
 		{
-			printf("Object picking is free\n");
 			zip->mdat->choice_obj = FALSE;
 			zip->mdat->object = NULL;
 			start_draw(zip);
@@ -333,8 +329,8 @@ int	mouse_hook(int button, int x, int y, t_zip *zip)
 			zip->mdat->object = hit_rec.object;
 			zip->mdat->choice_obj = TRUE;
 			zip->mdat->obj_type = hit_rec.obj_type;
+			printf("%d\n", zip->mdat->obj_type);
 			start_draw(zip);
-			printf("You choice one obj: type : %d\n", zip->mdat->obj_type);
 		}
 	}	
 	return (0);
