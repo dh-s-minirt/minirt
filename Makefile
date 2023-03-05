@@ -6,7 +6,7 @@
 #    By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2023/03/06 00:14:07 by daegulee         ###   ########.fr        #
+#    Updated: 2023/03/06 01:41:53 by daegulee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,7 @@ SRCS	=	main.c \
 			mlx_utils/draw_util.c \
 			mlx_utils/update_center.c \
 			mlx_utils/get_center.c \
+			mlx_utils/hooks_util.c \
 			
 SRCS_DIR = srcs
 OBJS_DIR = objs

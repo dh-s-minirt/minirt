@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:43:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 00:13:32 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 01:43:05 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 # define X_KEY_EXIT 17
 # define CMODE 0
 # define OMODE 1
+# define TITLE_WIDTH 400
+# define TITLE_HIGHT 200
 
 void	draw_line(t_point p1, t_point p2, t_mlx_data *data);
 void	draw_frame(t_mlx_data *data);
@@ -58,5 +60,9 @@ t_vec	*get_normal(void *obj, t_obj_type type);
 void	update_center_z(t_zip *zip, long double e);
 void	update_center_y(t_zip *zip, long double e);
 void	update_center_x(t_zip *zip, long double e);
+void	start_draw(t_zip *zip);
+void	change_mode(t_zip *zip);
+void	change_select(t_zip *zip);
+void	object_picking(int x, int y, t_zip *zip);
 
 #endif

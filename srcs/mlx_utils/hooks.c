@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:57:43 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/06 01:29:26 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 01:41:28 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,28 +266,9 @@ void	move(t_zip *zip, int keycode)
 int	key_hook(int keycode, t_zip *zip)
 {
 	if (keycode == KEY_C)
-	{
-		if (zip->mdat->mode == CMODE)
-		{
-			zip->mdat->mode = OMODE;
-			start_draw(zip);
-		}
-		else 
-		{
-			zip->mdat->mode = CMODE;
-			start_draw(zip);
-		}
-	}
+		change_mode(zip);
 	else if (keycode == KEY_F)
-	{
-		if (zip->mdat->choice_obj == TRUE && \
-		zip->mdat->mode == OMODE)
-		{
-			zip->mdat->choice_obj = FALSE;
-			zip->mdat->object = NULL;
-			start_draw(zip);
-		}
-	}
+		change_select(zip);
 	else if (keycode == ESC)
 	{
 		mlx_destroy_window(zip->mlx, zip->mlx->mlx_win);
@@ -296,9 +277,8 @@ int	key_hook(int keycode, t_zip *zip)
 	else if (keycode == KEY_A || keycode == KEY_S \
 		|| keycode == KEY_D || keycode == KEY_Q || \
 		keycode == KEY_W || keycode == KEY_E || \
-		keycode == KEY_PLUS || keycode == KEY_MINUS)
-		move(zip, keycode);
-	else if (keycode == KEY_ROT_XM || keycode == KEY_ROT_XP || \
+		keycode == KEY_PLUS || keycode == KEY_MINUS || \
+		 keycode == KEY_ROT_XM || keycode == KEY_ROT_XP || \
 		keycode == KEY_ROT_YM || keycode == KEY_ROT_YP || \
 		keycode == KEY_ROT_ZM || keycode == KEY_ROT_ZP)
 		move(zip, keycode);
@@ -307,32 +287,9 @@ int	key_hook(int keycode, t_zip *zip)
 
 int	mouse_hook(int button, int x, int y, t_zip *zip)
 {
-	t_ray		obj_ray;
-	double		world_x;
-	double		world_y;
-	t_hit_rec	hit_rec;
-
 	if (button == 1 && zip->mdat->mode == OMODE && \
 	zip->mdat->choice_obj == FALSE)
-	{
-		hit_rec = _init_rec_();
-		world_x = (2 * (x - 400+ 0.5) / (double)(zip->set.screen_width) - 1) * \
-		zip->set.scale;
-		world_y = (1 - 2 * (y - 200 + 0.5) / (double)(zip->set.screen_height)) \
-		* zip->set.aspect_ratio * zip->set.scale;
-		obj_ray.dir = vec_unit(_mul_vec_mat(zip->set.camera_to_world, \
-			vec_2_arr_vec3(vec(world_x, world_y, -1))));
-		obj_ray.origin = vec_copy(zip->set.camera.center);
-		printf("%lf %lf %lf\n", obj_ray.origin.x, obj_ray.origin.y, obj_ray.origin.z);
-		if (trace_hit(zip->data->objects, &hit_rec, obj_ray))
-		{
-			zip->mdat->object = hit_rec.object;
-			zip->mdat->choice_obj = TRUE;
-			zip->mdat->obj_type = hit_rec.obj_type;
-			printf("%d\n", zip->mdat->obj_type);
-			start_draw(zip);
-		}
-	}	
+		object_picking(x, y, zip);
 	return (0);
 }
 
