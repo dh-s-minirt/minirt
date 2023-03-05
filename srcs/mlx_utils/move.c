@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 02:36:48 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 02:51:53 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 03:47:33 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	zoom(t_zip *zip, int keycode)
 			zip->set.fov = clamp(zip->set.fov, 0, 179);
 			zip->set.scale = tan(degrees_to_radians(zip->set.fov) * 0.5);
 		}
-		start_draw(zip);	
+		start_draw(zip);
 	}
 }
 

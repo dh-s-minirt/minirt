@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:57:43 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/06 02:49:24 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 04:05:49 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,6 @@ void	update_center(t_zip *zip, char mode, long double e)
 // 		object_move(zip, keycode);
 // }
 
-void	rotate(t_zip *zip, int keycode);
-
 int	key_hook(int keycode, t_zip *zip)
 {
 	const t_key_type	key_type = get_key(keycode);
@@ -146,8 +144,8 @@ int	key_hook(int keycode, t_zip *zip)
 		zoom(zip, keycode);
 	else if (key_type == Translate)
 		move(zip, keycode);
-	// else if (key_type == Rotate)
-	// 	rotate(zip, keycode)
+	else if (key_type == Rotate)
+		rotate(zip, keycode);
 	return (0);
 }
 

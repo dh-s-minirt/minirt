@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:43:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 02:46:25 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 04:04:59 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,7 @@ void		object_move(t_zip *zip, int keycode);
 void		camera_move(t_zip *zip, int keycode);
 void		zoom(t_zip *zip, int keycode);
 void		move(t_zip *zip, int keycode);
+void		rot_update_normal(t_zip *zip, char mode, double theta);
+void		rotate(t_zip *zip, int keycode);
 
 #endif
