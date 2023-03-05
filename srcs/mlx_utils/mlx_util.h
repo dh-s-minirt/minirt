@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:43:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 01:43:05 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 02:02:34 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,8 @@ void	start_draw(t_zip *zip);
 void	change_mode(t_zip *zip);
 void	change_select(t_zip *zip);
 void	object_picking(int x, int y, t_zip *zip);
+int		key_hook(int keycode, t_zip *zip);
+int		mouse_hook(int button, int x, int y, t_zip *zip);
+void	my_hook(t_zip *zip);
 
 #endif

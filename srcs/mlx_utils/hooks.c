@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:57:43 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/06 01:41:28 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 01:59:16 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,6 @@
 #include "./mlx_util.h"
 #include "../render/render.h"
 #include "../Matrix/matrix.h"
-
-static t_zip	*_make_zip(t_settings set, \
-t_info_data *data, \
-t_my_mlx	*mlx, \
-int row)
-{
-	t_zip	*zip;
-
-	zip = ft_malloc(sizeof(t_zip));
-	zip->set = set;
-	zip->data = data;
-	zip->mlx = mlx;
-	zip->start_row = row;
-	return (zip);
-}
-
-static	void	multi_thread(t_settings set, t_info_data *data, \
-t_my_mlx *my_mlx)
-{
-	pthread_t	tid[THREAD_N];
-	int			i;
-	t_zip		*zip[THREAD_N];
-
-	i = -1;
-	while (++i < THREAD_N)
-	{
-		zip[i] = _make_zip(set, data, my_mlx, \
-		i * set.screen_height / THREAD_N);
-		pthread_create(&tid[i], NULL, render, (void *)zip[i]);
-	}
-	i = -1;
-	while (++i < THREAD_N)
-		pthread_join(tid[i], NULL);
-	i = -1;
-	while (++i < THREAD_N)
-		free(zip[i]);
-}
 
 void	start_draw(t_zip *zip)
 {
@@ -60,105 +23,6 @@ void	start_draw(t_zip *zip)
 	mlx_put_image_to_window(zip->mlx->mlx, \
 	zip->mlx->mlx_win, zip->mlx->img.img, 0, 0);
 }
-
-// void	update_center_x(t_zip *zip, long double e)
-// {
-// 	if (zip->mdat->obj_type == PLANE)
-// 		((t_plane *)(zip->mdat->object))->center.x += e;
-// 	else if (zip->mdat->obj_type == SPHERE)
-// 		((t_sphere *)(zip->mdat->object))->center.x += e;
-// 	else if (zip->mdat->obj_type == CONE)
-// 	{
-// 		((t_cone *)(zip->mdat->object))->center.x += e;
-// 		((t_cone *)(zip->mdat->object))->bot->center.x += e;
-// 	}
-// 	else if (zip->mdat->obj_type == DISK)
-// 	{
-// 		((t_disk *)(zip->mdat->object))->center.x += e;
-// 		if (((t_disk *)(zip->mdat->object))->parent_type == CONE)
-// 			((t_cone *)(((t_disk *)(zip->mdat->object))->parent))->\
-// 			center.x += e;
-// 		else
-// 			((t_cylinder *)(((t_disk *)(zip->mdat->object))->parent))->\
-// 			center.x += e;
-// 	}
-// 	else if (zip->mdat->obj_type == CYLINDER)
-// 	{
-// 		((t_cylinder *)(zip->mdat->object))->center.x += e;
-// 		if (((t_cylinder *)(zip->mdat->object))->bot == NULL)
-// 			return ;
-// 		((t_cylinder *)(zip->mdat->object))->bot->center.x += e;
-// 		((t_cylinder *)(zip->mdat->object))->top->center.x += e;
-// 	}
-// 	else
-// 		return ;
-// }
-
-// void	update_center_y(t_zip *zip, long double e)
-// {
-// 	if (zip->mdat->obj_type == PLANE)
-// 		((t_plane *)(zip->mdat->object))->center.y += e;
-// 	else if (zip->mdat->obj_type == SPHERE)
-// 		((t_sphere *)(zip->mdat->object))->center.y += e;
-// 	else if (zip->mdat->obj_type == CONE)
-// 	{
-// 		((t_cone *)(zip->mdat->object))->center.y += e;
-// 		((t_cone *)(zip->mdat->object))->bot->center.y += e;
-// 	}
-// 	else if (zip->mdat->obj_type == DISK)
-// 	{
-// 		((t_disk *)(zip->mdat->object))->center.y += e;
-// 		if (((t_disk *)(zip->mdat->object))->parent_type == CONE)
-// 			((t_cone *)(((t_disk *)(zip->mdat->object))->parent))->\
-// 			center.y += e;
-// 		else
-// 			((t_cylinder *)(((t_disk *)(zip->mdat->object))->parent))->\
-// 			center.y += e;
-// 	}
-// 	else if (zip->mdat->obj_type == CYLINDER)
-// 	{
-// 		((t_cylinder *)(zip->mdat->object))->center.y += e;
-// 		if (((t_cylinder *)(zip->mdat->object))->bot == NULL)
-// 			return ;
-// 		((t_cylinder *)(zip->mdat->object))->bot->center.y += e;
-// 		((t_cylinder *)(zip->mdat->object))->top->center.y += e;
-// 	}
-// 	else
-// 		return ;
-// }
-
-// void	update_center_z(t_zip *zip, long double e)
-// {
-// 	if (zip->mdat->obj_type == PLANE)
-// 		((t_plane *)(zip->mdat->object))->center.z += e;
-// 	else if (zip->mdat->obj_type == SPHERE)
-// 		((t_sphere *)(zip->mdat->object))->center.z += e;
-// 	else if (zip->mdat->obj_type == CONE)
-// 	{
-// 		((t_cone *)(zip->mdat->object))->center.z += e;
-// 		((t_cone *)(zip->mdat->object))->bot->center.z += e;
-// 	}
-// 	else if (zip->mdat->obj_type == DISK)
-// 	{
-// 		((t_disk *)(zip->mdat->object))->center.z += e;
-// 		if (((t_disk *)(zip->mdat->object))->parent_type == CONE)
-// 			((t_cone *)(((t_disk *)(zip->mdat->object))->parent))->\
-// 			center.z += e;
-// 		else
-// 			((t_cylinder *)(((t_disk *)(zip->mdat->object))->parent))->\
-// 			center.z += e;
-// 	}
-// 	else if (zip->mdat->obj_type == CYLINDER)
-// 	{
-// 		((t_cylinder *)(zip->mdat->object))->center.z += e;
-// 		if (((t_cylinder *)(zip->mdat->object))->bot == NULL)
-// 			return ;
-// 		((t_cylinder *)(zip->mdat->object))->bot->center.z += e;
-// 		((t_cylinder *)(zip->mdat->object))->top->center.z += e;
-// 	}
-// 	else
-// 		return ;
-// }
 
 void	update_center(t_zip *zip, char mode, long double e)
 {
@@ -310,49 +174,4 @@ void	my_hook(t_zip *zip)
 	mlx_hook(zip->mlx->mlx_win, X_KEY_EXIT, 0, my_exit, NULL);
 	mlx_key_hook(zip->mlx->mlx_win, key_hook, zip);
 	mlx_mouse_hook(zip->mlx->mlx_win, mouse_hook, zip);	
-	
 }
-
-// img ㅅㅐ로 만만들들어어야됨
-// void	start_draw(t_vars *vars)
-// {
-// 	t_data	img;
-
-// 	init_img(&img, vars);
-// 	put_pixel(&img, vars);
-// 	mlx_put_image_to_window(vars->mlx, vars->win, img.img, 0, 0);
-// }
-
-
-// int	mouse_hook(int button, int x, int y, t_vars *vars)
-// {
-// 	if (button == 4)
-// 		zoom_in(x, y, vars);
-// 	else if (button == 5)
-// 		zoom_out(x, y, vars);
-// 	else if (button == 1 || button == 2)
-// 		change_color(vars);
-// 	return (0);
-// }
-
-// void	zoom_in(int x, int y, t_vars *vars)
-// {
-// 	long double	e;
-
-// 	vars->size *= 0.9;
-// 	e = vars->size / WIN_HEIGHT;
-// 	vars->point_x += (x - WIN_WIDTH / 2) * e * 0.1;
-// 	vars->point_y += (WIN_HEIGHT / 2 - y) * e * 0.1;
-// 	start_draw(vars);
-// }
-
-// void	zoom_out(int x, int y, t_vars *vars)
-// {
-// 	long double	e;
-
-// 	vars->size *= 1.1;
-// 	e = vars->size / WIN_HEIGHT;
-// 	vars->point_x -= (x - WIN_WIDTH / 2) * e * 0.1;
-// 	vars->point_y -= (WIN_HEIGHT / 2 - y) * e * 0.1;
-// 	start_draw(vars);
-// }

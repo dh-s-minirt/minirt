@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 01:34:05 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 01:43:34 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 02:15:10 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	object_picking(int x, int y, t_zip *zip)
 	world_x = (2 * (x - TITLE_WIDTH + 0.5) \
 	/ (double)(zip->set.screen_width) - 1) * \
 	zip->set.scale;
-	world_y = (1 - 2 * (y - TITLE_WIDTH \
+	world_y = (1 - 2 * (y - TITLE_HIGHT \
 	+ 0.5) / (double)(zip->set.screen_height)) \
 	* zip->set.aspect_ratio * zip->set.scale;
 	obj_ray.dir = vec_unit(_mul_vec_mat(zip->set.camera_to_world, \

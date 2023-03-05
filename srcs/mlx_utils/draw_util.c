@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:40:32 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 01:47:11 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 01:54:12 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 void	draw_frame(t_mlx_data *data)
 {
-	draw_line((t_point){0xffffff, 400, 1, 0}, \
-	(t_point){0xffffff, 400, SCREEN_HEIGHT + 200, 0}, data);
-	draw_line((t_point){0xffffff, 1, 200, 0}, \
-	(t_point){0xffffff, SCREEN_WIDTH + 600, 200, 0}, data);
+	draw_line((t_point){0xffffff, TITLE_WIDTH, 0, 0}, \
+	(t_point){0xffffff, TITLE_WIDTH, SCREEN_HEIGHT + TITLE_HIGHT, 0}, data);
+	draw_line((t_point){0xffffff, 0, TITLE_HIGHT, 0}, \
+	(t_point){0xffffff, SCREEN_WIDTH + TITLE_WIDTH, TITLE_HIGHT, 0}, data);
 }
 
 void	draw_title(t_my_mlx *my_mlx)
@@ -38,16 +38,16 @@ void	draw_topbar(t_my_mlx *my_mlx, t_m_dat mdat)
 	if (mdat.mode == CMODE)
 	{
 		if (mdat.choice_obj == TRUE)
-			draw_xpm(my_mlx, "./ppm/camera_select.xpm", TITLE_WIDTH, 0);
+			draw_xpm(my_mlx, "./ppm/camera_select.xpm", TITLE_WIDTH + 1, 0);
 		else
-			draw_xpm(my_mlx, "./ppm/camera_no.xpm", TITLE_WIDTH, 0);
+			draw_xpm(my_mlx, "./ppm/camera_no.xpm", TITLE_WIDTH + 1, 0);
 	}
 	else
 	{
 		if (mdat.choice_obj == TRUE)
-			draw_xpm(my_mlx, "./ppm/obj_select.xpm", TITLE_WIDTH, 0);
+			draw_xpm(my_mlx, "./ppm/obj_select.xpm", TITLE_WIDTH + 1, 0);
 		else
-			draw_xpm(my_mlx, "./ppm/obj_no.xpm", TITLE_WIDTH, 0);
+			draw_xpm(my_mlx, "./ppm/obj_no.xpm", TITLE_WIDTH + 1, 0);
 	}
 }
 

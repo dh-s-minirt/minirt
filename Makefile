@@ -6,7 +6,7 @@
 #    By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2023/03/06 01:41:53 by daegulee         ###   ########.fr        #
+#    Updated: 2023/03/06 02:02:08 by daegulee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS	=	main.c \
 			render/shade3.c \
 			render/shade4.c \
 			render/shade5.c \
+			render/multi_render.c \
 			settings/setting.c \
 			vector/ray.c \
 			vector/vector_operator.c \

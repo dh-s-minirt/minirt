@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:20:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/03 17:00:33 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/06 02:10:53 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,11 @@ void		cy_mapping(t_hit_rec *cur_h_rec);
 void		disk_mapping(t_hit_rec *cur_h_rec, int is_check);
 void		planar_mapping(t_hit_rec *cur_h_rec, double scale);
 void		spherical_mapping(t_hit_rec *cur_h_rec);
+void		multi_thread(t_settings set, t_info_data *data, \
+t_my_mlx *my_mlx);
+t_zip		*_make_zip(t_settings set, \
+t_info_data *data, \
+t_my_mlx	*mlx, \
+int row);
 
 #endif

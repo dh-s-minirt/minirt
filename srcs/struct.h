@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 14:41:50 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/04 01:08:33 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 02:06:55 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ struct s_material
 	void		*property;
 	t_m_type	m_type;
 };
-
 
 typedef struct s_fres_data
 {
