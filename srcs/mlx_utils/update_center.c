@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:57:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 01:27:27 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 04:41:54 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,6 @@ void	update_center_z(t_zip *zip, long double e)
 	t_vec	*center_p;
 	t_vec	*child_p;
 
-	if (zip->mdat->obj_type == DISK)
-	{
-		zip->mdat->obj_type = ((t_disk *)(zip->mdat->object))->parent_type;
-		zip->mdat->object = ((t_disk *)(zip->mdat->object))->parent;
-		update_center_z(zip, e);
-		return ;
-	}
 	center_p = get_center(zip->mdat->object, zip->mdat->obj_type);
 	center_p->z += e;
 	if (zip->mdat->obj_type == CONE)
@@ -48,13 +41,6 @@ void	update_center_y(t_zip *zip, long double e)
 	t_vec	*center_p;
 	t_vec	*child_p;
 
-	if (zip->mdat->obj_type == DISK)
-	{
-		zip->mdat->obj_type = ((t_disk *)(zip->mdat->object))->parent_type;
-		zip->mdat->object = ((t_disk *)(zip->mdat->object))->parent;
-		update_center_y(zip, e);
-		return ;
-	}
 	center_p = get_center(zip->mdat->object, zip->mdat->obj_type);
 	center_p->y += e;
 	if (zip->mdat->obj_type == CONE)
@@ -76,13 +62,6 @@ void	update_center_x(t_zip *zip, long double e)
 	t_vec	*center_p;
 	t_vec	*child_p;
 
-	if (zip->mdat->obj_type == DISK)
-	{
-		zip->mdat->obj_type = ((t_disk *)(zip->mdat->object))->parent_type;
-		zip->mdat->object = ((t_disk *)(zip->mdat->object))->parent;
-		update_center_x(zip, e);
-		return ;
-	}
 	center_p = get_center(zip->mdat->object, zip->mdat->obj_type);
 	center_p->x += e;
 	if (zip->mdat->obj_type == CONE)

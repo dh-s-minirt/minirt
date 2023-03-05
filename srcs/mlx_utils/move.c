@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 02:36:48 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 03:47:33 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 04:41:41 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ void	object_move(t_zip *zip, int keycode)
 	e = zip->set.scale / SCREEN_HEIGHT * 1000;
 	if (zip->mdat->choice_obj == FALSE)
 		return ;
+	if (zip->mdat->obj_type == DISK)
+	{
+		zip->mdat->obj_type = ((t_disk *)(zip->mdat->object))->parent_type;
+		zip->mdat->object = ((t_disk *)(zip->mdat->object))->parent;
+		object_move(zip, keycode);
+		return ;
+	}
 	if (keycode == KEY_A)
 		update_center(zip, 'x', e);
 	else if (keycode == KEY_Q)
