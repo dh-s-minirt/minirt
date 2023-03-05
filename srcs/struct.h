@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 14:41:50 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 02:06:55 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 02:32:12 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_camera		t_camera;
 typedef struct s_info_data	t_info_data;
 typedef struct s_my_mlx		t_my_mlx;
 typedef struct s_camera		t_camera;
+typedef enum e_key_type		t_key_type;
 
 enum e_obj_type
 {
@@ -38,6 +39,17 @@ enum e_obj_type
 	CONE,
 	DISK,
 	MS
+};
+
+enum e_key_type
+{
+	Noset = 0,
+	Translate,
+	Zoom,
+	ModeChange,
+	Rotate,
+	Free,
+	Exit
 };
 
 typedef struct s_camera
