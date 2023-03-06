@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shade2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:34:01 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/03 01:08:35 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 23:54:36 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,7 @@ t_color	_shade_special(t_hit_rec hit_rec, t_info_data *data, t_ray r)
 	property.n = 20;
 	get_uv(&hit_rec, 10, 0);
 	_get_special(&hit_rec, ppm);
+	if (special->normal_map != NULL)
+		get_normal_map(&hit_rec, special->normal_map);
 	return (_shade_kphong(hit_rec, data, &property, r));
 }

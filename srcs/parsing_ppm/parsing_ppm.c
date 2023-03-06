@@ -6,11 +6,12 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 14:21:14 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 23:47:20 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/07 00:13:35 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing_ppm.h"
+#include <stdio.h>
 
 void	_init_ppm_map(t_ppm *ppm)
 {
@@ -49,14 +50,14 @@ char	*get_norm_map_name(char *name)
 
 t_bool	has_normal(char *name)
 {
-	int 	fd;
+	FILE	*fp;
 	char	*normal;
 
 	normal = get_norm_map_name(name);
-	fd = open(normal, O_RDONLY);
+	fp = fopen(normal, "r+");
 	free(normal);
-	if (fd < 0)
+	if (fp == NULL)
 		return (FALSE);
-	close(fd);
+	fclose(fp);
 	return (TRUE);
 }

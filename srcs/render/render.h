@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:20:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 20:19:39 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/06 23:56:21 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ t_zip		*_make_zip(t_settings set, \
 t_info_data *data, \
 t_my_mlx	*mlx, \
 int row);
+void		get_normal_map(t_hit_rec *hit_rec, t_ppm *normal_pp);
 
 #endif
