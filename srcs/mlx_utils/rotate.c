@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 03:48:16 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 19:44:48 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/06 20:13:40 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void	rot_upd_nor_x(t_zip *zip, double theta)
 	if (zip->mdat->obj_type == CYLINDER)
 	{
 		child_p = get_normal(((t_cylinder *)zip->mdat->object)->bot, DISK);
+		if (child_p == NULL)
+			return ;
 		*child_p = *normal_p;
 		child_p = get_normal(((t_cylinder *)zip->mdat->object)->top, DISK);
 		*child_p = *normal_p;
@@ -104,6 +106,8 @@ void	rot_upd_nor_y(t_zip *zip, double theta)
 	if (zip->mdat->obj_type == CYLINDER)
 	{
 		child_p = get_normal(((t_cylinder *)zip->mdat->object)->bot, DISK);
+		if (child_p == NULL)
+			return ;
 		*child_p = *normal_p;
 		child_p = get_normal(((t_cylinder *)zip->mdat->object)->top, DISK);
 		*child_p = *normal_p;
@@ -129,6 +133,8 @@ void	rot_upd_nor_z(t_zip *zip, double theta)
 	if (zip->mdat->obj_type == CYLINDER)
 	{
 		child_p = get_normal(((t_cylinder *)zip->mdat->object)->bot, DISK);
+		if (child_p == NULL)
+			return ;
 		*child_p = *normal_p;
 		child_p = get_normal(((t_cylinder *)zip->mdat->object)->top, DISK);
 		*child_p = *normal_p;

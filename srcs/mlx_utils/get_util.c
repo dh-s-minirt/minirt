@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:50:07 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 16:02:00 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/06 20:09:35 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,12 @@ t_vec	*get_center(void *obj, t_obj_type type)
 	else if (type == CONE)
 		return (&((t_cone *)obj)->center);
 	else if (type == DISK)
-		return (&((t_disk *)obj)->center);
+	{
+		if (obj == NULL)
+			return (NULL);
+		else
+			return (&((t_disk *)obj)->center);
+	}
 	else
 		return (&((t_cylinder *)obj)->center);
 }
@@ -38,7 +43,12 @@ t_vec	*get_normal(void *obj, t_obj_type type)
 	else if (type == CONE)
 		return (&((t_cone *)obj)->nor_vector);
 	else if (type == DISK)
-		return (&((t_disk *)obj)->nor_v);
+	{
+		if (obj == NULL)
+			return (NULL);
+		else
+			return (&((t_disk *)obj)->nor_v);
+	}
 	else
 		return (&((t_cylinder *)obj)->nor_vector);
 }
@@ -87,7 +97,12 @@ double	*get_phi(void *obj, t_obj_type type)
 	else if (type == CONE)
 		return (&((t_cone *)obj)->phi);
 	else if (type == DISK)
-		return (&((t_disk *)obj)->phi);
+	{
+		if (obj == NULL)
+			return (NULL);
+		else
+			return (&((t_disk *)obj)->phi);
+	}
 	else
 		return (&((t_cylinder *)obj)->phi);
 }

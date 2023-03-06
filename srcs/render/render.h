@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 15:20:42 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 02:10:53 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 20:19:39 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 # define X 0
 # define Y 1
-# define DEFAULT_R 40
+# define DEFAULT_R 20
 
 //put_img
 void		my_mlx_pixel_put(t_mlx_data *data, int x, int y, int color);
