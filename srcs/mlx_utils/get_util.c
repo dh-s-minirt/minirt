@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:50:07 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 13:58:54 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/06 16:02:00 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ double	*get_phi(void *obj, t_obj_type type)
 	if (type == PLANE)
 		return (&((t_plane *)obj)->phi);
 	else if (type == SPHERE)
-		return (&((t_plane *)obj)->phi);
+		return (&((t_sphere *)obj)->phi);
 	else if (type == CONE)
 		return (&((t_cone *)obj)->phi);
 	else if (type == DISK)

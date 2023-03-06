@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 03:48:16 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 15:10:54 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/06 16:12:06 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,19 @@ void	rot_upd_nor_y(t_zip *zip, double theta)
 	t_vec	*normal_p;
 	t_vec	*child_p;
 	double	*phi;
+	double	*child_phi;
+
 	normal_p = get_normal(zip->mdat->object, zip->mdat->obj_type);
 	*normal_p = _rotate_vec_(theta, 'y', *normal_p);
+	phi = get_phi(zip->mdat->object, zip->mdat->obj_type);
+	printf("%lf\n", *phi);
+	*phi = circle_clamp(*phi + theta, 0, 180);
 	if (zip->mdat->obj_type == CONE)
 	{
 		child_p = get_normal(((t_cone *)zip->mdat->object)->bot, DISK);
 		*child_p = *normal_p;
+		child_phi = get_phi(((t_cone *)zip->mdat->object)->bot, DISK);
+		*child_phi = circle_clamp(*child_phi + theta, 0, 360);
 	}
 	if (zip->mdat->obj_type == CYLINDER)
 	{
@@ -101,6 +108,10 @@ void	rot_upd_nor_y(t_zip *zip, double theta)
 		*child_p = *normal_p;
 		child_p = get_normal(((t_cylinder *)zip->mdat->object)->top, DISK);
 		*child_p = *normal_p;
+		child_phi = get_phi(((t_cylinder *)zip->mdat->object)->bot, DISK);
+		*child_phi = circle_clamp(*child_phi + theta, 0, 360);
+		child_phi = get_phi(((t_cylinder *)zip->mdat->object)->top, DISK);
+		*child_phi = circle_clamp(*child_phi + theta, 0, 360);
 	}
 }
 

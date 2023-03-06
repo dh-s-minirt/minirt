@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 08:11:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/03 23:37:21 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:55:32 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	*render(void *source_zip)
 			put_color(ray_casting(r, zip->data, 0), j, i, &(zip->mlx->img));
 		}
 	}
-	printf("%d thread_finish :\n", zip->start_row * THREAD_N / \
-	zip->set.screen_height);
+	// printf("%d thread_finish :\n", zip->start_row * THREAD_N / \
+	// zip->set.screen_height);
 	return (NULL);
 }

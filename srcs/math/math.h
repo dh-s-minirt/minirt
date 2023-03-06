@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 16:46:18 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/23 14:48:18 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:40:30 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 double	clamp(double x, double min, double max);
 double	degrees_to_radians(double degrees);
 double	fmax_d(double x, double y);
+double	circle_clamp(double x, double min, double max);
 //
 
 #endif

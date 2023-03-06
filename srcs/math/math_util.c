@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math_util.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 16:47:22 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/23 23:11:26 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:40:19 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@ double	clamp(double x, double min, double max)
 		return (min);
 	if (x > max)
 		return (max);
+	return (x);
+}
+
+double	circle_clamp(double x, double min, double max)
+{
+	if (x < min)
+		return (max - (x - min));
+	if (x > max)
+		return (x - max);
 	return (x);
 }
 

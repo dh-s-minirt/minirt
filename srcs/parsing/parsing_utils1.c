@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:57:06 by hyunkyu           #+#    #+#             */
-/*   Updated: 2023/03/06 14:00:25 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/06 16:22:21 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@ void	init_sphere(char **strs, t_info_data *data)
 
 	if (ft_strs_size(strs) < SPHERE_SIZE)
 		ft_print_exit();
-	sphere = (t_sphere *)malloc(sizeof(t_sphere));
-	if (!sphere)
-		exit(0);
+	sphere = ft_malloc(sizeof(t_sphere));
 	fill_sphere(sphere, strs);
 	node = node_new((void *)sphere, SPHERE);
 	add_material_data(node, strs);
@@ -78,9 +76,7 @@ void	init_plane(char **strs, t_info_data *data)
 
 	if (ft_strs_size(strs) < PLAIN_SIZE)
 		ft_print_exit();
-	plane = (t_plane *)malloc(sizeof(t_plane));
-	if (!plane)
-		exit(0);
+	plane = ft_malloc(sizeof(t_plane));
 	fill_plane(plane, strs);
 	node = node_new((void *)plane, PLANE);
 	add_material_data(node, strs);

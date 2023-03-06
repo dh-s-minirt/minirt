@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks_util.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 01:34:05 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 02:15:10 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:57:42 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	object_picking(int x, int y, t_zip *zip)
 		zip->mdat->object = hit_rec.object;
 		zip->mdat->choice_obj = TRUE;
 		zip->mdat->obj_type = hit_rec.obj_type;
-		printf("%d\n", zip->mdat->obj_type);
+		printf("pick : %d\n", zip->mdat->obj_type);
 		start_draw(zip);
 	}
 }

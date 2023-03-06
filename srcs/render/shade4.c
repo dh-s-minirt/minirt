@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 21:11:22 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 14:02:41 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/06 16:23:13 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,13 @@ void	_check_pattern_(t_hit_rec *cur_h_rec, double check_n)
 void	spherical_mapping(t_hit_rec *cur_h_rec)
 {
 	const t_sphere	*sp = (t_sphere *)cur_h_rec->object;
-	const t_mat4	local_cord = \
-	_mul_mat_(_normal_cord_(sp->nor_vector), _rotate_mat_(sp->phi, 'z'));
+	const t_mat4	local_cord = _normal_cord_(sp->nor_vector);
 	const t_vec		pc = vec_sub(cur_h_rec->contact_point, \
 	sp->center);
 	const double	theta = atan2(vec_dot(get_z_cord(local_cord), pc), \
 	vec_dot(get_x_cord(local_cord), pc));
 	const double	phi = asin(vec_dot(get_y_cord(local_cord), pc) \
-	/ vec_length(pc));
+	/ vec_length(pc)) + sp->phi / PI;
 
 	cur_h_rec->u = theta / (PI * 2) + 0.5;
 	cur_h_rec->v = phi / PI + 0.5;
@@ -42,7 +41,8 @@ void	spherical_mapping(t_hit_rec *cur_h_rec)
 void	planar_mapping(t_hit_rec *cur_h_rec, double scale)
 {
 	const t_plane	*plane = (t_plane *)cur_h_rec->object;
-	const t_mat4	local_cord = _normal_cord_(plane->nor_vector);
+	const t_mat4	local_cord = \
+	_mul_mat_(_normal_cord_(plane->nor_vector), _rotate_mat_(plane->phi, 'y'));
 	const t_vec		local_x = get_x_cord(local_cord);
 	const t_vec		local_y = get_y_cord(local_cord);
 
@@ -55,7 +55,8 @@ void	planar_mapping(t_hit_rec *cur_h_rec, double scale)
 void	disk_mapping(t_hit_rec *cur_h_rec, int is_check)
 {
 	const t_disk	*disk = (t_disk *)cur_h_rec->object;
-	const t_mat4	local_cord = _normal_cord_(disk->nor_v);
+	const t_mat4	local_cord = \
+	_mul_mat_(_normal_cord_(disk->nor_v), _rotate_mat_(disk->phi, 'y'));
 	const t_vec		local_y = get_y_cord(local_cord);
 	const t_vec		local_x = get_x_cord(local_cord);
 	const t_vec		pc = vec_sub(cur_h_rec->contact_point, \
@@ -76,14 +77,15 @@ void	disk_mapping(t_hit_rec *cur_h_rec, int is_check)
 void	cy_mapping(t_hit_rec *cur_h_rec)
 {
 	const t_cylinder	*cy = (t_cylinder *)cur_h_rec->object;
-	const t_mat4		local_cord = _normal_cord_(cy->nor_vector);
+	const t_mat4	local_cord = \
+	_mul_mat_(_normal_cord_(cy->nor_vector), _rotate_mat_(cy->phi, 'y'));
 	const t_vec			pc = vec_sub(cur_h_rec->contact_point, \
 	cy->center);
 	const t_vec			pc_prime = vec_sub(cur_h_rec->contact_point, \
-	vec_add(cy->center, vec_mul(cy->nor_vector, fabs(vec_dot(pc, \
+	vec_add(cy->center, vec_mul(cy->nor_vector, (vec_dot(pc, \
 	cy->nor_vector)))));
 
-	cur_h_rec->u = 0.5 + asin(fabs(vec_dot(get_y_cord(local_cord), pc_prime)) \
+	cur_h_rec->u = 0.5 + asin((vec_dot(get_y_cord(local_cord), pc_prime)) \
 	/ vec_length(pc_prime)) / PI;
 	cur_h_rec->v = fabs(vec_dot(pc, cy->nor_vector)) / cy->height;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:26:54 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/06 00:48:07 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:55:56 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,7 @@ void	init_cone(char **strs, t_info_data *data)
 
 	if (ft_strs_size(strs) < CONE_SIZE)
 		ft_print_exit();
-	cone = malloc(sizeof(t_cone));
-	if (!cone)
-		exit(EXIT_FAILURE);
+	cone = ft_malloc(sizeof(t_cone));
 	fill_cone(strs, cone);
 	node = node_new((void *)cone, CONE);
 	add_material_data(node, strs);

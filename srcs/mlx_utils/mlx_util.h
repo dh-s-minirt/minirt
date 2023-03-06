@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:43:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 14:12:01 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/06 15:11:52 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void		rotate_up_z(t_zip *zip, double theta);
 t_vec		*get_center(void *obj, t_obj_type type);
 t_vec		*get_normal(void *obj, t_obj_type type);
 double		*get_height(void *obj, t_obj_type type);
+double		*get_phi(void *obj, t_obj_type type);
 t_key_type	get_key(int keycode);
 void		update_center(t_zip *zip, char mode, long double e);
 void		update_center_z(t_zip *zip, long double e);
