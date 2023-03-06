@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 14:41:50 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 13:50:43 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/06 23:46:07 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,7 @@ typedef struct s_special_property
 {
 	char	*ppm_name;
 	t_ppm	*ppm;
+	t_ppm	*normal_map;
 }	t_special_property;
 
 struct s_node
