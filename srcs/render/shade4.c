@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 21:11:22 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 16:23:13 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/06 21:45:58 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	spherical_mapping(t_hit_rec *cur_h_rec)
 	const double	theta = atan2(vec_dot(get_z_cord(local_cord), pc), \
 	vec_dot(get_x_cord(local_cord), pc));
 	const double	phi = asin(vec_dot(get_y_cord(local_cord), pc) \
-	/ vec_length(pc)) + sp->phi / PI;
+	/ vec_length(pc)) + sp->phi / 360;
 
 	cur_h_rec->u = theta / (PI * 2) + 0.5;
-	cur_h_rec->v = phi / PI + 0.5;
+	cur_h_rec->v = phi / (PI * 2) + 0.5;
 }
 
 void	planar_mapping(t_hit_rec *cur_h_rec, double scale)
