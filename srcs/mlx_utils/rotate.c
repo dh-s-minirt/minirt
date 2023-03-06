@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 03:48:16 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 14:12:12 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/06 15:10:54 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	rot_upd_nor_y(t_zip *zip, double theta)
 {
 	t_vec	*normal_p;
 	t_vec	*child_p;
-
+	double	*phi;
 	normal_p = get_normal(zip->mdat->object, zip->mdat->obj_type);
 	*normal_p = _rotate_vec_(theta, 'y', *normal_p);
 	if (zip->mdat->obj_type == CONE)
