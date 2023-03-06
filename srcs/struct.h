@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 14:41:50 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 02:32:12 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 13:50:43 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,6 +198,7 @@ typedef struct s_disk
 	t_vec		nor_v;
 	t_obj_type	parent_type;
 	void		*parent;
+	double		phi;
 }	t_disk;
 
 typedef struct s_sphere
@@ -206,6 +207,8 @@ typedef struct s_sphere
 	double	diameter;
 	double	radius;
 	t_color	color;
+	double	phi;
+	t_vec	nor_vector;
 }	t_sphere;
 
 typedef struct s_ms
@@ -219,6 +222,7 @@ typedef struct s_plane
 	t_vec	center;
 	t_vec	nor_vector;
 	t_color	color;
+	double	phi;
 }	t_plane;
 
 typedef struct s_cylinder
@@ -231,6 +235,7 @@ typedef struct s_cylinder
 	t_color	color;
 	t_disk	*bot;
 	t_disk	*top;
+	double	phi;
 }	t_cylinder;
 
 typedef struct s_canvas
@@ -249,6 +254,7 @@ typedef struct s_cone
 	t_vec	center;
 	t_vec	nor_vector;
 	t_disk	*bot;
+	double	phi;
 }	t_cone;
 
 typedef struct s_light

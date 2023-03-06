@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 03:48:16 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 04:37:19 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/06 14:12:12 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ void	rot_update_normal(t_zip *zip, char mode, double theta)
 }
 
 void	rotate(t_zip *zip, int keycode)
+{
+	if (zip->mdat->mode == CMODE)
+		camera_rotate(zip, keycode);
+	else
+		object_rotate(zip, keycode);
+}
+
+void	object_rotate(t_zip *zip, int keycode)
 {
 	if (zip->mdat->obj_type == DISK)
 	{
@@ -59,7 +67,7 @@ void	rot_upd_nor_x(t_zip *zip, double theta)
 	t_vec	*normal_p;
 	t_vec	*child_p;
 
-	normal_p = get_normal(zip->mdat->object, zip->mdat->obj_type);
+	normal_p = get_normal(zip->mdat->object, zip->mdat->obj_type);		
 	*normal_p = _rotate_vec_(theta, 'x', *normal_p);
 	if (zip->mdat->obj_type == CONE)
 	{

@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:50:07 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 04:35:58 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/06 13:58:54 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_vec	*get_normal(void *obj, t_obj_type type)
 	if (type == PLANE)
 		return (&((t_plane *)obj)->nor_vector);
 	else if (type == SPHERE)
-		return (NULL);
+		return (&((t_sphere *)obj)->nor_vector);
 	else if (type == CONE)
 		return (&((t_cone *)obj)->nor_vector);
 	else if (type == DISK)
@@ -76,4 +76,18 @@ t_key_type	get_key(int keycode)
 	else
 		type = Noset;
 	return (type);
+}
+
+double	*get_phi(void *obj, t_obj_type type)
+{
+	if (type == PLANE)
+		return (&((t_plane *)obj)->phi);
+	else if (type == SPHERE)
+		return (&((t_plane *)obj)->phi);
+	else if (type == CONE)
+		return (&((t_cone *)obj)->phi);
+	else if (type == DISK)
+		return (&((t_disk *)obj)->phi);
+	else
+		return (&((t_cylinder *)obj)->phi);
 }

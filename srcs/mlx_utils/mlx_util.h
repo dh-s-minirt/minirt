@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:43:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 04:36:05 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/06 14:12:01 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,7 @@ void		move(t_zip *zip, int keycode);
 void		rot_update_normal(t_zip *zip, char mode, double theta);
 void		rotate(t_zip *zip, int keycode);
 void		rot_upd_child_center(t_zip *zip);
+void		camera_rotate(t_zip *zip, int keycode);
+void		object_rotate(t_zip *zip, int keycode);
 
 #endif

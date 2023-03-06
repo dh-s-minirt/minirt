@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 21:11:22 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/28 20:26:04 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/06 14:02:41 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,14 @@ void	_check_pattern_(t_hit_rec *cur_h_rec, double check_n)
 void	spherical_mapping(t_hit_rec *cur_h_rec)
 {
 	const t_sphere	*sp = (t_sphere *)cur_h_rec->object;
+	const t_mat4	local_cord = \
+	_mul_mat_(_normal_cord_(sp->nor_vector), _rotate_mat_(sp->phi, 'z'));
 	const t_vec		pc = vec_sub(cur_h_rec->contact_point, \
 	sp->center);
-	const double	theta = atan2(pc.z, \
-	pc.x);
-	const double	phi = asin(pc.y / vec_length(pc));
+	const double	theta = atan2(vec_dot(get_z_cord(local_cord), pc), \
+	vec_dot(get_x_cord(local_cord), pc));
+	const double	phi = asin(vec_dot(get_y_cord(local_cord), pc) \
+	/ vec_length(pc));
 
 	cur_h_rec->u = theta / (PI * 2) + 0.5;
 	cur_h_rec->v = phi / PI + 0.5;

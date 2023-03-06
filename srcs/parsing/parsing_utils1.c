@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 14:57:06 by hyunkyu           #+#    #+#             */
-/*   Updated: 2023/03/02 14:40:05 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2023/03/06 14:00:25 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	fill_sphere(t_sphere *sphere, char **strs)
 	if (!validation_color(sphere->color))
 		ft_print_exit();
 	ft_release_strs(tmp);
+	sphere->nor_vector = vec(0, 0, 1);
 }
 
 void	init_sphere(char **strs, t_info_data *data)

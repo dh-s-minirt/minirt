@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+         #
+#    By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2023/03/06 04:39:57 by daegulee         ###   ########.fr        #
+#    Updated: 2023/03/06 14:12:40 by idaegyu          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ SRCS	=	main.c \
 			mlx_utils/hooks_util.c \
 			mlx_utils/move.c \
 			mlx_utils/rotate.c \
+			mlx_utils/cam_rotate.c \
 			mlx_utils/rotate_sub.c \
 
 			
