@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cam_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:10:33 by idaegyu           #+#    #+#             */
-/*   Updated: 2023/03/06 14:11:37 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/07 11:57:39 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	camera_rotate(t_zip *zip, int keycode)
 		zip->set.camera_to_world = _mul_mat_(zip->set.camera_to_world, \
 		_rotate_mat_(20, 'z'));
 	}
-	else 
+	else
 		return ;
 	start_draw(zip);
 }

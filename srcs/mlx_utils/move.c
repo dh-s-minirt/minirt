@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 02:36:48 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 04:41:41 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/07 11:58:28 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,11 @@ void	move(t_zip *zip, int keycode)
 	else
 		object_move(zip, keycode);
 	start_draw(zip);
+}
+
+int	my_exit(void *data)
+{
+	(void)data;
+	exit(EXIT_SUCCESS);
+	return (0);
 }

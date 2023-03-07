@@ -6,7 +6,7 @@
 /*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:57:43 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/06 04:40:19 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/07 11:59:17 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,11 @@ int	key_hook(int keycode, t_zip *zip)
 	return (0);
 }
 
-
 int	mouse_hook(int button, int x, int y, t_zip *zip)
 {
 	if (button == 1 && zip->mdat->mode == OMODE && \
 	zip->mdat->choice_obj == FALSE)
 		object_picking(x, y, zip);
-	return (0);
-}
-
-int	my_exit(void *data)
-{
-	(void)data;
-	exit(EXIT_SUCCESS);
 	return (0);
 }
 
@@ -81,5 +73,5 @@ void	my_hook(t_zip *zip)
 	zip->mdat = dat;
 	mlx_hook(zip->mlx->mlx_win, X_KEY_EXIT, 0, my_exit, NULL);
 	mlx_key_hook(zip->mlx->mlx_win, key_hook, zip);
-	mlx_mouse_hook(zip->mlx->mlx_win, mouse_hook, zip);	
+	mlx_mouse_hook(zip->mlx->mlx_win, mouse_hook, zip);
 }

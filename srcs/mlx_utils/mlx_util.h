@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_util.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 18:43:00 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 15:11:52 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/07 11:59:51 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ void		rotate(t_zip *zip, int keycode);
 void		rot_upd_child_center(t_zip *zip);
 void		camera_rotate(t_zip *zip, int keycode);
 void		object_rotate(t_zip *zip, int keycode);
+int			my_exit(void *data);
 
 #endif
