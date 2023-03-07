@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mat_transform.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:56:57 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/02 13:04:16 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:39:01 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "../libft/libft.h"
 #include "../math/math.h"
 #include <stdio.h>
-
 
 t_vec	_mul_vec_mat(const t_mat4 a, t_arr_vec3	arr_vec)
 {

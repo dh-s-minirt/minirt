@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_ppm.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 14:21:14 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/07 00:13:35 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/07 14:41:27 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*str_ncpy(char *source, int n)
 
 	i = -1;
 	if (ft_strlen(source) < (size_t)n)
-		ft_exit("strncpy error\n");	
+		ft_exit("strncpy error\n");
 	tmp = ft_malloc(sizeof(char) * n + 1);
 	while (++i < n)
 		tmp[i] = source[i];
@@ -45,7 +45,7 @@ char	*get_norm_map_name(char *name)
 	normal = ft_strjoin(tmp, "_normal.ppm");
 	printf("%s\n", normal);
 	free(tmp);
-	return 	(normal);
+	return (normal);
 }
 
 t_bool	has_normal(char *name)

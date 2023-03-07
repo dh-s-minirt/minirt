@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cam_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 14:10:33 by idaegyu           #+#    #+#             */
-/*   Updated: 2023/03/07 11:57:39 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:39:13 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	camera_rotate(t_zip *zip, int keycode)
 	else if (keycode == KEY_ROT_ZM)
 		zip->set.camera_to_world = _mul_mat_(zip->set.camera_to_world, \
 		_rotate_mat_(-20, 'z'));
-	else if (keycode == KEY_ROT_ZP){
+	else if (keycode == KEY_ROT_ZP)
+	{
 		zip->set.camera_to_world = _mul_mat_(zip->set.camera_to_world, \
 		_rotate_mat_(20, 'z'));
 	}

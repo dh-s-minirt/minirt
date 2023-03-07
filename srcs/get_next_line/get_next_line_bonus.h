@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # define BUFFER_SIZE 1024
 
-
 typedef struct s_file	t_file;
 struct	s_file
 {

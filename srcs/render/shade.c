@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shade.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:30:51 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 20:27:07 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/07 14:42:27 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ static t_color	_get_diffuse_(t_lt_info cur_l_info, t_hit_rec hit_rec)
 	vec_mul(cur_l_info.dir, -1)));
 	return (vec_mul(max_diffuse_color, coefficient));
 }
+
 t_color	_shade_kphong(t_hit_rec hit_rec, t_info_data *data, \
 t_phong_propety *property, t_ray ray)
 {
@@ -99,7 +100,7 @@ t_phong_propety *property, t_ray ray)
 		cur_l_info = get_lt_info(cur_light, hit_rec);
 		if (cur_l_info.dist == INFINITY)
 			ambient = vec_product(hit_rec.albedo, cur_l_info.intensity);
-		if (cur_l_info.dist == INFINITY || check_shadow(data->objects,\
+		if (cur_l_info.dist == INFINITY || check_shadow(data->objects, \
 		&hit_rec, vec_mul((cur_l_info.dir), -1), cur_l_info))
 		{
 			cur_light = cur_light->next;

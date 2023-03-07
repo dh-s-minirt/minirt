@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math_util.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 16:47:22 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 15:40:19 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/07 14:38:42 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,3 @@ double	fmax_d(double x, double y)
 	else
 		return (y);
 }
-
