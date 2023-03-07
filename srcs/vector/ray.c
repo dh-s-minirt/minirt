@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:21:39 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/02/07 20:48:11 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:48:52 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,3 @@ t_ray	ray(t_vec orig, t_vec dir)
 	ray.dir = vec_unit(dir);
 	return (ray);
 }
-
-// t_ray	ray_primary(t_camera cam, double u, double v)
-// {
-// 	t_ray	ray;
-
-// 	ray.origin = cam.center;
-// 	ray.dir = vec_unit(vec_sub(vec_add(vec_add(cam.lower_left_corner, \
-// 	vec_mul(cam.horizontal, u)), vec_mul(cam.vertical, v)), cam.center));
-// 	return (ray);
-// }
