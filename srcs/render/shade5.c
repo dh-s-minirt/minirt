@@ -6,7 +6,7 @@
 /*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 17:12:30 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 15:35:58 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/07 00:02:36 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,3 +43,19 @@ void	get_uv(t_hit_rec *cur_h_rec, double plane_scale, int is_check)
 	else
 		return ;
 }
+
+void		get_normal_map(t_hit_rec *hit_rec, t_ppm *normal_ppm)
+{
+	double			x;
+	double			y;
+	t_vec			local_normal;
+	const t_mat4	local_cord = _normal_cord_(hit_rec->hit_normal);
+	
+	x = clamp(hit_rec->u * (normal_ppm->width - 1), 0, normal_ppm->width - 1);
+	y = clamp(hit_rec->v * (normal_ppm->height - 1), 0, normal_ppm->height - 1);
+	local_normal = vec_mul(vec_sub((normal_ppm->map)[(int)round(y) * \
+	normal_ppm->width + (int)round(x) - 1], vec(0.5, 0.5, 0.5)), 2);
+	hit_rec->hit_normal = _mul_vec_mat(local_cord, vec_2_arr_vec3(local_normal));
+}
+
+

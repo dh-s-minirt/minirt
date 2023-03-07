@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_ppm.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 14:20:28 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/27 23:06:49 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/06 23:42:01 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ int		atoi_err(char *str);
 t_ppm	*parse_ppm(char *file);
 void	print_ppm(t_ppm *ppm);
 void	_init_ppm_map(t_ppm *ppm);
+t_bool	has_normal(char *name);
+char	*get_norm_map_name(char *name);
 
 #endif

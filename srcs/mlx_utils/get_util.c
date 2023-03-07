@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_util.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:50:07 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 20:09:35 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/07 11:57:50 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ double	*get_height(void *obj, t_obj_type type)
 {
 	if (type == CONE)
 		return (&((t_cone *)obj)->height);
-	else if (type == CYLINDER)	
+	else if (type == CYLINDER)
 		return (&((t_cylinder *)obj)->height);
 	else
 		return (NULL);

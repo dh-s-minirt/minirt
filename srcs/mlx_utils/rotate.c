@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 03:48:16 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 21:43:05 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/07 13:51:10 by daegulee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	rot_upd_nor_x(t_zip *zip, double theta)
 	t_vec	*normal_p;
 	t_vec	*child_p;
 
-	normal_p = get_normal(zip->mdat->object, zip->mdat->obj_type);		
+	normal_p = get_normal(zip->mdat->object, zip->mdat->obj_type);
 	*normal_p = _rotate_vec_(theta, 'x', *normal_p);
 	if (zip->mdat->obj_type == CONE)
 	{
@@ -104,41 +104,5 @@ void	rot_upd_nor_y(t_zip *zip, double theta)
 		*child_phi = circle_clamp(*child_phi + theta, 0, 360);
 	}
 	if (zip->mdat->obj_type == CYLINDER)
-	{
-		child_p = get_normal(((t_cylinder *)zip->mdat->object)->bot, DISK);
-		if (child_p == NULL)
-			return ;
-		*child_p = *normal_p;
-		child_p = get_normal(((t_cylinder *)zip->mdat->object)->top, DISK);
-		*child_p = *normal_p;
-		child_phi = get_phi(((t_cylinder *)zip->mdat->object)->bot, DISK);
-		*child_phi = circle_clamp(*child_phi + theta, 0, 360);
-		child_phi = get_phi(((t_cylinder *)zip->mdat->object)->top, DISK);
-		*child_phi = circle_clamp(*child_phi + theta, 0, 360);
-	}
+		_sub_rot_sub_(zip, theta, normal_p);
 }
-
-void	rot_upd_nor_z(t_zip *zip, double theta)
-{
-	t_vec	*normal_p;
-	t_vec	*child_p;
-
-	normal_p = get_normal(zip->mdat->object, zip->mdat->obj_type);
-	*normal_p = _rotate_vec_(theta, 'z', *normal_p);
-	if (zip->mdat->obj_type == CONE)
-	{
-		child_p = get_normal(((t_cone *)zip->mdat->object)->bot, DISK);
-		*child_p = *normal_p;
-	}
-	if (zip->mdat->obj_type == CYLINDER)
-	{
-		child_p = get_normal(((t_cylinder *)zip->mdat->object)->bot, DISK);
-		if (child_p == NULL)
-			return ;
-		*child_p = *normal_p;
-		child_p = get_normal(((t_cylinder *)zip->mdat->object)->top, DISK);
-		*child_p = *normal_p;
-	}
-}
-
-

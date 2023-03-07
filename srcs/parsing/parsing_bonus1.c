@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_bonus1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
+/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 16:07:41 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/02 14:42:34 by hyunkyle         ###   ########.fr       */
+/*   Updated: 2023/03/07 00:11:41 by idaegyu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,18 @@ void	add_special(t_node *node, char **strs)
 	t_material			material;
 	int					end_idx;
 	t_special_property	*special;
+	char				*normal;
 
 	end_idx = get_shape_size(node);
-	special = malloc(sizeof (t_special_property));
-	if (!special)
-		ft_print_exit();
+	special = ft_malloc(sizeof (t_special_property));
 	special->ppm_name = ft_strdup(strs[end_idx]);
 	special->ppm = parse_ppm(special->ppm_name);
+	if (has_normal(special->ppm_name))
+	{
+		normal = get_norm_map_name(special->ppm_name);
+		special->normal_map = parse_ppm(normal);
+		free(normal);
+	}
 	material.m_type = SPECIAL;
 	material.property = (void *) special;
 	node->material = material;
