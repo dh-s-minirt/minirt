@@ -95,7 +95,8 @@ t_bool	_find_cy_root(const t_ray ray, const t_cylinder *cy, double root[2])
 	p[1] = vec_add(ray.origin, vec_mul(ray.dir, root[1]));
 	dist[0] = vec_dot(vec_sub(p[0], cy->center), cy->nor_vector);
 	dist[1] = vec_dot(vec_sub(p[1], cy->center), cy->nor_vector);
-	if (dist[0] <= BIAS || dist[0] > cy->height + BIAS){
+	if (dist[0] <= BIAS || dist[0] > cy->height + BIAS)
+	{
 		if (dist[1] <= BIAS || dist[1] > cy->height + BIAS)
 			return (FALSE);
 		root[0] = root[1];

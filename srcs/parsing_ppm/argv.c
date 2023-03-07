@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   argv.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daegulee <daegulee@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 14:44:29 by daegulee          #+#    #+#             */
-/*   Updated: 2023/02/26 22:47:45 by daegulee         ###   ########.fr       */
+/*   Updated: 2023/03/07 14:40:52 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,3 @@ int	atoi_err(char *str)
 		ft_exit("ppm : data error.");
 	return (result * sign);
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shade4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 21:11:22 by daegulee          #+#    #+#             */
-/*   Updated: 2023/03/06 21:45:58 by idaegyu          ###   ########.fr       */
+/*   Updated: 2023/03/07 14:46:21 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	disk_mapping(t_hit_rec *cur_h_rec, int is_check)
 void	cy_mapping(t_hit_rec *cur_h_rec)
 {
 	const t_cylinder	*cy = (t_cylinder *)cur_h_rec->object;
-	const t_mat4	local_cord = \
+	const t_mat4		local_cord = \
 	_mul_mat_(_normal_cord_(cy->nor_vector), _rotate_mat_(cy->phi, 'y'));
 	const t_vec			pc = vec_sub(cur_h_rec->contact_point, \
 	cy->center);
