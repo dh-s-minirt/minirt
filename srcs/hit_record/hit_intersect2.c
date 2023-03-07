@@ -13,9 +13,10 @@
 #include "./hit_record.h"
 
 typedef void				(*t_inersect_)(t_node *, t_hit_rec *, const t_ray);
-static const t_inersect_	g_intersect[5] = {
+
+static const t_inersect_	g_intersect[6] = {
 	_intersect_sphere_, _intersect_plane_, _intersect_cylinder_, \
-	_intersect_cone_, _intersect_disk_
+	_intersect_cone_, _intersect_disk_, NULL
 };
 
 t_abc	_make_abc_(const t_cone *cone, t_vec co, const t_ray ray)

@@ -34,4 +34,3 @@ t_ray	ray(t_vec orig, t_vec dir)
 	ray.dir = vec_unit(dir);
 	return (ray);
 }
-

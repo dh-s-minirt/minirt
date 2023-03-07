@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leehyunkyu <leehyunkyu@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 11:16:45 by hyunkyle          #+#    #+#             */
-/*   Updated: 2023/03/03 19:50:29 by leehyunkyu       ###   ########.fr       */
+/*   Updated: 2023/03/07 15:01:05 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 #include "./hit_record/hit_record.h"
 #include "./render/render.h"
 
-int key_hook(int keycode);
-int mouse_hook(int button, int x, int y);
+int	key_hook(int keycode);
+int	mouse_hook(int button, int x, int y);
 
 int	main(int argc, char **argv)
 {

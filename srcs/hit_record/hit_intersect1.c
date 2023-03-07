@@ -84,6 +84,26 @@ const t_ray ray)
 	cur_h_rec->obj_type = PLANE;
 }
 
+t_bool	_find_cy_root(const t_ray ray, const t_cylinder *cy, double root[2])
+{
+	t_vec	p[2];
+	double	dist[2];
+
+	p[0] = vec_add(ray.origin, vec_mul(ray.dir, root[0]));
+	p[1] = vec_add(ray.origin, vec_mul(ray.dir, root[1]));
+	dist[0] = vec_dot(vec_sub(p[0], cy->center), cy->nor_vector);
+	dist[1] = vec_dot(vec_sub(p[1], cy->center), cy->nor_vector);
+	if (dist[0] <= BIAS || dist[0] > cy->height + BIAS)
+	{
+		if (dist[1] <= BIAS || dist[1] > cy->height + BIAS)
+			return (FALSE);
+		root[0] = root[1];
+		dist[0] = dist[1];
+		p[0] = p[1];
+	}	
+	return (TRUE);
+}
+
 void	_intersect_cylinder_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
 const t_ray ray)
 {
@@ -91,27 +111,15 @@ const t_ray ray)
 	const t_vec			oc = vec_sub(ray.origin, cy->center);
 	const double		a = vec_dot(ray.dir, ray.dir) - pow(vec_dot(ray.dir, \
 	cy->nor_vector), 2);
-	const double		half_b = vec_dot(ray.dir, oc) - vec_dot(ray.dir, cy->nor_vector) * \
-	vec_dot(oc, cy->nor_vector);
-	const double		c = vec_dot(oc, oc) - pow(vec_dot(oc, cy->nor_vector), 2) - \
-	pow(cy->radius, 2);
+	const double		half_b = vec_dot(ray.dir, oc) - \
+	vec_dot(ray.dir, cy->nor_vector) * vec_dot(oc, cy->nor_vector);
 	double				root[2];
 
-	if (!solve_quadratic(a, half_b, c, root))
+	if (!solve_quadratic(a, half_b, vec_dot(oc, oc) - \
+	pow(vec_dot(oc, cy->nor_vector), 2) - pow(cy->radius, 2), root))
 		return ;
-	t_vec	p[2];
-	p[0] = vec_add(ray.origin, vec_mul(ray.dir, root[0]));
-	p[1] = vec_add(ray.origin, vec_mul(ray.dir, root[1]));
-	double	dist[2];
-	dist[0] = vec_dot(vec_sub(p[0], cy->center), cy->nor_vector);
-	dist[1] = vec_dot(vec_sub(p[1], cy->center), cy->nor_vector);
-	if (dist[0] <= BIAS || dist[0] > cy->height + BIAS){
-		if (dist[1] <= BIAS || dist[1] > cy->height + BIAS)
-			return ;
-		root[0] = root[1];
-		dist[0] = dist[1];
-		p[0] = p[1];
-	}
+	if (!_find_cy_root(ray, cy, root))
+		return ;
 	cur_h_rec->t_near = root[0];
 	cur_h_rec->is_hit = TRUE;
 	cur_h_rec->contact_point = vec_add(ray.origin, \
@@ -120,29 +128,4 @@ const t_ray ray)
 	cy->center, cy->nor_vector);
 	cur_h_rec->albedo = vec_copy(cy->color);
 	cur_h_rec->obj_type = CYLINDER;
-}
-
-void	_intersect_cone_(t_node *cur_obj, t_hit_rec *cur_h_rec, \
-const t_ray ray)
-{
-	const t_cone	*cone = (t_cone *)cur_obj->data;
-    const double cos2 = cos(cone->theta) * cos(cone->theta);
-    const t_vec v = vec_sub(ray.origin, cone->center);
-    const double a = vec_dot(ray.dir, ray.dir) - (1 + cos2) * pow(vec_dot(ray.dir, cone->nor_vector), 2);
-   	const  double half_b = (vec_dot(ray.dir, v) - (1 + cos2) * vec_dot(ray.dir, cone->nor_vector) * vec_dot(v, cone->nor_vector));
-    const double c = vec_dot(v, v) - (1 + cos2) * pow(vec_dot(v, cone->nor_vector), 2);
-	double			root[2];
-
-	if (!solve_quadratic(a, half_b, c, root))
-		return ;
-	if (!_find_cone_root_((t_cone *)cone, root, ray))
-		return ;
-	cur_h_rec->t_near = root[0];
-	cur_h_rec->is_hit = TRUE;
-	cur_h_rec->contact_point = vec_add(ray.origin, \
-	vec_mul(ray.dir, cur_h_rec->t_near));
-	cur_h_rec->hit_normal = _find_hit_normal_cn(cur_h_rec->contact_point, \
-	cone->center, cone->nor_vector, cos(cone->theta));
-	cur_h_rec->albedo = vec_copy(cone->color);
-	cur_h_rec->obj_type = CONE;
 }

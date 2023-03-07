@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyunkyu <hyunkyu@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 18:05:07 by hyunkyle          #+#    #+#             */
-/*   Updated: 2022/12/27 13:18:41 by hyunkyu          ###   ########.fr       */
+/*   Updated: 2023/03/07 15:01:17 by hyunkyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <sys/types.h>
 # include <stdlib.h>
 # define BUFFER_SIZE 1024
-
 
 typedef struct s_file	t_file;
 struct	s_file

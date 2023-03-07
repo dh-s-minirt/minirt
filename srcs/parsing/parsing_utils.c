@@ -103,4 +103,3 @@ void	init_light(char **strs, t_info_data *data)
 	node = new_light_node((void *)light, LIGHT);
 	light_node_add_back(&data->lights, node);
 }
-
