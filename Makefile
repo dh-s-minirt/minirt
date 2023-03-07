@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: idaegyu <idaegyu@student.42.fr>            +#+  +:+       +#+         #
+#    By: hyunkyle <hyunkyle@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/26 11:09:57 by hyunkyle          #+#    #+#              #
-#    Updated: 2023/03/06 14:12:40 by idaegyu          ###   ########.fr        #
+#    Updated: 2023/03/07 15:19:17 by hyunkyle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,8 @@ CC		=	cc
 Debug = -fsanitize=address -g
 CFLAGS	=	-Wall -Werror -Wextra -Imlx -O3
 LFAGS = -framework OpenGL -framework AppKit
+
+bonus : all
 all		: $(NAME)
 
 ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c
