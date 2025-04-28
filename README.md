@@ -117,7 +117,7 @@ miniRT는 **MiniLibX** 라이브러리를 통해 그래픽 창(Window)을 생성
 ## 빌드 및 실행 방법
 
 # 1. 저장소 클론 및 디렉토리 이동
-[git clone https://github.com/yourusername/miniRT.git](https://github.com/dh-s-minirt/minirt.git)
+[git clone (https://github.com/dh-s-minirt/minirt.git)]
 cd miniRT
 
 # 2. 프로젝트 빌드 (Makefile 사용)
